@@ -1,0 +1,81 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome to this challenge, and welcome to this stock tracking app.
+0:03
+So we are going to imagine that the user has five different stocks, and for each of those stocks, we are gonna be showing them the logo and the name of the company, the current stock price, the previous closing price, and how much the stock has gone up or down from that previous closing price.
+0:19
+Now at the moment, we just have some placeholder content, but we do have some actual data to work with, and that data is living over in this stock data JS file.
+0:28
+We have some stock names, logo image pathways, current prices, and previous closing prices.
+0:34
+And then over in the app JSX file, I have also created a little set interval inside of a useEffect, which is going to update those current prices every few seconds so that we can simulate the prices fluctuating over time just like they do in real life.
+0:49
+At the moment, these boxes that you are seeing are these stock elements over here, and those are being created by this map method here where we are mapping over the stock data.
+1:00
+And for each stock, we are creating a stock element, and the code for that lives over here in the components folder.
+1:06
+And as you can see, at the moment, we just have a bunch of variables with information hard coded into them, which then gets inserted into this JSX here, and this is our placeholder information, and that's why all of these are looking the same.
+1:19
+However, back in app JSX, we are passing in information about the stocks into each one of these stock elements.
+1:26
+And so back over in the stock component, if we listen for those props, and let's just console log them for right now and run this code.
+1:34
+You can see that in the console, we are getting information for each one of the stocks, and that information is updating every four seconds.
+1:42
+Me turn this back off so it doesn't keep flashing.
+1:45
+And now let's look at the challenge.
+1:46
+So in a nutshell, you are gonna be taking these props, and you are going to be replacing the hard coded information with information from those props.
+1:56
+Now for the stock name, the logo, the current price, and the previous closing price, all that information is going to be directly inside of the props.
+2:04
+However, these other four variables are going to have to be computed from those variables.
+2:09
+And let me just take you through that real quick.
+2:11
+So that's what this second step is all about.
+2:13
+And so one of the variables is called numerical change, which is just the difference between current price and previous closing price.
+2:21
+This price minus this price equals two point eight seven.
+2:25
+So the stock has gone up two dollars and eighty seven cents, and that represents a one point three one percent increase in the stock's value, which is what this next variable rate change is about.
+2:35
+Both of these, you're gonna have to actually calculate them from the information available to you.
+2:40
+Now the next variable is called color class, and this is controlling whether these numbers here show up as green, red, or black.
+2:48
+And we want this variable to be green if the stock has gained value, red if the stock has lost value, and undefined if the stock has maintained its value.
+2:58
+And that color class is going to end up being the class name that gets applied to these elements of the JSX, which will produce the results that we want.
+3:06
+Finally, if the stock has gone up, we want the arrow variable to be this up arrow.
+3:11
+If it's gone down, we want it to be this down arrow.
+3:14
+And if it has maintained its value, we want it to be this horizontal bar.
+3:18
+Alright.
+3:18
+So two other little loose ends to tie up here.
+3:21
+So first of all, all of the numbers that appear in the stock elements should be numbers represented to the hundredths decimal place and rounded.
+3:29
+So for example, the number five should be represented as five point zero zero, whereas something like eighty four point one one nine should be shown as eighty four point one two.
+3:39
+And then another thing I want to note here is that the variables, these guys down here, can all be set up in a much more efficient way than I have done here.
+3:48
+This was just for hard coding purposes, but since you are going to be receiving information from the props, you are gonna be able to do this in a much more efficient and dry way.
+3:58
+So that about wraps it up, and then we just put this back to the way it was before.
+4:02
+I'm gonna get rid of the props since you might want to do something else with that hint hint nudge nudge and if you get stuck I have left some hints for you in the top left of the explorer.
+4:11
+And if you need a little motivational boost, you can just open this up, and you can see an image of the Wall Street Bull, who I've got to say is surprisingly cute.
+4:19
+Anyway, I will see you again soon to go over the solution together.
+4:23
+In the meantime, happy coding, and good luck with this challenge.
