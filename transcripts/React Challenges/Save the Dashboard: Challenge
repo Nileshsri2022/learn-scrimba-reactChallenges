@@ -1,0 +1,75 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to the configuration screen for this dashboard.
+0:04
+So we have six widgets to play around with here, and we can get rid of them, like so, bring them back if we change our minds.
+0:10
+And not only that, but we can also move them around to wherever we want them to go, thereby achieving the perfect dashboard layout, which is scientifically proven to be this.
+0:20
+Okay.
+0:20
+So this is really beautiful, and I want to save it in order to show it to my parents so that they will finally be proud of me.
+0:26
+I'm going to click the save button, and I get that message saying saved.
+0:30
+Now let's just refresh the page to make sure that it did actually save.
+0:34
+And, oh, no.
+0:35
+I lost my beautiful configuration.
+0:37
+I guess I'm still gonna be a disappointment.
+0:39
+I'm just joking.
+0:40
+My parents are proud of me, I think.
+0:41
+And the save button isn't actually supposed to work because that is where you come in.
+0:46
+So right now, the save button doesn't actually save the user's widget configuration, and your task is to fix this as follows.
+0:54
+First of all, when the user clicks the save button and thereby invokes the save function on line thirty six, the button is already set up to invoke that function, so nothing you have to do make that happen.
+1:05
+But when it does happen, the widget configuration state should be saved to local storage, and that state has been declared over here.
+1:13
+It's being initialized as default configuration, which lives up here.
+1:17
+And it's basically a clone of this blank configuration array, which in turn is saved over in this data file over here.
+1:25
+Looks like this.
+1:26
+And here you can see the basic format of each one of the widgets data.
+1:30
+So take a closer look at that if you're curious about how this code is working.
+1:33
+The second thing that you need to do is to make sure that the widget configuration state gets initialized as the array saved to local storage in the previous step if any such array has been saved.
+1:44
+Otherwise, or in other words, if the user hasn't saved anything to local storage yet, the state should be initialized as default configuration.
+1:51
+And if you want a bit of a bonus challenge, you can try to complete the second task by using lazy state initialization.
+1:58
+And if you have no idea what I mean by that, well, it's one of the hints that I've left for you up here.
+2:03
+So check those out if you need them.
+2:05
+And if you are curious about how I'm making these widgets be draggable, well, that's thanks to a component I've imported into this project called draggable, appropriately enough.
+2:15
+And I've left a link to the documentation at the top of the credits file.
+2:19
+So check that out if you are interested.
+2:21
+Finally, I just want to note that most of these widgets are just screenshots of projects that you help to build in other React challenges.
+2:29
+But the clock is actually a real widget.
+2:32
+This does actually keep track of the time.
+2:34
+And I just included one that was real to show you that even though this is just a prototype, we could actually turn it into a real dashboard.
+2:42
+We would just need to import the code from the other projects into the different widgets, and then do a whole bunch of work with the CSS.
+2:49
+And if some very enterprising person out there wants to do that, I will personally name my firstborn child after you.
+2:56
+Anyway, I will see you again soon to go over the solution together.
+2:59
+In the meantime, happy coding, and good luck with this challenge.
