@@ -1,0 +1,133 @@
+Transcript
+0:00
+Hey, welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So we essentially want this app to be able to have two different states, and I mean states here in the normal sense of the word, just two different ways of being.
+0:12
+We want the card to be flipped one way, and we want the card to be able to be flipped the other way.
+0:16
+Or to put that in terms of the underlying JSX, we want this class name here to be either just flashcard, or we want it to also be able to have the class name of flipped on it.
+0:26
+Okay.
+0:26
+So now thinking about the word state in the way that we use it when coding in React, we do have a state already that is declared up here.
+0:34
+And at the moment, the state just has the information that is supposed to appear on the flashcard, and none of this has anything to do with whether or not the card is currently flipped.
+0:45
+However, there is nothing stopping us from adding another property to the state object, and, in fact, there is a trailing comma here that is sort of inviting us to do so.
+0:54
+So that is what I am going to do here, although we could just declare a separate state as well, and that would be another way of solving this challenge.
+1:02
+But I wanna keep everything together in a single state.
+1:05
+So I am going to add a new property here, and since it has to do with whether or not the card is flipped, I am just going to call it flipped.
+1:12
+And I basically want the card to either be able to be flipped or not flipped, so this seems like the perfect situation for a boolean value.
+1:19
+I'm going to initialize that as false if we don't want the card to be flipped initially.
+1:24
+And then what I want to do is to set up my card to actually be listening for that property and changing this class name accordingly.
+1:32
+So to do this, I'm gonna go into JavaScript with some curly brackets.
+1:36
+I'm going to put this inside of actics so that I can do a template literal here.
+1:41
+I'm gonna put this flipped inside of that template literal, put it in quotations since it's not a variable.
+1:46
+And then what I wanna do here is I'm gonna set up a ternary where I'm gonna ask, is the flashcards flipped state true?
+1:55
+If so, apply this class.
+1:57
+And if not, well, just don't do anything.
+1:59
+Alright.
+1:59
+Now let's test this out manually.
+2:00
+Since the flip property is false, We should not add this flipped class to it.
+2:04
+Instead, nothing should get added, and so the card should not be flipped when I click run.
+2:08
+Let's see.
+2:09
+There we go.
+2:10
+Now let's change this to true.
+2:12
+And now that should flip the card.
+2:13
+Let's find out.
+2:14
+Three, two, one, and hey.
+2:16
+Hey.
+2:16
+There we go.
+2:16
+Okay.
+2:17
+So this state is now in charge of whether or not the card is flipped.
+2:21
+And so now all we need to do is add an on click event handler to put the user in control of this state property.
+2:29
+So I'm going to come down to the flashcard and I'm going to add an onClick event handler.
+2:35
+This is getting a bit long so let's spread it out.
+2:38
+And then I think this is gonna be short enough that we could actually just write an anonymous function inside of here, although you could have also declared a function outside
+2:53
+previous version of the state.
+2:54
+And I want it to take the previous version of the state.
+2:58
+And I'm going to spread out that previous version of the state inside of a new object because I want to preserve everything else.
+3:06
+And then I want to take the previous version of the flipped state.
+3:10
+And then I want to make the flipped property be whatever the previous value of that property was and turn it to the opposite of whatever that was.
+3:20
+And And I'm gonna use the logical not operator to do that.
+3:23
+Okay.
+3:24
+Now if all goes well, that should actually do it.
+3:26
+Let's give it a try.
+3:27
+So the card starts off on the side that we want it to start off, and here comes the moment of truth.
+3:32
+What happens when I click on it?
+3:33
+Drum roll, please.
+3:34
+Three, two, one, and Hey.
+3:36
+Hey.
+3:36
+It flips.
+3:37
+And let's try it again.
+3:39
+There we go.
+3:39
+Alright.
+3:40
+Fantastic.
+3:40
+So that brings us to the end of this challenge.
+3:42
+Once again, there was a whole another way of solving this where you could have declared a separate state for the flipped value.
+3:48
+That would be perfectly fine, and you could even make an argument that it would be a bit more efficient because then we wouldn't be having to copy over all the other information inside of the state object over and over again.
+3:58
+But if you did it that way, that is perfectly fine.
+4:01
+Alright.
+4:01
+I hope to see you again in another challenge soon.
+4:03
+In the meantime, happy coding and goodbye for now.
