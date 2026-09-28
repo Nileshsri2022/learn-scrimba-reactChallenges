@@ -1,0 +1,315 @@
+Transcript
+0:00
+Again.
+0:00
+I hope that challenge went well for you.
+0:01
+Let's look at it together now.
+0:03
+So where do we even begin with this code?
+0:04
+Well, let's zoom out and think about the big picture here.
+0:07
+What is this app basically about?
+0:09
+Well, it's basically about showing three different possible states of data.
+0:14
+There is this state here, this state here, and this state here.
+0:17
+All of these could be the current state of our app.
+0:20
+And then if the current state is this one, for example, we want that data to be rendered down here.
+0:26
+Same thing with the other states.
+0:27
+And then finally, we want this test button to control what the current state is.
+0:31
+But that is getting ahead of ourselves.
+0:33
+If we want to render anything from state or change the state, well, we need some state to begin with.
+0:39
+So the question I would start with is what do we want our initial state to be?
+0:43
+Well, we want it to be the data in this object here.
+0:46
+This object is the first object in this weather data array and that means it is living at the zero index.
+0:53
+So with that in mind, I'm gonna come down here and I'm going to set up my state and initialize it.
+0:58
+So I'm going to call it current weather.
+1:00
+And so then the function that sets my state should be called set current weather.
+1:05
+Okay.
+1:05
+So now to be able to use this, we need to tap into the power of use state.
+1:09
+And then here, I'm gonna put in what I want my initial state to be, and that is going to be weather data at the zero index.
+1:16
+Now let's do a quick sanity check just to make sure we are getting what we want.
+1:21
+So let's console.
+1:22
+Log current weather, click run, and there we go.
+1:24
+We are getting the data we want.
+1:26
+And so what that means is now we have all of the information we need at our fingertips.
+1:30
+If, for example, I write current weather dot condition and we click run, there we go.
+1:34
+We get sunny.
+1:35
+And so now all we need to do is come down here where we have the word sunny hard coded into our div and replace that with this JavaScript variable here.
+1:45
+Now, we are currently inside a JSX element, which means to use a JavaScript variable, we need to exit JSX and go back to JavaScript for a moment.
+1:54
+And the way we do that is by using some curly brackets like that.
+1:57
+So inside here, we are back into JavaScript.
+1:59
+And so now I can just insert my variable right here.
+2:02
+And I'm gonna get rid of this console log and let's see if that's working.
+2:05
+There we go.
+2:06
+We get the word sunny here.
+2:07
+Just like before, only now it's being inserted through JavaScript.
+2:10
+Okay.
+2:11
+So now I'm going to do the same thing with the temperatures.
+2:13
+I'm going to replace this twenty with current weather dot low temp.
+2:18
+I'm gonna do the same thing for the high temperature.
+2:21
+And then down here, I'm gonna do the same thing for the day.
+2:24
+Alright.
+2:25
+Let's check how we're doing.
+2:26
+Fantastic.
+2:27
+Everything looks the same.
+2:28
+Now we still have a couple things left to do here.
+2:30
+So first of all, we are still hard coding the class name in here, and we want to insert this as JavaScript as well.
+2:36
+So this one is a little bit trickier.
+2:37
+The way I'm gonna do it is instead of inserting this as a string, I'm going to turn it into a bit of JavaScript by enclosing it inside of brackets.
+2:47
+And I'm gonna change these quotes to backticks.
+2:50
+And that is going to change this into a template literal, which is going to allow me to interpolate a variable here.
+2:56
+So I can just go dollar sign brackets then insert my variable here.
+3:00
+It's the same one as down here actually.
+3:03
+Let's see if this works.
+3:04
+And no, it didn't.
+3:06
+Do you see why?
+3:08
+Well, this is a little bit of a gotcha.
+3:09
+But if you look at the condition in our data, you can see that the first letter is capitalized, whereas in our class names, it is all lowercase.
+3:18
+So what I need to do is take this condition, which is currently capitalized, and convert it to lowercase.
+3:25
+And now if I click run well there we go.
+3:26
+We're back in business.
+3:27
+Okay.
+3:27
+And then the last thing we need to worry about is this icon here which is still hard coded.
+3:32
+Now I wanna stay focused on the task at hand, which is just getting state to work.
+3:37
+So I'm actually gonna put this on the back burner.
+3:39
+I'm going to replace the sun with a question mark, like so.
+3:43
+Okay.
+3:43
+So minus the icon, everything is currently working for the first object in our array, the one at the zero index.
+3:50
+And now let's see what happens if we change the index from zero to one.
+3:54
+So if I do that, there we go.
+3:56
+We get all the data for rainy minus the icon.
+3:58
+And if we change this to two and click run, there we go.
+4:02
+We get the snowy data.
+4:03
+Now let's go back to zero and think about this icon icon because that big red question mark is kind of annoying me at this point.
+4:10
+Okay.
+4:11
+So how do we do this?
+4:11
+Well, let's try working backwards here.
+4:13
+I know that instead of this question mark, what I really want here is some sort of variable.
+4:18
+And it is the icon, so I'm just gonna call it icon.
+4:21
+Now icon doesn't currently exist, so we need to set up
+4:32
+icon is to determine what the value of icon is.
+4:35
+And this is just vanilla JavaScript, so I'm gonna write it out real quick.
+4:39
+Okay.
+4:39
+So based on whether the current weather condition is sunny or rainy, um, setting the icon accordingly.
+4:45
+If it's neither of these two conditions, I'm going to set the icon to the snowflake since those are the only three current possibilities.
+4:51
+And let's see if it's working.
+4:53
+So this question mark should be replaced by a sun if all went well, and there we go.
+4:57
+K.
+4:57
+Now let's change our state to the next object in the array.
+5:01
+There we go.
+5:02
+And the last object.
+5:03
+Perfect.
+5:04
+Fantastic.
+5:04
+Okay.
+5:05
+So reset this.
+5:06
+And now it's time to take a look at this test button.
+5:08
+So let's do that next.
+5:10
+So So if we want this button to do anything when it's clicked, we need to add on click and then the function that we want to run when this button is clicked.
+5:18
+So this is a bit of JavaScript, so I need my curly brackets.
+5:22
+And then I'm going to call the function change weather.
+5:25
+Now this doesn't currently exist, so now I need to come up here and actually create the function.
+5:30
+So function change weather.
+5:32
+And then what do I want this to do?
+5:34
+Well, ultimately, I want it to change the state.
+5:36
+So to do that, I need this setCurrentWeather.
+5:39
+And then what do I want it to do?
+5:41
+Well, right now we are at the zero index, and what I wanted to do is change that to the first index.
+5:48
+And so something like that.
+5:50
+So let's do another sanity check here and see if this is working at all.
+5:53
+I click the test button, and there we go.
+5:54
+We change to rainy.
+5:56
+However, after that, nothing happens.
+5:58
+What we wanna happen is for setCurrentWeather to set the weather data to the second index.
+6:03
+And then if it's already the second index, we want it to change to the zero index.
+6:06
+And then if it's the zero index, we want it to go to the one index and then the two index and, well, you get the point.
+6:12
+So we wanted to do different things depending on what the current index number is, we are going to need some more conditional logic.
+6:19
+And I'm gonna write it out like this.
+6:22
+Okay.
+6:22
+So I'm declaring a variable called index and then I'm checking what is the current weather's ID because you might have noticed that in these objects the ID number corresponds to the index number of the object in the array.
+6:36
+So we have zero, one, and two.
+6:38
+And so if the current ID number equals zero, then when I'm changing the weather, I want to change the index from zero to one.
+6:47
+However, if the ID number or current index number is one, then I want to change it to two.
+6:52
+And then if it's already at two, then I want to change it back to zero.
+6:55
+So now if I come down here and I replace this hard coded zero with my index variable, this should work.
+7:01
+Let's see.
+7:02
+And, yep, there we go.
+7:03
+We are cycling through all three possible states.
+7:05
+Fantastic.
+7:06
+Now, there are definitely other ways you could have approached this conditional logic.
+7:10
+Some of them would be much more efficient.
+7:12
+I just wanted to make this as clear and easy to explain as possible, but I would love to see what you came up with.
+7:18
+Alright.
+7:18
+So that takes care of most of our objectives.
+7:20
+However, I think we could still make our code much more modular and well organized.
+7:24
+So let's take a look at that next.
+7:26
+Okay.
+7:27
+So, I've gone ahead and reorganized my code.
+7:29
+I'm just gonna take you through it real quick since this wasn't the main point of the challenge.
+7:33
+But, first off, I have taken my array of data and put it into this weather data JS file, which I'm exporting and then importing back in our app JSX file.
+7:42
+And then I've also taken all of that JSX that we had before, all of those divs, and I've put them inside of this custom weather component, which I am also importing since I put it in its own file over here, weather JSX.
+7:54
+I'm exporting that.
+7:56
+And then we have all of the same JavaScript and JSX as before with one difference, which is that back in our app JSX file, I'm now passing the state data as a prop.
+8:07
+So that's getting passed here.
+8:09
+And then over in the weather component itself, instead of current weather dot low temp, we now have props dot current weather dot low temp, for example.
+8:18
+And something that I could have done here and that maybe you did yourself was I could have done some destructuring so that I don't have to keep repeating props dot current weather.
+8:27
+But that is outside the scope of this challenge, so I'm just gonna leave it like that.
+8:31
+Finally, back in our app.
+8:32
+Jsx file, another thing I could have done was I could have created a components folder and put the weather component inside of that folder.
+8:40
+But since there's only one component that felt a little bit silly, so I didn't do that.
+8:44
+And that about does it though.
+8:45
+If you were able to complete that challenge, great job.
+8:47
+There were a bunch of different steps involved with that.
+8:49
+Give yourself a big pat on the back and I will see you again soon in another challenge, I hope.
+8:53
+In the meantime, as always, happy coding, and goodbye for now.
