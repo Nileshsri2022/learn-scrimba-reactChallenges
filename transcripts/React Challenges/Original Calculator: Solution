@@ -1,0 +1,217 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+So I am just going to take these one by one starting with task number one which is all about building a number.
+0:11
+Now before I even start, I know two things.
+0:14
+One is that I'm going to be updating the current calculation state.
+0:18
+So I'm going to need my set current calculation state updating function, which is declared way up here.
+0:25
+And then within that function, I'm going to need access to the previous values of that state.
+0:31
+And so I'm going to put in an anonymous callback function into this state setting function.
+0:38
+And here in the parentheses, I'm going to give a name to my previous state and I'm going to call it previous calculation.
+0:45
+And if I wanted to, I could get rid of these optional parentheses here.
+0:50
+And now let's open up our callback function so we can work inside of it.
+0:53
+K.
+0:54
+So now we need to think about what do we want this callback function to be returning as the new state value of our current calculation state.
+1:02
+Well, I know that I want it to be an object since that is what current calculation is.
+1:08
+It is an object state.
+1:10
+And then I know that I want to be doing two things.
+1:12
+One is I'm gonna be adding the number from click value to the current number array, preserving any values that are already there.
+1:20
+But then other than that property, I'm going to be saving or preserving all the other ones.
+1:26
+So as a shortcut, what I'm gonna do here is I'm going to first spread out the entire previous calculation state object.
+1:34
+And then after I've done that, I'm going to create a new version of the current number property.
+1:40
+And I'm going to set that to be an array in which I spread out the previous calculation's current number array.
+1:48
+So if there's anything inside of the previous version of this array, I'm going to spread it out here.
+1:55
+If There's nothing inside of it.
+1:56
+Then we're gonna spread out nothing and we're gonna end up with nothing and that's perfectly fine.
+2:00
+And then after I finished spreading it out, what I'm gonna do is add the number from click value to the end of the array like this.
+2:09
+Now, both the spread syntax here and here are providing me with shortcuts for doing this.
+2:15
+I'm sure there are other ways of completing this challenge as well.
+2:18
+And if you used one of them, that is totally fine as long as it works.
+2:23
+I am just showing you the short way of doing this.
+2:25
+Alright.
+2:25
+Let's move on to the next task.
+2:28
+Okay.
+2:28
+So this one is going to be a bit different.
+2:31
+I'm gonna start off with the same state setting function like always.
+2:35
+But this time, I don't really actually need the previous state because we're not trying to preserve anything from it.
+2:41
+We're not trying to build on top of it.
+2:43
+We're basically wiping the slate clean and then adding a new number to the current number array, which is also getting wiped clean.
+2:52
+So everything is wiped clean when we have the initial state.
+2:56
+And so what I'm going to do here is I'm going to set the current calculation state as an object in which I spread out the initial state and then a little bit similar to what I did up here, I'm going to redefine the current number to be an empty array which I'm just going to place the number from click.
+3:17
+And that's really all that we have to do for this state setting function.
+3:21
+Let's move on to the final task.
+3:23
+So for this one, the first part of the task is to basically take whatever value is inside of result and move it to the previous numbers array.
+3:32
+So we definitely need access to a value of the previous version of the current calculation state and so I'm going to start off this function in a similar way to the first one that I did.
+3:45
+So set current calculation and then create an anonymous callback function in which I pass the previous calculation into the callback function, and then I am going to do something with it.
+3:59
+And I'm going to return a new object in which I am doing something.
+4:03
+And what am I doing?
+4:05
+Well, for starters, I know that I want to end up with this result here, so I'm just gonna write that out.
+4:11
+So previous num is an array in which we have some value, some value being what was previously in the result.
+4:20
+So I'm going to make this be whatever the previous calculation's result value was.
+4:26
+That is now gonna become the value inside of the previous number array.
+4:31
+Meanwhile, I know that I want the result property to just be an empty array and then I know that I want the number from click value to be saved in the empty current number array.
+4:44
+So need to create another property for that and it's going to be an empty array with number from click added inside of it.
+4:52
+And this is starting to get a bit hard to read so I'm going to put this on another line.
+4:58
+And and finally, we just need operation.
+5:01
+And for this one, we want to preserve whatever operation was in the previous calculation state, like so.
+5:08
+Okay.
+5:09
+And now if all goes well, we should have a fully operational calculator.
+5:13
+Here comes the big moment of truth.
+5:15
+Does this work?
+5:16
+One, two, three.
+5:18
+Okay.
+5:19
+So far so good.
+5:20
+Now let's click the plus button and let's try adding four five six to that.
+5:25
+And now comes the big big moment of truth.
+5:28
+Will this calculation actually work?
+5:30
+Drumroll, please.
+5:31
+Three, two, one, and Hey.
+5:34
+Hey.
+5:34
+There we go.
+5:35
+I think that's the correct answer.
+5:37
+I've already forgotten the numbers that I typed in, so I'm not actually sure.
+5:40
+But wait.
+5:41
+No.
+5:41
+It was one, two, three, four, five, six.
+5:42
+So six plus three is nine.
+5:44
+Five plus two is seven.
+5:45
+Four plus one is five.
+5:46
+Okay.
+5:46
+Yeah.
+5:47
+That's looking good.
+5:48
+Fantastic.
+5:48
+And now I'm just going to experiment with this a bit to make sure that it's still working no matter what I do.
+5:55
+And, yeah, I think we are in business.
+5:58
+I can clear the calculator and everything is still working exactly the way that we want.
+6:05
+I've built in some of the features of the actual Apple calculator where, for example, if I click two plus two and I click the equal sign, I get four initially.
+6:15
+And then if I keep pressing the equal sign, well, it just keeps adding two to the previous number and then you can do multiples of two that way.
+6:22
+So all sorts of fun stuff to experiment with here.
+6:25
+Now there were a number of bugs that I discovered in the process of developing this app and I had to squash a lot of them.
+6:33
+But there might still be some little bugs crawling around.
+6:36
+So I would encourage you to play around with the calculator and see if you can discover any.
+6:41
+And if you do, let me or the community know because I would be very interested in knowing what they are.
+6:47
+Anyway, that brings us to the end of this challenge.
+6:50
+Hope you had a good time with that one.
+6:52
+I would encourage you to check out the rest of this code if you haven't because my goodness is there a lot of stuff going on in here.
+6:59
+I'll be totally honest with you.
+7:00
+When I initially came up with the idea for doing a calculator challenge, I thought that this would be a very simple app to code.
+7:07
+And in reality, it turned out to be the single most complicated app that I came up with for the entire series of challenges.
+7:15
+It has to do with that fact that I talked about in the introduction scrim where we have six different basic possible configurations of the state.
+7:22
+And then with those six different configurations, well, the user could be typing a number, they could type a decimal point, an operation, an equal sign, one of these three buttons here and depending on which button they press, we want different things to to happen.
+7:38
+And so you start doing the math, no pun intended, and there's just so many different possibilities to account for and that is why the code ends up being so complicated.
+7:47
+This looks like a very simple thing.
+7:50
+It's something we're all very used to, a calculator.
+7:52
+But it's actually a surprisingly complicated thing underneath the surface.
+7:56
+So yeah, I have a newfound appreciation for calculators and calculator apps.
+8:01
+Anyway, I hope to see you again soon in another challenge.
+8:04
+In the meantime, happy coding and goodbye for now.
