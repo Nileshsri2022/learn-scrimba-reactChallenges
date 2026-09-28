@@ -1,0 +1,179 @@
+Transcript
+0:00
+There.
+0:00
+I hope that challenge went well for you.
+0:01
+Let's go over it together now.
+0:03
+So first things first, I know that if I want anything to happen when the user clicks on this enter button, well, I need to actually be listening for that click and I need to handle it.
+0:13
+So let's start with that.
+0:15
+Down in the button, I need to add my on click event handler, and that is going to be a function.
+0:22
+And I'm going to call the function handle click and define it right up here.
+0:27
+Okay.
+0:27
+Now the million dollar question becomes what do I actually want to do in order to handle the click?
+0:33
+Well, I know that I want to be updating the user data state, so I'm gonna need this set user data function.
+0:39
+I'm gonna bring that down.
+0:40
+And I know that, ultimately, this state setting function is going to be setting the state to be some sort of object that is going to look a lot like this object up here, just with some different values for its properties.
+0:54
+And if I wanted to, I could just start going through this list of properties here one by one.
+0:59
+But I think I want to approach this task a bit more strategically and proactively.
+1:05
+Whenever I am setting up a function, one of the first questions that I usually ask myself is what does this function actually need to have available to it in order to do the job that I want it to do?
+1:17
+In this case, the job that I want it to do is to create a new state with all of these properties and values.
+1:24
+So the question really becomes, what do I need in order to set the values of that object to be what I want them to be.
+1:32
+Now something like the value true is something that I can just create out of thin air by typing the word true.
+1:39
+Same thing for new date object.
+1:41
+For that, I literally just need to write new date, and I'm all set.
+1:47
+However, for these other two properties, I need some more information.
+1:51
+For example, for page load time, I need to have the previous value of this state property available to me in order to preserve it.
+2:00
+I can't preserve something if I don't have it to begin with.
+2:03
+And that gives me a little clue about how I should be setting up this set user data function down here.
+2:09
+Instead of just going directly into creating a new object, what I need to do is pass in a callback function into this state setting function.
+2:19
+So remember, the callback function automatically receives the previous state as an argument.
+2:25
+I'm going to call it previous user data.
+2:28
+I'm passing that in to my callback function, and that callback function is eventually going to return a new object, which we will take care of later.
+2:39
+But for the time being, I want to go back and think about is there anything else that we need in order to create this new object.
+2:47
+And I can see one more thing that we're going to need which is the click coordinates.
+2:52
+I need the offset x and offset y values of the click event and I can't get the properties of the click event unless I have access to the event in the first place.
+3:03
+And so that's the next thing I need to worry about.
+3:06
+So remember, handle click is an event handling function.
+3:09
+It's handling our click event.
+3:12
+The event automatically gets the event object passed into it as an argument.
+3:17
+And to access it, we simply need to name it as a parameter of our event handling function.
+3:23
+So I'm going to call it event, although you could also just call it e.
+3:27
+And now I have access to this object inside of my function.
+3:32
+Now within that event, I want to drill down to a property called offset x, and then I also want offset y of the event object.
+3:43
+And I am going to take both of these and console log them just to make sure that we have them before we move forward.
+3:50
+And then I'm also going to comment out this set user data function for the time being so it doesn't crash our app.
+3:57
+Okay.
+3:57
+So let's test this out.
+3:59
+Here comes the moment of truth.
+4:01
+Three, two, one, and click.
+4:03
+And, uh-oh, we get undefined undefined.
+4:07
+What did we do wrong?
+4:08
+Well, hopefully, you either Google this or you looked at the hint that I left you up here.
+4:14
+But in case you didn't, what I'm going to do is I'm going to delete all of this and I'm just going to console log the event.
+4:21
+And now if I click on the button, what we get in the console is this strange message that just says synthetic base event.
+4:28
+And that gives us a little bit of a clue as to what is going on here.
+4:32
+So in React, even though we usually refer to the event with the word event or e just like we would in vanilla JavaScript, that event isn't actually the event.
+4:44
+Instead what react does is it takes the actual event, which is called the native event, and it wraps it inside of something called a synthetic event.
+4:54
+And to make a long story short, inside of the synthetic event there is no offset x or offset y properties.
+5:02
+And this is true of other properties of the native event as well.
+5:06
+However, inside of the synthetic event, we have a very special property, and that property is called native event.
+5:14
+And this property gives us access to all of the data inside of the actual not synthetic real native event.
+5:23
+And so if I click run now and I click on the button, we can see that now in the console we are getting the actual native event which is showing up as a pointer event.
+5:33
+Okay.
+5:33
+And now inside of this native event, I can target the offset x property as well as the offset y property.
+5:42
+And let's see what we get.
+5:43
+And sure enough, we get three and one.
+5:47
+So we are getting those coordinates.
+5:48
+And now we have access to all of the data that we need in order to to be able to set this new object as our user data state object.
+5:58
+So coming back down to here, I'm gonna go inside of my return object, And now I can start going through these properties one by one.
+6:06
+So has entered is gonna be set to true.
+6:10
+Age load time is going to be set to whatever the value previously was.
+6:16
+So I need to take the previous user data object and I need to access its page load time.
+6:22
+And then I'm setting that value to be the value of my new object's page load time.
+6:28
+Okay.
+6:28
+Next, I need the entrance time property, and that is just going to be a new date.
+6:34
+And since this new date is being created at a different moment in time than the new date that was our page load time, it is going to have slightly different data and there's gonna be a difference of time between them, although it might just be a second or two.
+6:49
+Last but not least, we need our click coordinates property.
+6:52
+That is going to be an object itself.
+6:55
+Gonna break this up into multiple lines.
+6:57
+And then I'm going to use the original object as a model of what should go inside of here.
+7:02
+So I'm gonna paste that in, break this up into two different lines.
+7:06
+And now I'm just gonna take this from my console log and paste it in as my offset x and take this one and paste it in as my offset y.
+7:16
+And I will get rid of this console log, and I think that should do it.
+7:21
+So now comes the big moment of truth.
+7:23
+Come over to the button and click and hey.
+7:25
+Hey.
+7:25
+There we go.
+7:26
+So we get a message saying that the user took three point one zero six seconds to enter the site, and they click the button at coordinates seventy two twenty one.
+7:36
+Fantastic.
+7:37
+Alright.
+7:38
+So that brings us to the end of this challenge.
+7:40
+I hope to see you again soon in another one.
+7:42
+In the meantime, happy coding and goodbye for now.
