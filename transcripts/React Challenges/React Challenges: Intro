@@ -1,0 +1,127 @@
+Transcript
+0:00
+There, and welcome to this collection of challenges that are going to help you practice, refine, and expand your knowledge and understanding of React.
+0:08
+You are going to be working on all sorts of fun things, like a synthesizer keyboard, a drawing app, a virtual amusement park game that tests how strong your mouse finger is, an arcade style spaceship blaster game, and a parody of a certain Nintendo franchise that shall remain nameless.
+0:24
+You're also going to be doing some more normal stuff like a calculator, a stock tracker, a weather app, a social media site, a dashboard, and much, much more.
+0:34
+Now these challenges come in a wide range of types, sizes, time requirements, and difficulty levels.
+0:39
+You are probably gonna find some of them pretty easy and be able to complete them in just a few minutes, while others might be pretty hard and could take you twenty minutes, thirty minutes, or even more.
+0:49
+Some of the challenges are accessible to React beginners, but most of them assume that you have completed Scrimpa's React Basics course or have an equivalent level of understanding of React.
+1:00
+And some of them go into more advanced territory or things that aren't covered in any of the Scrimpa courses.
+1:07
+The challenges cover a wide range of concepts and skills from creating custom components to iterating elements, passing and receiving props, creating and updating state, conditional rendering and styling, event handlers, controlled form elements, working with APIs and local storage, timing events, useEffect, and more.
+1:24
+The challenges are also about more general topics and skills, like organizing and refactoring
+1:39
+and using your knowledge of React to do creative problem solving.
+1:42
+To help you practice that, I really tried to make these challenges open ended, sort of like this field that Homer Simpson is dancing in for some reason.
+1:50
+With these challenges, there's usually not a single right answer, and the way that you solve the challenge will often be different than the way that I solve it, and that is perfectly fine.
+1:59
+With these challenges, you are in the driver's seat, and you're gonna have to figure out your own path to the solutions.
+2:05
+Along the way, you might make some wrong turns and have to do some backtracking.
+2:09
+Occasionally, you might hit a wall, and sometimes you might not even know how to start a challenge.
+2:14
+So I want to leave you with some advice on how to approach these challenges and avoid getting stuck.
+2:19
+First of all, follow the instructions closely, as closely as this hamster is following this trail of food.
+2:26
+I know this might sound like it goes without saying, but when I tested these challenges out with a focus group of students, they sometimes got themselves into trouble just because they skimmed over the instructions and missed an important word here or there, or they made assumptions about what they had to do and what they could or couldn't do that weren't actually based on anything I said or wrote.
+2:46
+So don't do that.
+2:47
+Don't jump to conclusions.
+2:49
+Unless I explicitly say you have to do something or can't do something, don't assume you have to do it or can't do it.
+2:56
+Feel free to be creative and think outside the box.
+2:59
+That being said, don't overcomplicate things.
+3:02
+All of the challenges can be solved in fairly straightforward ways that don't require writing a ton of code.
+3:08
+So if your code is feeling like a Rube Goldberg contraption powered by a pack of dogs, it is probably a sign that you are overthinking and over complicating things.
+3:18
+So don't overthink.
+3:19
+But on the other hand, don't underthink either.
+3:21
+Do some planning.
+3:22
+Don't just dive straight into coding.
+3:24
+Instead, think through the problem and the possible solutions in normal everyday language, and then try to figure out how to translate your reasoning into code.
+3:33
+You could write out pseudocode to do this or just talk things through out loud or maybe draw a little diagram, whatever floats your boat.
+3:40
+And give yourself time to do that.
+3:42
+Don't rush through the challenges or feel pressure to get the solution as quickly as possible or to do as many challenges in a single sitting as you can.
+3:50
+This is not a test.
+3:51
+This is not a race.
+3:53
+It's just a chance to practice some of the skills that go into being a React developer.
+3:58
+On a similar note, don't give up too quickly if you're having trouble
+4:03
+with the challenge.
+4:03
+Give yourself some time to struggle with it.
+4:04
+I know that can feel uncomfortable, but it's a little like lifting weights.
+4:08
+No pain, no gain.
+4:09
+You have to feel the burn to develop your coding muscles.
+4:13
+That being said, there is such a thing as too much pain, and there's no use in banging your head against something.
+4:18
+If you are really stuck, feel free to get some help.
+4:21
+Use Google, ChatGPT, Stack Overflow, all of the usual suspects, or refer to the Scrimba react lessons or the official react documentation, or reach out to the Scrimba discord community.
+4:33
+I've also left some hints for you in every challenge.
+4:36
+They're gonna be in the top left corner of the Explorer, and you just have to click here and then click on one of the files to open it it up and read the text.
+4:45
+And after every scrim that introduces you to a challenge, there's also a solution scrim.
+4:50
+And if you're completely stuck, you can always watch it and then try the challenge again.
+4:55
+Now in the solution scrims, I really break down my solution, not just in terms of the code but also the reasoning behind it.
+5:01
+So some of them are pretty long and are meant to make things understandable to someone who was totally baffled by a challenge.
+5:08
+So if that's not you and you found a challenge really easy and you don't feel like you're getting anything out of watching my solution scrims, feel free to fast forward or skim.
+5:18
+Don't worry.
+5:18
+It's not cheating, and it's not going to hurt my feelings.
+5:20
+Oh, and speaking of me, my name is Daniel.
+5:23
+I am from the US, but I live in Barcelona.
+5:25
+With the help of Scrimba, I changed my career to coding from a nontechnical creative field.
+5:30
+And outside of front end development, I'm really into music, books, video games, animals, and very weird humor.
+5:37
+I don't really use social media much these days, but you can reach me on Discord at this username here.
+5:43
+Anyway, I'm gonna hand these challenges over to you now.
+5:45
+I really hope you have fun with them.
+5:47
+I will see you in your first challenge soon.
+5:49
+Happy coding, and good luck with these challenges.
