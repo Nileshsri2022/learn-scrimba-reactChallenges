@@ -1,0 +1,109 @@
+Transcript
+0:00
+Hey there.
+0:00
+Welcome to this challenge, and welcome to this beautiful weather app.
+0:03
+As you can see, it shows the user the current weather condition, the low temperature, high temperature, and day of the week.
+0:09
+Now I'm still in the early stages of developing this app, so I've created this button that is just for testing purposes.
+0:15
+And when I press it, well, nothing actually happens.
+0:18
+And if you take a look at the app JSX file, which is where most of my code is living, and you look for that button, well, you can see that there's no event listener or function or anything attached
+0:30
+to it.
+0:30
+Now what I wanted to do is this.
+0:30
+Up here, I have this weather data array, and there are three objects inside of the array.
+0:35
+There is one object for the data you are currently seeing over here where the day is Monday and the condition is sunny.
+0:41
+But there's also one for Tuesday and rainy and Wednesday and snowy.
+0:46
+And when I click on the test button, what I want it to do is go from Monday to Tuesday.
+0:51
+And then if the day is Tuesday, I want it to go to Wednesday.
+0:54
+And then if the day is Wednesday and the user clicks on the button again, I want it to go back to Monday so we can go through the whole cycle again.
+1:01
+Now currently, I'm just hard coding all of my information into these divs here.
+1:05
+I'm gonna manually change the data to show you what should happen when the user clicks on the button.
+1:10
+So Monday should change to Tuesday, and on that day, the weather is rainy.
+1:15
+So this would change to rainy.
+1:17
+And then the icon needs to change as well.
+1:19
+And if you scroll to the top, you can see I've already given you the emojis that we are using as icons here.
+1:24
+So I'm just gonna paste that in, change the temperatures as well.
+1:27
+And then finally the background image is coming from this class name here.
+1:31
+And I've set things up in such a way that if I just change sunny to rainy, then over in my CSS there is a class name that is already set up to accommodate that.
+1:41
+And same thing for snowy and same thing for sunny.
+1:43
+So going back here, if I click run now, well, there we go.
+1:47
+We get the next set of data.
+1:48
+And so now, if I click on the test button, all of this information could change to the data in the third object in the array.
+1:54
+And I'm gonna manually do that real quick.
+1:56
+Okay.
+1:56
+So that would look like this.
+1:58
+And then finally, if we click this button one more time, it should go back to the original data.
+2:02
+So I'm gonna manually do that.
+2:04
+And there we go.
+2:04
+And now we could go through the whole cycle one more time.
+2:06
+So that is how I want the app to behave, and that is where you come in.
+2:11
+All the data is currently hardcoded.
+2:12
+Your task is to insert it through JavaScript.
+2:14
+And then based on whether the day is currently Monday, Tuesday, or Wednesday, the app should use state to automatically display the correct items for the following.
+2:23
+And when you click on the test button, it should cycle through the days.
+2:26
+And then two final notes.
+2:27
+You can move this weather data array, but I don't want you to modify it in other ways.
+2:32
+I want you to pretend like this data is coming to us from an external source.
+2:36
+And then finally, your code should be modular and well organized.
+2:39
+Currently, it's not.
+2:40
+I've basically just dumped everything into this app JSX file and this could be tidied up quite a bit.
+2:46
+Alright.
+2:46
+So those are the main challenges.
+2:47
+If you need some bonus challenges, I've left a whole bunch of ideas for you over here ranging from changing the design to using a free weather API to make this more realistic.
+2:56
+And I've left some resources for you over here, for example, some free weather APIs.
+3:01
+And then finally, if you get stuck, I've left a bunch of hints for you over here.
+3:05
+Alright.
+3:05
+So I will see you again soon to go over the solution with you together.
+3:09
+In the meantime, best of luck with this challenge.
+3:11
+Happy coding, and goodbye for now.
