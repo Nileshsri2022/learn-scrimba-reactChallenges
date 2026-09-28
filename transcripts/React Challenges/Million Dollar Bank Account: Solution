@@ -1,0 +1,223 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So when the user types a character in one of the password inputs, the corresponding property of the user state object should be updated.
+0:11
+And in order to do this, we are gonna actually need to be listening for the user typing something in the inputs, which means we need an onChange event handler for each of them.
+0:20
+So I'm gonna come down here, and then I'm going to do a little keyboard shortcut to do all four of these at once.
+0:27
+On change, we want to invoke a function that I'm going to call handle change, which we will have to define on the top level of our component.
+0:37
+Now before I go on, I just noticed that I accidentally deleted this guy here.
+0:41
+I hope I didn't trip anyone up.
+0:42
+Maybe you noticed it yourself.
+0:44
+Anyway, let's go define our handle change function now.
+0:47
+So that is handle change.
+0:49
+And I know that in order to get the value of whatever the user typed into the input, I need access to the event object.
+0:57
+So I'm gonna put that in as a parameter here.
+0:59
+And then I know that whenever this function gets invoked, we're gonna want to update this user input state.
+1:06
+So I need the set user input function.
+1:08
+And then just following the instructions here, I know that I want to preserve the other properties.
+1:14
+So down here, I'm gonna take the previous version of the object, and I am going to spread it out into a new object.
+1:21
+And then I'm just going to be updating one of the properties here.
+1:26
+Now how do I know which one it is?
+1:28
+Well, as this step here says, the property names and the names of the inputs match each other.
+1:33
+And so what we can do here is instead of manually writing out one of the property names like character one and setting that to be the event targets value, we can replace this with our event target's name.
+1:48
+And so if the user is typing inside of the first input here, well, the name of that input is character one, and so this will get replaced here.
+1:58
+Whereas if it's the second input, it will be character two and so forth and so on.
+2:03
+And when we are trying to use a variable as a key inside of an object, we need to put it inside of brackets like this, which is why I am doing that.
+2:12
+So that should actually take care of updating our object all in just a single line of code, which is why I encouraged you to try to keep your code as dry as possible.
+2:22
+And now let's just make sure this is working.
+2:25
+And I'm just going to console log our user input state, And let's see how that gets updated every time I type something inside of the form.
+2:34
+So it's getting initialized as a bunch of empty strings.
+2:37
+I'm gonna type a one here.
+2:39
+Sure enough, that shows up as character one.
+2:41
+I'm gonna type a two here.
+2:42
+Yep.
+2:43
+That's two.
+2:43
+And just for fun, let's type an x here and a, I don't know, exclamation point here.
+2:49
+And, okay, sure enough, that is working.
+2:51
+So now what we want to do is when the user clicks the submit button, we want to check if these four values here combined into a single string equals the passcode, which is the string one zero zero one.
+3:03
+So what we need here is we need an event handler inside of the form.
+3:08
+Remember, this is a submit event that we are listening for.
+3:12
+And so we do that inside of the form tag, not the button.
+3:15
+Let's come up here, and I'm just gonna add an on submit event handler that I will call handle submit, which I will define up here.
+3:24
+And now let's think about what we want this to do.
+3:26
+So the submit handling function should prevent the page from refreshing.
+3:30
+Let's take care of that first.
+3:31
+So we need access to the event, and then I'm gonna go event prevent fault.
+3:36
+And then we want to check if the combination of the four characters stored in the user input state equals the passcode value.
+3:44
+So to see if they're equal to each other, we first need to know what the combination is in the first place.
+3:49
+So I'm gonna set this up as a variable, which I will call, I don't know, combined input.
+3:55
+Maybe you came up with a better name.
+3:56
+And then what this is gonna be is that it's gonna be our four properties up here smooshed into one.
+4:02
+And I could just write this out like this.
+4:04
+So user input character one plus user input character two.
+4:10
+But this feels a bit repetitious, and it's gonna make our line of code really long.
+4:14
+So what I'm gonna do up here is I'm gonna deconstruct our state object first so those all equal our user input.
+4:23
+And now down here, we can just go character one plus character two plus character three plus character four, and this will smush them all together into a single string.
+4:33
+Alternatively, we could use the concatenation method.
+4:36
+So concat is inside of there and then just separate these with commas, and then that would concatenate these three strings with this string into a single string.
+4:46
+And then another approach, and I think the one that I like the most, would be to skip all of this business about going through each one of the properties and adding them together manually and making use of an object method to do the work for us.
+5:01
+And there's an object method that you may or may not be familiar with called values, and that looks like this.
+5:08
+And it expects a single argument, which is the name of the object whose values you want to turn into an array.
+5:16
+So in this case, that would be user input.
+5:19
+And so what this is gonna do is it's going to go through each one of the values inside of the user input object, these guys here, and it's going to create an array out of them.
+5:30
+And then what we can do with that array is just stick the join method on it, and then it's going to automatically smush the four inputs together.
+5:38
+And so now that we're doing it this way, we don't even need to destructure the user input object, and we can get rid of this and look how short and sweet our code has become.
+5:47
+Let's just make sure it's working.
+5:49
+I'm gonna console log the combined input.
+5:51
+And then over here, I'm just going to write one, two, three, four.
+5:56
+Click Submit.
+5:58
+And, oh, we get those commas.
+5:59
+So to get rid of those, I'm going to specify that I want to join the items with an empty string.
+6:04
+And let's try that again.
+6:06
+Click Submit and, hey, hey, there we go.
+6:09
+Okay.
+6:09
+Now all that we need to do is we need to take this combined input and we need to check, does it equal passcode?
+6:17
+And if it does equal the passcode, then we want to set the verified state to true.
+6:23
+Otherwise, we want to set the verified state to false.
+6:27
+And I'm thinking I could probably refactor this a little bit.
+6:31
+I think what I'm gonna do here is I'm just going to have a single set verified function, and then my initial instinct here is to pass in an anonymous callback function where I'm going to check if the input equals the passcode.
+6:46
+And then if they do, we want to return true.
+6:50
+Otherwise, we want to return false.
+6:52
+However, this ternary here is actually redundant because if these two things do equal each other, well, then this will evaluate to true.
+7:00
+So it'll be as if we had true here.
+7:02
+And so we just need to return that.
+7:04
+We don't need to create another boolean value.
+7:06
+Whereas if these two things don't equal each other, well, then this will be false.
+7:10
+And so then this false here becomes redundant as well.
+7:13
+So first of all, we can get rid of this ternary and just go straight into that.
+7:18
+And then not only that, there's no reason to invoke an entire anonymous function and then have a return value.
+7:24
+We can just directly set the verified state value to be whatever this bit of code here evaluates to, which is either gonna be true or false.
+7:33
+So this would be the shortest way of taking care of our logic here, and now we can get rid of this if else statement.
+7:40
+Alright.
+7:41
+Now let's check if this actually works.
+7:43
+I'm gonna start with a password that I know is false, which is our old friend one two three four.
+7:50
+And when I click submit, the shield should turn red, and we should get a message telling us that the password is incorrect.
+7:57
+Let's see if that works.
+7:58
+Drum roll, please.
+7:59
+Three, two, one, and hey.
+8:01
+There we go.
+8:01
+Now let's change this to one zero zero one, which is the correct password.
+8:07
+And when I click submit, this should turn green.
+8:09
+Alright.
+8:10
+One more drum roll, please.
+8:11
+Three, two, one, and hey.
+8:13
+Hey.
+8:13
+There we go.
+8:14
+Alright.
+8:14
+So that brings us to the end of the challenge.
+8:16
+I don't know about you, but I'm already creating a wish list in my head of all of the things I want to buy with that one million dollars.
+8:23
+I have a whole bunch of guitars and synthesizers and video games I wanna buy, so I'm gonna leave it at that.
+8:28
+Anyway, I hope to see you again in another challenge soon.
+8:31
+In the meantime, happy coding, and goodbye for now.
