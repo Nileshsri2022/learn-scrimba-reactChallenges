@@ -1,0 +1,41 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to this verification screen for accessing a bank account with a balance of one million dollars.
+0:07
+We are just four characters away from gaining access to this account, and I happen to know what the code is, one zero zero one.
+0:15
+However, if I enter one zero zero one and click submit, well, nothing happens except the page gets refreshed.
+0:22
+What we want to happen is this.
+0:25
+When the user types a character in one of the password inputs, the corresponding property of the user input state object should be updated.
+0:34
+So that is this state up here.
+0:36
+Let's say I type the number one here, then character one should become one.
+0:40
+And then if I type nine, character two should become nine, and so forth and so on.
+0:46
+The next thing is that when the user clicks the submit button, a submit handling function should prevent the page from refreshing, and it should check if the combination of the four characters stored in user input equals the passcode value.
+1:00
+So in this case, we would be checking does one nine eight six, does that equal passcode, which is one zero zero one?
+1:08
+Of course, the answer is no.
+1:10
+So that brings us to the third task here, which is that if the answer is no, then this verified state should be set to false.
+1:18
+And if that happens, we will get this message.
+1:20
+Whereas if we do have a match, then we want to set this state to true, and then we will get this message.
+1:26
+Alright.
+1:26
+And then the final thing is just that I'm going to encourage you to try to make your code as dry as possible.
+1:32
+Let me put this back to the way it was initially.
+1:35
+And now I can hand this challenge over to you.
+1:37
+If you get stuck, I have left some hints for you over here, and I will see you again soon to go over the solution together.
+1:43
+In the meantime, happy coding, good luck with this challenge, and try not to spend that million bucks all at once.
