@@ -1,0 +1,41 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to the Boredom Blaster three thousand.
+0:04
+Are you feeling as bored as this dog in the background?
+0:06
+Well, why not hover over one of these fun looking activity cards and try something like solving a jigsaw puzzle, or doodling random designs, or this is just a placeholder.
+0:16
+Wait a minute.
+0:17
+That's not what we want here.
+0:18
+Okay.
+0:19
+These are just placeholders.
+0:20
+The real data is over here, and it looks like this, which might look very strange until I tell you that each one of these is a key for an API that you are going to be interacting with.
+0:31
+The documentation for which I have included over here and the way it works is it just gives people ideas for for things they could do if they are bored.
+0:38
+Each activity is an object with a number of different properties, one of which is key, and you can use that key to access specific activities from the API.
+0:47
+And so what you are going to be doing is taking each one of these twenty keys here, and you are going to be fetching the data for the activities corresponding to them.
+0:56
+And so you are going to end up with twenty different objects, one for each key, and then you are going to set the activities data state with those twenty objects as the objects inside of the activities data array.
+1:09
+So this state is an array, and you are going to be putting the objects inside of it, replacing the placeholder data that is currently inside of there.
+1:17
+And so the final result should be that these four placeholder cards should be replaced with twenty actual cards with actual information on the back of them.
+1:26
+And I do want to note here that all you need to do to accomplish this challenge is to set the activities data state array with data from the API.
+1:34
+If you do that correctly, then the activity card elements variable on line thirty three below will take care of rendering the activity cards for you.
+1:43
+So that is this bit of code here.
+1:44
+Remember, the documentation for the API is up here.
+1:47
+If you get stuck, I have left some hints for you up here, and I will see you again soon to go over the solution together.
+1:53
+In the meantime, happy coding and good luck with this challenge.
