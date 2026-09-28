@@ -1,0 +1,125 @@
+Transcript
+0:00
+Hey!
+0:00
+Welcome to this challenge and welcome to evil corporations employee spying program.
+0:05
+Or, I mean good corporations totally innocuous report writing interface.
+0:09
+So the idea here is that this company is going to make all of its employees start to write their reports in this text area here.
+0:16
+And we are using some soothing colors and nice aesthetics to relax them and get them to let their guard down.
+0:24
+It actually feels very nice to type inside of here, and that's exactly how we are hoping that the employees will feel because behind the scenes, we are in fact spying on them.
+0:36
+So here is what we want to do.
+0:39
+Every time the user types in the text area, there are two states that should be updated.
+0:44
+One is called user input.
+0:45
+The other is called tracking reports.
+0:48
+And both of those are living up here.
+0:50
+User input is initialized as an empty string.
+0:53
+Tracking reports is initialized as an empty array.
+0:57
+And whatever the user types inside of here, for example, the word test, that should become the value of user input.
+1:05
+So that would look like this behind the scenes if we did it manually.
+1:09
+At the same time, as the user types, we are also going to be adding reports to the tracking reports state array.
+1:16
+And each of those reports should be an object with three properties, which I've listed down here.
+1:22
+So there should be a timestamp, and this is going to provide us with the exact time at which the user wrote their input right down to the milliseconds.
+1:32
+And I've already created a function called get timestamp which is written out up here, and all you need to do is invoke it to get the return value of the function in order to get the timestamp.
+1:45
+The next property of the report object should be the employees input.
+1:49
+This is going to be all of the current input in the text area, so the entire word test in this example.
+1:55
+And then finally, there is a property called infraction detected.
+2:00
+This should be a boolean value of true or false.
+2:04
+And what we are doing here is we are checking whether or not the employee has written the word evil corp in the text area.
+2:12
+So this is the name that the media calls us, and we really don't want our employees using it in their reports.
+2:19
+So if they type the word evil, corp with capital letters and the period at the end, we want to detect that infraction.
+2:28
+And if they do this, then the value of infraction detected should be true.
+2:33
+Not only that, but if they write that string evil corp, the string should automatically be replaced with good corp in both the user input state and the text area.
+2:45
+If I write evil corp like this, it should automatically and instantly be changed to good corp like so.
+2:52
+Okay.
+2:53
+And then finally over here, I've set up some code that is going to console log the tracking reports array every time the state is updated.
+3:02
+And if an infraction is detected, it's also going to console log this infraction message, which I've written up here.
+3:10
+Alright.
+3:10
+So once you have completed your code, what I want you to do finally is test out the app by writing the following string, evil corp test in the text area.
+3:21
+So evil corp.
+3:23
+And then the moment you write that, this should change to good, and then you keep writing test.
+3:28
+And if you do that, what you should be seeing in the console as you type is something that is going to look like this.
+3:35
+So I've included this sample output file over here in the explorer, and this shows you what the console would look like step by step.
+3:44
+So for example, I start writing evil.
+3:46
+The first letter is e, and what I should see in the console is this.
+3:51
+So here's our time stamp right down to the milliseconds.
+3:54
+Here is the employee's input, the letter e, and infraction detected is false.
+4:00
+Then I write the letter v, and now we have two reports in the console.
+4:05
+There's the one that we just generated before and then there's a new one that's been added to it.
+4:11
+And now we have both the letters e and v.
+4:14
+And then I type letters I and l.
+4:16
+That's going to bring us down to here.
+4:19
+Now we have four reports.
+4:20
+And we keep on going until we get to evil corp with the period at the end.
+4:26
+And at that point, we see in the console, infraction detected.
+4:30
+And if we go to the last object in the tracking reports array, you can see that infraction detected is now true.
+4:37
+And then evil is going to be automatically changed to good.
+4:41
+I type a space in order to start writing test.
+4:44
+And as we can see down here, we see that reflected in the tracking reports.
+4:50
+Here we have evil corp and then evil corp gets changed to good corp and there is that space that I wrote.
+4:56
+So to reiterate, you are putting these reports in the tracking reports array, the array that lives up here, and you are adding reports to the array.
+5:07
+And so the array should be getting bigger and bigger.
+5:10
+Each new report goes on to the end of the array, and all of the previous reports should be preserved.
+5:17
+So if you need a recap of all of that, I have written out all of these instructions here.
+5:22
+And if you get stuck, I've left some hints for you up here in the top left of the explorer.
+5:27
+Anyway, I will see you again soon to go over the solution.
+5:30
+In the meantime, happy coding and goodbye for now.
