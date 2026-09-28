@@ -1,0 +1,117 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to the Schedule Medic, an app that allows users to draw pictures right on their computer.
+0:06
+So this app comes with two main features.
+0:08
+The first is the ability to draw.
+0:11
+And the way it's supposed to work is that if I have my cursor anywhere inside of this white space and I press down on my mouse and then I move my cursor, it should draw a line following the path that I drew.
+0:23
+And then if I don't like what I draw, well, I can come down to this button here where it says erase.
+0:28
+And if I click that, then my cursor becomes an eraser.
+0:31
+And if I press down anywhere inside the screen and I move it across, well then, anything that's drawn underneath my cursor will get erased.
+0:38
+And this button here that toggles back and forth between drawing and erasing is controlling a state inside of the app component called wants to draw.
+0:46
+When that state is set to true, we assume that the user wants to draw.
+0:50
+And when it's set to false, we assume that they want to erase if their mouse is down, which is another state.
+0:57
+So we are also keeping track of whether or not their mouse button is down.
+1:01
+If that is set to true, then we are either going to draw or erase depending on what this state is.
+1:06
+And if it is false, as it is initialized, well, then we assume that the user's mouse button is up.
+1:12
+And, therefore, if they are moving their cursor across the screen, it's just because they want to move their cursor.
+1:17
+They don't want to draw or erase.
+1:19
+Okay.
+1:19
+So that is going to help to understand the first step of this challenge, which is that if the user's cursor goes down or up anywhere inside of the wrapper div, which lives right down here, one with the class name of wrapper, then the mouse down state should be set to true or false, respectively.
+1:36
+And then the next step is that if mouse down is true and if the user's cursor enters any of the pixel divs, that div's corresponding pixel data object in the pixel state array should have its field property set to true if wants to draw is true and set to false if wants to draw is false.
+1:54
+And in order to understand what that means, let me show you a couple other things going on in this app.
+2:00
+So down in the return statement of this component, we have something called pixel elements, which in turn is getting created over here.
+2:08
+And we're essentially mapping over an array called pixels.
+2:11
+And for every pixel in that array, we are creating a div.
+2:15
+And that div can have a class name that is either filled or empty depending on what its filled property is.
+2:23
+Now these pixels in turn are another state that I need to show you which lives up at the top, and it's being initialized as initial state which in turn lives over here.
+2:33
+And what initial state is, well, it's something a little bit crazy.
+2:36
+It is an array of three thousand six hundred objects, each of which has two properties.
+2:42
+One is an ID, which is gonna help you be able to identify which one the user is wanting to interact with, and the other is that filled property, which is initialized as false and controls whether or not a div should be filled.
+2:55
+And so what we end up with is three thousand six hundred divs with a class name of pixel and either filled or empty.
+3:04
+And if we go over to the styles CSS file, and we go to the pixel class, you can see that each of the divs is basically just a little box that's only five pixels wide and five pixels high.
+3:18
+And if I put a border on the pixels, let's say 1px solid black, now you can really see what this canvas is really about.
+3:27
+Now going back over to the app JS file, which should really be an app JSX file, let's fix that real quick.
+3:33
+Since our pixel objects are all being initialized as having their field property be false, all of them are going to end up getting this empty class applied to them.
+3:43
+However, if we change that, changing the filled property on all of them to true, then they would all receive the filled class.
+3:50
+And in that case, they would all become just a bunch of dark little boxes.
+3:55
+And if we take off the border, we end up with just a big old solid black background, and this would be what would happen if the user were to draw every single one of the pixels.
+4:04
+But you can imagine that if some of them were empty and some of them were filled, well, we would end up with something like I've come up with in this example pixels array.
+4:13
+So there's two versions of this array.
+4:15
+The first one is how the array looks when it's initialized.
+4:18
+We have a collection of three thousand six hundred objects.
+4:21
+I'm not gonna scroll through all of them because that would take a while, and they are all initialized as having their filled property be false.
+4:27
+However, if we were to take this array, let's go over to this other version of it now, and we were to change some of the properties to true while leaving others false and then other places making a whole group of them be true as well, then what we would end up with is this.
+4:41
+Let's go back over to app JSX, and this time, instead of initializing our pixels array as initial state, I'm going to initialize it as that example pixels to array.
+4:52
+And now if I run this code, you can see that what we end up with is a series of straight lines, and those are those series of objects having their filled property set to true.
+5:01
+So you can start to see how this is going to enable the user to draw if we allow them to control that filled property with their mouse cursor.
+5:10
+So that is what the second step here is all about.
+5:13
+To reiterate, it's about checking whether the user's cursor enters any of the pixel divs.
+5:18
+And then if it has, we're gonna change that filled property to true or false depending on whether the user wants to draw or if they want to erase.
+5:26
+Alright.
+5:27
+Now item number three here is really more of just a reminder that when you are changing any of the individual pixels properties, you should preserve all of the other data.
+5:35
+You're really just targeting the filled property of that particular pixel, and you want to keep everything else the way it is.
+5:42
+And then the final thing here is that you should only add to the code below.
+5:45
+Nothing else needs to be changed anywhere in this or any other file.
+5:49
+Anyway, let me revert this to the way it was initially.
+5:53
+There we go.
+5:53
+Alright.
+5:53
+So I'm gonna hand this over to you now.
+5:55
+If you get stuck, I've left some hints for you in the top left of the Explorer, and I will see you again soon to go over the solution together.
+6:02
+In the meantime, happy coding and good luck with this challenge.
