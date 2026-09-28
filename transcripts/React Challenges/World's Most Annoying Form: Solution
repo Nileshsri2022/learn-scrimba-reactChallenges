@@ -1,0 +1,213 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So I'm just gonna go through this whole table and just take these things one by one, starting with the text inputs and the email input, which all live down here and are pretty similar to each other.
+0:14
+So these inputs are currently uncontrolled.
+0:17
+And if we want to make them controlled, well, we need to set their values something that is existing inside of our state.
+0:25
+And in this case, our state is form data.
+0:28
+So for this first one, I'm gonna make the value equal something inside of form data.
+0:32
+And since this is the input for the first name and we have a property here called first name, well, it makes sense to make this equal the value of the first name property of our state object.
+0:43
+And then we're gonna do the same thing with our next input, which is for the last name.
+0:47
+Gonna copy and paste this and change first name to last name.
+0:52
+And same thing with our email input.
+0:55
+And here, I want the value to be the email property of the state object.
+1:00
+Okay.
+1:00
+So that should actually take care of our first three guys up here.
+1:04
+And just to give us a sense of accomplishment, I am going to delete all of these.
+1:07
+Hey.
+1:08
+Hey.
+1:08
+Look at how much progress we have made already.
+1:10
+Although maybe I am getting a little bit ahead of myself.
+1:13
+Let's see if this actually works first.
+1:15
+So I go into the input and I am going to start trying to type my name, Daniel.
+1:20
+So d a n I e a.
+1:24
+That's not Daniel.
+1:24
+That's Stinky.
+1:25
+Well, let's try this last name.
+1:26
+So my last name is Rose, r o s e a.
+1:31
+That's not my last name either.
+1:32
+Let me try typing it again.
+1:34
+R o s e.
+1:35
+Still not happening.
+1:36
+Let me keep trying to type r o s e n oh, I see what's going on here.
+1:42
+Okay.
+1:42
+So it's calling me Stinky McStinkerson, and let's see what happens when I try to type in my email address.
+1:48
+So d a n I e l.
+1:50
+Okay.
+1:51
+You get the idea.
+1:52
+It changes all of my inputs to stinky Mick Stinkerson.
+1:55
+Okay.
+1:55
+So our state is definitely in control of these inputs now.
+1:59
+In fact, I can't type anything else besides what it is dictating.
+2:04
+Now let's keep moving on.
+2:05
+Let's go to our radio inputs next.
+2:07
+So those live down here and these ones are a bit trickier and I always find them a little bit counterintuitive because with other inputs, it's the value that we are controlling.
+2:19
+But in this case, the value is predefined.
+2:21
+And what we actually want to be controlling is the checked property of the input.
+2:27
+And in this case, we want the checked property to be true if the value of the corresponding state property is the value of the input.
+2:36
+So the corresponding property in our state object is the privacy response.
+2:41
+So down here, I am going to be checking the form beta's privacy response and I want this to be checked if the value of that property is yes, or in other words the value of this input.
+2:55
+Now let's do a similar thing for our other radio inputs.
+2:59
+So for this one here, we want to set the checked property to be true if the privacy response is no because that is the value of this input.
+3:07
+And then down here, we want it to be checked if the privacy response is absolutely.
+3:12
+Alright.
+3:12
+Let's test if this is working.
+3:14
+Click run, and we get an error message yelling at us that app contains an input of type radio with both checked and default checked props.
+3:24
+Input elements must be either controlled or uncontrolled, specify either the checked prop or the default checked prop, but not both, and decide between using a controlled or uncontrolled input element and remove one of these props accordingly.
+3:38
+So that is a long way of saying that since we want this to be a controlled input, we should delete this default checked property because that is something that we only use for an uncontrolled element.
+3:49
+It's a property that is internal to the input.
+3:53
+And if it's in control of what the value of the input is, well, then React is not in control, and so it's not a controlled element.
+4:01
+So let's just delete this and now click run and see what happens.
+4:05
+And sure enough, we don't get any error message.
+4:07
+And not only that, but our option here is no longer selected as no.
+4:11
+Instead, it's been selected as yes because that is what it has been initialized as up here.
+4:17
+And if I go and try to select no because, of course, I don't want to sign away all of the rights to my privacy, you can see that the value actually gets switched to absolutely.
+4:27
+If I try to click no again, it goes back to yes.
+4:30
+And back and forth, back and forth, it is impossible to select the answer no.
+4:34
+And so that is telling us that React is definitely in control of these elements here.
+4:39
+And maybe you already looked at some of the underlying code that is making this happen, but if you look at the on change event handlers for all of the inputs, you'll see that they are all this single function called handleChange, which lives up here.
+4:53
+And I'm not going to go through all of this code line by line, but basically what it's doing is it is taking whatever string the user writes in one of these fields up here, and it's replacing it with this text here, and it's slicing each one of those strings to match the length of whatever the user tried to type, which creates an effect where it looks like they are the ones typing stinky McStinkerson even though they're trying to type something like Daniel.
+5:16
+So that's a function I called hijackresults.
+5:18
+And then I also created a function called switcheroo, which is basically checking if the user is trying to select the no option.
+5:25
+And then depending on whether yes or absolutely is currently selected, it then switches the response to the other affirmative answer resulting in this fun little trick here.
+5:36
+Alright.
+5:36
+So going back to here, we have now taken care of our radio inputs.
+5:41
+And now we just have these two things to take care of.
+5:43
+And for these ones, what I've done is I set up a useEffect with a couple of set timeouts, which are going to get triggered whenever the form data state changes.
+5:53
+And if the rating, for example, is set to anything other than ten, or if the marketing response is set to false, then it's going to wait two seconds and change those values to ten or true, thereby giving the user the illusion of control for a couple seconds and then mischievously taking it away from them.
+6:12
+But for this to actually work, we need to control these elements.
+6:15
+So let's go down here.
+6:17
+And so for this one, well, once again, we have a default value.
+6:20
+That's something that we only include in a uncontrolled element, so let's get rid of it.
+6:25
+And instead, we are going to set the value of this select element to be the form data's rating property.
+6:31
+Alright.
+6:32
+And then last but not least, with this checkbox input, this is another little bit of a tricky one.
+6:37
+Your instinct here might have been to do value, but this one is actually like our radio inputs as well where we actually want to be controlling the checked property of the input, and we want to make that equal to the form data's marketing response property.
+6:53
+So now if all goes well, when I come down to here and I try to change this number to four, for example, well, it's gonna stay four for a couple seconds, but then it changes right back to ten.
+7:03
+And same thing here.
+7:04
+If I try to say no, I would not like to receive twenty marketing emails per day, it will allow me to deselect it for a couple seconds, but then it comes right back.
+7:12
+And so now we can confirm that React is, in fact, in control of these two elements as well.
+7:19
+Anyway, I hope you had fun with this challenge and at at least had a little bit of a chuckle.
+7:23
+I know it's kind of juvenile humor, but I think there's also kind of a serious point to be made with this challenge, which is that when our elements in a form are controlled in React, well, from the user standpoint, they feel like they are still in control of that form.
+7:39
+Example, in a normal form, if I type in my name here as Daniel, well, it's just gonna show up as Daniel just as it would in a normal form that's uncontrolled.
+7:48
+I mean, it could be a form on a website that's purely just HTML and doesn't even use vanilla JavaScript.
+7:54
+From the user standpoint, it's going to behave in exactly the same way.
+7:58
+So that's gonna give them the sense that they are in control of the input, but in reality, underneath the surface, that sense of control is an illusion.
+8:06
+And the reason why my name would show up here as Daniel if I typed it in on a normal controlled form in React is that normally if, for example, with this input, the value of the first name that we are getting from our state would happen to be the same thing that the user typed.
+8:22
+But that's actually just kind of a coincidence.
+8:25
+It's something we've set up.
+8:26
+It's something we have contrived, and it just so happens that the value that we are setting to be the value of this input happens to coincide with the value of what the user typed.
+8:37
+But if we really wanted to, and when I was setting up this challenge, I did in fact want to, we could make that value be anything we want.
+8:45
+And so really, we are the ones in control of the input behind the scenes.
+8:50
+And I don't know about you, but when I first came up with this little project as just kind of a joke, it's the thing that for me really drove home what it means for a React input to be controlled.
+9:00
+Like, this made it really, really clear how much control we actually have over our inputs when they are controlled.
+9:06
+Anyway, I will leave it at that.
+9:08
+I hope you had fun with this challenge, and I hope to see you again in another one soon.
+9:12
+In the meantime, happy coding and goodbye for now.
