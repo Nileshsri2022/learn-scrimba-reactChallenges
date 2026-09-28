@@ -1,0 +1,71 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome to this challenge and welcome to Unmotivated, the anti motivational quote app.
+0:04
+So the way it works is every time you press this button here, you get a random, very fake anti motivational quote paired with a random motivational poster image.
+0:14
+And sometimes that works out okay, like with this example here, but other times it's not so great, like with this one or this one.
+0:21
+And that is because the color and size and placement of the text needs to be adjusted in order to fit the image and also the length of the quote.
+0:30
+Now all of the data for the image and the text live inside of the current data state and to help you familiarize yourself with the state, I have written a function called showState where if you pass in current data as an argument, it's going to console log the entire current data state in a way that's nicely formatted so you can read it more easily.
+0:52
+And so we can look at this together, I'm just gonna copy and paste it into the editor real quick.
+0:57
+And so here is our current data.
+0:59
+And you can see it contains two main objects.
+1:01
+The first one is called image and the other one is called text.
+1:05
+And then within the image, we have a number of different styles in the wrapper styles object, the container styles object, and the quote font size object.
+1:15
+And then we also have a quote font size object inside of the text object.
+1:20
+And the reason for that is that certain images require a certain font size, and then some of the quotes require a certain font size as well because of how long they are.
+1:29
+Now this quote here happens to be a short one, and so its font size is undefined.
+1:35
+And what that basically means is that this quote doesn't care what font size it has.
+1:39
+That font size can be dictated by the font size that the image has.
+1:43
+So the challenge here in a nutshell is to take all of this data inside of the current data state object and apply it to the elements in the return statement of this component.
+1:54
+So the wrapper styles should be applied to the div with the class name of wrapper, this one here.
+2:00
+Container styles should be applied to the quote container, this one here.
+2:04
+And then either the image quote font size or the text quote font size, whichever one, if any, contains the smallest font size, should be applied to the paragraph with the class name of quote, though this one here.
+2:18
+And to do this, you may use the get smallest font size function on line sixty one of this file.
+2:24
+And you can see the documentation for that function in the comment right above it.
+2:28
+Although if you want a little bit of an algorithmic challenge, you can also come up with your own code for this.
+2:34
+And if you do everything correctly, then the app should go from looking something like this to something like this, with the text color, size, and placement being automatically changed depending on the data in the current data state.
+2:47
+Now one last thing before I go.
+2:50
+So I started trying to insert the styles from the current data through this vanilla JavaScript method in conjunction with this useEffect here.
+2:59
+But this is definitely not the way that you want to insert these styles, and I just included that in order to show you the background images and give you some idea of what this app is going to look like and why we need that style information in the first place.
+3:13
+So now if I click run, the background images are going to disappear and we're left with just a blank screen.
+3:18
+But everything will come back to life, new and improved, if you carry out these steps here.
+3:23
+Alright, so let me just clean this up a little bit.
+3:27
+And there we go.
+3:28
+So this is all ready for you to go to work now.
+3:30
+If you get stuck, I've left some hints for you in the top left of the Explorer.
+3:34
+I will see you again soon to go over the solution together.
+3:37
+In the meantime, happy coding, and good luck with this challenge.
