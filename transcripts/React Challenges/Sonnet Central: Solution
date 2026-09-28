@@ -1,0 +1,363 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over to Godot.
+0:03
+So I know that, eventually, I am going to be putting a bunch of sonnets inside of this sonnets container div, and in theory, I could just go into curly brackets here and then do all of my JavaScript code inside of the space, but I am pretty sure this is gonna get pretty long.
+0:19
+So what I'm gonna do here is right from the start, I'm just going to insert a variable that I will call sonnets, and then I will declare that on the top level of our app component here.
+0:30
+Now let's just take this step by step.
+0:32
+So I know that I want this sonnets data array that has been imported into the component.
+0:37
+Then I know that the first thing that I want to do here is I want to filter this array so that we are only left with the sonnets that contain the search input.
+0:46
+Now this gets a little bit tricky to do because if you look at the underlying data, you'll see that the lines of the poem are represented by an array, wherein each one of the lines of the poem is a separate item, a string inside of that array.
+1:02
+So what we're gonna have to do here is well, one of two things or at least that's all I can think of.
+1:07
+On the one hand, we could put all of these lines together and then search through them, or we could iterate through them and search through them one by one.
+1:15
+So I'm gonna show actually both approaches here real quick.
+1:18
+So the first thing I'm gonna do is within my filter method, I need a callback function.
+1:23
+So I am going to be taking each sonnet inside of the sonnet's data array.
+1:28
+And then for the first approach where I smush everything together and then search through it, what I'm gonna do is I'm going to take the sonnet's lines array, and I'm going to join all of the items together into a single string.
+1:42
+And then once I have that giant string, then I can use the includes method to check if that giant string has the search input inside of it.
+1:51
+Okay.
+1:52
+So that would be one way of doing this.
+1:53
+Another way of doing it would be to instead of smooshing all the lines together, we could do another filter on the lines.
+2:01
+And inside of that filter, we would check does each individual line include the search input?
+2:07
+And this is starting to get long, so let's put it on some separate lines here, something like that.
+2:12
+So at this point within each sonnet, we are going through the lines and we are creating a new array of all of the lines within that sonnet that include the search input.
+2:22
+And then what we'd wanna check here is does that array that we get back, does its length equal a number greater than zero?
+2:30
+In other words, is there anything inside of the array?
+2:33
+If that is true, then that is one of the sonnets that we want to include in this other filter array that we are creating over here.
+2:42
+And if this filter inside of a filter is confusing to you, well, it is confusing to me too.
+2:46
+My brain is hurting just trying to describe it.
+2:49
+And I think there is a better way of doing this, which is the last way I'm gonna show you, which would be this.
+2:55
+So let's go back to the way we were before.
+2:57
+And okay.
+2:58
+This time, what I'm gonna do is while I'm filtering through all of the sonnet's data and I'm going through each sonnet, I'm going to invoke a method on the lines array of each sonnet called sum, which you may or may not have used before.
+3:13
+But, basically, the way this works is it works just like a lot of iterative methods where it goes through each item of the array, in this case, each line, and then it's going to just check for whatever condition you supply here.
+3:26
+It's gonna check if that condition is true.
+3:29
+So in this case, I want to check does the line include the search input.
+3:34
+And if this is true of any of the lines inside of the sonnet, then it's going to immediately return true as its return value.
+3:42
+And this entire line of code here is going to evaluate to true.
+3:46
+And then that entire sonnet is going to be included in this filter array here.
+3:51
+So sum, in other words, checks if anything, if something inside of the array meets the condition that you specify.
+3:58
+And that way, if a word like summer, for example, exists in multiple lines of a sonnet, it's not gonna bother going through the rest of the lines and finding if there are any other matches.
+4:08
+It's gonna reach the first instance of that word summer, return true, and then be done with it.
+4:13
+And so I think this would be the most efficient way of completing this task.
+4:17
+And I'm going to stick with that.
+4:18
+Alright.
+4:19
+So let's reformat this a bit.
+4:21
+And, okay.
+4:21
+At this point, we have narrowed down our sonnets data array.
+4:25
+And now that we have that smaller filter down array, we can actually start producing some JSX using the map method.
+4:33
+So I'm gonna chain map onto here.
+4:35
+And now I want to take each of the sonnets in the array that I've created with the filter method, and I want to start producing some JSX.
+4:44
+So I'm gonna do some parentheses here, and now let's remember what we need.
+4:48
+So we need a sonnet div with a class name of sonnet.
+4:53
+We need an h three element with the number property inside of it.
+4:57
+So let's put that right here.
+4:59
+And then we need to insert each line of the sonnet from its lines property array as the text content of a paragraph element, which is gonna result in one paragraph per line of the sonnet.
+5:11
+So this sounds to me like another perfect situation for the map method, which means we are gonna have yet some more inception like methods inside of methods, and we are gonna be using the map method inside of the map method.
+5:22
+I could do a couple things here.
+5:24
+So I could do my map method right in here, or I could define it outside.
+5:29
+You know what?
+5:29
+I think I'm actually gonna just do it inside of here, going back into JavaScript since I'm in JSX.
+5:35
+Okay.
+5:36
+So what do I want to do here?
+5:37
+Well, I want to take the sonnet's lines, and then I want to map over them.
+5:42
+And I want to take each line, and I want to create a paragraph in which the text content is each one of those lines.
+5:51
+And I'm using the map method here and here.
+5:54
+I know from experience that React is gonna yell at me if I don't include keys in the top level elements of the resulting arrays.
+6:02
+So what I'm gonna do here is in this div here, I'm gonna add a key.
+6:06
+The nano ID function has been imported into this app, so I am just going to use that, although you could have used something else.
+6:13
+And then I'm gonna do the same thing inside of my paragraph down here.
+6:18
+Okay.
+6:18
+So that should actually do it for the main challenge.
+6:21
+But there's only one way to find out.
+6:23
+Let's give this thing a test.
+6:25
+So I immediately get an error telling me that line dot include is not a function, and that is indeed true.
+6:32
+And I should have written includes here instead of include.
+6:35
+So I'm hoping that is my only typo.
+6:37
+Let's find out.
+6:38
+Okay.
+6:39
+We are back in business.
+6:40
+And I immediately notice an issue here, which is at the moment, all of our sonnets are showing up.
+6:46
+And the reason for that is that we are filtering through the sonnets.
+6:51
+We're checking if each line inside of the sonnet includes the search input, and the search input is initialized as an empty string, and all of the sonnets contain an empty string.
+7:01
+So all of them show up in the resulting filter array.
+7:04
+So to prevent that from happening, I think I am going to let's turn this into a ternary where I am first going to check, okay, is the search input a truthy value?
+7:15
+If it is, then make sonnets equal this.
+7:18
+If it's not, then let's just leave it be null.
+7:22
+Nothing will end up down here.
+7:23
+Alright.
+7:23
+Let's see if that prevents all of the sonnets from being rendered on the page load.
+7:28
+And hey.
+7:29
+Hey.
+7:29
+Sure enough.
+7:30
+There we go.
+7:31
+And now let's try typing in a word like summer that we know is inside of the sonnets.
+7:37
+Search and hey.
+7:38
+Hey.
+7:39
+There we go.
+7:39
+Yep.
+7:40
+There's the word summer.
+7:41
+There's the word summer again.
+7:42
+Fantastic.
+7:43
+And let's just make sure it's not showing us any results when we write a word that is not contained in any of these sonnets, like the word hello.
+7:52
+I click search now and I try to scroll down, well, nothing is showing up.
+7:56
+Now that's not a very good user experience because as a user, I don't know if the app tried to search for the word hello and just didn't find anything or if it's just not listening to me or if it's broken or what.
+8:08
+So I am really wanting to do these bonus challenges down here.
+8:12
+One of which is that if there are no search results, render a paragraph element in the sonnets container div saying, alas, thy search hath yielded no results.
+8:22
+And, actually, I just noticed that I forgot to say that you should give the paragraph element a class name of no results message.
+8:31
+So So I'm gonna put that back in the challenge recording at the very end, and it'll be like I did a little time traveling.
+8:36
+Okay.
+8:36
+So how am I gonna do that?
+8:38
+Well, I'm gonna declare a new variable called no results message, and I'm gonna make that equal a paragraph with that class name, no results message, and then let's just copy and paste this in there.
+8:51
+And this is a bit long, so what I'm gonna do here is I'm gonna put this all inside of parentheses, do some nice formatting here.
+8:58
+Now I'm gonna need to use a bit of logic to now determine what should show up in the space here.
+9:03
+And I think the code's gonna get a bit too long for putting in our return statement.
+9:08
+So I'm gonna create a new variable that I'm gonna call results, which I'm gonna declare with let here.
+9:14
+Now I'm gonna do some conditional logic to determine what results should be.
+9:19
+So first of all, if summits is a truthy value, meaning that this variable here is not null, which in turn means that we actually did create an array here.
+9:29
+If that array has a length of more than zero because, remember, we are going to create an array here no matter what as long as the user actually searched for something.
+9:40
+And if our filter method finds something, well, then this array is gonna have some stuff inside of it.
+9:45
+Whereas if it doesn't find anything, then we are still gonna have an array, but the array is gonna be empty.
+9:50
+So it's not enough to just check if the sonnet's value is truthy because we want to know what kind of thing is it.
+9:56
+Is it an empty array or an array with some content?
+9:59
+If both of those conditions are met, then we want the results variable to equal sonnets.
+10:06
+However, if those conditions aren't met, well, now let's think about when would we want the no results message to be our results.
+10:13
+Well, we want to make sure that the user has actually searched for something, so let's put that in here.
+10:18
+And then we also want to know if the sonnet's length is actually zero because if it's more than zero, well, we don't wanna show the message, but that has already been checked for us over here.
+10:28
+We already know for a fact that the length is not greater than zero, and the only other possibility here, since it can't be a negative number, is that it is actually zero.
+10:37
+So that's actually all we need to check for here.
+10:39
+If the user has searched for something and hasn't found anything, which we already implicitly know is the case because this condition wasn't met, then we want the results to equal the no results message.
+10:51
+However, if there isn't any search input, the user hasn't searched for anything yet, which is the case when the page initially loads, then we want results to be null.
+11:01
+We don't want it to be anything.
+11:03
+And actually, I'm pretty sure we could just leave this off and let this continue to be undefined, but I think it makes it a bit more explicit what's going on here if we actually include this.
+11:13
+So I'm just gonna leave it, and let's see if this actually works now.
+11:16
+Okay.
+11:17
+So I click run.
+11:18
+Now let's try searching for hello, and fantastic.
+11:21
+We get that message.
+11:22
+And now let's just make sure we can still actually search for things that do exist in the array.
+11:28
+I searched for summer, and there we go.
+11:29
+Now the other bonus challenge was to highlight the word summer wherever it appears or whatever the word might be, and I'm gonna do that now.
+11:38
+So going back up to where we have our lines, the place that I want to be looking at here is this paragraph.
+11:44
+Because inside of that paragraph, if one of the words matches the the user search, then I want to put a span around that word, which is going to automatically highlight it for us.
+11:56
+So this is gonna get even more involuted, so stick with me here.
+11:59
+But what I am going to do is within this map method, I am gonna put this inside of parentheses so that we can open it up, and let's move this to another line.
+12:09
+And now what I'm gonna do is I am going to take this line, and I am going to split it into individual words using the split method and splitting everywhere there is a space since words have spaces in between them.
+12:23
+That's gonna give me an array of all of the words.
+12:26
+And then what I'm gonna do with that array is I am going to map over it.
+12:30
+So now we have a map inside of a map inside of a map.
+12:34
+And what I wanna do with that map is for every word, I want to return one of two things.
+12:40
+And I'm gonna put parentheses here so I can create yet another indentation.
+12:44
+And now I want to check, does the word include the user's search input?
+12:49
+If it does, then we want to return a span with the word inside of it.
+12:55
+And I'm gonna go ahead and give that a key so React doesn't yell at us.
+12:58
+Whereas if the word does not include the search input, then I just want to return the word.
+13:05
+I don't think this is gonna work exactly the way we want it to, but let's just give it a test real quick.
+13:10
+Search for summer.
+13:11
+And once again, I wrote include instead of include.
+13:14
+So let's fix that.
+13:15
+Okay.
+13:16
+Now we're back in business.
+13:17
+And I search for summer and okay.
+13:20
+We're sort of in business.
+13:21
+We are getting the word summer highlighted, which is great, but all of the words are getting stuck together now.
+13:27
+Now remember that we split the words apart with spaces, which created a new array that we then mapped over.
+13:34
+And so your instinct here might be to join the words back together with the join method.
+13:40
+But remember that with this map, we are creating an array of potentially two different types of things.
+13:45
+We could have a span, which is really underneath the hood, a Java script object created by our JSX here, or we could have just a plain string.
+13:54
+We can't use the join method to put those two things back together.
+13:58
+It would only really work if everything was a bunch of strings.
+14:01
+So what I'm gonna do here instead as a workaround is I am going to put this word inside of some backticks and then interpolate it inside of this template literal.
+14:11
+And then I'm gonna just manually put some spaces around the word like so.
+14:16
+And so now we are going to create a whole big array of words, some of which might be inside of spans and others of which might be strings that look like this, where there is space on either side of the word.
+14:29
+Alright.
+14:29
+Let's give this a try.
+14:30
+I type in summer, and hey hey, there we go.
+14:33
+That guy sure liked using the word summer as you can see.
+14:36
+Alright.
+14:37
+That brings us to the end of this challenge.
+14:38
+Well done on completing it, especially if you did the bonus challenges since it involved a whole lot of different methods that you had to put together and a bit of algorithmic thinking.
+14:47
+Anyway, I hope to see you again in another challenge soon.
+14:51
+In In the meantime, happy coding and goodbye for now.
