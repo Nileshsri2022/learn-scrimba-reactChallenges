@@ -1,0 +1,175 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So to get started, let's think about the bigger picture here.
+0:06
+What do we need to do in broad strokes?
+0:09
+Well, we need to take the color data array and then generate one color card component for each of the one hundred objects inside of that array, pass in props to each of those elements or instances of the component, and then do something with those prompts.
+0:27
+So this is the basic order of things we need to do.
+0:30
+However, I'm going to do something I often do when I'm coding and I'm going to start at the end and then work my way backwards.
+0:38
+So I'm gonna start with the props and just think about what props do I need and where do they go.
+0:45
+So that is in my color card component here.
+0:48
+And so I'm going to be passing in some props to this component, and then I'm going to need to replace every bit of hardcoded data with some data from my props.
+0:58
+So instead of a hard coded text code here, I want to pass in a color from my props.
+1:04
+I could name this whatever I want, but I'm just making it something self explanatory.
+1:08
+I'm also gonna want that prop down here.
+1:11
+Now in this place, we are back inside of JSX whereas we were in JavaScript up here, so I need to put this variable in some curly brackets like so.
+1:21
+And then finally, same thing with this number here.
+1:24
+I'm going to replace that number with some curly brackets and props dot number, I'm gonna call it.
+1:30
+And I'm just gonna leave that period be here because I do want to include that after my number.
+1:35
+Okay.
+1:36
+So that takes care of this.
+1:38
+Let's move on to the next thing, which is passing in the props.
+1:42
+So down here, I need to pass in two props.
+1:45
+One is the color and the other is the number.
+1:48
+So color equals something and number equals something else.
+1:54
+What do I want the color to be?
+1:55
+Well, I want it to be one of the hex codes in my color data array over here.
+2:01
+And remember, that is already imported up top.
+2:03
+So I can just write for the time being color, data, and then let's just start with the one at the zero index.
+2:10
+Okay?
+2:11
+And then I'm just going to manually insert the number in for the time being.
+2:15
+This is the first color in the array, so I'll pass in the number one.
+2:19
+Okay.
+2:19
+Now let's test this out.
+2:21
+I click run, and, well, we get the same exact thing as before, only now we've replaced our hard coded data with data passed in by props.
+2:29
+And the nice thing about that is if I want to go to the next color in the array, all I have to do is change this zero to one and this one to two.
+2:38
+The difference between these two numbers coming down to the fact that arrays are zero indexed.
+2:43
+And if I click run, there we go.
+2:44
+Now we get the number two color.
+2:46
+K.
+2:46
+So that takes care of that task.
+2:48
+And now we just need to think about how are we gonna take care of generating one of these color cards for each of the one hundred colors in our color data array.
+2:58
+Well, anytime we want to produce one JSX element for each element in an array, that is the perfect solution for the map method.
+3:07
+So I'm going to map over the color data array and generate my color card elements that way.
+3:14
+So back down here, I am going to go into JavaScript, and I am going to take the color data array and map over it.
+3:22
+I'm going to pass in an anonymous callback function into the map method.
+3:27
+Over here in the parentheses, I'm gonna give a name to each element as I iterate through the color data array.
+3:34
+And since each item is a color, call it color.
+3:37
+And then down here inside of my callback function, I need to think about what do I want to return for each color in the color data array.
+3:44
+Well, I want to return one of these color card elements.
+3:48
+I'm gonna paste that code in here.
+3:49
+I'm gonna put in some parentheses so I can open this up to another line.
+3:53
+Okay.
+3:54
+Now instead of color data with an index number, I just want to replace this with the word color since that is the name that I gave to each element up here.
+4:04
+And now I just need to think about how do I get the number for the color.
+4:08
+Well, remember that the callback function that you pass into the map method has a second optional parameter, and that parameter is for the index number of the element that you are currently iterating on.
+4:21
+And we can call this whatever we want, but for clarity I'm just going to call it index.
+4:26
+And now we can take the index number of the current item, and we can put that down here as a variable.
+4:32
+Now remember, indexes are zero indexed, and we want our list to start at one instead of zero.
+4:38
+So to make this work properly, we're just going to need to take the index number and bump it up by one.
+4:44
+And that should actually do it for our props but there is one last thing I'm gonna do here which is this.
+4:49
+So this should work the way I've done it but it is a bit messy looking I think it would be much more clean and organized if I took this whole array that I'm producing with the map method and I stored it inside of a variable.
+5:02
+So I'm gonna call that variable colors, and then I'm going to declare that up here.
+5:07
+Const colors equals, and then I'm just going to paste the code that I had before and I'm going to reformat this a bit and then I can clean this up as well.
+5:17
+Alright.
+5:18
+Look how short and nice and neat that's looking now.
+5:20
+But here comes the real moment of truth.
+5:22
+Will this actually work when I click run?
+5:24
+Drumroll, please.
+5:26
+Three, two, one, and uh-oh.
+5:29
+Well, it's looking good, but we were getting yelled at by the console.
+5:33
+It's telling us that each child in a list should have a unique key prop.
+5:37
+Let's go back to our color card element and give it a key.
+5:41
+And something you will often see people people do is use the index as the key like this, but that's actually a bit of a no no.
+5:48
+It is not the recommended best practice.
+5:51
+If you wanna know why, I would highly recommend googling this.
+5:54
+And so the best practice is to use a truly unique key.
+5:58
+And using something like nano ID, which, remember, has been imported into the top, we can very easily generate a unique I d.
+6:06
+And now if I click run, we should stop getting yelled at.
+6:09
+Three, two, one, and alright.
+6:11
+There we go.
+6:12
+One hundred colors in all of their colorful glory.
+6:15
+So that brings us to the end of this challenge.
+6:17
+Do check out some of these colors.
+6:18
+Some of them are pretty cool, and you could use them in your next project.
+6:22
+And if you'd like to see some more cool colors, check out the credits file where you'll find some links to where I got these colors from.
+6:30
+Anyway, I hope you have a colorful day, and I hope to see you again soon in another challenge.
+6:36
+In the meantime, happy coding and goodbye for now.
