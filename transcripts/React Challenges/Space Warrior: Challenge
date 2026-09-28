@@ -1,0 +1,177 @@
+Transcript
+0:00
+Hello and welcome to this challenge and welcome to Space Warrior, an arcade style video game that I have been spending years developing.
+0:07
+I am so excited to show you this.
+0:09
+Here's how it works.
+0:10
+I come down.
+0:11
+I press this play button and oh no.
+0:14
+Nothing's happening.
+0:15
+Uh-oh.
+0:15
+Okay.
+0:16
+Let's take a look at the code and see what's happening here.
+0:18
+Oh, no.
+0:19
+Someone must have come in and deleted all of my code for the button, and I had all this code for this timer up here.
+0:25
+And, uh, oh, no.
+0:26
+Oh, no.
+0:27
+I'm gonna need some help from you, and that brings us to your challenge.
+0:30
+So the app's core gameplay components are already in place, and I'm gonna show you a few of those in just a moment.
+0:36
+But the start button and the timer are unfinished, and your task is to finish setting them up to get the game working.
+0:43
+Okay.
+0:43
+So before we go through some of these tasks here, I first want to just give you kind of the lay of the land here and explain how some of these things work.
+0:50
+So first of all, we have three states up here.
+0:53
+One of them is a boolean value telling us whether or not the timer is currently running.
+0:58
+This is initialized as false.
+1:00
+Another one is for how much time is left.
+1:02
+This is being initialized as starting time which is defined up here as sixty.
+1:07
+And the reason I'm storing it like this is because I was reusing this value in my code before some very mischievous person came along and deleted it all.
+1:16
+And then finally, same thing for the score that is being initialized as starting score which is zero up here.
+1:23
+Now all of the core gameplay components are already in place.
+1:27
+So for example, if I set the timer running state to true and now my app's gonna think the timer is running even though it's not because the code is deleted.
+1:37
+Well, if I run it, you can see that a bunch of ships start coming down.
+1:41
+And not only that, but this is already set up so that you can actually
+1:48
+like so.
+1:49
+And you can see the score went up.
+1:51
+And you couldn't hear that because I have my headphones on, but there are some laser and explosion sounds that happen when you shoot a ship as well.
+2:00
+Okay.
+2:00
+So that is one thing that's already in place.
+2:02
+The other thing that's already in place is this.
+2:04
+So I have set up my code so that every six seconds, another wave of ships gets released.
+2:11
+So imagine the timer is actually working and it's ticking down from sixty and it gets to fifty four.
+2:19
+Fifty four is divisible by six.
+2:21
+So when the time is divisible by six, another wave of ships gets released.
+2:26
+In between those intervals of six, like at fifty two for example, no new ships get released.
+2:32
+Okay.
+2:32
+Let's set this back to sixty and set this back to false.
+2:35
+And then another thing I want to show you is down here with this button.
+2:39
+This is the start button, the play button, and it currently has a class added to it called fade in.
+2:46
+And as you can see, that is fading in the button like so.
+2:50
+But what I also wanna show you here is that if we change fade in to fade out, and the button will fade out like that, which is what I want it to do when the timer starts running.
+3:02
+Change that back to fade in.
+3:03
+And then the last thing I want to show you is this.
+3:06
+I have imported a book called use sound.
+3:09
+You don't really need to know how this works because this is just sort of an extra little fun thing I added to the project.
+3:15
+But use sound makes it really, really simple to play sounds in your React project.
+3:20
+And the way it works is this.
+3:22
+So I have this song file.
+3:23
+It's a song I actually created, and I've just given it the name song dot m p three.
+3:28
+And I'm calling this hook play song.
+3:30
+And now, if I want to play the song, all I need to do is write play song just like a function.
+3:36
+And, again, you can't actually hear this, but now if I click run well, I am having music blasted into my ears right now.
+3:42
+I'm gonna turn that off now.
+3:43
+Okay.
+3:44
+And then same thing here.
+3:45
+I have this click sound that I created, and I want that sound to be played whenever the user clicks the start button or the play button.
+3:52
+And if play the sound, you just need to write play click like a function.
+3:56
+Okay.
+3:56
+So now that I have showed you those things, hopefully, these tasks will make more sense to you.
+4:01
+So when the user clicks on the start button, the timer should start counting down seconds.
+4:05
+The class of fade in should be replaced with fade out in the button's class list.
+4:11
+And I just realized I keep referring to the button as a start button, but really it says play.
+4:15
+Okay.
+4:16
+The button should be disabled and the song and the click sound should get played.
+4:20
+And then remember, every six seconds, the ships are gonna get released.
+4:24
+That's gonna automatically happen for you.
+4:26
+You don't need to worry about it.
+4:27
+If you wanna see what's going on, you're gonna need to look at the components that I've created.
+4:31
+And if you really wanna understand the code, you'll also need to look at the utilities.
+4:35
+But you don't have to do any of that to complete the challenge.
+4:37
+Anyway, the other tasks are that at zero seconds, the timer should stop and the fade out class should get replaced with fade in.
+4:45
+That's gonna bring the button back onto the screen and then the player should be able to click it again and everything should get reset.
+4:53
+And then finally, I just left a note down here saying that to accomplish these tasks, you only need to write code below these comments.
+5:00
+You don't need to change or add anything above them or in a different file.
+5:04
+Everything can be done right here.
+5:06
+And again, all of the actual mechanics of the game have already been written out.
+5:10
+Your job is really just focusing on this button and the timer.
+5:14
+Okay.
+5:14
+So if you need some bonus challenges, I've left them for you over here in the explorer.
+5:19
+If you get stuck, I've left some hints for you.
+5:22
+So good luck with this.
+5:23
+I will see you again soon to go over the solution together.
+5:26
+In the meantime, happy coding and goodbye for now.
