@@ -1,0 +1,69 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to the Scrimba Video Game Workshop, a place where we create the bits and pieces and thingamajigs and whatchamacallits that video game developers need for their video games.
+0:11
+Now we just got an order in from a video game company and the order is for a button that will allow the user to play and pause a video game.
+0:20
+So your task is to set it up and insert it in the div below, this one down here, in the way that I have described here.
+0:28
+Now you can read all of this for yourself, so let me describe the task for you in a bit of a bigger picture way.
+0:33
+So a lot of this task is going to revolve around this game running state.
+0:38
+The state has a boolean value that is initialized as false, and this is telling us whether or not the game is running or if it's paused.
+0:47
+So right now it is false.
+0:48
+That means the game is not running, and that means the game is paused.
+0:52
+If this value were to change to true, it would mean the game is running.
+0:56
+Alright.
+0:56
+So let's put this back to false and then think about what the button is gonna do.
+1:00
+Okay.
+1:00
+So game is running is currently false, meaning the game is paused.
+1:05
+And so that means what we want the button to do is allow the user to press play and unpause the video game or make it run, make it play.
+1:13
+If the user clicks on the play button, that should set the game running state from false to true, meaning the game is now playing.
+1:22
+Okay.
+1:22
+So now that the game is playing, if the user presses the button again, well, that should pause the game.
+1:28
+It should turn game is running from true to false.
+1:31
+And then we're right back where we started, and then we can go through the same process again, back and forth, back and forth.
+1:38
+And then depending on what the game running state value currently is, we want the button to either show play if the game running state is false or we want it to show pause if the game running state is currently true.
+1:52
+In other words, the button should about what kind of action it is going to produce if the user presses it, and that action changes depending on the game running state.
+2:03
+And if you complete these tasks correctly, the button should have some nice visual effects when you click on it.
+2:08
+And the workshop background, this whole thing here, should be replaced by a light blue color.
+2:14
+That's going to allow you to see the button nice and clearly.
+2:16
+So I I just wanted to let you know about that ahead of time so you didn't think there was a bug or something with your code.
+2:22
+It is an intentional effect on my part.
+2:24
+Right.
+2:25
+And then final thing, if you get stuck, well, I would encourage you to try to Google things first.
+2:29
+But if you are still stuck, I have left some hints for you up here in the top left corner of the Explorer.
+2:35
+Feel free to check those out.
+2:36
+In any case, I wish you the best of luck with this challenge.
+2:39
+I know you can do it and I will see you again soon to go over the solution together.
+2:43
+In the meantime, happy coding, and goodbye for now.
