@@ -1,0 +1,337 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+Alright.
+0:04
+So I am just gonna take care of these one by one.
+0:06
+First up, when the user moves one of the Ranger input sliders, its corresponding value in the filter state object should be updated, yada yada yada.
+0:15
+So I'm gonna come down here, and I am going to use a keyboard shortcut so that I can type in all three inputs at once.
+0:23
+And I am going to add an on change event handler that I am going to call handle change.
+0:30
+And I will define this up on the top level of my component.
+0:34
+And I know that I am definitely going to be needing data from the event object, so I'm going to name it as a parameter in my function.
+0:42
+And just to make sure this is working so far, let's just quickly console log our event target value.
+0:49
+And when we run this code, we should see the values of these sliders in the console when I change them.
+0:55
+And sure enough, that is looking good.
+0:57
+Alright.
+0:58
+Now let's think about what do we actually want to do with these values.
+1:01
+Well, we don't want to be console logging it.
+1:03
+We want to be setting the filter state.
+1:06
+And we are definitely going to be using this value here, but there is some other stuff we need to do too.
+1:11
+So I am just going to copy it to my clipboard and get rid of it for now.
+1:14
+And let's think about what we actually wanna do here.
+1:16
+Okay.
+1:17
+So let's imagine our user is interacting with this first input here, the one that controls the brightness of the image, and we could imagine it starts at the number one and the user increases it to two, let's say.
+1:30
+Well, if that happens, we want to update this value here to two, but we want to preserve these other ones to be whatever they currently are.
+1:37
+So what I'm gonna do here is I'm going to take the previous version of the filter state and I'm going to return a new object in which I spread out that previous state.
+1:48
+And then what I want to do is I want to overwrite whatever the brightness property is to be that event target value.
+1:55
+Now this is going to work for the brightness property, but this handle change function could be getting invoked by our contrast input or our saturation input, and we want to be able to tell which one is which.
+2:08
+And then we want to insert the correct property name here or key for our value.
+2:12
+And so we want to be doing this dynamically instead of manually.
+2:16
+And the way we can do this is by tapping into our event targets name property.
+2:22
+Because remember each input has a name like brightness that is the same name as its corresponding property in the filter state object.
+2:30
+And then down here, I'm putting it in square brackets because that is what we do when we want to use a variable as a key inside of an object.
+2:39
+And so now if all goes well, I should be able to console log our filter, and we should get the value changes reflected in the console every time I move one of these sliders.
+2:49
+Let's test this out.
+2:50
+Okay.
+2:51
+We are initialized at one, and I move the brightness slider, and sure enough the brightness property goes down.
+2:57
+I move the contrast, the contrast goes down, and I move the saturation and the saturation goes down.
+3:03
+And you may have noticed that these values have been initialized as numbers here, and they're actually becoming strings here.
+3:11
+And if that really bothers you, you could convert this into a number, and then we'd always just have numbers, or you could convert these into strings.
+3:18
+You know what?
+3:19
+Honestly, at the end of the day, when these actually get converted into our CSS variables, it's not going to matter.
+3:24
+So I think I'm just gonna leave it the way it is and keep moving on to the next task.
+3:29
+Okay.
+3:29
+So now what we wanna do is with each update of the filter state object, the corresponding CSS variables should be updated as well.
+3:37
+And so those guys are living over in our style CSS file, and they are these variables being declared at the top inside of the root selector.
+3:45
+Now there are at least a couple of different ways of taking care of this, and I'm gonna show you two of them.
+3:50
+The first one is going to involve just some vanilla JavaScript.
+3:54
+And the way I would do it is like this.
+3:55
+So I'm gonna access the document, then I'm gonna do a query selector.
+3:59
+I'm gonna look for the root, Then I'm gonna tap into the roots style property, and then I'm going to invoke the set property method.
+4:08
+And this expects two different arguments.
+4:10
+The first one is the name of the property that I want to change.
+4:14
+So let's just focus on the brightness
+4:22
+brightness
+4:26
+property brightness property.
+4:28
+And that should actually take care of the brightness property.
+4:31
+Let's just test this out real quick.
+4:32
+And we got an error because I forgot to put a colon in front of root.
+4:36
+Now it should work.
+4:38
+Let's find out.
+4:39
+And, yeah, it didn't crash now.
+4:40
+And if I move the brightness slider, sure enough, the brightness changes.
+4:44
+Now, it's a little bit weird because it's being initialized at one, which would be right in the middle, but then its default position is right at the end, and I don't get back down to one until I move it back down to the middle.
+4:56
+Whereas, this sets up an expectation that the the neutral value is at the end, so this is a bit messed up.
+5:01
+But that is just because our input isn't controlled.
+5:04
+So let's take care of that real quick.
+5:06
+The value of this input should be the filter's brightness value.
+5:11
+And now this should behave the way that we want it to work.
+5:13
+And sure enough, now our slider is in the middle where its value is one.
+5:18
+And if I move it up a little bit, the brightness goes up.
+5:20
+If I move it down, the brightness goes down.
+5:23
+Okay.
+5:23
+So that takes care of our brightness.
+5:25
+And if we wanted to, we could do the same thing for our other three variables.
+5:30
+In fact, I'm just gonna do that real quick to show you.
+5:33
+So this one will be for our contrast, and this one will be for our saturation and we want to control these inputs as well.
+5:40
+So this will be the filters contrast property and this one will be its saturation.
+5:47
+Okay.
+5:48
+So now this should actually work.
+5:50
+Sure enough, all of these sliders are in the middle, and let's test them out.
+5:54
+Let's move the brightness up.
+5:56
+Let's move the contrast down, and let's move the saturation all the way up and then all the way down.
+6:03
+And okay.
+6:03
+This is actually working.
+6:05
+And if we wanted to, we could call it a day at this point.
+6:08
+However, I did leave that instruction to try to make your code as dry as possible, and this doesn't feel super dry to me.
+6:15
+And there's a more efficient way of doing this.
+6:17
+And the way I'm gonna do this is remember that our filter state is an object.
+6:22
+And what we're really doing here is we are manually iterating through each one of these properties and then doing something with it.
+6:29
+And when we want to iterate through an object, we can use a for in loop.
+6:35
+So I am iterating through the filter object and I'm calling each property inside of it a prop or property.
+6:42
+And then what I'm gonna do here is I'm gonna just take one of these guys that I created manually before, paste that in, and then I'm going to replace the hard coded stuff with some JavaScript.
+6:53
+So I'll replace this with backticks so that I can use a template literal here and interpolate a variable.
+6:59
+And the variable is going to be the prop, which is going to give us the name of the property or the key, so brightness, contrast, and saturation.
+7:08
+And then for the value, well, we want the value to be the corresponding value of that property.
+7:14
+So the way I gain access to that is first I specify the name of the object and then the thing that I want to access inside of the object, which is crop.
+7:23
+And now this bit of code here is going to automatically do everything that we wrote out manually below.
+7:28
+And so now I can get rid of that and this should work in exactly the same way as before.
+7:33
+Let's give it a try.
+7:34
+Turn the brightness down.
+7:36
+Turn the contrast up.
+7:37
+Turn the saturation down.
+7:39
+I can't even see it now.
+7:40
+Let's move this back.
+7:41
+Okay.
+7:41
+There we go.
+7:42
+Alright.
+7:42
+So this is definitely working.
+7:44
+And once again, if we wanted to, we could call it a day.
+7:46
+However, I'm not feeling totally satisfied with this because going back into vanilla JavaScript here and manipulating the DOM manually like we're doing here is a bit of an escape hatch.
+7:59
+And it's working, but React does give us another way that we can change CSS variables, and that is through inline styles.
+8:07
+And to show you how this is gonna work, I'm gonna come down to this image element here, and I am going to add an inline style.
+8:14
+And just for demonstration purposes I'm gonna do this manually.
+8:17
+Inside of the object that I'm creating as my inline style, I'm gonna put the variable name of brightness, and then I'm going to set that to be equal to whatever our filter state objects brightness value is.
+8:30
+Let me actually turn this off for a moment so only this is in operation, and let's test that out real quick.
+8:37
+So I'm gonna move the brightness slider and sure enough it is working exactly the same as before.
+8:42
+Now once again, if we really wanted to, we could do the other three ones of these manually, but that feels repetitious to me.
+8:49
+So what I'm gonna do is I'm gonna copy this.
+8:51
+I'm gonna come back up here, and then what I'm gonna do is I am going to declare a variable that I'm gonna call styles.
+8:58
+I'm gonna make that equal an empty object.
+9:01
+And then for each of my properties inside of the filter, I want to add a new filter to that style object.
+9:07
+And the way that I'm going to do that is like this.
+9:09
+I'm going to go style, and then I'm going to specify the name of the thing that I want to become one of its its properties, which I'm just going to borrow from over here.
+9:18
+And now this thing doesn't exist in our style object because, well, at the moment nothing exists inside of there.
+9:25
+And when nothing exists and we specify a property like this and we say we want it to equal something, we end up just creating that property with the value that we say we want it to equal.
+9:36
+So now I can just say make a property of the style object that I am calling this equal and then I can just borrow this bit here where I get my value from the filter state object.
+9:47
+And now I can get rid of this.
+9:49
+And then down here in my inline style, I can replace this manually created object with that new style object.
+9:56
+And if all goes well, this should work in exactly the same way as before.
+10:00
+Let's test it out.
+10:01
+Move the brightness up, contrast down, saturation up, and sure enough, we are in business.
+10:07
+So that works great.
+10:08
+Alright.
+10:08
+Now there is one other thing that I could do here, and it's gonna seem a little bit cheeky.
+10:13
+But, well, I am a little bit cheeky, so I want to show it to you.
+10:16
+And that is this.
+10:17
+So I didn't tell you that you could or should change this state up here, but I also didn't tell you that you shouldn't or that you couldn't.
+10:25
+And, hey, it's your code and you're allowed to do whatever you want with it.
+10:28
+So there is nothing stopping you from changing the names of these properties here.
+10:33
+And that presents a real possibility to us here because if we just change these names slightly to mirror the names of our CSS variables like this, and then I can do the same thing with our other two properties.
+10:47
+Now that I have renamed the properties to have the same names as my CSS variables, what I can do is I can skip all of this stuff down here altogether.
+10:56
+And then here, I can get rid of that style object I had before, and I can just spread the filter state object into my style object.
+11:04
+And there's just one other little change I have to make here, which is remember in our handle change function, we are using the event target's name to determine what the name of our changing property should be.
+11:16
+So since those names have now changed, I need to change them down here as well to keep all this stuff glued together.
+11:23
+So, basically, I just need to put those dashes or hyphens in front of the name.
+11:27
+And same thing here where we are controlling the inputs, the name is no longer saturation, but rather it is dash dash.
+11:36
+And the reason our editor is yelling at us is because those are special characters.
+11:40
+So once again, I am going to enclose them inside of quotations like that.
+11:45
+And now I'm gonna do the same thing with our contrast and with our brightness.
+11:50
+Alright.
+11:51
+Now if all goes well, this should be working exactly the same as before.
+11:55
+But look at how little code we've actually had to write other than changing these names down here slightly and these guys up here slightly.
+12:02
+But now it's time to put my money where my mouth is.
+12:04
+Let's see if this actually works or if I've made some horrible mistake.
+12:08
+Drum roll, please.
+12:09
+Three, two, one, and Hey, hey.
+12:11
+Brightness is working.
+12:13
+Contrast is working, and saturation is working too.
+12:17
+And that is actually kind of a cool looking image now.
+12:20
+Looks almost like a pencil drawing.
+12:22
+Oh, and, actually, I just realized something, which was that there was no reason to spread out the filter inside of a new object.
+12:28
+We can just put the filter object directly inside of here as our style object, and this will work in exactly the same way.
+12:37
+I'm not even sure why I spread it out.
+12:39
+I think I just did it kind of automatically because I was spreading out a lot of objects in a previous challenge that I was recording.
+12:45
+But, anyway, that avoids an unnecessary operation, and it makes our code even shorter.
+12:51
+So that brings us to the end of this challenge.
+12:53
+Uh, I hope to see you again in another one soon.
+12:55
+In the meantime, happy coding, and goodbye for now.
