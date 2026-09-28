@@ -1,0 +1,241 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So if I'm gonna do anything with the props that are being passed into this stock component, I'm gonna have to actually name them as a parameter up here.
+0:11
+So I'm gonna start by doing that, and I'm just gonna call it props for now.
+0:15
+Okay.
+0:15
+Now to remind myself of what those props are, let's look at the app JSX file.
+0:19
+And, okay, here is the instance of the stock component.
+0:23
+And it's really just this prop here that we are concerned about.
+0:27
+We don't really care about the key.
+0:29
+And so we have a single prop called stock and that is where we are going to be getting all of our data from.
+0:35
+So going back over to our component, I'm actually gonna go ahead and destructure the props so that I can just refer to the stock as a stock and I don't have to say props dot stock over and over again.
+0:48
+K.
+0:48
+And now down here, what I'm gonna do is I'm gonna start replacing these placeholder pieces of information with data from that stock prop.
+0:57
+And I don't actually remember what's inside of that prop so I'm gonna just console log it real quick.
+1:02
+So I'm console logging the stock prop and when I click run, we see in the console that, okay, we get a series of objects and we see that each one has a stock name, a logo, a current price, and a previous closing price.
+1:16
+And then we keep getting a message in the console because of that useEffect that has that setInterval in place.
+1:23
+So I'm gonna delete this console and click run again so the console stops talking to us, and now we can start adding our data over here.
+1:31
+So we want stock dot stock name, stock dot logo, stock current price, and stock previous closing price.
+1:40
+And if all goes well, that should actually take care of everything inside of these stock containers except for this little box over here because that's where the next four variables come into play.
+1:51
+We haven't done anything with them yet.
+1:53
+But the logo and the name and the current price and the previous closing price should be all in place now.
+1:59
+So let's give this a test.
+2:00
+On the count of three, one, two, three, and hey.
+2:04
+Hey.
+2:04
+There we go.
+2:05
+I can see the company logos.
+2:07
+And not only that, but after a couple seconds, I can see the prices get updated which is exactly what we want.
+2:14
+Fantastic.
+2:15
+Alright.
+2:15
+Now let's just take a look at how to do these other four variables.
+2:20
+So the numerical change is going to be the current price, so I'm just gonna put here, minus the previous closing price.
+2:28
+And let's just test this out real quick.
+2:30
+Three two one.
+2:31
+And okay.
+2:32
+That's not quite what we want.
+2:33
+We get a very long number, and that is because we need to fix this to the second digit after the decimal point, which we can do just like this.
+2:43
+And now if I click run, well, we get an error because I should have written to fixed instead of fix.
+2:49
+Okay.
+2:49
+Now it should work.
+2:50
+And there we go.
+2:51
+And something I want to show you here real quick is that if I console.
+2:54
+Log and I check what it is a type of, we can see that numerical change is a string.
+3:02
+And so my point here is that the toFixed method automatically converts a number into a string, and so that is why I was telling you not to overthink this whole thing about the numbers getting converted into strings.
+3:14
+It did indeed happen automatically in the course of solving the challenge.
+3:18
+Okay.
+3:18
+Let's keep going.
+3:19
+Close the console.
+3:20
+And now let's look at the rate change.
+3:23
+So the way that we can calculate this is we can take the numerical change divide it by the previous closing price and then multiply that whole thing by one hundred in order to get a percentage.
+3:36
+Now if I click run, I think we're gonna run into the same problem again where, yes, we do get a very long number here.
+3:42
+So we want to put the toFixed method or invoke it from this whole number here.
+3:49
+I can do like so.
+3:50
+I'm enclosing the whole thing in parentheses so that the whole value is what the toFixed method gets invoked from instead of the number one hundred.
+3:59
+So let's see if this fixes our problem and sure enough it does.
+4:03
+Fantastic.
+4:04
+And not only that, but we can see that the changes are now getting updated as well up here, which is exactly what we want.
+4:12
+The only problem is well, you can see that now we had a negative number, but the arrow is still going up and the color is still green.
+4:19
+So let's take care of that next.
+4:21
+And what I'm gonna do here is well, I know that I want these values to conditionally change depending on what the value of numerical change is.
+4:31
+And so one way we could do this is like this.
+4:33
+We could check, okay, is numerical change greater than zero?
+4:38
+If so, make the value of color class b green.
+4:41
+If not, check if the numerical change value is less than zero.
+4:47
+And in that case, make it red.
+4:50
+And if that's not the case, then just leave it be undefined or an empty string.
+4:55
+Either way of doing that would be fine.
+4:57
+And this will work perfectly fine the way I've done it there.
+5:00
+However, a lot of people would consider this to be difficult to read, and I don't want to make anybody angry at me.
+5:07
+So I'm gonna take a different approach here where I'm just going to leave these as undefined variables and change these from const to ret so that I can redefine them later on.
+5:19
+And I'm gonna redefine them down here with a series of if else statements.
+5:23
+So I'm just going to fast forward through doing this since it's a bit of basic vanilla JavaScript.
+5:29
+Just like that.
+5:30
+And so I'm basically just checking, okay, is rate change greater than zero?
+5:34
+If so, make the color class be green, make the arrow be up.
+5:37
+If it's less than zero, make the color class b red, make the arrow go down.
+5:41
+And if the number is neither greater than zero or less than zero, well, then the number must be zero.
+5:48
+That's the only other logical possibility.
+5:50
+So, in that case, just make the color class be undefined and make the arrow be that horizontal bar.
+5:56
+Now, technically, color class is already undefined up here, so we don't actually need to redefine it as being undefined.
+6:05
+But I actually kind of prefer putting it this way just because otherwise at a glance it looks like maybe I just forgot to include something here and this way it's clear that leaving the color class as being undefined is an intentional choice here and I guess if we also wanted to be kind of cute we could define the color class as being undefined or just leaving it be like that.
+6:28
+And then we could initialize the arrow as being an empty bar.
+6:32
+And then we could skip this bit of our code altogether.
+6:35
+But I think it's more readable and easy to understand if we have it this way.
+6:40
+So I'm just going to leave it like that and let's test this out.
+6:44
+So big moment of truth here.
+6:46
+Will this actually work?
+6:47
+Three, two, one, and.
+6:49
+Hey.
+6:49
+Hey.
+6:49
+We're looking good so far, and let's see what happens when the prices update.
+6:53
+And it looks like we are in business.
+6:56
+All of the colors and arrows are exactly what they should be.
+7:00
+Fantastic.
+7:01
+One last thing that I want to do here is see if there's anywhere I can clean up my code and make it more dry and concise.
+7:09
+And one thing that I'm noticing here is that I could be a lot more concise with these first four variables here.
+7:15
+Instead of taking each one of these items inside of the stock data object that is getting passed in as a prop and then renaming it as exactly the same thing minus that stock at the beginning of it, what I can do is I can just take the whole stock and do some further destructuring of it like this.
+7:33
+So I'm gonna delete all of these variables and then I'm just going to declare a single thing here where I say stock name, logo, current price, and previous closing price all equal the stock object.
+7:45
+So, again, I'm just destructuring the stock object.
+7:49
+And now from this point on in my code, anywhere I want the stock name property of the stock object, I can just refer to it as stock name, same thing with logo, and so on.
+8:01
+And if I run this version of the code, it works exactly the same as what we had before, but I have made my code a lot more concise and dry.
+8:09
+And I think I'm actually happy with the way it is now.
+8:12
+I'm guessing there's probably some other way that I could approach this.
+8:16
+Bit of the code down here.
+8:17
+I'd actually be curious to see other people's solutions.
+8:20
+But in any case, I'm going to leave it at that.
+8:23
+Oh, and actually I just noticed something which maybe you noticed as well.
+8:27
+And there, it just happened.
+8:29
+So do you see how the second digit after the decimal point cut cut off there?
+8:34
+Well, that is because our current price is a number and we're not converting it to a string or doing the toFixed method on it.
+8:43
+So to take care of that, I think I'm actually just going to do it down here where the current price gets rendered.
+8:49
+I'm just going to say to fixed two and that should take care of the problem.
+8:55
+Let's wait and see if it happens.
+8:58
+And, yeah, sure enough, we get point four zero.
+9:00
+Previously that would have been cut off as point four.
+9:04
+Okay.
+9:04
+So now we're actually done with the challenge.
+9:07
+Well done on completing it.
+9:08
+I hope to see you again in another challenge soon.
+9:11
+In the meantime, happy coding and goodbye for now.
