@@ -1,0 +1,207 @@
+Transcript
+0:00
+There.
+0:00
+I hope that challenge went well for you.
+0:01
+Let's go over it together now.
+0:03
+So, I know that I'm going to be generating a bunch of paragraphs from my festival data, and I know from experience that I can generate a bunch of JSX from an array by using the map method.
+0:15
+But before I jump into doing that, I also know from the instructions that I need to organize the data that is coming into the poster section component first, and I need the data to be already organized before I map over it.
+0:29
+So I'm going to start with that aspect of the task.
+0:33
+Okay.
+0:33
+So I'm gonna take the festival data, and then there are two things that I need to do with this array.
+0:38
+The first one is that I need to filter the array so that I get rid of all of the bands that aren't playing on the date that has been fed in as the date prop and leave behind only the bands that are playing on that date.
+0:53
+So I am going to invoke the filter method from this array.
+0:57
+And then what I'm going to do is for each band in the festival data array, I want to return that band if the band's date is equal to the date that has been passed in up here.
+1:10
+Now I can take this new array that I've created and I can sort it so that the bands are ordered by their level of importance.
+1:18
+The sort method expects a callback function, so I'm gonna write the outline of that here.
+1:23
+And then inside of the parentheses, I need to give names to the two objects that are getting compared with each other every time the sort method iterates through the array that it's being invoked from, which in this case is that filtered array.
+1:37
+So for example, in the festival data, the filter method might be comparing this object to this object, and we just need to give a name to this one and a name to this one.
+1:48
+And in theory, I could give them any name I want, but the convention is just to use the letters a and b.
+1:55
+So a is gonna be one band.
+1:57
+B is going to be another band.
+1:59
+And then what I want to do is I want to target the band's importance property, so the importance property of band a.
+2:07
+And I want to subtract from that the importance of band b.
+2:11
+And if this resolves to a negative number, the band is going to be sorted in one direction.
+2:17
+If it's a positive number, it'll be sorted in another direction.
+2:21
+And if it's zero, it's just going to stay put.
+2:24
+And the end result of that is going to be an array in which all of my objects inside of that array have been ordered by their level of importance.
+2:33
+And now just to clean this up a bit, I'm going to get rid of these brackets and make use of the arrow functions implicit return statement.
+2:40
+And then this is getting a bit long, so I am to put this onto another line.
+2:46
+Okay.
+2:46
+So now my festival data has been filtered by the date and sorted by importance.
+2:51
+And now I'm ready to start mapping over it.
+2:54
+So I'm gonna do this on another line.
+2:56
+I'm just chaining together my array methods here.
+2:59
+I'm going to map over this entire array that I've created with the sort and filter method.
+3:05
+And what I want to do is for each of the bands in that filtered and sorted array, I want to return a paragraph in which the band name is the text content.
+3:18
+Now this is already a lot of code that I've written here without testing any of my work, so I think now would be a good time to test this even though we're not done yet.
+3:27
+So I am going to store this inside of a variable that I will call band elements.
+3:34
+The band elements is going to be the array that gets returned after running all of these array methods.
+3:41
+Ultimately, what we're gonna end up with is just an array of paragraphs with the band name inside of it.
+3:47
+And then what I'm gonna do is down here, I'm gonna get rid of all of these manually created paragraph elements and replace them with my band elements.
+3:57
+K.
+3:57
+And then, actually, I think I could get rid of one tab on each of these and that would look a little bit better.
+4:03
+Okay.
+4:03
+Now comes the moment of truth.
+4:05
+Will this work?
+4:06
+Let's find out.
+4:07
+Drum roll, please.
+4:08
+Three, two, one, and Hey.
+4:10
+Hey.
+4:10
+Well, we are sort of in business.
+4:12
+We have all of our band names here, and it looks like we have different bands for July first and July second and July third.
+4:20
+Only thing we're missing are the different font sizes, and then I also noticed that we were getting yelled at in the console about not having a key.
+4:28
+We need to go back to this paragraph here and give each one of these paragraphs a key, and here is where I'm gonna use that nano ID function.
+4:38
+And now if I click run, React stops yelling at us.
+4:41
+Okay.
+4:41
+So now let's do the class names for the font sizes.
+4:45
+So the first thing I'm gonna do here is I'm gonna open this up so we have more space to work.
+4:50
+We are inside of the callback function of the map method right now.
+4:54
+This is what I'm going to be wanting to return.
+4:57
+I have to specify that since we no longer have the implicit return statement.
+5:01
+Okay.
+5:02
+So the first thing I'm gonna do is I'm going to declare a variable for the class name that I'm going to be inserting inside of the paragraph.
+5:10
+And I'm gonna call this font class just to make this really obvious, And that is going to go right in here.
+5:18
+And now I need to determine what the font class should be for the given band that I am currently iterating on inside of the map method.
+5:27
+And there are a few different ways that you could do this.
+5:29
+You could use a ternary.
+5:31
+You could use a switch statement.
+5:33
+But I am just going to do a series of if else statements.
+5:37
+If the band dot importance property equals one, and font class should equal giant.
+5:45
+Else if the importance equals two, make this be big.
+5:50
+And then I will do the same thing with the other two levels.
+5:53
+Like so.
+5:54
+And let's just reformat this a little bit.
+5:57
+And, well, that should do it.
+5:58
+Now comes the big moment of truth.
+6:00
+Will this work?
+6:01
+Drum roll please.
+6:02
+Three, two, one, and.
+6:03
+Hey, hey.
+6:04
+There we go.
+6:04
+So youth dimension is showing up with a big font size.
+6:08
+These other bands have smaller and smaller font sizes until we get to the least important bands like the Cuckoo Riders and Solitary Vampire, which are the least important bands.
+6:19
+And, oh my goodness, they have Pineapple Head playing on July second.
+6:23
+I really should buy some tickets to this concert.
+6:26
+And, oh, hey, there's the footer, but, oh, it's telling us not a real festival.
+6:30
+That's too bad.
+6:31
+I was really looking forward to seeing pineapple head.
+6:33
+And, actually, before I go, as I was editing this, I realized that there's another, arguably better and more concise way of taking care of all of this.
+6:42
+And I want to show it to you real quick.
+6:43
+So So I'm first gonna type it out in fast motion and then explain what I'm doing.
+6:48
+Okay.
+6:48
+So what I've done here is I've created an object called fonts.
+6:52
+And for each property inside of the object, I've made the key be one of the numbers that the band's importance value could be.
+6:59
+So the numbers one through four.
+7:01
+And then for each number, I've made the value of the key be the class name that we want to have correspond to that number.
+7:08
+And then down here where we have the class name inserted, what I'm then doing is I'm taking that object and I'm saying, okay.
+7:15
+I want this class name to be whatever value you find when you insert the band's importance number right inside of these brackets.
+7:23
+So this could end up being one, two, three, or four, and then that is going to return the corresponding value from the font's object.
+7:31
+And if we run this code, it will work in exactly the same way as before.
+7:35
+And I think there's something nice and elegant about this structure here because, really, this is what we are looking for in essence.
+7:40
+We're trying to establish a key value relationship between the numbers and their corresponding class names.
+7:47
+Alright.
+7:47
+So, that brings us to the end of this challenge.
+7:49
+I hope to see you in another one soon.
+7:51
+In the meantime, happy coding and goodbye for now.
