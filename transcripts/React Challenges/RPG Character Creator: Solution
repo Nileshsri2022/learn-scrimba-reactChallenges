@@ -1,0 +1,115 @@
+Transcript
+0:00
+There.
+0:00
+Welcome back.
+0:00
+I hope that went well for you.
+0:02
+Let's go over it together now.
+0:03
+Okay.
+0:03
+So first and foremost, we need to declare our character data state and our set character data function.
+0:09
+So I'm gonna do that up here.
+0:11
+I'm gonna declare const and then my array, then the name of my state, character data, followed by the name of my state setting function, set character data.
+0:21
+And that equals use state from react.
+0:25
+And I know that I want to initialize this state as an object, so curly brackets, and I know it's gonna be a pretty long object, so I'm going to break this up into multiple lines right from the start.
+0:36
+And now I'm still inside of my object and I can just start writing my properties.
+0:41
+So I need a hat.
+0:42
+I think I want to wear a hat, so I'm gonna set that to true.
+0:45
+Shield, that sounds like a good idea.
+0:47
+Let's set that to true as well.
+0:49
+Weapon, I am feeling like a sword.
+0:52
+Now I need a name.
+0:54
+And I'm not feeling super creative at the moment, so I'm just going to take this name list array and I'm going to pick, I don't know, let's say lucky number seven.
+1:04
+So that will be our name.
+1:05
+And now we need some attack options.
+1:09
+And once again, I'm not feeling super creative at the moment, so I'm just going to take this attack options list array, slap that down right here, and then I'm going to slice from the zero index to the sixth index and that is going to provide me with an array of six attack options imported from the attack options list array.
+1:30
+Okay.
+1:31
+And last but not least, we need our stats and that is going to be another object.
+1:36
+It's It's going to be a multi line object.
+1:39
+So I'm going to open this guy out as well and put my properties inside.
+1:43
+So let's see.
+1:43
+I need h p, m p, and strength.
+1:46
+I'm just going to set them all at one hundred for starters.
+1:49
+So HP one hundred, MP one hundred, strength one hundred.
+1:54
+And I think that should actually do it.
+1:56
+Alright.
+1:56
+Now comes the moment of truth.
+1:58
+Do we actually get a character?
+1:59
+Drum roll, please.
+2:01
+Three, two, one, and ta da.
+2:04
+I present to you Novus Chiedi or however you pronounce that.
+2:09
+All of these names over in the name list array are things that I generated through this fantasy name generator and a lot of them are very strange.
+2:18
+I also got the attack names from the same website's generator, and we've got all sorts of good ones here like, uh, Lava Blitz and Ancestors Rage and fury of honor, whatever that means.
+2:29
+Okay.
+2:30
+Now let's just test this out manually for a second.
+2:32
+Go back to our app JSX, and let's take off our character's hat and take away her shield.
+2:39
+And let's set her HP to, I don't know, forty.
+2:43
+Let's see if these changes get reflected in our app.
+2:45
+Three, two, one, and Hey.
+2:47
+Hey.
+2:47
+Well, our character's health isn't looking very good, but our app itself is looking great.
+2:52
+And now comes the final moment of truth.
+2:54
+Does this toggle button work?
+2:56
+Can we cycle through all the possible configurations of our character?
+3:00
+Let's see.
+3:01
+Three, two, one, and Hey.
+3:03
+Hey.
+3:03
+There we go.
+3:04
+All sorts of possibilities, and I am now going to cycle through all twenty billion of them.
+3:09
+I will see you in the next six hundred years.
+3:11
+However, in the meantime, I hope to see you in another challenge soon.
+3:15
+Happy coding and goodbye for now.
