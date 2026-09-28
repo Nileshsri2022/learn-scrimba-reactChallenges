@@ -1,0 +1,293 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So first things first, I know that we are going to need to be changing this state, this on click event handler, and the way that our class name is getting applied here.
+0:12
+And right off the bat, I can get rid of this on click event handler because I know we are no longer listening for clicks.
+0:19
+And then I also know that this state here is going to have to become a bit more sophisticated because we no longer just want to know whether or not the card should be open, but there's other pieces of information that we need to be keeping track of in order to to determine whether the card should be open.
+0:35
+And that information is this stuff up here.
+0:37
+So we want to know is the user holding down their mouse button somewhere inside of the cover div?
+0:42
+And then if they are still holding the mouse button down, we want to know have they moved their cursor fifty pixels to the left of where they started holding it down?
+0:50
+And in order to make that determination, well, we need to know where the cursor was to begin with when they started holding down their mouse button, and so we need to store that information inside of our state.
+1:01
+So what I'm gonna do here is since this is going to be keeping track of more things than card open, I'm going to rename it as something else.
+1:08
+Let's call it card beta and then I'm gonna change this from a boolean to an object so that we can be keeping track of multiple properties at once.
+1:17
+And one of them is whether the card is open like before, and I'm gonna initialize that as false.
+1:22
+Then we also want to be checking, is the mouse button down?
+1:26
+I will also initialize that as false.
+1:29
+And we want to know what was the initial position of the mouse when it went down.
+1:34
+And I'm going to initialize that as undefined, and let's just leave it at that for the moment and think about now how are we gonna actually update this state to do the things that we want it to do.
+1:44
+Well, this one is probably the most obvious one.
+1:47
+If we're gonna change the mouse button down from false to true, well, we need to actually be listening for the mouse going down in the first place.
+1:53
+So let's go down here and add an on mouse down event handler.
+1:58
+I'm gonna define as a function called handle mouse down, which I will declare up here.
+2:06
+And then while I'm looking at it down here, instead of just looking at card open, which is no longer a stand alone variable, we need to do card data dot card open since this is now a property living inside of our card data state object.
+2:21
+Now let's go back to our handle mouse down function and think about what we want this to do.
+2:25
+But we definitely want it to be updating our card data state, so let's get that function.
+2:30
+And we want it to set it to a new object in which the mouse button down property is set to true.
+2:37
+And then the initial position is set to whatever the position is when this function gets invoked.
+2:44
+Now remember this function is an event handling function, which means that it automatically gets passed in an event object, which we can gain access to by just writing it as a parameter up here.
+2:54
+And then within that event object, we have access to a property called client x, which is going to give us the position of the cursor on the x axis, which is all we need to know.
+3:04
+We can ignore the y axis.
+3:07
+And then finally, we are going to continue making the card open be false because we don't wanna open it just when the user puts their mouse button down, and that should take care of that.
+3:17
+So just to check that this is working, let us console log our card data state object and see what happens when we run this code.
+3:26
+So we get our state initialized the way that we want it to be initialized and then when I put my mouse button down, there we go.
+3:32
+So mouse button down gets set to true and initial position gets set to three hundred and thirty six.
+3:37
+And if I move my mouse button over here, now we get one hundred and forty seven.
+3:41
+So that is working great, And we are already off to the races.
+3:44
+So I'm sure there are other things that we're gonna wanna do here, but let's just keep moving on and we can fill in some of the gaps as we go.
+3:51
+So besides just registering the fact that the user's mouse button has gone down, what else do we want to do here?
+3:58
+Well, if their mouse button does go down, if I click here and I go down, well, we want to record the initial position, but then we also want to start tracking the current position as the user moves their mouse cursor across the screen.
+4:10
+And so in order to do that, we are gonna have to actually listen for the mouse moving.
+4:14
+And so here, we need an on mouse move event handling function, which I will call handle mouse move.
+4:21
+Declare that up here, and let's think about what we want this to do.
+4:25
+So once again, we are passing in an event into this function.
+4:29
+And once again, if we want to know what the current x position is, we can just go event dot client x.
+4:35
+And if I console log this and get rid of this guy here, we'll see that as I move across the screen, we get an updated value of what the cursor's position is.
+4:45
+So now what we need to do is we need to take that value, and we need to compare it with the initial position value.
+4:51
+So just inside of this console log, I'm gonna go into the card data object and access the initial position property, and let's just look at these two values side by side and then think about what we wanna do with them.
+5:02
+So click run, start moving my button across the screen, and, oh, I see an issue already, which is that we are tracking the current position of the cursor, but there is no initial position.
+5:13
+And there's actually no reason to be tracking the current position right now because that value only becomes relevant when the user's mouse button is down and there is an initial position to compare it to.
+5:23
+So back over here, I am going to make this so that it only invokes this code here when the mouse button is down.
+5:32
+So I'm gonna put that inside of an if block.
+5:35
+Let's move this up.
+5:37
+And actually, you know what?
+5:38
+While I'm thinking about it, not only do we only want to track the position when the mouse button is down, but we also only want to track it if the card open property is false.
+5:47
+Because if this is true and the card is open, well, then there's no reason to track the information either.
+5:52
+So I'm gonna add a double ampersand here, and I'm gonna be checking whether the card beta's card open property is false.
+6:01
+And, actually, I just noticed that I forgot to access mouse button down inside of card data here too.
+6:07
+So put that in front like that.
+6:09
+So now if all goes well and I run this, when I put my cursor inside of the cover, that code is not actually getting invoked.
+6:16
+It only gets invoked if I put my mouse button down, which I'm going to do in three, two, one, and hey, there we go.
+6:23
+Alright.
+6:23
+Now we are in business.
+6:24
+Actually, while we're here, let's test that other bit of our code.
+6:27
+I'm going to change this card open property to true manually.
+6:31
+And since this is true, well, this bit of our code is going to evaluate to false since card open is not false, which means this line of code won't be run.
+6:40
+And then down here, since card open is true, this open class is going to get applied to the card.
+6:45
+And so when I click run, the card should be open and it should not track the position when I move my mouse inside of the cover.
+6:52
+Let's see if that happens.
+6:53
+Three, two, one, and hey, hey, there we go.
+6:56
+Go inside of the cover and nothing inside of the console.
+6:59
+Fantastic.
+6:59
+Okay.
+7:00
+Let's set this back to false and think about what we actually want to do with this information.
+7:05
+So what do we want to do here?
+7:06
+Well, let's run this again and think about it for a moment.
+7:08
+So my mouse button goes down in the cover and I start going to the left and we can see all those values changing.
+7:14
+And you can see on the left hand side, we always have the value of three hundred and forty six.
+7:19
+That is our initial position.
+7:21
+And so at this point here, for example, where the initial position is three hundred and forty six and the current position is three hundred and thirty, well, three hundred and forty six minus three hundred and thirty would be sixteen, which means at that point we are sixteen pixels to the left.
+7:36
+And so if we want to check how much we are to the left of the initial position, all we need to do is subtract our current position from the initial position.
+7:45
+And if I click run now, we can see in the console that we get a whole bunch of numbers starting at zero and going higher and higher.
+7:53
+And now what we want to do is check, is that number greater than or equal to fifty?
+7:59
+So let's run that bit of code.
+8:01
+I go down.
+8:02
+I drag over a tiny bit.
+8:03
+It's false.
+8:04
+And then at a certain point, it becomes true.
+8:07
+Now I just noticed something else, which you couldn't see, but if you could see me right now, you'd see that my hands are in the air.
+8:13
+My mouse button is definitely not down.
+8:15
+And now I'm just going to start dragging my cursor across the screen and you can see that it's still saying true.
+8:22
+And if we go back to our code for a moment and think about that, that shouldn't be happening because right now we are checking, okay, is the mouse button down?
+8:29
+In that case, invoke this code.
+8:31
+Otherwise, don't invoke it.
+8:33
+That is the behavior that we want to happen, but it's not happening.
+8:36
+And that's because the mouse button is no longer down in reality, but React has no idea about that because we haven't told it to listen for that event.
+8:45
+So before we go forward, I am gonna come back down to our div here, and I'm just going to listen for on mouse up.
+8:52
+And so what I'm gonna do here is I'm gonna declare another little function called handle mouse up.
+8:58
+Clear that over here.
+9:00
+And for the time being, all I'm gonna do is I'm just going to set the card beta to be whatever it previously was while targeting that mouse button down property and setting it to be false.
+9:11
+And I'm not entirely happy with that because now I'm thinking, okay.
+9:14
+I actually don't want to necessarily preserve that initial position, and I'm not sure about the card open state.
+9:20
+But I don't wanna get too off track here, so I'm just gonna put this here as a kind of makeshift solution, and then if I want to, I can circle back to it later.
+9:28
+So anyways, the whole point of that was just to avoid the situation where this function continued to get invoked even though the mouse button was no longer down.
+9:37
+So let's just test and make sure that this is working now.
+9:40
+Click run.
+9:41
+I start dragging across.
+9:42
+It goes to true.
+9:44
+Okay.
+9:44
+And I got an error message and that is because I forgot to put an arrow here.
+9:48
+Okay.
+9:49
+Now let's test this.
+9:50
+I start dragging across and okay.
+9:52
+We go to true, and I've lifted my mouse button up now.
+9:55
+And if I move my cursor to the left a little bit more, we no longer get the console log message because my mouse button isn't down and this property has been set back to false.
+10:05
+Now, let's think about what we actually want to do with this information.
+10:08
+So if the initial position minus the current position is greater than or equal to fifty, if that evaluates to true, then we want to set this property here, card open, to true.
+10:20
+So I'm gonna do this as another if statement.
+10:23
+So if that is true, then do this.
+10:26
+Take the card data.
+10:28
+And here again, it's this property that I am really interested in, so I'm just gonna focus on it and ignore the other properties for the moment.
+10:37
+I don't know if I necessarily want to change them though, so I'm just going to preserve them, spread them inside of a new object, and then set the card open property to true.
+10:47
+And once again, I might want to revisit this later on, but for the time being, this should get the job done.
+10:52
+So let's close the console.
+10:54
+Let's click run on this and see if it works.
+10:57
+I am gonna put my mouse down, and now I'm gonna start dragging it across, across, across, and hey, hey, there.
+11:03
+It opened.
+11:04
+And even though I haven't consciously done anything to take care of the card closing when I put my mouse down, I wanna just test if something happens when I do that.
+11:13
+So on the count of three, I'm just going to put my mouse down.
+11:16
+I'm not gonna lift up.
+11:17
+I'm not gonna click.
+11:18
+A click is the mouse going down and up.
+11:20
+I'm just gonna do mouse down, and let's see what happens.
+11:24
+Drum roll, please.
+11:25
+Three, two, one, and hey.
+11:26
+It closed, And let's see if I can open it again.
+11:29
+Yes.
+11:29
+I can.
+11:30
+And let's see if I can close it again.
+11:31
+And sure enough, I can.
+11:33
+So there's actually nothing I need to do to take care of this second task explicitly.
+11:38
+It's already been kind of implicitly taken care of for me.
+11:41
+And that comes down to the fact that with this handle mouse bound event, well, it's always going to initially set the card data's card open property to be false.
+11:51
+The moment that happens, the card is going to get closed because of this conditional logic over here.
+11:57
+Alright.
+11:57
+So that brings us to the end of this challenge.
+11:59
+I hope you had fun with it, and I hope to see you again soon in another challenge.
+12:03
+In the meantime, happy coding, and goodbye for now.
