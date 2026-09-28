@@ -1,0 +1,41 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to this forum for uploading files.
+0:03
+This form has a single input, a file type of input, which lives right down here.
+0:09
+And it's just one of those inputs where if you click anywhere inside of here, your browser will allow you to select some files, and then names of those files will show up right here.
+0:18
+So the skeleton of this input is already set up for you, but it is missing a bunch of things which you are going to have to add.
+0:25
+So first of all, it should be a required input.
+0:28
+It should allow the user to choose multiple files to upload at once.
+0:32
+It should allow the user to only choose the following file formats.
+0:36
+And then finally, it should update the files to upload state whenever it detects an input change.
+0:42
+Now that state lives down here.
+0:43
+It's initialized as an empty array and the way you're gonna want to update it is this step here.
+0:49
+So when the user chooses files to upload, the files to upload state should be updated to be an array with one object per file that the user selected.
+0:58
+Each object should have three properties.
+1:01
+Filename, filetype, and file size with the corresponding info as their values.
+1:06
+And then I give you an example of what one of those objects might look like here.
+1:11
+Finally, you should test your code by clicking the choose files button and selecting multiple files.
+1:17
+When you click the upload button, you should see each object in the files to upload state array console logged with the correct info, and the code for that has already been set up.
+1:27
+If you don't have a bunch of files in these formats, I have included a folder called test files, which you can download and use for testing purposes.
+1:36
+And if you need help with that, I've left a readme file up here.
+1:40
+And then I have also left some hints for you up here, and I will see you again soon to go over the solution together.
+1:46
+In the meantime, happy coding and good luck with this challenge.
