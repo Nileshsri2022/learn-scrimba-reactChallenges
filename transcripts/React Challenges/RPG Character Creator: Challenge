@@ -1,0 +1,111 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to this character creator for an RPG video game.
+0:04
+We've got a nice little background here created by the DALL E image generator in an old school eight bit video game style.
+0:11
+We've got this button and all of these containers already formatted.
+0:14
+The only thing missing is, well, the most important thing, the actual character.
+0:19
+An image of the character should be showing up here, and she should have an actual name, and she should have six attack options down here.
+0:27
+And then up at the top, she should have her stats for her HP, MP, and strength.
+0:33
+All of these things are currently missing and that is because we are missing a state and that is where you come in.
+0:40
+So your job is to declare a state called character data along with a state setting function called set character data.
+0:48
+And you are gonna make the value of the initial character data state an object with the following properties and values.
+0:55
+Okay.
+0:56
+So the first two are called hat and shield and these are gonna be boolean values of either true or false.
+1:03
+And this is going to control whether the character is wearing a hat and is equipped with a shield.
+1:09
+Next up, we've got weapon.
+1:11
+This is going to control what kind of weapon the character is carrying, and it's going to be a string, either sword or staff.
+1:18
+Those are your two options.
+1:19
+And notice the lowercase letters here that is important as well.
+1:23
+Okay.
+1:24
+Next, you're gonna give your character a name and that is also going to be a string.
+1:29
+The next property needs to be called attack options, and this is going to be an array of six strings, each of which is a name of an attack.
+1:38
+And you can see that I've left an asterisk here and here, and that is because down here I've left a note saying that you can write your own character name and attack options, or you can use any of the names from the name list and attack options list arrays, which I've already imported into this file up here.
+1:56
+And those are living inside of the data folder.
+1:59
+You can see that I have a long list of possible attack names that you can use and a long list of character names.
+2:05
+Okay.
+2:06
+Going back to app JSX, Finally, the last property is going to be called stats, and this is going to be an object with three properties.
+2:15
+One for your character's HP or health points, another for their MP or magic points, and one for their strength.
+2:23
+And the values of these stats should be any number between zero and one hundred inclusive.
+2:29
+So it could be zero.
+2:31
+It could be one hundred.
+2:32
+It could be any number in between.
+2:34
+Just don't go below or above those numbers.
+2:37
+Alright.
+2:37
+And then once you've set up your state and declared the state setting function and you click run, you should see your character appear on the screen with all of the attributes that you just gave her.
+2:48
+And then if you come down here and you press this toggle button, the app should automatically and randomly change all of the character data property values, which is going to allow you to cycle through a whole bunch of different possible configurations of the character.
+3:02
+And speaking of this button, based on some feedback that I got from some beta testers of this challenge, I want to clarify some things.
+3:09
+So this button is already ready to go.
+3:12
+It is going to automatically randomize your character.
+3:16
+Right now it's not set up, so that's why I'm getting that message in the console.
+3:19
+But when you complete this challenge, the button is automatically going to do its thing.
+3:24
+Another thing I want to clarify here is that I am literally just asking you to create a state that looks like this along with a state setting function that you're just declaring as part of your state when you declare it at the top of the file.
+3:38
+Don't overthink this.
+3:39
+Don't over complicate it.
+3:41
+You're really just creating an object with all of these properties, and I'm not asking you to do anything fancy here.
+3:47
+One person thought maybe I wanted him to take the attack options and somehow randomize them as part of the initial state or do some sort of randomization with this bit of the code.
+3:57
+You don't have to do any of that.
+3:58
+I mean, you're totally welcome to do it if you want to, but you don't have to.
+4:02
+That is not part of the challenge.
+4:03
+It's literally just creating a state.
+4:05
+That is what we are practicing here.
+4:07
+And then the whole point of the button is just to sort of test that you created the state correctly.
+4:12
+And the way that we're gonna know that is that the randomization function that I have already created is going to be able to work if you've set up the state correctly.
+4:21
+And by my back of the envelope math, I believe there are about twenty billion possible configurations for the character, and it would take you about six hundred years to go through all of them.
+4:31
+So you should be able to get all sorts of variations just by clicking the button once you have accomplished the challenge.
+4:37
+Anyway, I will see you again soon to go over the solution together.
+4:40
+In the meantime, happy coding, and goodbye for now.
