@@ -1,0 +1,31 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to React Study Buddy, an app that helps you study up on your knowledge of React.
+0:06
+We have a flashcard here, and it's asking what is React?
+0:10
+Is it a JavaScript framework or a JavaScript library?
+0:14
+And here is what we want to happen.
+0:16
+When the user clicks on the flashcard, the CSS class called flipped should be added to the div with the class name of flashcard on line thirty nine.
+0:26
+So that is right down here.
+0:27
+So imagine I click on the flashcard, and so flipped should be added to the class name.
+0:33
+And if that happens, then the card is going to flip around, revealing that the answer is that React is a JavaScript library, and it's absolutely crucial that if you ever hear anyone have the audacity to call it a framework, you must correct them as pedantically as possible, preferably starting her response with the phrase, um, actually, which is a really good way of making friends.
+0:53
+Anyway, if the user then clicks on the card again, we want that flipped class to be removed from the class name, and that's going to flip the card back over.
+1:01
+And then if they click on the card another time, the class should be added back to it, allowing the user to flip the card back and forth as many times as they want.
+1:09
+So the instructions are here.
+1:11
+They are just reiterating everything I just went through.
+1:13
+However, if you get stuck or if you're really, really not sure how to begin, I have left some hints for you in the top left corner of the Explore.
+1:21
+Anyway, I will see you again soon to go over the solution together.
+1:24
+In the meantime, happy coding and good luck with this challenge.
