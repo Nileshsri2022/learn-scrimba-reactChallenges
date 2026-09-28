@@ -1,0 +1,63 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to Math O Matic, an automatic math quiz generator for children.
+0:05
+So the core functionality of this app is actually already in place.
+0:09
+It is generating random math problems.
+0:12
+It can accurately check my answers like so.
+0:16
+However, there are some problems with the user experience.
+0:19
+Because right now, all of the elements on the screen are kind of mushed together at once.
+0:24
+For example, this title here and this start button should go away after the user has clicked on the start button because we don't really need them anymore at that point.
+0:32
+And, also, if I refresh this and show you how it looks at the beginning, well, it doesn't really make sense for there to be a math problem and for these buttons to be on the screen before the user has even clicked on the start button.
+0:43
+So that is a problem as well.
+0:45
+And so here is how everything should be looking.
+0:48
+When the app initializes, we should just see the title and the start button.
+0:52
+And when the user clicks on the start button, they should get the problem and the two new buttons, and the start button and the title should disappear.
+0:59
+And then if they enter a wrong answer like this, they should get that message on the screen for a couple of seconds, but then the message should disappear.
+1:08
+Because before, it was just sticking around, and it becomes kind of obtrusive after a while.
+1:13
+And then same thing, if the user gets the answer correct, they should get this correct message, and then two seconds later, a new problem should appear.
+1:20
+And so the overall progression should look like this, which I will leave open for you.
+1:25
+And then over here with the instructions, all I've done is I've taken what we just went through together in the slideshow, and I've translated it into what it means in terms of the apps JSX that is getting rendered to the screen.
+1:37
+So for example, the h one element, which is the title we looked at before, that should only be rendered before the game has started, and it should not be rendered afterwards.
+1:48
+And I will let you read through these other ones on your own, but they are very similar to the first one, and they're just about the other elements that we already looked at.
+1:56
+Now in order to accomplish this challenge, you're going to have to be aware of the underlying states of this app, and those live up here.
+2:04
+As you can see, there's a whole lot of code, but most of it is irrelevant to solving this challenge.
+2:09
+It's really just these states and their changes that you need to be aware of.
+2:13
+And in order to make your life simpler, what I have done is I have created a function called show states that you can invoke down here.
+2:22
+And what that's gonna do is it's just going to console log all of the states in a format that is more readable than it would otherwise be.
+2:29
+And this way, you can play around with the app and see how the states change as the user interacts with it.
+2:35
+And then finally, just a note.
+2:37
+To complete the challenge, you only, and I really want to stress only, have to write a little bit of code inside of the return statement below.
+2:45
+There is no other code that you have to write in this or any other file.
+2:49
+If you find yourself doing lots of things with this challenge, it's a sign that you are overthinking and overcomplicating it.
+2:55
+If you get stuck, I've left a big spoiler hint up here, and I will see you again soon to go over the solution together.
+3:01
+In the meantime, happy coding and good luck with this Challenge.
