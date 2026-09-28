@@ -1,0 +1,305 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+So something that I often do when I'm getting started with a challenge or just any sort of task in coding is that I look at the code that I currently have, and I stop trying to think about it as code, and I stopped trying to be super logical and super abstract and all of that, and I just look at the surface of my code and look at it for exactly what it is, and that is just a big collection of characters.
+0:27
+It's just a bunch of words and other symbols.
+0:29
+Then what I'm doing as I look at it is I'm looking for patterns, and I mean just visually.
+0:34
+Do I see anything that stands out to me?
+0:37
+And I don't know about you, but if I do that, one of the first things that stands out to me here is this repetition of the current word.
+0:43
+We have it here.
+0:44
+We have it here.
+0:45
+We have it just about everywhere except for this last prop here.
+0:49
+And then if I look even more closely, I can see yet another repetition.
+0:53
+And the repetition is between the name of the prop and then the property that we are trying to access inside of the current word.
+1:01
+We have word here, word here, pronunciation here, pronunciation here, and so forth and so on, all the way down to etymology and etymology.
+1:10
+So that is a whole lot of repetition, and anytime is repetition.
+1:13
+Well, I've got alarm bells going off in my mind.
+1:16
+I know that there's something that I could probably be doing a lot more dryly and concisely.
+1:21
+So let's think about how we can do that.
+1:23
+The first thing I want to know is what is current word?
+1:27
+Even without knowing the code base at all, I can safely assume that must be some sort of object because I'm accessing a property inside of it using dot notation.
+1:36
+And then if I just do a control or command f search inside of this file, I will find that current word lives at the top and that that is one of the states of this component.
+1:46
+And I can see that it's being initialized as the item at the zero index of the words data array.
+1:53
+And now I'm just going to put on my Sherlock Holmes hat, get out my magnifying glass, and do a little bit of detective work.
+1:59
+If I trace things backwards, I can see that words data array is this state over here.
+2:04
+It's being initialized as words data one, which is being imported up here and lives inside of the data folder.
+2:11
+So let's go take a look at that real quick.
+2:13
+And okay.
+2:14
+I can see that it's an array of data.
+2:16
+This would be the data object at the zero index.
+2:20
+And if I look inside of that, I can see something that looks very familiar.
+2:24
+I see word, pronunciation, definition, all the way down to etymology.
+2:29
+So exactly the same things that we were seeing here.
+2:33
+Now that I've done that, I can see that what is essentially going on here is that whoever wrote this code I don't know who that is, but I imagine he's a very handsome and smart guy.
+2:42
+Whoever wrote it, what they're basically doing here is they are taking that current word data object and they are manually unpacking it as a series of props.
+2:51
+And then for each property inside of those props, like word for example, they are giving the name of the prop the same exact name.
+2:59
+So word is going to end up being the word property.
+3:03
+Pronunciation is gonna be the pronunciation property, and so forth and so on.
+3:07
+And anytime we have a situation like this where there's a one to one
+3:17
+we are taking all of the properties of the object and passing them into an element as props, what we can do is just spread them out.
+3:25
+And so that would look like this.
+3:26
+Go into JavaScript with the curly brackets, and then I spread out the current word.
+3:32
+And then what that's gonna do is it's going to take every single one of the properties inside of current word, like word and pronunciation, and it's automatically going to create a key value pair for each of them where the key is gonna be the name of the property and the value is going to be the value of that key.
+3:49
+And since the name of each key is exactly the same as the name that we gave to the prop, all of this work that that person did is going to be done for us automatically using that spread syntax, and so I can delete it.
+4:03
+And so now if I run this code, it should work exactly the same as before.
+4:07
+Let's find out.
+4:08
+Drum roll, please.
+4:09
+Three, two, one, and Hey.
+4:11
+Hey.
+4:11
+There we go.
+4:12
+We are still in business.
+4:13
+Fantastic.
+4:14
+Alright.
+4:14
+So that shortens our code here considerably.
+4:17
+But, technically speaking, we still have exactly the same number of props here as we did before.
+4:22
+We just can't really see them because they're being spread out, and the computer is doing that for us automatically.
+4:27
+And then we have this prop down here.
+4:30
+So if we want to truly combine this into one prop, what we're gonna have to do is somehow combine this guy here with this guy here.
+4:38
+And the way that I'm gonna do that is I'm going to create a new prop that I'm just going to call data.
+4:44
+That's a bit generic, but I think it's gonna work for this situation.
+4:47
+And then I'm gonna make data equal a new object.
+4:50
+And to make a new object, remember, these brackets are just for going back into JavaScript.
+4:55
+So if we want to create an object inside of that JavaScript space and I need another set of curly brackets, which looks kind of funny, but that's just the way it is.
+5:04
+So now what I'm gonna do is this.
+5:06
+Instead of spreading out my current word here, I'm going to spread it out inside of this new object that I'm creating.
+5:12
+That's gonna do exactly the same thing as before, creating a key value pair for each one of the properties inside of current word.
+5:19
+But now it's gonna do it object instead of directly inside of the props object that gets created automatically for us by React whenever we write something like this inside of a JSX
+5:30
+element.
+5:31
+Remember, at the end of the day, this whole thing, even though it looks like some weird form of HTML, it's really just a JavaScript object underneath.
+5:39
+That takes care of my current word.
+5:41
+Alright.
+5:41
+So now all I need to do is I need to take this value here and I just need to add it to this new object that I'm creating.
+5:48
+And I can do that simply by pasting it in.
+5:51
+So I'm saying spread all this stuff out first, and then right after that, insert this as a property.
+5:56
+And once again, words data array is automatically gonna become the key of that property.
+6:01
+And then whatever the value of words data array is, that's gonna become the value of that key.
+6:07
+And so now I can delete this and look how short this has become.
+6:10
+In fact, I can move it all up to one line, which is great.
+6:14
+However, if I try to run this code, I'm gonna get an error message, and that is because I need to make some changes inside of my underlying word component in order to accommodate these changes I've made to the props.
+6:24
+So let's go do that next.
+6:26
+Inside of the word component, I'm gonna come up here.
+6:29
+And okay.
+6:29
+I see that before, what we were doing was we pass in the props.
+6:33
+That's a single object.
+6:35
+And then inside of that object, we had a whole bunch of properties, all of those props we had listed inside of our word element before.
+6:42
+And then what I'm doing here is just destructuring them.
+6:45
+And that way, in this code down here, I didn't have to say props dot word, props dot pronunciation, and so forth and so on.
+6:52
+So coming back up here, remember that all of these things used to be directly inside of the props object.
+6:59
+But now they are nested inside of an object inside of props that we called data.
+7:04
+So we need to access it like this, and now we can destructure our props like so.
+7:09
+However, if I click run, we are still gonna get an error, and the reason for that is this guy here.
+7:14
+So remember, before, we used to have a prop called array equals words data array.
+7:21
+And so array was the name of one of the properties.
+7:23
+But now by doing it this way, we have changed the name of that property to words data array.
+7:28
+So there's two things we could do here.
+7:30
+One is we could just rename this property here like so, and then our code would be back up and running.
+7:35
+Or we could just leave it this way, and then inside of our word component, just change the name of this to words array.
+7:42
+But if I try to run this, I'm still gonna get an error because I have to not only rename it here, but also anywhere I was using that array variable before, like here, and I assume other places as well.
+7:53
+And you know what?
+7:54
+This is too much work for me.
+7:55
+I am feeling lazy, so I'm just gonna go back to having it as array, and then I will rename it like so.
+8:01
+And now we are back in business.
+8:03
+Okay.
+8:03
+Now let's just do our navigation buttons.
+8:05
+So here I'm going to employ a similar strategy where I'm just going to write a prop called data, and I'm gonna make this equal an object.
+8:14
+And inside of that object, I am just going to place my words data array, my current word, and my set current word, which is going to create three properties called words data array, current word, and set current word, which is exactly the same names as we had for our props before.
+8:31
+So that will take care of these three guys.
+8:33
+And now I just need to take care of this one here.
+8:36
+And for this one, I'm basically just gonna do the same exact thing that I did down here.
+8:40
+At the very end of this list, I'm just gonna create a key called position with a value of top.
+8:46
+Okay.
+8:47
+Now down here, we have exactly the same thing, except the value of position is bottom instead of top.
+8:53
+So I'm just gonna copy and paste this into this other navigation buttons element and change this to bottom.
+8:59
+Now once again, if I try to run this, we're gonna get an error.
+9:02
+If I try to click on one of these buttons, that's because inside of the navigation buttons component, we need to make a corresponding change to the changes that we've made in our props.
+9:12
+So let's go over to navigation buttons, which is here.
+9:15
+And once again, what we were doing before was taking the props and then destructuring them here.
+9:20
+However, these props are no longer directly inside of the props object.
+9:24
+Instead, they are nested inside of props in another object that we called data.
+9:29
+So we just have to make that addition here.
+9:31
+And if we run this, it will work exactly the same way as before, which is great.
+9:36
+However, I'm not really feeling very good about the way that we did that because we still have some repetition going on.
+9:42
+This line of code here is exactly the same as this line here.
+9:46
+It's only this final bit that changes from one element to the other.
+9:50
+So anytime we have repetition like that, one of the most common ways of dealing with it is to take the thing that you're repeating and just stick it inside of a variable.
+9:59
+So I'm gonna do that.
+10:00
+I'm gonna call this nav data, and I'm gonna make that a new object in which I stick those three things that we had before.
+10:08
+And so now I'm gonna delete these here and here.
+10:11
+And now in each one of these objects, what I'm gonna do is I'm going to spread out my nav beta object in much the same way that we did with current word.
+10:21
+And so that is automatically gonna create three new properties inside of that new object that we are calling data, and those three properties are gonna be these three guys here.
+10:30
+And now these navigation buttons are short enough that I can just bring them all up to a single line like so.
+10:37
+And look at how much shorter our return statement is now.
+10:40
+But, of course, we haven't tested if it works yet.
+10:42
+So here comes the final moment of truth.
+10:45
+Will this actually still work?
+10:46
+Let's find out.
+10:47
+Drum roll, please.
+10:48
+Three, two, one, and hey.
+10:50
+Hey.
+10:50
+So far so good.
+10:51
+Now what happens if I press the next button?
+10:54
+Survey says success.
+10:56
+Hey.
+10:56
+Hey.
+10:56
+There we go.
+10:57
+Awesome.
+10:57
+Okay.
+10:58
+So that completes the challenge.
+11:00
+I hope you had fun doing it.
+11:01
+It was a bit of a puzzle.
+11:02
+I hope to see you again soon in another challenge.
+11:04
+In the meantime, happy coding, and goodbye for now.
