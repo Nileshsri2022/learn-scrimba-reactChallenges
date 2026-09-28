@@ -1,0 +1,231 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+Okay.
+0:04
+So we have this handle click function that is being invoked by the user clicking one of the three emoji buttons over here.
+0:11
+What this handle click function is going to be doing is basically just setting the three states up here.
+0:18
+So we are gonna be setting the liked emojis.
+0:21
+We are going to be setting the past emojis and we are going to be setting the current emojis.
+0:28
+However, before I just dive straight into setting these states, I want to take a step back and think about what do I actually need to have ready and at my fingertips in order to be able to set these states the way that I need to set them.
+0:44
+And the way that I'm seeing it, the main piece of information that I need to have available to me is the emoji that the user has clicked on.
+0:53
+That would probably be this pita with falafel.
+0:56
+Looks pretty good.
+0:57
+When the user clicks on this emoji, I need to know which emoji they clicked on.
+1:01
+And remember, it is the same function, the handle click function, that is being invoked no matter which button the user presses on.
+1:08
+But the question is how can that function know which emoji is inside of the button?
+1:14
+Well, remember that our handle click function is an event handling function, and any event handling function automatically has the event object passed inside of it.
+1:25
+And to access it, we just need to give the object a name as the parameter of our function.
+1:31
+So I'm going to call it event, although you could also call it e.
+1:35
+Then within that event, we can look at the target of the event, which in this case is the button.
+1:41
+And inside of that target, we can look at the text content.
+1:45
+And then to be able to use this value later on in my state setting functions, I'm going to store this inside of a variable which I am going to call clicked emoji.
+1:55
+I was thinking I would call it liked emoji but I thought that would be too confusing since I already have a state array called liked emojis.
+2:03
+Okay.
+2:03
+So let's make sure this is working by console logging our clicked emoji.
+2:08
+And I'm going to turn these off for the time being so they don't crash our code.
+2:13
+Alright.
+2:13
+Let's give this a whirl.
+2:15
+I like this tractor.
+2:16
+Let's see what happens if I click it.
+2:18
+Three, two, one, and hey, hey, there we go.
+2:21
+And I could click on these women and this cookie cake thing or whatever that is and I get that emoji as well.
+2:27
+Okay.
+2:27
+So that gives us access to the emoji that the user clicked on which we are gonna be sending to the liked emojis array.
+2:34
+And now we need to think about how and where are we gonna get the past emojis, the emojis that the user passed over.
+2:42
+Somehow, based on the fact that the user clicked on one emoji, let's say the tractor, we need to know what the other two emojis are.
+2:50
+So how do we do that?
+2:51
+Well, remember, all three of these emojis currently live inside of the array called currentemojis.
+2:58
+And one of those three emojis is the emoji that the user just clicked on.
+3:03
+So if we could just take that array of three emojis and eliminate the one that the user clicked on, we would be left with the two that the user did not click on.
+3:13
+So this is sort of just a process of elimination or a filter.
+3:17
+And that word filter is a big clue here.
+3:20
+What I need to do is I need to take the current emojis, filter it, and for every emoji inside of that current emojis array, I want the emoji to be returned if it does not equal the clicked emoji that we've already established up here.
+3:39
+So in other words, return the emoji in a new array created by the filter method only if it does not equal the clicked emoji.
+3:48
+And that is going to leave us with only the two emojis that the user did not click on.
+3:53
+So I am going to store this inside of another variable, and I'm going to call it not clicked emojis.
+4:01
+And let's console log this to make sure it's working.
+4:04
+So click run and okay.
+4:05
+I really love foxes.
+4:07
+I'm gonna click on that fox and sure enough I get the Frankenstein monster and the baby bottle in the console, which is showing us the value of not clicked emojis.
+4:18
+And notice how that is an array.
+4:21
+So not clicked emojis, this value here is an array whereas this one was a string.
+4:26
+That is going to be an important fact to remember in just a moment.
+4:30
+Okay.
+4:30
+So now we have access to all of the information we need in order to set our states.
+4:36
+So let's start taking care of these one by one.
+4:39
+First, we are going to set the likedemojis array.
+4:43
+And for this one, what we want to do is we want to take the previous version of the array.
+4:48
+So I'm gonna call it previous liked emojis and we want to return a new array where we copy over all of the items from the previous array.
+4:58
+So I'm just going to spread out previous like emojis.
+5:02
+And so this way if there are any emojis already inside of the state array, they are going to be spread out at the beginning of this new array that I'm creating.
+5:12
+And then after I do that, I want a new item at the very end of this new array and I want that item to be the clicked emoji like so.
+5:22
+Okay.
+5:22
+Now let's update our past emojis state array.
+5:25
+So once again, I'm going to take the previous version of this state.
+5:29
+So previous past emojis, and I'm going to be returning a new array much like I just did before.
+5:37
+I'm going to spread out the previous version of the array and then at the very end of this new array I'm going to add my not clicked emojis.
+5:46
+However, remember, not clicked emojis is an array.
+5:50
+It's not a string unlike clicked emoji.
+5:52
+So if I just put it in like this, what I'm gonna end up with is an array, not clicked emojis, inside of another array, which is not quite what I want.
+6:02
+What I want is just a single array in which everything is on the same level.
+6:08
+Everything is flat.
+6:09
+What I'm gonna do is after spreading out my previous array into this new array, I'm going to also spread out my not clicked emojis array into this new array.
+6:19
+Okay.
+6:19
+Last but not least, we need to set the current emoji's state array.
+6:23
+And for this one, all that we need to do is we need to invoke the getRandomEmojis function.
+6:29
+I'm gonna write it like this.
+6:31
+You could also write it like this where you are actually invoking the function inside of the parentheses instead of just passing it in as a bit of code that's gonna be invoked by the state setting function itself.
+6:43
+There is a slight difference between these two approaches and I would encourage you to Google this if you are curious, but that is just the short version of why I'm doing it this way.
+6:54
+Anyway, now comes the big moment of truth.
+6:56
+Will this actually work?
+6:58
+Let's find out.
+6:59
+Okay.
+6:59
+So our app has not crashed.
+7:00
+We haven't gotten any error messages.
+7:02
+So far so good.
+7:03
+Now let's see what happens if I pick an emoji.
+7:06
+Drum roll, please.
+7:08
+Three, two, one, and banana.
+7:10
+And hey hey.
+7:11
+There we go.
+7:12
+So I'm going to pick another emoji.
+7:14
+Let's pick this one here.
+7:16
+And okay.
+7:17
+Still good.
+7:17
+I'm gonna pick some more and fast forward now.
+7:20
+And okay.
+7:21
+I have nine emojis selected so far and I'm about to pick the tenth and final emoji.
+7:27
+If everything goes right, the show result state should automatically be turned from false to true when I click on it, and that is going to bring us to our results.
+7:37
+So let's see what happens.
+7:38
+Another drum roll, please.
+7:39
+Three, two, one, and.
+7:41
+Hey.
+7:41
+Hey.
+7:41
+There we go.
+7:42
+Okay.
+7:42
+Now I just need to get my results.
+7:44
+One last drum roll.
+7:46
+Three, two, one, and.
+7:50
+Aw.
+7:50
+Wasn't that nice?
+7:51
+And this is a highly scientific test so nobody can argue with that result.
+7:56
+Alright.
+7:56
+So that brings us to the end of this challenge.
+7:58
+I hope your day is going as great as your personality, and I hope to see you again soon in another challenge.
+8:04
+In the meantime, happy coding and goodbye for now.
