@@ -1,0 +1,335 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So when I'm dealing with a kind of daunting looking challenge like this, sometimes the thing that I do is I imagine that the code that I'm writing, in this case, my update position function, is sort of like a soup or a cake or some other form of food.
+0:18
+And the questions that I need to ask myself are three things.
+0:22
+First of all, what am I trying to make?
+0:24
+And in this case, that is an updated Pikachu state object that's gonna follow this logic.
+0:30
+The second question is what kind of ingredients do I need to have?
+0:34
+Or in other words, what kind of information do I need to have available to me, or do I need to find out?
+0:40
+And in this case, that is things like, which direction is pukaChu facing in what is the position that we want to target what is the limit that we want to check and if it is below that limit or above that limit, if it's a minimum value, do we want to add or subtract a value to the position that we are potentially updating?
+1:00
+So that is the second question.
+1:01
+And then the third question is going to be how do we put those ingredients together.
+1:05
+And to me, it becomes a lot easier to work through that sometimes when we already have the ingredients in front of us.
+1:12
+So what I'm gonna do here is I'm going to start with the ingredients.
+1:15
+And so inside of my update position function, I'm just gonna start writing out all of the things that we need to know.
+1:22
+So we need to know Pookachoo's direction.
+1:24
+We need to know the position that we want to update.
+1:27
+We want to know the limit that we need to check.
+1:30
+Is it the max or minimum value?
+1:33
+And which axis is it on?
+1:34
+The x axis or the y axis?
+1:37
+And then we also want to know the operation that we're gonna have to carry out if we are updating the position.
+1:43
+So in other words, do we want to add one or do we want to subtract one?
+1:47
+And those are two possibilities, so I'm just gonna go ahead and write those out as addition or subtraction, which is gonna be subtracting one, and the operation could be one of these two things.
+1:58
+Alright.
+1:59
+So those are all of the ingredients that I can think of.
+2:02
+Now let's get started on thinking how are we gonna be able to make these variable names that I'm creating correspond to the information that we need to have.
+2:11
+Well, the direction is pretty straightforward.
+2:14
+That is just going to be the direction property of the pookachoo state object.
+2:18
+So at any given moment in time, that is going to be a fixed value, and so I'm gonna declare this with a const, and I'm gonna make that be pookachoo dot direction and really we already have this available to us as a global value inside of this component So we don't really technically need to declare a variable, but I think it's gonna allow us to prevent having to write pookachoo dot correction over and over again.
+2:42
+So I will leave it like that.
+2:43
+Okay.
+2:44
+Now position to update, limit to check, and the operation that we're going to want to apply.
+2:50
+All of those things are going to depend on what the direction is.
+2:54
+If the direction is right, then it's the x position and the max value on the x axis that we want to check.
+3:01
+Whereas, if he's facing left, then there's a different limit to check, a different position to update, and a different way to update it.
+3:08
+So those three variables are all going to require some conditional logic to figure out.
+3:14
+And so what I am going to do is I am going to declare all of them with let and then I will let them be undefined for the time being and I will define them later on with some conditional logic.
+3:27
+Now before we do that, let's just think about addition and subtraction.
+3:30
+Now whether we want to do one thing or the other is going to depend on the direction and that's why we have this operation variable so that we can define it one way or the other.
+3:40
+However, no matter which one we want to use, well, addition is always going to mean the same thing, and subtraction is always going to mean the same thing.
+3:49
+They're always gonna mean either adding one or subtracting one from the position to update whatever that happens to be.
+3:56
+And so these I'm going to declare with const and I'm gonna move them up to live with the other const.
+4:02
+And then I'm going to make these be functions where I'm gonna take whatever value gets passed inside of them, and I'm going to spit back out that value plus one for the addition or that value minus one for the subtraction.
+4:17
+And remember that this is another way of writing out functions.
+4:21
+I could have equally written something like function addition, value, return, etcetera.
+4:26
+And although there's a subtle difference between these two different ways of writing a function, in this case, they would logically work the same way.
+4:34
+Okay.
+4:34
+Now let's think about how are we going to define these three variables here using some conditional logic.
+4:41
+Well, first off, let's check what the direction is, and let's check if the direction is right.
+4:47
+Is pookachoo facing to the right?
+4:49
+If that's so, then what do we want these three values to be?
+4:53
+Let's just paste them in and let's think about these one by one.
+4:57
+So positionToUpdate that is going to be the exposition of the pookachoo state object.
+5:03
+Now if I just wrote pookachoo dot x position, well, remember, this is a variable that points to this property up in our pookachoo state object, and the value of that property is one hundred and eight.
+5:18
+So coming back down here, if I just wrote pookachoo dot exposition, well, that would be as if I wrote one hundred and eight.
+5:26
+And that's not actually what I want to do here.
+5:29
+Instead, what I want to do is I want to be able to store some sort of reference to the property or the position that I want to target and update.
+5:38
+And so the way I'm gonna do this is instead of writing it out this way, I'm just going to write out the name of the property as a string.
+5:46
+And then what that's going to allow me to do is later on, if I want access to this property and if I want to target it and update it, what I can do is I can take the pookachoo state object and then specify that I want access to its position to update, which in this case would be the same thing as if I wrote x position here.
+6:07
+And then this sort of bracket notation is another way of accessing properties inside of an object in addition to dot notation.
+6:16
+So that is how I'm going to approach that.
+6:18
+Okay.
+6:18
+Now if Pokemon's direction is that he's facing to the right, then the limit that we want to check is this one here.
+6:25
+The maximum value of who could choose boundary on the x axis.
+6:30
+So I'm just gonna copy and paste this whole thing here.
+6:33
+And this time, unlike with position to update, all we need to know is what this value is.
+6:38
+What is it numerically?
+6:40
+I believe it's one hundred ninety, and so it's fine to just write it out this way and just store that value so that we have access to it later on.
+6:47
+Alright.
+6:48
+And then last but not least, the operation that we want to use if puka choo is facing to the right is addition since we want to be adding one to the position to update.
+6:58
+So I am going to write operation equals addition.
+7:01
+Okay.
+7:02
+Now I'm gonna do the same thing for Kookachoo's direction being left, down, or up, and the logic is gonna be analogous to what we did with this one here.
+7:10
+I'm just going to do the rest of these in fast motion.
+7:14
+Okay.
+7:14
+So this would be the basic conditional logic of what we are dealing with here that is going to enable us to determine what the values of these variables here should be.
+7:24
+I've written this all out kind of verbosely to make the logic as clear as possible.
+7:29
+If you had trouble with this and you want to take a closer look at it, now would be a good time to pause, give you a couple seconds, and now I'm just gonna keep going on.
+7:38
+So before I move forward, I just want to refactor this real quick.
+7:41
+First thing that I can do is I can get rid of this if statement here since the direction being up is the only logical possibility left over if the other three aren't the case.
+7:51
+I'm also noticing a bit of repetition here.
+7:54
+For example, I'm saying x position here and here and y position here and here.
+7:59
+I think that what I'm gonna do to take care of that is I'm gonna set this up as a conditional that checks whether the direction is right or left, and then either way, we want the position to update to be the x position.
+8:14
+And then for the limit to check, what I can do is I can set up a ternary here where I check is the direction right.
+8:21
+If it is, then we want this to be the limit to check.
+8:24
+Otherwise, we want it to be this guy down here.
+8:27
+So I'll just steal that and put it here, and now we can get rid of this.
+8:32
+And then I can actually do a similar thing for the down and up directions.
+8:37
+Only this time, I don't have to explicitly write out direction equals down or direction equals up because we already know one of these things is the case if one of these things isn't the case.
+8:48
+So we can actually delete this conditional.
+8:50
+And so the position to
+9:00
+is where this time I'm going to check is the direction down.
+9:04
+If it is, then we want this to be the limit to check.
+9:07
+And if that is not the case, then we want this to be the limit to check.
+9:12
+And then I can get rid of this.
+9:14
+And, oh, I just noticed that for operation well, I have two possibilities here.
+9:18
+One is I could do another ternary like this and set the operation to be addition or subtraction.
+9:25
+But you know what?
+9:25
+I think what I'm gonna do here is I see another way of doing this, which is to come directly up to this variable up here, and then do a ternary at this point.
+9:34
+So I'm gonna say let operation equal, and then if the direction equals right or equals down, if either of those two things are the case, then we want the operation to be addition.
+9:48
+Otherwise, in other words, if the direction is left or up, we want the operation to be subtraction.
+9:55
+And now we can delete these guys here.
+9:57
+And since this is a fixed value, we can now declare that with a const, and I will move that up here.
+10:03
+So that would be one way of refactoring this.
+10:06
+Now we just need to take all these pieces of information that we have obtained and put them together into our state updating function.
+10:14
+So for that, I need the set pookajoo function that's already been declared.
+10:18
+And what I'm gonna do here is I'm going to take the previous value, and then what I'm going to do with it is going to depend on whether or not Pikachu is currently at the limit in the direction that he's trying to travel.
+10:32
+So what I'm gonna check here is if Pikachu's position to update equals the limit to check.
+10:39
+Well, in that case, we don't actually want to update the position.
+10:42
+We want Pookachoo to stay still.
+10:44
+And in fact, we don't want to change any of his property values at all.
+10:48
+So we can simply return the previous version of the Pookachoo state object.
+10:54
+On the other hand, if Pikachu is not currently at the limit, so this would be my else statement, then what I want to do is I want to return a new object in which I preserve all of the previous data by spreading it out into this new object that I'm creating.
+11:10
+And then I want to overwrite the position to update.
+11:14
+And here the fact that I saved this as a string is going to come in very handy because inside of an object, I can put a variable inside of brackets like this, and then the variable, whatever its value is, in this case a string, will become the key of the property that I'm creating.
+11:32
+And now all I have to do is say what I want its value to be.
+11:37
+And what I want its value to be is whatever the operation is.
+11:41
+So either addition or subtraction, depending on the logic here, with Pookachoo's position to update value passed inside side of it as an argument.
+11:50
+So if he's currently at one hundred and if the operation is addition, then this is gonna become one hundred plus one.
+11:57
+Whereas if the operation is set to subtraction, it's gonna become ninety nine.
+12:01
+Now let's give this a test.
+12:03
+Click run.
+12:04
+Press one of these buttons, and I'm gonna try to move to the right.
+12:08
+And, oh, no.
+12:09
+Pikachu is still not moving.
+12:11
+What is going on here?
+12:12
+I thought our logic was impeccable.
+12:14
+Well, I'm gonna actually let you take a look at this real quick.
+12:17
+There is a very small but important thing that I'm not doing right inside of the state updating function.
+12:23
+See if you can find it.
+12:24
+And if you have no idea what I'm talking about, I actually left a hint about this in the troubleshooting section of the hints.
+12:30
+So check that out if you need to, and I'll be back in three, two one.
+12:35
+And the answer is that instead of trying to directly access the Pikachu state values through the pookachoo variable, what I should be doing is making use of this previous version of the state that I already have access to but that I'm not making use of here.
+12:51
+So instead of Pikachu, I should just write prev, the previous version of Pikachu right here, and then same thing down here.
+12:58
+I'm gonna set this to previous.
+13:01
+And now this should actually be working.
+13:03
+Here comes the big moment of truth.
+13:05
+What happens when I try to go to the right?
+13:07
+Drum roll, please.
+13:08
+Three, two, one, end.
+13:11
+Hey.
+13:11
+Hey.
+13:11
+There we go.
+13:12
+And he hits the wall.
+13:13
+And let's try to go to the left.
+13:15
+Okay.
+13:16
+He's inside.
+13:17
+Try to go down.
+13:18
+Okay.
+13:18
+He's inside.
+13:19
+Try to go up, and, yep, he is inside.
+13:22
+Now this whole thing about using the previous value is really important in both of these places.
+13:28
+And just to show you this real quick, if I let this one stay as previous, but I change this one back to pukachu, and I run this code.
+13:36
+Well, now pukachu will move, but he'll go right outside of the prison like that.
+13:42
+And I guess that is one way of escaping, but that is cheating.
+13:46
+So we definitely want to set this to be previous, and now we can escape the prison the proper way, which is by coming up here, pooping out a little bomb, lighting it on fire, running away for dear life, exploding the door, and there we go.
+14:00
+Pikachu is free.
+14:02
+Look at him go.
+14:03
+Run, Pikachu.
+14:04
+Run.
+14:04
+Alright.
+14:05
+Well, I hope you had fun with that challenge.
+14:06
+I certainly had fun putting it together, and I hope to see you again in another challenge soon.
+14:11
+In the meantime, happy coding.
+14:12
+Enjoy your freedom, and goodbye for now.
