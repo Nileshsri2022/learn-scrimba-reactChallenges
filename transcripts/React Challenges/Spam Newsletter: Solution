@@ -1,0 +1,223 @@
+Transcript
+0:00
+There.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+Okay.
+0:04
+So we want a few different things to happen when the user clicks on the subscribe button.
+0:08
+And I don't know about you, but my first inclination
+0:17
+and start typing away some code in it.
+0:19
+But remember, this button is a submit button.
+0:22
+It is a button that is living inside of a form.
+0:26
+So the event that we are actually listening for is the on submit event, and that event lives inside of the form itself.
+0:35
+And so we want to do it up here in the opening form tag.
+0:39
+So I'm gonna open this up, and I'm going to listen for an on submit event.
+0:44
+And when that event happens, I am going to handle the submit with a handle submit function, which I'm going to need to actually write out here like so.
+0:55
+Okay.
+0:55
+So now what do I want this function to actually do?
+0:58
+Well, first of all, this is a submit event and the default behavior of a submit event is to refresh the page.
+1:06
+And we don't want that to happen, so we need to take the event that is automatically passed into any event handling function as an argument, name it as a parameter like so, although I could also just write e, and then invoke the prevent default method on that event like so.
+1:23
+Okay.
+1:24
+Now we are ready for the main event, which is taking care of these tasks.
+1:29
+So the user email state is going to need to be updated.
+1:32
+So I need the set user email function that is declared up here.
+1:36
+Paste that in right there.
+1:37
+And I want the value of the state to be whatever is currently saved inside of the user input state.
+1:45
+So I'm just going to paste that in right there.
+1:47
+At the same time, I also want to set the user input state back to its initial state, which is an empty string.
+1:54
+So I'm gonna take set user input, bring that down here, and reinitialize it as an empty string.
+2:01
+Okay.
+2:02
+Last but not least, I want to check if the user submitted email address is a duplicate from the email list array.
+2:09
+So what I'm gonna do in my handle submit function is I'm going to check if there is a duplicate detected.
+2:16
+This This is just a placeholder that I'm leaving for the moment.
+2:19
+I don't know how exactly I'm going to do that, but let's just pretend I figured it out.
+2:23
+If a duplicate is detected, then I am going to set the duplicate state to be true.
+2:30
+Otherwise, so my else block, I'm going to set the duplicate state to be false.
+2:36
+Okay.
+2:36
+And now I just need to figure out how am I actually going to detect a duplicate.
+2:41
+Well, I need to look inside the email wrist array that has already been imported up here, So I definitely need access to that.
+2:50
+And then from that array, I can invoke an array method called find, which does exactly as you would expect.
+2:58
+It tries to find anything that you specify inside of the parentheses.
+3:03
+And the way this works is the same way that a lot of array methods work.
+3:07
+It needs a callback function.
+3:09
+There's the outline of my callback function.
+3:12
+And then the find method is going to iterate through the array.
+3:15
+And for every item in the array, it is going to invoke this callback function.
+3:20
+And in the parentheses here, we give the name that we want to give to every item in the array as we iterate through it.
+3:28
+And since it's an array of email addresses, I'm just going to call it email.
+3:32
+Okay?
+3:33
+And then inside of the callback function itself, inside of the execution block, I want to see if that email address, the one that I am currently iterating on in the email list array, does that email address equal the email address that the user has entered?
+3:50
+Now here comes a little bit of a curve ball.
+3:53
+Your instinct here might be to check the user email state.
+3:57
+We just set that user email state and we cleared out the user input.
+4:02
+However, neither of these things are going to happen until this function has finished being invoked.
+4:08
+And so at the moment, our user email state is still the empty string that it was initialized as.
+4:15
+Meanwhile, our user input state, yes, it is going to be cleared out, but that's not going to happen until this function has finished being invoked.
+4:24
+And so at the moment, it is still whatever the user has entered inside of here.
+4:29
+So if it's daniel at g mail dot com, that is what the state currently is inside of this function at the time at which it is invoked.
+4:38
+And so what I want to check is not whether the email that we are iterating on in the email list equals the user email state.
+4:47
+We want to check the user input state, which is still going to be whatever the user has typed at this point in time.
+4:54
+Okay.
+4:54
+Now not only do I wanna do that, but I also want to make this a case insensitive check.
+4:59
+So to do that, what I need to do is I need to convert both of the email addresses to the same case.
+5:06
+And I could either convert all of the characters to uppercase or to lowercase, and that is going to equalize them at the time at which they are checked.
+5:16
+So I'm just gonna do two lower case on the email address inside of the email list array, and then I'm going to invoke the same string method from the user input string.
+5:28
+So that is going to convert both email addresses to entirely lowercase letters and then check if they are equal to each other.
+5:34
+And if they are equal to each other, this is going to evaluate to a truthy value, and then this function is going to get invoked.
+5:42
+However, if the find method does not find a match, then this is going to evaluate to a falsy value, and then the else block is going to get invoked.
+5:51
+And so our duplicate state value will be false.
+5:55
+Right now, I am going to just clean this up a little bit.
+5:57
+We don't need the parentheses since we only have one argument, and we can just make use of the arrow functions implicit return statement and eliminate those brackets.
+6:07
+And that looks a bit cleaner now.
+6:09
+Okay.
+6:09
+So that should do it.
+6:10
+Now comes the big moment of truth.
+6:12
+Let us test this out.
+6:13
+So first, I'm gonna test it with the no duplicate at Gmail email.
+6:17
+This is the one that we know does not exist inside of the subscriber list, and so we should get the message that is aimed at people who have not subscribed to the email list yet.
+6:28
+Let's see if that happens.
+6:30
+Paste that in.
+6:31
+Here comes the moment of truth.
+6:33
+Three two one and Hey.
+6:34
+Hey.
+6:35
+There we go.
+6:35
+So we see the no duplicate at Gmail address right there.
+6:40
+The input has been cleared out and it is ready for me to subscribe a friend.
+6:45
+And that friend is going to be testy mc testerson at gmail dot com.
+6:50
+And for this one, we should get the duplicate message and so let's see if that happens.
+6:55
+And I'm actually not even going to refresh the page because I want to test if I can subscribe a friend as well.
+7:01
+So I'll just paste in testy mccutterson and three two one click subscribe.
+7:06
+Hey.
+7:07
+Hey.
+7:07
+There we go.
+7:07
+Thanks again for subscribing.
+7:09
+The email address, testy McTestersen, is already subscribed to the mailing list.
+7:14
+Yada yada yada blah blah blah.
+7:16
+Final moment of truth.
+7:17
+Will this email address work?
+7:19
+So this one is in all lowercase letters.
+7:22
+Whereas in our actual data, testy mctestersen is in title case.
+7:27
+So this is going to check whether our duplicate check is case insensitive, which is the way that we want it to be.
+7:34
+So paste in our lowercase version of the email address and final moment of truth.
+7:39
+Drum roll, please.
+7:40
+Three, two, one, and hey.
+7:42
+Hey.
+7:43
+The change is very subtle because we're still getting the same message, only now the email address here is showing up as lowercase letters.
+7:51
+Fantastic.
+7:52
+Alright.
+7:52
+That brings us to the end of this challenge.
+7:54
+Well done on completing this one.
+7:56
+It was a bit tricky.
+7:57
+I hope to see you again soon in another challenge.
+8:00
+In the meantime, happy coding, and goodbye for now.
