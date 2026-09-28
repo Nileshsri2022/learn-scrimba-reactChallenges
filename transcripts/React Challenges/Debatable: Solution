@@ -1,0 +1,713 @@
+Transcript
+0:00
+Hello again.
+0:00
+I hope that challenge went well for you.
+0:02
+And if you had trouble with it, that is very understandable.
+0:05
+A lot of people have trouble with forms in React because, well, they are tricky to do.
+0:09
+Alright.
+0:10
+So let's take a look at this thing.
+0:11
+So at the moment, we have what I think of as basically just a facade or a skeleton of a form.
+0:18
+What I mean is there is a form on the page and I can type stuff inside of it.
+0:24
+But then, not only does it not do anything when I press the send button except do this annoying refresh thing, but also there's an even deeper problem, which is that at the moment our React app has absolutely no idea what is going on inside of these form elements.
+0:39
+Essentially, React has rendered all of this, including the form, onto the page.
+0:43
+And then because we're not giving it any more work to do, well, it's just sort of gone to sleep.
+0:48
+It is not paying attention to any of the changes that are happening inside of these form elements.
+0:53
+So the way I think of it, yeah, eventually we want this button to submit this data somewhere and do something with it.
+1:01
+But before we can even do that, our React app needs to have access to this data in the first place.
+1:07
+So I'm gonna start at that point and then work my way incrementally up to actually submitting this comment and posting it onto the thread.
+1:15
+So here is our form.
+1:17
+And if I want React to pay attention to any changes happening inside of these form elements like this input here, then I need to add some sort of event handler.
+1:26
+And in this case, I'm going to use the on change event handler.
+1:30
+Now the value of this on change handler should be set to a function and I'm gonna call that function handle change.
+1:38
+Now this function doesn't currently exist so that's the next thing I'm gonna do.
+1:41
+I'm gonna come up here to the top level of my component and write out a function.
+1:47
+Okay.
+1:47
+Now a very useful thing about the function that you assign to the onChange event handler is that an event object automatically gets passed into this function as an argument.
+1:58
+And then to access that event in our function, we just need to give it a name as a parameter.
+2:04
+So I'm gonna call it event, although you could also call it e or whatever.
+2:09
+And now what I can do down here is I can console log that event.
+2:13
+And not only that, I can also access the value of whatever is currently typed inside of this element by writing dot target dot value.
+2:21
+So now let's go back to our form.
+2:23
+And now anytime I type inside of this field here, the text appears in the console, which might not seem that useful, but it means we are already gaining access to this information and that means we are already well on our way to completing this challenge, believe it or not.
+2:38
+Okay.
+2:38
+Now let's go back to our code.
+2:40
+And I don't just wanna know what's going on inside of this input element here.
+2:43
+I also wanna know what's going on in the text area.
+2:46
+So I'm going to put this on change event handler in the text area as well.
+2:51
+And then same thing in this input here, which is our checkbox.
+2:55
+So now if we go back to our form, I can type in here just like before, but I can also type in here.
+3:01
+And if I click the checkbox, well, I just get the word on over and over again which isn't that useful.
+3:07
+If I want to know whether or not the box is checked, I need to look for another property, which I can do over here by looking for event target checked instead of value.
+3:17
+So now if I go back to here and click checked, it goes to true, false, true, false.
+3:23
+You get the idea.
+3:24
+Okay.
+3:24
+So now we know how we can gain access to the user's input.
+3:27
+And now I wanna think about, okay, what are we actually going to do with that input?
+3:32
+Well, at the moment, it's just being console logged.
+3:35
+But if I'm gonna do anything with it, I'm gonna need to store it somewhere.
+3:38
+And then if it's going to show up on the page eventually well, remember, in React, everything that appears on the page ultimately derives from state or from props and those props often themselves derive from state.
+3:50
+And so the point I'm getting at here is that we need to set up some state and then we need to store this information that we're collecting that we now have access to inside of that state.
+4:00
+So let's do that next.
+4:01
+So we need some state for our form data, so I'm just gonna call it form data and then my use state.
+4:08
+And now the question becomes, okay, what do I want to initialize it as?
+4:12
+Well let's think ahead here.
+4:13
+What do we eventually want this state to be?
+4:15
+Well we want it to be something that we can submit to our app and then our app is gonna take that, whatever it is, and automatically turn it into a comment.
+4:24
+Now that automatic creation of comments is already happening with these first three comments here.
+4:30
+So what I'm gonna do is look at, okay, what do those comments look like underneath the hood?
+4:35
+Because those are gonna provide me with a model for what my new comment should look like.
+4:40
+So let's take a look at that.
+4:41
+So I can see up here that there's a state called comments which are being fed into the post comments component.
+4:48
+And that state is being set as post data dot comments.
+4:52
+And postdata in turn is being imported from this postdata file, which lives over here.
+4:58
+And inside of here, we can see what these comments actually look like underneath.
+5:03
+So we have an ID, which is being generated by this function that I have imported.
+5:08
+We have a username, a boolean value for whether or not the user wants to be anonymous, and then their comment text.
+5:15
+So I'm just gonna copy this whole thing, bring it back over to our debate post file, and paste it into our use state.
+5:21
+Okay.
+5:21
+Now what do we want to keep?
+5:23
+Let's think about this step by step.
+5:24
+So ID, if it's gonna be this, I need to import that into this file as well.
+5:29
+So I'm gonna do that real quick.
+5:30
+And then, well, we don't want every user to be Tom the tech enthusiast, so let's just initialize that as an empty string.
+5:37
+Is anonymous.
+5:38
+I think it makes sense to initialize that as false.
+5:40
+And then comment text can be initialized as an empty string as well.
+5:45
+This is the formatting that a linter gave me, and I'll just leave it like that for now.
+5:49
+Okay.
+5:49
+So now we have this state set up called form data, and we can gain access to that state whenever we invoke the handle change function.
+5:56
+So let's just console log it for now.
+5:58
+Gonna change this back to value so we can experiment with the text fields first.
+6:03
+And now let's check this out.
+6:04
+Put in my name.
+6:06
+Open the console.
+6:07
+So we can see the initial state that we are setting up for form data plus the event target value every time there is a change inside of the input field.
+6:16
+And so now the question becomes how do we put these two things together?
+6:19
+Well, if we are going to update form data with this information here, we are definitely going to need this set form data function.
+6:28
+So let's bring that down here.
+6:29
+And now what do we wanna do with this?
+6:31
+Okay.
+6:31
+So remember, inside any state setting function, we can pass a callback function and that callback function automatically receives the current state, in this case form data, as an argument.
+6:43
+And if we want access to that argument, we need to give it a name.
+6:47
+So I'm just gonna call it currentData.
+6:50
+This is getting passed in to our function.
+6:52
+And then what do we want to return here?
+6:54
+Well, we want to return an object since that is what our state lives inside of.
+6:59
+So curly brackets.
+7:00
+And then I want to preserve all of the current data.
+7:03
+For example, that ID that I've generated.
+7:05
+So what I'm gonna do is inside of this object, I'm just going to spread out the current beta like so.
+7:12
+And the reason why the editor is yelling at me is because it doesn't know whether this is a bracket, meaning that the rest of my function is gonna come after it or if it's a bracket for an object.
+7:23
+So there's a few ways you can handle this.
+7:25
+I'm gonna do it by just enclosing the object in some parenthesis like so.
+7:31
+And now it stops yelling at us.
+7:32
+Okay.
+7:32
+So at this point, we've just copied over all of our current data.
+7:36
+But of course, we don't just want to copy the data.
+7:38
+We also want to update whatever data is changing.
+7:41
+And we have access to that data here.
+7:43
+So let's take that and put it in here like so.
+7:47
+And then remember, this is living inside of an object and an object consists of key value pairs.
+7:53
+This is gonna be my value but I also need a key.
+7:56
+And for the moment, let's just make that key be our username like so.
+8:01
+And now let's just test this out.
+8:02
+I'm gonna move this console log of the form data outside of the function so that it gets invoked every time this component is rendered.
+8:10
+And I'll get rid of this console log as well.
+8:12
+Alright.
+8:12
+Now let's see what happens.
+8:13
+Okay.
+8:14
+So we get that initial form data state.
+8:16
+That's looking good.
+8:16
+Now let's try typing in a name, Daniel.
+8:19
+And hey, look at that.
+8:20
+Daniel is in fact showing up as the username.
+8:23
+Fantastic.
+8:24
+However, there is a little problem.
+8:26
+Maybe you've already spotted it and it is this.
+8:28
+If I now come down here to this text area element and I type in my comment and we look back at the console, you can't see my scrolling in the console so I'm gonna copy the last entry into the editor.
+8:41
+You can see that it looks like this.
+8:43
+That text that I typed in the text area comment has now become my username.
+8:48
+And if you think about it, that makes sense because up here I've told the computer to do this.
+8:53
+So first of all, copy the current data over exactly as it currently is and then overwrite username with whatever the event target value currently is.
+9:04
+And if I'm writing in the text area, well the event target value is going to be blah blah blah and then that is going to become username.
+9:11
+So I need to be able to somehow distinguish whether this value is deriving from the username field or the comment text field.
+9:20
+And then I need this key here to dynamically change depending on which thing is the case.
+9:26
+So I know that I want some sort of variable here.
+9:29
+And when we're inside of an object, the way that I can insert a variable is using bracket notation.
+9:36
+And for the time being, I'm just gonna make a placeholder name here called some variable.
+9:41
+And now the question becomes how do I make some variable switch from either being username to comment text?
+9:49
+How do I do that?
+9:50
+Well, remember that we have access to this event object.
+9:54
+And this event object has all sorts of data inside of it.
+9:57
+There is the data for all of these things that we have stated here.
+10:01
+And then there are a number of other properties that we haven't tapped into yet.
+10:05
+One of them is the form elements name.
+10:08
+So we have a class name, but that's just for the CSS.
+10:10
+There is also just a plain name that we can make equal whatever we want.
+10:15
+And now the little trick that we can do here is we can make the name of this input equal whatever we want this variable up here to end up being.
+10:24
+In this case, that would be username since that is the key in this object that we are creating.
+10:30
+So I'm gonna put that in here as the name and then I'm gonna do a similar thing with this text area.
+10:35
+I'm gonna give it a name and I'm gonna make it be whatever I want this variable to end up being, which is the name of this key here, commentText, like so.
+10:44
+Okay.
+10:44
+So now the question becomes, how do we make some variable become the name of the current form element that is changing?
+10:52
+Well, this goes back to that event dot target and just like we have access to event target value, we also have access to event target name.
+11:01
+So I'm gonna replace some variable with event target name.
+11:06
+Let's get rid of this text from the console.
+11:08
+And now let's test this out.
+11:09
+Okay.
+11:09
+So we get that initial state.
+11:11
+I add my username.
+11:12
+That looks good.
+11:13
+And now comes the moment of truth.
+11:15
+I'm gonna add my comment and oh, there we go.
+11:17
+You can see in the console that we get blah blah blah for the comment text and it's not overwriting my username anymore and both pieces of data are going to the right places inside my object.
+11:28
+Object.
+11:29
+Fantastic.
+11:29
+Alright.
+11:29
+So now we just have to worry about this checkbox.
+11:33
+And as you can see, I just clicked the box and the value goes to on whenever I click it.
+11:40
+And if you look at it carefully, you can also see that there's no actual key name being associated with it.
+11:44
+So let's take a look at this next.
+11:46
+So first of all, I know that just like before, I'm gonna have to add a name to the checkbox input.
+11:52
+I'm gonna make that name equal whatever the name is in the object.
+11:56
+In this case, is anonymous.
+11:58
+And now let's see where that gets us.
+12:00
+So now if I click the checkbox, you can see that is anonymous is updating, but it's just updating with the word on, which isn't what we want.
+12:09
+What we want is the checked property of the checkbox, not the value.
+12:13
+So we're gonna need to make an adjustment up here in the new object that we are creating.
+12:18
+And this is maybe the trickiest part of this whole operation, but let's just take it step by step.
+12:23
+So first off, we have event target name and that is totally fine because that is always gonna equal whatever we want it to be.
+12:30
+It's always gonna be the name property of the form element we are currently changing.
+12:35
+It's this bit here that we need to change because if the target is the input or the text area, well then this is what we want.
+12:43
+But if it is the checkbox, in that case we want the event target checked property.
+12:48
+So we want either value or event target checked.
+12:52
+And this is getting a bit long now so let's move this on to another line.
+12:56
+Okay.
+12:56
+So what I'm saying here is make event target name, whatever that is, make the value of that key be either this or this.
+13:04
+And so the way I'm thinking about this right now is that if event target valued, if it's a falsy value, then we should ignore this and go to this instead.
+13:13
+And then that will become the value of our key.
+13:15
+So let's test this out.
+13:17
+Click the checkbox and, uh-oh, you can see that we are actually getting is anonymous on still.
+13:23
+And actually, now that I think about it, that makes sense because our checkbox does in fact have a value and that value is the string on.
+13:31
+So this doesn't quite work.
+13:32
+We need some other way of selecting between two values.
+13:36
+And one common way we can do that is by using a ternary.
+13:39
+So we want either this in one case or this in the other case.
+13:44
+And now the question becomes, okay, what is the condition that we are checking?
+13:48
+Well, one thing that we can check for is what is the type of the form element that we are dealing with.
+13:55
+Only the checkbox has the type of checkbox, so let's use that one as our condition.
+14:01
+So up here I'm going to ask is event target height is that not equal to checkbox?
+14:08
+In other words, is it anything other than checkbox?
+14:11
+If so, make the value attached to this key here the event target dot value.
+14:16
+Otherwise, in the case that it is a checkbox, make it the checked property.
+14:22
+And if this sort of negative logic is hurting your head a little bit, I would actually agree with you.
+14:27
+But let's actually reverse this.
+14:28
+I'm gonna say, is the type equal to checkbox?
+14:31
+In that case, make it equal to checked.
+14:34
+Otherwise, make it equal to value.
+14:37
+Same thing as before, only in reverse.
+14:39
+Okay.
+14:39
+Now let's test this out.
+14:40
+Let's try username.
+14:42
+K.
+14:42
+That looks good.
+14:43
+Comment text.
+14:44
+That looks good.
+14:44
+And now the moment of truth.
+14:46
+Post anonymously.
+14:47
+Set to true.
+14:47
+Click it again.
+14:48
+Set to false.
+14:49
+True.
+14:49
+False.
+14:50
+True.
+14:50
+With all of our other data being perfectly preserved.
+14:53
+Fantastic.
+14:54
+We are well on our way to completing this challenge now.
+14:57
+All we need to do now is think about this send button and how we are going to get this form data that we've saved in the state over to our comments, and then get our new comment rendered onto the page.
+15:09
+Well, to do anything, we know that we definitely need to make this button functional.
+15:22
+Handler, but that's not actually what we wanna do in a form.
+15:25
+Instead, what we wanna do is come up to the form tag itself and add an on submit handler.
+15:32
+And when we have a button inside of a form, it's going to automatically be associated with that form itself and the on submit handler that we attached to it, much like an HTML.
+15:42
+Okay.
+15:43
+So I know I want to make this equal some sort of function and I'm just gonna call it handle submit.
+15:49
+And now I need to actually create that function.
+15:52
+Okay, now what do I want this function to do?
+15:54
+Well, we have our formData available to us now, and we can rest assured that it's always going to be updated properly.
+16:00
+And now what we need to do is we need to take this formData and push it to the array where our comments are living.
+16:07
+So remember, that array is postData dot comments, which is being imported into our file.
+16:13
+So I am going to push our form data into that array like so.
+16:17
+And let's change our console log now to console log the post data dot comments array just to make sure this is working properly.
+16:25
+Okay.
+16:25
+Moment of truth.
+16:26
+And, uh, well we have something in the console or we had something but it's gone now.
+16:31
+And that is because our page refreshed and remember that is the default behavior of a form when a user submits it.
+16:39
+To prevent that default behavior from happening, we need to do something.
+16:43
+Alright.
+16:43
+So here's what we can do.
+16:44
+A lot like our onChange handler, our onSubmit handling function automatically receives an event object as an argument.
+16:52
+So we can gain access to that up here by writing event.
+16:56
+And then inside of our function, we can say event prevent default.
+17:00
+And that should take care of that refresh problem.
+17:02
+Alright.
+17:03
+Let's test this out again.
+17:04
+No refresh.
+17:04
+Fantastic.
+17:05
+Let's look at our array.
+17:06
+And sure enough, I see blah blah blah in there.
+17:09
+However, I don't see it on the actual comment thread, so let's take a look at that next.
+17:15
+So we have updated this array, but this is another situation where React has no idea that anything has happened.
+17:22
+We need to make it aware that something has happened And we can do that by updating the state.
+17:28
+So remember, we have this state up here called comments, which is where that comments array is coming into the app.
+17:33
+And then a bunch of things are happening with it down here that we don't need to worry about.
+17:37
+And so what we wanna do is we want to set comments and update that state.
+17:42
+So let's do that.
+17:43
+Okay.
+17:43
+So what do I want to set it to?
+17:45
+Well, remember this comments array has already been updated thanks to our push.
+17:50
+And so really we can just overwrite what we currently have in there with the new version of the array.
+17:56
+So let's do that here.
+17:58
+And let's test this out.
+17:59
+Nothing actually happened in the comment thread.
+18:02
+But if we look at the console, we can see that, okay, we did update it.
+18:05
+You can see in the bottom right corner that we have that comment text blah blah blah.
+18:09
+So something's up here.
+18:10
+And if you're not sure what's going on, I want you to pause here for a moment and try to think about this.
+18:15
+Why isn't this working?
+18:17
+Okay.
+18:17
+Well, here's the thing.
+18:18
+So right now, we are pushing the form data to the post data array.
+18:24
+And then after that, we are updating the comments state array to be the new version of the comments array that gets created after we do this pushing, or at least that is the underlying logic of what I was trying to do here.
+18:38
+However, there is a little problem, and the problem comes down to this.
+18:41
+So if we go up to the top here and we look at how the comments state array is being initialized, well, it's being initialized as post data comments.
+18:50
+And so because of the way that arrays work in JavaScript in general, the variable comments and post data dot comments are referring to the same array.
+19:01
+Or in other words, they are two different names for the same thing.
+19:05
+And so as a result, when we push formData to the comments array inside of the post data object, we are also, in the process of doing that, pushing the data to the comments array.
+19:16
+Or in other words, we are mutating the state array.
+19:20
+And you may have heard before that you are not supposed to mutate state.
+19:24
+And this is a case in point of why it leads to some weird results.
+19:28
+In this case, when we update the comment state array, well, because this array and the comment state array are the same arrays, just going by different names, React compares these two things, the current version of the comment state array and the new version of the state array that we are trying to create with this state setting function, and it notices that those are the exact same things.
+19:51
+And since the data for the array has already been updated here, well, from its perspective, what we're doing here is redundant.
+19:57
+We are trying to update the state array to be the same thing that it already is.
+20:02
+And so as a result, React is going to just ignore this state update, and it's not going to rerender the page.
+20:09
+And so as a result, even though the new data ends up in our underlying array, we do not see it on the page because React is not rerendering.
+20:17
+So how do we avoid this?
+20:19
+Well, one simple thing that we can do is we can just come into our state setting function and put this inside of a new array and then spread out our comments array from the post data object into that new array.
+20:32
+And now even though the content of this array here and the comments state array are going to be identical, these are going to be two different arrays that happen to have the same data inside of them.
+20:44
+And so React is going to perceive these as two different states, and it is going to rerender the page.
+20:50
+And this should actually make the app work.
+20:53
+Let's go give it a test real quick.
+20:56
+Blah blah.
+20:57
+And I post it, and there we go.
+20:59
+Okay.
+21:00
+So that is working now.
+21:01
+However, if we wanted to be even more in keeping with the standard best practices, what I really should have done here is when I initialized this state array, I should have done the same trick up here where instead of just using this array directly, I spread it out into a new array, thereby creating a little clone of it.
+21:20
+And this should work in much the same way as before.
+21:24
+Okay.
+21:24
+We are in business.
+21:25
+Alright.
+21:25
+What else do we still have to do here?
+21:27
+For starters, at the moment, if I want to, I can come down here and post empty content.
+21:32
+We don't want to allow that.
+21:34
+And the way we can prevent it is by simply making the input and the text area be required elements of the form.
+21:42
+Okay.
+21:42
+So that takes care of that.
+21:43
+Another thing that we haven't done here is that the form should be a controlled form.
+21:48
+And at the moment, it is not controlled, and that is because these elements have their own source of truth.
+21:54
+Instead, we want to dictate that truth using our state, specifically our form data state.
+22:00
+So what I'm gonna do down here is I'm going to make the value of our input be the form datas, and then same thing for the text area.
+22:10
+The value of that, I'm going to make the comment text.
+22:14
+And then this last one here is a little bit trickier.
+22:16
+So remember, this is a checkbox.
+22:18
+And to control a checkbox, we don't want to control the value.
+22:22
+Instead, we want to control the checked property.
+22:25
+And so that is going to be the form data's is anonymous property.
+22:29
+Okay.
+22:30
+Now what else do we still have to do?
+22:32
+Oh, yeah.
+22:32
+The inputs and the checkbox should clear out after the user submits a comment.
+22:37
+So let's think about how we can do that.
+22:39
+So, basically, we want the inputs to clear out right after the user clicks the submit or send button.
+22:46
+In this handleSubmit function, what I'm gonna do is right after we update the comments state array, let's also update the form data state object.
+22:56
+And then the way that we want to update it is we basically want to wipe the slate clean.
+23:01
+And we want to go back to the initial way that the state was, which is like this.
+23:06
+Because remember, in the initial state, the username and comma text are empty strings and the is anonymous is set to false.
+23:13
+And these properties are now in charge of our form elements down here.
+23:17
+And so if username is set to an empty string, well, then it's also gonna be an empty string in the form itself.
+23:24
+So if we wanted to, we could just take this whole thing, and we could paste it in down here, like so.
+23:30
+Let's get rid of this console log.
+23:31
+And this would actually work, but it also isn't very dry.
+23:36
+So what I'm gonna do is I'm gonna take it, and I'm going to store it in a variable that I am going to call, let's say, default form data.
+23:45
+And I'm gonna set that to equal that whole object.
+23:48
+And now I'm gonna come here and I'm gonna replace it with that variable.
+23:52
+And then I'm gonna do the same thing down here.
+23:55
+And let's just make sure this is still working.
+23:58
+There we go.
+23:58
+Fantastic.
+23:59
+And now let's just make sure we can add additional comments as well.
+24:02
+Here comes the final test.
+24:04
+Big moment of truth.
+24:05
+Will this work?
+24:06
+Three, two, one.
+24:07
+And hey.
+24:07
+Hey.
+24:08
+There we go.
+24:08
+So we could just keep adding comments all day and thereby turn this social media site into something almost as fun as Twitter itself.
+24:17
+Anyway, that brings us to the end of this challenge.
+24:19
+Give yourself a big pat on the back for reaching the end, and I hope to see you again in another challenge soon.
+24:25
+In the meantime, happy coding, and goodbye for now.
