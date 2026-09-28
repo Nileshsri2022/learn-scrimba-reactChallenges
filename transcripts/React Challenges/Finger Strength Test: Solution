@@ -1,0 +1,181 @@
+Transcript
+0:00
+There.
+0:00
+I hope that challenge went well for you.
+0:01
+Let's go over it together now.
+0:03
+So since everything in this app is revolving around whether or not the user is inside of the button and holding it down.
+0:11
+My first temptation here is just to jump straight into setting the button up, doing my event handlers and all of that.
+0:18
+However, I know that what these event handlers are going to be doing is setting certain states, and those states are missing at the moment.
+0:26
+So logically, the first thing that I should be doing here is actually setting up my states.
+0:30
+So I can't update a state if I don't have it in the first place.
+0:34
+So let's start by doing that.
+0:36
+I know that right now this try block is failing to execute, which is why this catch block and the console message are being executed.
+0:45
+If the try block is failing, that must mean there is an error.
+0:48
+And since the only thing in inside of our try block is this useEffect, well, the error must be happening inside of there.
+0:57
+Now I know that the error must be happening because of the missing states, and so that means that our useEffect must be looking for those states at some point and then not finding them, which results in an error.
+1:10
+And I also know that if a useEffect depends on a state in order to function correctly, then that state, or multiple states if it depends on more than one state, should be inside of the useEffect's dependency array.
+1:25
+And that dependency array comes at the very end of it.
+1:28
+So that would be this bit here.
+1:30
+And sure enough, inside of that array, I see not one but two states, a cursor in button state and a button held down state.
+1:39
+And I can see that those two states are being checked here and here, for example, and one of them is also being updated here.
+1:47
+So I know that these two states need to be in place for this useEffect to work, and the only state right now is the time count state that our hacker kindly left behind for us.
+1:59
+So those must be the two states that we need.
+2:02
+So first and foremost, I am going to declare those two states up here.
+2:07
+I need a state for cursor in button.
+2:11
+And let's initialize this state as false because we can assume that when the app is initialized, the user's cursor will not be in the button.
+2:22
+Now we also need a button held down state and this one I am also going to initialize as being false because we can also assume that the button is not gonna be held down when the app gets initialized.
+2:37
+So that takes care of setting up these two states, and now we just need to update them in response to certain events.
+2:44
+So first, we want to check, is the user's button actually inside of the button or not?
+2:50
+And if it is or if it is not, we want to change this state here from being true to false or false to true.
+2:58
+So let us copy this and go down to where our button lives.
+3:02
+And I'm going to open this up so we can work inside of it.
+3:06
+And now I want to listen for on mouse enter.
+3:10
+If the mouse enters the button, set my cursor in button state to true.
+3:16
+I am also going to be listening for on mouse leave, which is gonna be triggered anytime the cursor leaves the button.
+3:24
+So this one is going to be exactly the same as our previous one, only this time we are going to be setting the state value to false.
+3:34
+Okay.
+3:34
+So that should take care of our cursor in button state.
+3:38
+Now we just need to do our button held down state.
+3:41
+So we'll need the set button held down function.
+3:44
+And here, what we are gonna be listening for is whether the mouse button is down or whether it is up inside of the button.
+3:53
+So let's go back down to our button, and we are going to add on mouse down.
+3:59
+Set the button held down state to be true.
+4:02
+However, if the mouse goes up, so on mouse up, we are going to do the same thing only in reverse.
+4:11
+Set the button held down state to be false.
+4:14
+And that should do it.
+4:15
+Now comes the big moment of truth.
+4:17
+Will this work?
+4:17
+Let's see.
+4:18
+Drum roll, please.
+4:19
+Three, two, one.
+4:20
+And Hey.
+4:21
+Hey.
+4:21
+There we go.
+4:22
+Thermometer is going up.
+4:24
+The timer is counting.
+4:25
+We are almost to the top.
+4:27
+Oh my gosh.
+4:28
+Amazing.
+4:29
+Oh my god.
+4:30
+Oh my god.
+4:31
+Oh my god.
+4:31
+So strong.
+4:32
+And that guy just can't.
+4:34
+He is dead.
+4:35
+And wow.
+4:35
+I must be really strong.
+4:37
+Alright, so that does it for the main challenge, but I am itching to do that bonus challenge now.
+4:43
+So I just want to go through that really quick.
+4:45
+So the way that we can condense all of these functions into two functions and then even further into one function is this.
+4:53
+What we are basically doing with each of these pairs of functions, so the two versions of the set cursor in button function and the two versions of the set button held down function is we are just toggling a boolean state value back and forth from true to false or false to true.
+5:12
+And so what we can actually do here is instead of writing out two functions like this, we can write a single function called toggle cursor in button or whatever you wanna call it.
+5:25
+And I wanna define that up here.
+5:26
+And then what I want this function to do is I want it to set the cursor in button state be whatever is the opposite, so I need the logical not operator, whatever the opposite of the current cursor in button state is.
+5:43
+And so let's just think about this for a moment.
+5:45
+The state is initialized as false, and then the user's mouse enters the button is going to execute this function, and that is going to set the cursor in button state to the opposite of what it currently is, which is going to be true.
+5:58
+So now our state is true.
+6:00
+And if the user now leaves the button, that's gonna execute the function again.
+6:04
+Only this time, the cursor in button state is true.
+6:08
+And so the opposite of true is false, and that is what the new cursor in button state value is going to be.
+6:15
+So if you didn't do this yourself, I'm gonna give you a chance to complete the rest of this bonus challenge.
+6:21
+You can do the same exact thing with the on mouse down and on mouse up event handlers.
+6:28
+And then once you've done that, if you want to condense all of these functions into a single function, well, what you could do then is just write a single function called toggle.
+6:38
+And then within that toggle function, you could somehow specify which state it is that you want to be toggling.
+6:45
+I am being purposefully vague here because I want to give you a chance to figure that out on your own.
+6:51
+I think there are actually multiple ways of doing this and I want to see what you come up with.
+6:55
+So please do feel free to share your results with the scrimba community.
+6:59
+Also, just keep in mind that doing this bonus challenge isn't necessarily the best way of writing this code.
+7:06
+In fact, I think that the way that we had this originally is perfectly fine, and I think that just doing two toggle functions is probably better than having a single toggle function because it makes our code more readable.
+7:19
+This is really just a fun little logical exercise for you.
+7:22
+Anyway, good luck with doing the bonus challenge if you choose to do that.
+7:26
+And in any case, I hope to see you again in another challenge soon.
+7:29
+In the meantime, happy coding, and goodbye for now.
