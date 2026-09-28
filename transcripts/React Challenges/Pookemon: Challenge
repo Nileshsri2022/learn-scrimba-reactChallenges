@@ -1,0 +1,137 @@
+Transcript
+0:00
+Welcome to this challenge and welcome to Pokemon, a video game featuring everybody's favorite Pokemon character, Pukechuu.
+0:07
+Alright.
+0:07
+So let's get this game started.
+0:09
+I press any one of these buttons down here and oh no, Pukechuu has been locked away in prison.
+0:14
+So I have some good news and bad news.
+0:17
+The bad news is if I come over to this control pad, and I try to click on this button here, or if I press down on the right arrow on my computer keyboard, well, Pikachu will face the direction that I want him to go, and he will move his little legs, but he won't actually move anywhere.
+0:34
+Same thing if I try to go up, down, or to the left.
+0:37
+Now there comes the good news.
+0:38
+Pikachu has a very special ability, and that is the ability to, uh, let's say, eject bombs behind him, and you can do that by clicking the a button or pressing the a key on your keyboard, and then you can ignite the bomb with the b button.
+0:54
+And don't worry, these bombs cannot hurt Pikachu.
+0:58
+Pikachu is invincible.
+0:59
+Now if we could move Pikachu to this door, then we could probably blow it up, and then Pikachu could escape.
+1:06
+But first, he's gonna need to be able to get over there, and that is the challenge.
+1:11
+Okay.
+1:11
+So to understand this challenge, there is a whole lot of code going on in this app, but most of it you don't need to really understand.
+1:19
+You really just need to focus on two different states.
+1:22
+The first one is this pookachoo state here, which is initialized as an object with four different properties.
+1:29
+The first two are the x position and the y position, and that determines where Pikachu is positioned relative to the prison that he's inside of.
+1:38
+So this is his position on the x axis and this is his position on the y axis.
+1:44
+And if I change these values to, let's say, fifty eight and fifty, well, you can see that that really changes Pikachu's position.
+1:51
+So let's go back to having him be in the center, and then these other two properties have to do with the direction that Pikachu is facing.
+1:58
+So this could be down, up, left, or right.
+2:01
+And if I change this manually to up, for example, well, now Pikachu is facing up.
+2:05
+Or I could make this right, and then I could also change the wants to move property to true.
+2:10
+And this sends a signal to the app that Pikachu or the user currently wants to move in whichever direction is specified here.
+2:18
+So if this is set to true, then what's gonna automatically happen is that Pikachu's little legs are going to start moving.
+2:26
+So let's reinitialize this the way it was.
+2:28
+And these two properties here are already getting updated for us automatically.
+2:32
+I can show that to you by console logging.
+2:36
+And now if we run the code, well, we see the initial state in the console.
+2:40
+And if I try to go right, this direction is right.
+2:42
+If I try to go left, this direction is left, up, down.
+2:45
+And as long as I keep this button down, the wants to move property is set to true, and the moment I lift my finger, it gets set to false.
+2:53
+Okay.
+2:54
+So these two properties are getting updated already, and it's these two properties that need to get updated in order for Pikachu to move.
+3:02
+Now when this wants to move state property is turned to true, that is going to trigger a bit of code that lives down here.
+3:09
+Right above the challenge text, I have this useEffect that is listening for any changes in that property value.
+3:16
+And if it detects a change in that value and if the value is set to true, then it is going to put in place a set interval that is going to invoke this update position function every five milliseconds.
+3:29
+And what we want this update position function to do is we want it to increase or decrease one of these values here.
+3:37
+Let's say Pikachu is facing to the right, and he wants to move.
+3:42
+And so that update position function is getting invoked, and then that function in turn is going to increase this value here by one every five milliseconds.
+3:50
+And so this is quickly gonna go higher and higher and higher until it reaches one hundred ninety.
+3:56
+As you can see at this point, Pikachu has reached the wall.
+3:59
+And so if we were to continue to increase this exposition, let's say to two hundred and twenty, well, now Pikachu is going off the screen, and it's breaking the illusion of him being trapped inside of the prison, and so we don't want that to happen.
+4:14
+We want him to stop at one hundred and ninety.
+4:17
+And that brings me to one other state that you need to know about, boundaries.
+4:21
+This is being initialized as prison boundaries, and prison boundaries lives up here.
+4:26
+And this is just an object that tells us what are the minimum and maximum values that Pikachu is allowed to go on the x axis and y axis.
+4:37
+And so the idea here in a nutshell is that you are going to be either increasing or decreasing one of these values depending on the direction that Pikachu is traveling if and only if doing so would not cause him to go past his boundaries.
+4:52
+If he has reached his limitations, for example, if he's already at one ninety and he's trying to go right, well, then we just want him to do this.
+5:00
+He can continue moving his legs, but he's not gonna go anywhere.
+5:03
+So reinitializing this the way it was before, and get rid of this console log, and going back to the challenge.
+5:10
+Now this is all gonna make a lot more sense to you, and it's gonna look a lot less overwhelming.
+5:15
+So this table here is just summarizing what all of those different properties are that we just went through, and it gives a little summary of what they're about over here.
+5:23
+This is really just for reference purposes.
+5:25
+And then the instructions are over here.
+5:28
+And the way to read this is that if Pikachu's direction is that he is facing to the right, then the target property or the thing that you might be wanting to change about the pookachoo state object is his x position.
+5:41
+And the boundary or limit that you want to check is going to be the maximum value of the boundaries x axis.
+5:49
+And if pukaChoo's current x position, when the update position function gets invoked, is less than this maximum value, then we want to update that target value, in this case, Pikachu's x position, by taking the current x position, for example, one hundred, and adding one to it.
+6:07
+On the other hand, if Pikachu is already at this limit, then we do not want to change his current position.
+6:14
+Instead, we want to preserve it along with all of Pikachu's other state properties.
+6:18
+So all of this is what the update position function should be doing once you have completed it.
+6:24
+And once you've done that, you should be able to move Pikachu in any direction while staying inside of the boundaries of the prison, and that should enable you to escape the prison by blowing up the door.
+6:35
+Oh, and one other thing, I have created some background music and sound effects, which I think are kind of fun, but if they are annoying you, you can turn them off by pressing this button here at any time.
+6:45
+Anyway, I'm gonna hand this over to you now.
+6:46
+Need some hints.
+6:47
+I've left some for you up here, and I will see you again soon to go over the solution together.
+6:52
+In the meantime, happy coding, and good luck with this challenge.
