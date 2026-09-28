@@ -1,0 +1,275 @@
+Transcript
+0:00
+Hey, welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+I am just going to take these one by one starting with the first task which is all about adding that faded class name to the image of the plus sign over here.
+0:14
+And I'm going to approach this task in reverse starting with the end result and then reverse engineering a solution.
+0:23
+And what I mean by that is I'm just gonna come down to this image element and then I'm just gonna think about, okay, how can I add this faded class name conditionally?
+0:33
+Well, if I want to do any sort of conditional logic, I need to use some JavaScript here.
+0:37
+And to use JavaScript, I need to put this all inside of curly brackets like so.
+0:43
+And then I'm going to change the quotations to backticks because that is going to turn this into a template literal, which is going to allow me to interpolate stuff inside of here.
+0:54
+So the thing that I ultimately want to interpolate is the string faded, and I only want that string to be interpolated if the input, this guy down here, is in focus.
+1:06
+Now, I'm not sure how I'm gonna do that yet, but I am just going to imagine that I have figured it it out and I have some sort of variable or something that tells me whether or not the input is in focus.
+1:18
+So I'm just gonna put a placeholder variable here called input is in focus, which I guess we could shorten to input in focus.
+1:27
+And then I'm gonna do a double ampersand style conditional here where if this is true and this will get added, whereas if this is false, this won't get added.
+1:36
+Okay.
+1:36
+Now I need to actually set up a variable called input in focus.
+1:40
+And for the moment, I'm going to set this up as false since initially the input isn't in focus.
+1:46
+So let's just check if this is working and not throwing any errors.
+1:50
+Before we move on any further, I click run and nothing happens.
+1:54
+That's good.
+1:55
+And now let's go back to input in focus and change this to true.
+2:00
+And now if all goes well, input in focus will be true, and so this class name will get added to our list of class names.
+2:07
+Little moment of truth here.
+2:09
+Will this work?
+2:09
+Three, two, one, and Hey, hey, there we go.
+2:12
+Okay.
+2:12
+Now let's think about how we actually want to change this variable because, of course, we don't want to be doing it manually.
+2:18
+We want it to happen automatically or dynamically in response to the user's behavior.
+2:24
+And anytime we have a situation where something is changing because of the user's behavior and that something that's changing is a value, like a boolean value in this case, and any time a change in that value causes a change in what we want to have rendered onto the screen, the class name of this image in this example.
+2:45
+But we know that we are dealing with something that should be living as a piece of state.
+2:52
+So instead of just declaring this as a normal value, I'm going to change it into a state, and I'm gonna create a set input in focus.
+3:01
+And then this is going to be use state that I'm going to initialize as false.
+3:06
+And so now this should be working exactly the same as before.
+3:10
+Right now it's false, so that's dark.
+3:12
+If I change this to true, well, now it is faded.
+3:14
+But the nice thing about this is now we had a state setting function that we can update in response to the user's actions.
+3:22
+So I'm gonna turn this back to false and then think about how do we check whether or not the input is in focus.
+3:29
+Well, hopefully, you either knew this already or if you didn't, you did some Googling, which is actually exactly what I had to do in order to set up this challenge.
+3:38
+In any case, the solution is going to look like this.
+3:41
+So I'm gonna be listening for two different types of events.
+3:45
+One is called on focus, which is gonna get triggered whenever the input is in focus.
+3:51
+This one's a bit self explanatory.
+3:53
+The next one is a little bit stranger.
+3:55
+It's called on blur.
+3:57
+Don't ask me why it is called this.
+3:59
+I actually don't know off the top of my head, but it's basically just telling us the input is out of focus, which I guess the opposite of being in focus is being blurred, sort of like how a camera can be in focus or blurred.
+4:11
+I don't really know.
+4:12
+All I know is that onBlur is the opposite of onFocus and it is listening for the input going out of focus.
+4:20
+So now that we are actually listening for those events, we can use the events to do the thing that we want to do, which is change this value to true or false depending on which event is happening.
+4:32
+So if the event that is happening is that the input is going into focus, we want to set input in focus to be true.
+4:42
+Whereas if the input is going out of focus or it is going into blur, then we want to do the opposite.
+4:49
+We want to set input in focus to be false.
+4:53
+And if all goes well, that should actually take care of task number one.
+4:56
+Here comes the moment of truth.
+4:58
+What happens when I click on the plus sign?
+5:00
+Hey.
+5:00
+Hey.
+5:01
+There we go.
+5:01
+The plus sign becomes faded.
+5:03
+And if I click outside of the input and it goes out of focus, the plus sign goes back to being dark.
+5:09
+Fantastic.
+5:10
+And if we wanted to, we could actually create a single function for both of these event handlers called toggle input focus or whatever you wanna call it.
+5:20
+And then I could define that up here.
+5:23
+And then what I want this function to do is take whatever the current value of the input and focus state is, and I want it to flip it to the opposite value, which is essentially what we were doing down here.
+5:37
+Only now we're doing it in a more compressed and concise sort of way.
+5:41
+Alright.
+5:41
+Now I wrote this code up here just so that we could see it while looking down here at the same time, but I think it would make more sense for this state to live up at the top of the component right next to the other states.
+5:55
+So let's put it there.
+5:56
+And I think it would make sense to move this function to where the other functions are as well.
+6:02
+So let's just put it right here.
+6:03
+Okay.
+6:04
+Now let's look at the other two tasks.
+6:06
+So task number two is that when the user has added a new item to do the to do list, the text input element should be cleared of text and become empty again.
+6:17
+Okay.
+6:17
+So if I come up here and I look at that code that I said that you should take a look at in order to understand what's happening and how you can solve the problems at hand, I can see that there is a function called handle enter, which I'm gonna assume has to do with the user hitting the enter button and adding a new item to the to do list.
+6:38
+And I can see that this function is doing a few different things, one of which is setting a state called listData to include something called a new list item now this doesn't seem directly relevant to the challenge so I'm gonna keep going.
+6:53
+And, okay, this is just more of that set list data function.
+6:56
+I don't need to worry about that.
+6:57
+But, uh, down here I see something that is relevant to me.
+7:01
+I see that there's a state setting function called setNewItemInput and it is setting the new item input to be an empty string which is exactly what we want the input field to be However, for some reason the input field isn't actually becoming an empty string after the user clicks the enter button.
+7:21
+So that makes me wonder why is that happening.
+7:23
+To figure that out, I'm going to go down to the actual input and take a look at it.
+7:28
+And that is down here.
+7:30
+So this is our input for the text.
+7:33
+I can see the on focus and on blur event listeners that we added earlier.
+7:37
+And as I look through this, I can see that we are missing something that is often very important in React whenever we have input or form elements.
+7:47
+If you weren't able to figure out what it is, I'm gonna give you a chance to pause real quick and take a look and see if you can figure it out on your own.
+7:55
+Three, two, one, and okay.
+7:58
+I'm back.
+7:58
+And the answer is that we are not controlling the value of the input.
+8:02
+Or in other words, state is not in control of the element.
+8:07
+We want the value of this input to be that new item input that we are setting up here.
+8:14
+The state in question here is called new item input which is living up here.
+8:19
+It's also initialized as an empty string.
+8:21
+However, down here in our input, well, our input has no idea what the value of that state is, and so it's not reflecting that state.
+8:30
+It has its own truth.
+8:32
+The state is not in control of its truth.
+8:34
+And so to change that, all we need to do is write value and then set the value to be the new item input state.
+8:43
+And so now when the user clicks the enter key, this state is going to become an empty string because of that code we looked at earlier.
+8:50
+And then the value of the input is going to become that state, which is an empty string, and so the input itself is going to become empty as well.
+8:59
+And let's just confirm that this is working.
+9:01
+Gonna enter something and here comes another moment of truth.
+9:06
+What happens when I hit the enter key?
+9:07
+Three, two, one, and Hey.
+9:09
+Hey.
+9:09
+There we go.
+9:10
+The item got added to my list and the input field got cleared out, meaning I can quickly type more stuff and more stuff and more stuff and more stuff and there you have it.
+9:21
+Okay.
+9:22
+Now I have a whole lot of things to accomplish.
+9:24
+I need to call my brother.
+9:25
+I need to a guy yav faka god and adivakad def.
+9:29
+Not really sure how I'm gonna do some of those things, but I don't need to know how to do them because I have the autocomplete button.
+9:35
+So I click the autocomplete button and well, they do get crossed off, but the buttons aren't getting checked so let's take care of that next.
+9:43
+And so once again, I'm going to work backwards.
+9:46
+I'm gonna think about, okay, what is happening at that moment when the items get crossed out and what can we do on top of that event to make the thing that we want to happen happen.
+9:57
+And if we take a look at where these elements are actually being generated, which is down here where we are mapping over the list data, we can see that in this bit of the code here we are looking at whether the item's complete property is true and if it is then we are adding this crossed out class to it.
+10:18
+So that is working fine.
+10:20
+However, if I look at the input itself, in this case a checkbox input, I can see that just like that other text input that we looked at a bit ago, it is not a controlled element either.
+10:31
+It is currently in charge of its own truth.
+10:34
+And so to make the input reflect the complete property in the state array, what we need to do is come into the input.
+10:42
+And this time, instead of value, which is what we would do for a text input, we need to look at its checked property.
+10:50
+And we need to set that to be equal to the item dot complete property of the underlying data object.
+10:57
+So if it is complete, this will be set to true and the input will be checked.
+11:02
+If input dot complete is false, then the check property will be false as well.
+11:07
+And now the two things should be in sync with each other.
+11:11
+Okay.
+11:11
+Now comes the real moment of truth.
+11:13
+What happens when I add a bunch of things to my to do list and I click the autocomplete button?
+11:20
+Drumroll please.
+11:21
+Three, two, one, and
+11:26
+Hey, hey, there we go.
+11:28
+And if I come back up here and I uncheck something both the checkbox gets unchecked and the text gets uncrossed exactly as we want it to and if I check something manually the checkbox gets filled and the text gets crossed out.
+11:43
+If I click the autocomplete button again, everything is in sync exactly the way we want it.
+11:49
+Alright, that brings us to the end of this challenge.
+11:51
+Hope you had fun figuring that one out.
+11:53
+It was a bit of a puzzle.
+11:54
+Anyway, I hope to see you again soon in another challenge.
+11:57
+In the meantime, happy coding, and goodbye for now.
