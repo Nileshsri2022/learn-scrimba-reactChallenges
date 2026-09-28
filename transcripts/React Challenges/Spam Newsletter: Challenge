@@ -1,0 +1,133 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to this sign up page for this spam free React newsletter.
+0:06
+So it's promising to teach you more tricks and tips on how to use React, and it is promising people that it will never spam them with click baity attempts to upsell them.
+0:16
+However, it is also very helpfully offering to teach them the one secret trick that the creators of React don't want you to know about.
+0:23
+Please click here to read more.
+0:25
+And if you click there, well, we pretend like we are sending the user to the landing page for the premium newsletter.
+0:31
+Anyway, what I want to show you is this field down here where the user enters their email address.
+0:37
+I'm going to enter daniel at gmail dot com.
+0:40
+Not my real email address.
+0:41
+Please don't email this, Daniel.
+0:43
+And then I'm going to press the subscribe button and, well, nothing actually happens.
+0:48
+And that is where you come in.
+0:50
+So here is what should be happening when the user clicks the subscribe button.
+0:55
+First of all, the user email state should be set to the string stored inside the user input state, and those are both living up here.
+1:04
+And the user input state is already taken care of for you.
+1:09
+Down in the actual input of this form, and that is what this app basically is.
+1:14
+It's just one giant form.
+1:16
+Inside of that input, we have an on change event handler.
+1:19
+It has a handle change function attached to it.
+1:23
+And then up here, we have that handle change function, and it is just setting the user input to be whatever the value of the event target is.
+1:32
+I used the abbreviation e for event.
+1:35
+So if I type Daniel into the input box, that is going to be what the user state currently is.
+1:41
+And so what I'm saying down here is that the user email state should be set to whatever that user input currently is.
+1:50
+So user email would become daniel at g mail dot com.
+1:54
+The second thing is the user input state should be set back to its initial state, which is an empty string.
+2:01
+So this user input state should be set back to an empty string that would look like this.
+2:07
+The end result of all of that happening is going to be this.
+2:11
+I click run and we get this response message saying thanks for subscribing to the newsletter.
+2:16
+I have the email address that I entered right here.
+2:20
+I'm also getting told that if I click the email's confirmation link in the next five minutes, I will receive a once in a lifetime opportunity to upgrade to the premium newsletter for only five dollars per month.
+2:31
+And I am also getting a chance to subscribe a friend.
+2:35
+So this is the same input as before, only it's been cleared out thanks to what we did here.
+2:41
+And now it's ready for me to subscribe someone else to the newsletter.
+2:45
+I am sure that my friend, Jimbo is going to love that I signed him up for this newsletter without his permission.
+2:51
+Okay.
+2:52
+So that takes care of two aspects of the challenge.
+2:55
+Let's go back to the way this was initially.
+2:57
+However, there is one last thing that you're gonna need to do, and that is that your code should run a case insensitive check of whether the email address the user has entered already exists in the email list array.
+3:10
+That array has been imported up here at the top of the file, and it exists in this data folder here.
+3:17
+We have a whole bunch of fake email addresses inside of here.
+3:21
+One of them being one of my best friends, testy mcctestersson at g mail dot com.
+3:27
+And so what I want you to do is I want you to check if the user's email matches any of the emails in that array.
+3:34
+That is a list of all of our current subscribers.
+3:37
+And if it does match one of those emails, then this duplicate state should be set to true.
+3:43
+Otherwise, it should be set to false.
+3:46
+Okay.
+3:46
+So let's imagine I enter testy mctestersen.
+3:49
+That is going to be the user input state here.
+3:53
+I click the subscribe button.
+3:55
+That is going to save that email address as the user email.
+3:59
+User input is going to be cleared.
+4:02
+And then since this email address already exists inside of the email list array, the duplicate state is going to be set to true.
+4:11
+And if that happens, I should get a different message that says, thanks again for subscribing.
+4:16
+The email address is already subscribed to the mailing list.
+4:20
+But I appreciate that you love my newsletter so much that you want to sign up for it again.
+4:25
+As a token of my gratitude, I am going to send you a one time offer to subscribe to my premium newsletter for only five dollars per month.
+4:33
+And then once again, I can subscribe my friend Jimbo if I want to.
+4:38
+So once you've written out your code, I want you to test your code with these three email addresses here.
+4:44
+Okay.
+4:44
+I'm going to reinitialize this.
+4:47
+This guy is null at the beginning, and this guy is an empty string.
+4:51
+Alright.
+4:52
+So this is ready for you now.
+4:53
+If you get stuck, I have left some hints for you in the top left corner of the Explorer.
+4:58
+I will see you again soon to go over the solution together.
+5:01
+In the meantime, happy coding and goodbye for now.
