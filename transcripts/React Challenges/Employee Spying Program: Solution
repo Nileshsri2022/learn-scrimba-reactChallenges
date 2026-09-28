@@ -1,0 +1,275 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+K.
+0:04
+So we are basically just tracking and, in some cases, modifying changes that happen inside of the text area.
+0:12
+So in order to be able to track and possibly modify any changes happening inside of the text area, we need to be listening for those changes first and foremost.
+0:22
+So let's go down to our text area, and let's add an on change event handler.
+0:28
+So on change, that is going to equal an event handling function.
+0:33
+I'm going to call it handle change and then I'm going to write out that function up here.
+0:39
+And I know that I definitely need the value of whatever the user types in here.
+0:45
+And to get that value, I'm going to need access to the event object that gets passed into this handle change function.
+0:53
+So I'm going to name it as a parameter up here, and then I'm going to access the value by writing event target value.
+1:01
+And let's just console log this to make sure it is working.
+1:05
+Is this working?
+1:06
+And yes, it is.
+1:07
+Fantastic.
+1:08
+Okay.
+1:08
+Okay.
+1:09
+Now I am ready for the main event, which is updating these two states up here.
+1:14
+So first, I'm going to update user input.
+1:16
+I need the set user input function for that.
+1:19
+So let's bring that down here.
+1:21
+And I want the value of user input to be whatever the user has typed.
+1:26
+So I'm just going to put this event target value inside of there and get rid of this console log now.
+1:32
+However, remember, if the user types the string evil corp, we want to replace that string with good corp.
+1:39
+So how do we do that?
+1:40
+Well, I'm gonna do it using a nifty little string method called replace.
+1:46
+And the way I'm going to write that out is like this.
+1:50
+There are two parameters to this method and the first one is for the substring within the overall string, in this case event target value, that you want to replace.
+1:59
+And then the second one is for the substring that you want to replace the first substring with.
+2:06
+So to put that in simpler terms, the way that you can read this is that I want to replace evil corp with good corp within the string that event target dot value points to.
+2:17
+Alright.
+2:17
+Let's see if this works.
+2:19
+I'm going to write evil corp.
+2:22
+I just need a period.
+2:23
+Drum roll, please.
+2:25
+Three two one and nothing.
+2:27
+And why is that?
+2:28
+Can you tell what I've done wrong?
+2:30
+I'll give you a couple seconds.
+2:32
+One, two.
+2:33
+Well, at the moment, text area has no idea what the user input state is, and it has no idea that I want it to reflect the value inside of that state.
+2:44
+And that is because this text area element is currently uncontrolled.
+2:49
+So to fix this, I need to make my text area a controlled element and the way that I do that is by writing value equals and then the state that I want to be in control of the element, which in this case is user input.
+3:03
+And so now if I do this, well, if I write evil corp without the period, what the user types happens to correspond to what the value of user input is, and so that is the value that gets inserted in the text area.
+3:19
+However, if I now put in a period, well, there you go.
+3:23
+So behind the scenes, our set user input function here replaced the word evil corp with good corp.
+3:30
+That became the value of user input, and user input is the value of our text area.
+3:36
+And so that is what we see inside of the text area.
+3:39
+Fantastic.
+3:40
+Alright.
+3:40
+Now we can worry about our other state, our tracking reports.
+3:44
+So I'm gonna take set tracking reports, put that down here.
+3:48
+And now this one is a little bit trickier because, well, I could just go straight in here and say that I want tracking reports to be an object, and that object is gonna have these three properties up here.
+4:00
+However, remember that tracking reports is an array, and I'm adding these objects to the array.
+4:06
+And at any given moment, there may or may not be tracking reports inside of the array.
+4:11
+And if there are reports in the array, I want to preserve them.
+4:15
+So the way I'm gonna do that is like this.
+4:18
+First, I'm going to take the previous backing ports and I am going to spread them out into a new array like so.
+4:27
+And then at the end of all those previous reports, I'm going to add on my new report.
+4:33
+And if there happened to be no previous reports, well, this won't spread out anything, and then this will become my first report.
+4:41
+And I'm going to open this up onto another line and start writing my object in this space here.
+4:47
+So now I need these properties.
+4:49
+I need timestamp, which is going to be the return value of the get timestamp function.
+4:54
+So I'm just going to invoke that function here and then let this function do its magic.
+5:00
+My next property is employee input, and this is another little bit of a tricky one.
+5:05
+So my first instinct here would be to write user input, But remember, user input is being updated up here, but that update won't go into effect until this entire function has invoked.
+5:18
+It's gonna be inserted later on into the queue of things that the browser is going to do.
+5:22
+And so the end result of that would be that if I put user input here and I typed the word evil, for example, well, this last letter, the l, would be getting added to the user input up here.
+5:35
+However, the current user input state would only be e v I, and so e v I would become the string here.
+5:43
+And that's not quite what I want.
+5:45
+What I want is the current input completely up to date.
+5:48
+So what I'm gonna do is take this event target value and use that instead.
+5:53
+And since I'm now repeating event target value two times, if I wanted to, I could declare a variable for that up here.
+6:01
+So I'm gonna call that current input and make that equal event target value, and then just replace this one and this one with that.
+6:10
+And this is getting a bit hard to read, so let's spread these out.
+6:14
+Okay.
+6:15
+Last but not least, we need our infraction detected state.
+6:18
+Put that down here.
+6:20
+And okay.
+6:20
+How do I do this one?
+6:21
+Well, this one is going to be a bit similar to what we did up here.
+6:25
+What I'm gonna do is I'm going to take the current input, and I'm just going to check if it includes the string evil corp.
+6:33
+And if it does include this string or substring, then this whole value is going to be turned to true because includes returns a boolean value.
+6:43
+And in that case, our infraction detected property is going to be true as well, which is exactly what we want.
+6:49
+And then if the string does not include the substring evil corp, this will evaluate to false, and then our infraction detected property will be false as well.
+6:58
+Alright.
+6:58
+So that should actually do it.
+7:00
+I'm not completely happy with this formatting here, so I am just going to put it through a linter real quick.
+7:06
+The one that I use is the website prettier dot I o, which you can also install in your local developer environment.
+7:13
+I'm gonna do that real quick.
+7:16
+And this is the formatting Prettier suggested.
+7:19
+Not sure actually how I feel about it, but I will just leave it be.
+7:22
+And that should actually do it for our code.
+7:24
+So now comes the big moment of truth.
+7:26
+Will this work?
+7:27
+And no, it won't.
+7:28
+We get an unknown error.
+7:30
+Why is that?
+7:31
+And, oh, it's because I deleted my bracket here.
+7:34
+That's very important.
+7:35
+Put that back.
+7:36
+And okay.
+7:36
+Now comes the big moment of truth.
+7:38
+Remember, the moment that I start typing inside of the text area, we should start console logging the tracking reports.
+7:45
+And if we have an infraction detected, we should also console log this infraction message up here.
+7:52
+Alright.
+7:52
+Let's test this out.
+7:53
+So e hey.
+7:55
+There we go.
+7:56
+V I l c o r p period.
+8:00
+Hey.
+8:00
+Hey.
+8:00
+Infraction detected.
+8:02
+We are in business.
+8:03
+Fantastic.
+8:04
+And I feel a little bit dirty inside for helping this company do this to their employees.
+8:10
+But, hey, a paycheck is a paycheck.
+8:12
+And, actually, one last thing.
+8:14
+As I was editing this scrim, I noticed that I did something a little wrong here, which is that in this set tracking reports function, well, I made use of the previous version of the state here, but then I didn't actually do anything with it down here.
+8:28
+Instead, I just directly took the tracking report state, and I spread it out.
+8:33
+And there's nothing wrong with doing this per se, but if I'm gonna write this out as a parameter, well, I might as well make use of it.
+8:40
+And if I'm not gonna make use of it, well, there's no real reason to not only write this parameter, but actually there's no reason to write this anonymous callback function in the first place.
+8:49
+And just to show you this, I could actually delete this and then just directly set the tracking report state to be this array, which starts here and ends here.
+8:59
+And just to show you that this still works, let's give this one last test.
+9:02
+I'm just gonna write evil corp, and there we go.
+9:05
+We have the infraction detected, and then I can keep on typing.
+9:09
+And it works exactly the same as before.
+9:11
+And if you wanna read up on the difference between making use of the previous version of the state versus directly setting the state like this.
+9:18
+I'm gonna leave a little link here to some of the official React documentation that talks about this issue.
+9:23
+Alright.
+9:24
+So here's the link.
+9:25
+It's a very short read.
+9:26
+And if you haven't read them yet, you really should check out the new React documentation because it is really well written and accessible, much more than just about any other documentation I've ever read.
+9:37
+Not exactly beach reading, but it is surprisingly good for documentation.
+9:41
+Anyway, I hope to see you again in another challenge soon.
+9:43
+In the meantime, happy coding, and goodbye for now.
