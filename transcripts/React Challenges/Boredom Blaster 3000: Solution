@@ -1,0 +1,227 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+Okay.
+0:04
+So when the page loads, the activity data should be fetched from the board API for each of the twenty keys in the saved activity keys array below.
+0:14
+And we should read the documentation to figure out how to do that.
+0:17
+So I am going to do exactly that because I have actually forgotten how this API works.
+0:22
+Let's go over there.
+0:23
+And this first thing here is irrelevant to me, and a large part of reading an API's documentation or any documentation related to front end development for that matter is ignoring the things that are irrelevant to you and focusing on the ones that are relevant.
+0:38
+And the one that is relevant is this one here, where it's telling me how to find an activity by its key.
+0:44
+So for example, this activity here has a key of five eight eight blah blah blah.
+0:49
+And if we wanted to retrieve that activity, we would do a fetch like this where the key comes at the end after a question mark following the word activity.
+0:59
+So I'm just gonna copy this to my clipboard, and let's head back to our app JSX file.
+1:05
+Okay.
+1:05
+Now what do I want to be doing here?
+1:07
+Well, there are a couple of different ways of doing this, and I'm gonna go through two of them starting with the one I prefer less and then showing you the one I prefer more.
+1:16
+So the one I prefer less is this.
+1:18
+What I'm gonna do is I'm gonna take that saved activity keys array, which is declared up here.
+1:24
+And for each of the keys inside of that array, I am going to fetch, and then I'm gonna paste in that URL.
+1:31
+And I'm gonna put this inside of tactics so that I can interpolate a variable here, and that variable is going to be the key.
+1:40
+Once I've done my fetch, then I am going to take the response that I get back, and I am going to convert it from JSON into JavaScript.
+1:50
+And then once that is done, I am going to take that data and I am going to update my activities data state be whatever it previously was.
+2:00
+And I'm gonna spread out everything that's currently inside of it because remember we are iterating through the array.
+2:06
+And so we can imagine we could be on something like the ninth or tenth key, and so we would have already retrieved information for the previous seven or eight or nine keys.
+2:15
+And we don't want to lose that data, So I'm just spreading it inside of this new array that I'm creating.
+2:20
+And then at the very end of that, I'm going to stick on my new object.
+2:24
+And that should actually take care of it because remember this note that all we need to do is set the activity's data state in the way described above, and then this bit of the code here is gonna take care of the conversion of that data into a series of activity card elements, which are then going to get inserted down here in our components return statement.
+2:43
+So if all goes well, this should actually work, But there's only one way to find out.
+2:47
+Let's test it out.
+2:48
+Drum roll, please.
+2:49
+Three, two, one, and okay.
+2:52
+I briefly saw that we got something right.
+2:54
+But then we got a big old error message telling us that something went wrong.
+2:58
+I don't know if you can actually see this on your screen, but it says the tracker has stopped because of excessive amounts of events originating from the page, and that is because we are basically getting stuck in an infinite loop.
+3:09
+And that is because we forgot to do something very important here, which is to put this inside of a useEffect where this whole thing that we just did is going to be our callback function.
+3:21
+And then for our dependency array, I'm just gonna leave it as an empty array so that all of this only gets executed once when the app component gets initially mounted.
+3:31
+Okay.
+3:31
+So now if I click run, this should actually work and we shouldn't get that infinite loop and error message.
+3:37
+Let's find out.
+3:38
+And there we go.
+3:39
+And let's make sure we actually have the information we want on these cards.
+3:43
+And, yep, solve a jigsaw puzzle, doodle random designs.
+3:46
+This is just a a placeholder.
+3:47
+Wait a minute.
+3:48
+That's not what we want.
+3:49
+But we do have information down here.
+3:51
+And, oh, I see what I did.
+3:52
+I forgot to delete our place holder data.
+3:55
+So I could just manually delete it here, or I could clear it out at the beginning of this function here.
+4:01
+But I think, actually, it would be better just to delete it altogether.
+4:04
+And, actually, we want this to be an empty array because, otherwise, if we just leave the state completely undefined, we're gonna get an error message because our code is gonna try to map over something that is currently not set up as an array before this whole thing goes into effect, and that only goes into effect after the initial render.
+4:23
+So we need to initialize this as an empty array.
+4:26
+Now it should work.
+4:27
+And hey, hey, sure enough, there we go.
+4:30
+All twenty options ready to blast away your boredom.
+4:34
+Okay.
+4:34
+So that is one way of solving this challenge.
+4:37
+However, what I don't like about this is that not only are we fetching twenty different times, but we are updating this activity's data state twenty times as well.
+4:46
+And I think I would prefer to get all of my data first and then update the state just once.
+4:52
+So I am going to copy this to my clipboard so we don't lose it.
+4:56
+And then I'm just going to delete this so we can sort of wipe the slate clean here and redo this entire useEffect.
+5:02
+So here is the skeleton of my callback function inside of my useEffect.
+5:06
+And then what I'm gonna do here is I'm gonna use some async syntax.
+5:11
+And I'm going to create a function that I am going to call get activities.
+5:16
+And then inside of my function, I'm gonna declare a variable that I'm gonna call responses, and this is going to be an array of all of the responses that I get from the API.
+5:27
+And since I want this to be an array, what I'm gonna do is I'm gonna take the saved activity keys array.
+5:33
+And instead of doing the for each method, this time I'm going to use the map method to map over each one of those keys.
+5:40
+So I'm gonna take each key, and then what I wanna do is I want to return whatever we get back when we do that fetch just like we did before.
+5:49
+Now here comes the tricky bit.
+5:50
+Remember that we are inside of an async function right now.
+5:54
+And then inside of this map method, we have a series of twenty different promises, one for each one of these fetches.
+6:02
+And to account for that and to make sure that the browser is going to wait until responses has all of these promises resolved, what we need to do is we need to write await here, and then we are going to invoke a method from the promise object called all.
+6:17
+And I'm gonna wrap my entire map method in parentheses.
+6:21
+And so the way to read this is that responses is going to equal, and then we're telling the browser to await all of the promises being resolved from this stuff that we are doing here with that map method.
+6:33
+And all of that stuff lives inside of the parentheses of our all method.
+6:38
+So let's just make sure this is working.
+6:40
+I'm gonna console log responses, and let's test this out.
+6:44
+Three, two, one, and nothing happens because get activities is a function and I need to actually execute that function for it to happen.
+6:53
+So that's kind of important.
+6:54
+Let's do that.
+6:55
+And now three, two, one, and hey.
+6:57
+Hey.
+6:57
+There we go.
+6:58
+We get a bunch of responses back, And let's see what happens if we invoke the JSON method on them to convert them into JavaScript.
+7:07
+Click run again.
+7:08
+And, uh, I see what's happening.
+7:09
+So that's not going to work because responses, remember, is an array, and we can't invoke the JSON method on the array.
+7:16
+So what we need to do is we need to map over that array once again.
+7:21
+And for each response in the responses array, we are going to invoke the JSON method on that individual response.
+7:29
+And now that should work, let's click run.
+7:31
+And once again, it's not quite working because we're just getting a series of promises.
+7:35
+We want to wait for those promises to resolve and so what we want to do here is instead of just console logging this array right away, we want to await all of the promises being resolved and then console log them.
+7:49
+Fingers crossed.
+7:50
+If I click run, this should actually work.
+7:52
+Drum roll, please.
+7:53
+Three, two, one, end.
+7:55
+Hey.
+7:55
+Hey.
+7:56
+There we go.
+7:57
+Okay.
+7:57
+So now all that we need to do is we need to take this whole thing here, and instead of console logging it, we need to update our activity's data state to equal this array that we are seeing in the console.
+8:07
+And we could do that directly here.
+8:09
+But you know what?
+8:10
+I think for readability purposes, it would be better if we declare this as a variable, call it data, and set that variable to equal that whole big array that we are seeing in the console.
+8:22
+And then we can do our set activities data function updating it to b, this data variable here.
+8:28
+Big moment of truth here.
+8:29
+One final drum roll, please.
+8:31
+Three, two, one, end.
+8:33
+Hey, hey, there we go.
+8:34
+All twenty of our options being rendered to the screen.
+8:38
+So that brings us to the end of this challenge.
+8:41
+I hope to see you again in another one soon.
+8:43
+In the meantime, happy coding and goodbye for now.
