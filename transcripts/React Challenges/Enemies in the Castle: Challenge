@@ -1,0 +1,123 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to this action RPG game in all of its old school eight bit Nintendo style glory.
+0:07
+I am really excited to show you this because it's a really exciting moment in the game.
+0:12
+We are currently looking at this castle from a top down perspective, And inside of the courtyard, this purple space here, we are going to have not just one, not just two, but three enemies just waiting for our hero to come inside the castle and vanquish them.
+0:27
+Now the enemies currently aren't showing up.
+0:29
+I'm not quite sure why that's happening, but maybe it's because the game is currently paused.
+0:34
+So if I come down here to this play button and I press it to unpause the game Uh-oh.
+0:40
+Let me try that again.
+0:42
+Uh-oh.
+0:42
+Nothing is happening.
+0:44
+Well, let's go take a look at our code to see why.
+0:47
+This is all looking good to me, so maybe the problem is down here and, oh, I see what's happening.
+0:53
+So here is our return statement for the app component, and we have this div right here, which is for the castle container.
+1:00
+And there should be three enemy elements in this space here, but some horrible, horrible person, maybe one of the enemies in the video game, definitely not me, has deleted those enemies.
+1:11
+Okay.
+1:12
+So there should be three of them.
+1:13
+So let me just put them back in here real quick.
+1:16
+Here's one enemy, two, and three.
+1:19
+And okay.
+1:20
+Let's click run and oh, no.
+1:23
+Now we're getting an error.
+1:24
+And you know what?
+1:25
+Actually, now that I think about it, that makes sense because over in the actual enemy component, which I have imported into the file up here and which lives inside of the components folder, which is over here, you can see that the enemy component is expecting some props.
+1:43
+For example, there is a property for the position, which has another property inside of it called top.
+1:49
+This is controlling where the enemy is supposed to be in relation to the top of the container that he is inside.
+1:55
+And if you look at the console, you can see that the error message says, cannot read properties of undefined trying to read top.
+2:03
+So the computer is getting to this bit of our code.
+2:06
+It's not finding anything here since we are not passing in any props over here in our app component, and so we end up with that error message.
+2:15
+So position is one of the props that we are expecting to receive here.
+2:19
+There's another sub property within position called left, which is controlling where the enemy is in space from left to right.
+2:26
+There's another one called orientation, and this has to do with whether or not the enemy should be facing and moving to the left or to the right.
+2:33
+And then last but not least, there is a current image prop, which gives us the URL for the image of the enemy.
+2:41
+So those are the three props that we need to be passing into the enemy element.
+2:46
+And you're probably wondering at this point, where should the data for those props be coming from?
+2:50
+Well, to show you that, let me go back over to the app JSX file and go up to the top where we have our states declared.
+2:58
+So we have two states.
+2:59
+One is called game running.
+3:01
+And actually, let me go back and get rid of these enemies so that we stop getting that error message and we see our castle again.
+3:08
+So this button is controlling the game running state, and then we have one more state which is called enemies data.
+3:15
+And as you might have guessed, this state contains the data for our enemies.
+3:19
+It is being initialized as initial enemy data, which is an array that's being imported here and lives inside of the data folder, which is over here.
+3:29
+So this is what the data initially looks like.
+3:32
+You can see that we have three objects, one object here, a second one here, a third one here.
+3:38
+And within each object, we have data for one of our three enemies.
+3:42
+And just focusing on the properties that we need for our enemy props, we have the current image, the orientation, and the position.
+3:51
+So that is the data that we want to be passing in to our enemy elements.
+3:56
+And so in a nutshell, what we want over in app JSX is this.
+4:02
+The castle container div should contain three enemy elements.
+4:06
+Each enemy element should receive three props, which in turn should receive the three values that we talked about before.
+4:13
+You can obtain the underlying values however you want.
+4:16
+You do not need to use bracket notation the way that I've done here.
+4:20
+I'm not going to say anything further about that because it would be giving too much away about how you can solve this challenge.
+4:26
+But if you get stuck, like always, I have left some hints for you in the top left of the explorer.
+4:32
+So in the end, there should be three enemy elements corresponding to each of the three enemies data objects resulting in three different enemies in three different positions in the castle.
+4:43
+And remember, the game is initialized as being paused, so those enemies should be just frozen in space.
+4:51
+But and here comes the coolest part of this whole challenge.
+4:54
+When you click the play button, the enemies should start walking back and forth.
+4:59
+Okay.
+4:59
+That does it for me.
+5:00
+I will see you again soon to go over the solution together.
+5:04
+In the meantime, happy coding and goodbye for now.
