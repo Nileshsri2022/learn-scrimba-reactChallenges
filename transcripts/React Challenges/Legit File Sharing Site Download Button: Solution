@@ -1,0 +1,349 @@
+Transcript
+0:00
+Hey there.
+0:00
+Welcome back.
+0:01
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+So when I am faced with a relatively complex challenge, sometimes the first thing that I do is that I take the easiest task and I tackle that one first.
+0:15
+And I just do that because it gives me a little sense of accomplishment and a little motivation boost.
+0:20
+So the way I'm seeing it, the easiest task to complete here is the bit about making the button disabled when the user clicks on it.
+0:29
+So I am going to do that first and I know that I'm going to need a disabled attribute in my button.
+0:35
+And I know that I want the value of this to be false when the page is initially rendered.
+0:41
+And then I want it to turn to true after the user clicks on the button now I also know that when the user clicks on the button I am going to be updating the state.
+0:50
+And so I'm thinking here that I could probably use something from that state to inform React about what I want this disabled attributes value to be.
+1:00
+So going up to our state and just thinking about it for a bit, I know that there is a property called download requested.
+1:06
+I know that's initialized as false and I know it's going to be set to true after the user clicks on the button.
+1:13
+So I can use this user data property as a proxy for whether or not I want the button to be disabled.
+1:19
+So I am just going to take this and bring it down here.
+1:23
+So just like the property itself, our disabled attribute will now be false upon initialization.
+1:29
+And when the user clicks on it and this state gets updated and this property gets turned to true, the disabled attributes value will become true as well.
+1:38
+There we go.
+1:39
+I've already accomplished part of the task and I am feeling pumped up to go on to the next bit, which is this whole big bit about updating the state.
+1:49
+We're going to be updating the state when the user clicks on the button and if we're going to be doing anything in response to a click, we need to actually be listening for that click and then handling the click event.
+2:01
+So let's do that down in our button.
+2:03
+We are going to be
+2:13
+that is what we are doing.
+2:14
+We are handling the click.
+2:16
+And I will define that up here.
+2:18
+And now the million dollar question becomes, what do we actually want this function to do?
+2:23
+Well, I know that I want it to update our user data state, and that means I need this set user data function inside of my handle click function.
+2:32
+So let's bring that down here.
+2:34
+And I also know that what I want this set user data function to do is create a new object that is going to have all of these properties inside of it.
+2:44
+If I wanted to, I could just go right into these parentheses and start my object, and then we could start going through these properties one by one.
+2:53
+But I think that we could take a much more strategic and proactive approach to how we do this.
+2:59
+Because whenever I am setting up a function, one of the first questions that I ask myself is what does that function actually need in order to be able to do the thing that I want it to do?
+3:12
+What kind of data does it need?
+3:13
+What kind of methods?
+3:14
+What kind of other functions?
+3:16
+Whatever the case might be.
+3:17
+What does it need in order to accomplish the objective?
+3:21
+And in this case, the objective is this.
+3:23
+It is creating an object with all of this stuff inside of it.
+3:27
+And so the question really boils down to what does our function need in order for us to create these values that we want to create inside of our state object?
+3:37
+And for some of these, I know that the answer is, well, not really anything at all.
+3:42
+For example, for the download requested property, I literally just need to write the word true, and then that will become the value of that property.
+3:52
+Similarly, for download timestamp, I just need to write new eight and then to locale string, and then the return value of this will be the value that I want this property to have.
+4:04
+There's nothing I need in advance to be able to do that.
+4:08
+Same thing with browser.
+4:10
+All I need to do here is just invoke the detect function that has already been imported into the file.
+4:17
+So this guy we don't have to worry about.
+4:19
+This guy we don't have to worry about.
+4:20
+And this guy we don't have to worry about.
+4:22
+However, the other three are a bit more complicated.
+4:25
+For example, for user ID, we need to preserve the user ID value of the previous user data state.
+4:32
+And in order to be able to preserve something, well, we need to already have it ready at hand.
+4:38
+And this is giving me a big clue as to how I should be setting up my set user data function.
+4:44
+Instead of just going directly into creating the object that I want the state to be, I should instead pass an anonymous callback function into this parenthesis here and then return the object inside of that callback function.
+4:59
+So I need a callback function inside of here.
+5:01
+And then remember, when we are working with a state setting function, it automatically receives the previous state as an argument and we just need to give it a name right here so I am going to call it previous user beta and then since we don't have anything else to write inside of here, I'm gonna get rid of the parentheses since they are optional.
+5:22
+Okay.
+5:22
+So this is going to be our previous user data state.
+5:25
+It is going to be passed inside of this callback function that we have passed inside of the set user data function, and that means we have access to it here.
+5:34
+And that is going to be important once we go ahead and return the object that we are gonna be eventually creating.
+5:41
+We are going to be able to access that user ID value in the previous user data when we need it.
+5:47
+But that is getting ahead of ourselves.
+5:49
+Let's move on to the next property now that we have prepared ourselves for this one.
+5:55
+Okay.
+5:55
+So the next one is the requested file ID, and this is stored as data in the download button, which is down here.
+6:04
+We have this data attribute called file ID.
+6:07
+And at the moment, our handle click and set user data function have no idea what that is.
+6:13
+We need to be able to communicate it to our functions somehow.
+6:17
+So how do we do that?
+6:18
+Well, remember, we are clicking on the button that is invoking the handle click function.
+6:24
+And so this is an event handling function which means that it automatically receives the event object or technically synthetic event object as an argument, and we just need to name it up here in our event handling function in order to access it.
+6:40
+So I am just going to name it event, although you could also call it e.
+6:45
+And then within the event object, we have access to the target of the event, which in this case is the button.
+6:52
+And then within the button or the target of the event, we have access to the dataset.
+6:57
+The dataset contains all of the data that we have tucked inside of the button.
+7:02
+And in this case, that is just our file ID.
+7:05
+And the way that I access that is by writing file and then ID in camel case.
+7:11
+That's what you do if you encounter a hyphen with a bit of data.
+7:16
+If you try to include the hyphen like that, well, I'm pretty sure JavaScript thinks that you are trying to subtract ID from this, which is not quite what you want.
+7:25
+So it has the built in convention that you just go like that.
+7:29
+Okay.
+7:29
+Now let's just test this out real quick to make sure that it's working.
+7:32
+I'm going to console log all of that, and I'm going to turn the skeleton of our set user data function off for a little bit so we don't crash our app.
+7:41
+And let's test this out.
+7:43
+So when I click on the button, we should get in the console the file ID data inside of our button.
+7:50
+Let's find out if that happens.
+7:52
+Three, two, one, and hey.
+7:53
+Hey.
+7:54
+There we go.
+7:54
+That is definitely the sort of thing that nano ID would produce.
+7:58
+Okay.
+7:58
+Fantastic.
+7:59
+So we can now tick this one off of our list.
+8:02
+We know what we need to do for that.
+8:03
+And that just leaves us with the final boss of this challenge, which is the location.
+8:09
+Now, hopefully, you either Googled this or you looked at the hints that I left you in the top left of the Explorer.
+8:17
+If you did do that, then you would have found that in the location info hint, I noted that the way that I got the user's location information was through this API right here, and you didn't have to use this one.
+8:30
+In fact, part of the challenge was to go off to Google and find your own solution.
+8:34
+So if you did use another API, that's fantastic.
+8:37
+I'm just gonna use this one because it is the one that I am familiar with.
+8:41
+So going back to our app JSX file and coming down to our handle click function.
+8:47
+I'm gonna turn off this console log.
+8:49
+And now I want to fetch some data from that API.
+8:53
+And just looking at the URL of this API, well, I can tell right away that the data that I get back from it is going to be in the JSON format.
+9:02
+So I want to fetch the data from the API, and then I want to take the response that I get, which I'm going to abbreviate that way, and I am going to invoke the JSON method in order to convert it into JavaScript.
+9:17
+Okay.
+9:18
+And then what I want to do is I want to take the data that I get from invoking the JSON method on the response from the API.
+9:27
+I want to take that data and, well, eventually, I'm going to want to use it inside of my state setting function.
+9:33
+But for the time being, just to check what we have and to make sure this is working, let's just console log log the data and see what we get.
+9:41
+Now I am actually using a VPN right now, and with my VPN, I can pretend like I'm in just about any country I want.
+9:49
+I'm going to choose Japan as my country right now because, well, I've never been to Japan, but I would really like to go someday.
+9:56
+So when I click the button, if all goes well, I should get back something in the console with information saying that I am in Japan.
+10:05
+Drum roll, please.
+10:06
+Three, two, one, and oh, hey.
+10:08
+Hey.
+10:08
+There we go.
+10:09
+So I see my, or rather my VPN's IP address.
+10:13
+My city is supposedly Tokyo, and I see that my country name is Japan.
+10:19
+Fantastic.
+10:19
+Alright.
+10:20
+So now we have all of the data that we need in order to set our state.
+10:26
+So let's go ahead and do that.
+10:28
+And the question now becomes where do we do it?
+10:30
+Well, I don't want to do it down here because I need to have that data from my fetch available to my state setting function when I invoke it.
+10:39
+And I want to make sure that it is ready before the function gets invoked.
+10:43
+So what I'm going to do here is instead of console logging my data here, I am going to do my state setting function, which I'm actually just going to copy and paste from below.
+10:54
+So this is going to go inside of here.
+10:56
+And let's just reformat this a bit.
+10:59
+That looks good.
+11:00
+Okay.
+11:01
+And now at last we are ready to start returning our state object as it's spelled out up here.
+11:07
+So so for starters, I'm going to enclose this object in some parentheses so that I can open it up onto another line like so.
+11:17
+And now we can just start going through these one by one.
+11:20
+So I need my user ID and remember for this one we want the user ID value that stored inside of our previous user data state.
+11:29
+So I'm gonna bring that down here and then tap into its user ID property.
+11:34
+Coming up next, we have the download requested property, true.
+11:38
+Next up, we have the download timestamp.
+11:41
+And remember, for this one, we just need to create a new date object and then invoke to locale string like so.
+11:48
+Next up, we have the request file ID property.
+11:52
+And remember for this one, we have the bit of code we need right here inside of our console log that we did before.
+11:59
+Just gonna paste that in and delete the console log, and that takes care of our file ID.
+12:04
+Next up, we have the browser.
+12:07
+And for this one, we just need to invoke that detect function, and then the return value of that function will become the value of this property.
+12:15
+Last but not least, we have the location and this is going to be an object inside of our state object, and it's going to have three properties.
+12:24
+I'm gonna open it up like this.
+12:26
+So first up, we need the IP property.
+12:29
+And to get the value of the IP address, well, we need this data that we have passed in up here.
+12:34
+It is an object as we can see in the console, and the very first property inside of it is called IP, which is precisely the one we want.
+12:43
+Next up, we need the city.
+12:45
+And for this one, it is the city property inside of our data object.
+12:50
+And last but not least, we have the country.
+12:53
+And for this one, well, there is a property called country in the data object, but that is just an abbreviation of the country.
+12:59
+I want the actual country name, so that is going to be data country name with an underscore.
+13:05
+I have to follow the formatting that the API uses.
+13:08
+And unless I am overlooking something, I think that that should actually do it.
+13:12
+And now comes the real moment of truth.
+13:15
+What happens when we run this thing?
+13:18
+One last drum roll, please.
+13:20
+Three, two, one, and hey.
+13:22
+Hey.
+13:22
+Hey.
+13:22
+So our button has gone transparent.
+13:24
+I can't click on it.
+13:25
+And in the console, I get a message saying that a legally responsible person with the user ID of blah blah blah blah blah at IP address yada yada in Tokyo, Japan requested a download of the file with the ID of yada yada yada at such and such a date using Chrome browser version one hundred eleven on Mac OS.
+13:47
+I don't know about you, but I find this both kind of cool and kind of creepy.
+13:51
+I don't like the idea that websites can get so much information about me so easily.
+13:56
+In fact, that is part of why I use a VPN in the first place.
+14:00
+And it has absolutely nothing to do with the fact that I download pirated files.
+14:05
+That is not a thing I would ever do.
+14:07
+Of course not.
+14:08
+No, sir.
+14:09
+No way.
+14:09
+Anyway, I hope to see you again in another challenge soon.
+14:13
+In the meantime, happy coding, and goodbye for now.
