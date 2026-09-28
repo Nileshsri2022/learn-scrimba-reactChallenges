@@ -1,0 +1,45 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to the world's most annoying form.
+0:03
+Some of the questions are pretty annoying, like, would you like to sign away all of the rights to your privacy?
+0:08
+And when I try to click the submit button, it jumps away from me.
+0:11
+This is pretty annoying already, but I think we could make it even more annoying, and that is where you come in.
+0:17
+So at the moment, none of the elements of this form are controlled.
+0:21
+And your job in a nutshell is to make them all controlled elements.
+0:25
+And they are going to be controlled by this state here called form data.
+0:29
+Each one of the properties inside of this state object, like first name, corresponds to the name of one of the elements inside of the form.
+0:38
+And so, for example, we want the first name property of the form data state object to be controlling this input here, and so forth and so on.
+0:47
+And to help you keep track of everything going on here, I have set up this table for you, which I know looks like a lot, but a lot less going on with it than it looks.
+0:56
+For example, the first three items are about the text inputs and the email input, which are these three guys over here, and they all go together.
+1:04
+The next three guys are the radio inputs.
+1:07
+Those all go together.
+1:08
+Once you have turned all of these elements into controlled elements, you should test your code by trying to input your real information into the form and answering the questions the way a normal person would.
+1:19
+And if you've completed this task correctly, all of your responses should be thwarted in humorous ways thanks to the code above line seventy six.
+1:28
+So that code is all living up here.
+1:30
+There is nothing you need to do with it.
+1:32
+You don't even need to look at it if you don't want to.
+1:34
+But this code is going to basically hijack the user's responses in a way that is supposed to be funny.
+1:40
+And I'm just gonna leave it at that because I don't want to spoil the surprise.
+1:43
+Anyway, if you get stuck, I have left some hints for you up here, and I will see you again soon to go over the solution together.
+1:49
+In the meantime, happy coding, and good luck with this challenge.
