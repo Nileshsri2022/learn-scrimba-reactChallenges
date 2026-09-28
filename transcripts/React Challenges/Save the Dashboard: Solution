@@ -1,0 +1,241 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+Okay.
+0:04
+So I'm just gonna take these one by one, starting with saving the widget configuration state to local storage.
+0:10
+And I know that eventually what I am going to do is I'm going to go into local storage.
+0:16
+I'm going to invoke the set item method where I'm gonna give a name to the item that I'm saving.
+0:22
+You could call it, I don't know, user configuration.
+0:24
+And then the thing that I want to save as user configuration is our widget configuration state.
+0:31
+That is an array.
+0:32
+And to save an array to local storage, we need to convert it into the JSON format using JSON's stringify method.
+0:40
+So I will place the widget configuration state array inside of there.
+0:44
+Okay.
+0:44
+So this widget configuration state happens to be a state value.
+0:48
+But other than that, this is all just vanilla JavaScript.
+0:52
+The question that is specific to React becomes where do we actually do this?
+0:56
+And I get the sense that a lot of people are under the impression that anytime we are saving to local storage in React or, in fact, anytime we're doing just about anything with an external system like fetching from an API, that there's some sort of rule that we have to do that inside of useEffect.
+1:13
+And so you may have done something like this.
+1:16
+And then inside of the dependency array, you might have put save requested.
+1:21
+Because remember when the user clicks the save button, that invokes the save function, which is going to set the save requested state to true, whereas it was previously false.
+1:31
+And so our useEffect is going to pick that up as a change in the state value.
+1:35
+And so this effect is going to get run.
+1:37
+And when it does get run, what we want to do is save the local storage.
+1:41
+However, remember that save requested is going to be changed from true back to false.
+1:46
+That's what this comment here was about.
+1:47
+And when that happens, well, that's gonna be another state change.
+1:51
+So this effect will get run again.
+1:53
+But when it gets run when the state turns to false, well, we don't want to save the local storage again.
+1:57
+That would be redundant.
+1:58
+And so I'm gonna put this inside of a conditional where I'm just going to check if the save requested value is true.
+2:05
+And if it is true, then we saved to local storage.
+2:08
+Otherwise, we just don't do anything.
+2:10
+Okay.
+2:10
+So this would be one way of saving to local storage, And I'm guessing it's what some of you probably did, and it will actually get the job done.
+2:17
+So if you did it, that's fine.
+2:18
+However, I am going to argue that there is actually a better and much easier way of doing this, which is just to take this whole line of code, stick it inside of our save function so that this happens anytime the save function gets invoked, and then we can just get rid of this useEffect.
+2:35
+And I'm guessing this might feel wrong to some of you because we are saving to local storage outside of useEffect.
+2:41
+But I think it's actually not only an okay thing to do in this context, but actually the preferable thing to do.
+2:48
+And the reason for that is actually spelled out in the React documentation.
+2:53
+I'm gonna include a link to it right here.
+2:55
+And the title of this page is you might not need an effect.
+2:58
+And this page is basically talking about a bunch of different scenarios in which a lot of developers might think they would need to use useEffect but don't actually examples has to do with
+3:13
+fetching from an API.
+3:15
+And this is another place where I think a lot of people think you have to do it inside of useEffect.
+3:20
+And what they say in the documentation is actually, no, you don't have to do it and actually shouldn't do it if the fetch to the API is being initiated by the user's interaction with the page.
+3:30
+So for example, if the user clicks a button and that click is what initiates the fetch, then that fetch should actually be done inside of the event handler instead of useEffect.
+3:40
+And I think we have an analogous situation here because this saving to local storage is also being initiated by the user, and this save function here is an event handler because it is the function that is getting invoked when the user clicks on that save button.
+3:54
+So anyways, that is the way that I am gonna be doing this and the rationale behind that.
+3:59
+But I think it's time to move on to our second task, which is about actually getting that data that we saved in local storage and loading it as our initial widget configuration state value.
+4:09
+Okay.
+4:09
+So currently, this state value is being initialized as default configuration.
+4:14
+And we might actually still want that to be the case because if the user hasn't saved anything to local storage yet, then we want to default to this default configuration.
+4:22
+So I'm not gonna delete this.
+4:23
+I'm gonna keep it.
+4:24
+But what I'm going to do here is I'm going to add a logical or operator.
+4:28
+And then on the other side of that operator, I'm going to look into local storage, and I'm going to try to get an item called user configuration.
+4:38
+And this is getting a bit long, so let's move it on to another line here.
+4:42
+Alright.
+4:42
+And then remember that if we did save something called user configuration, then it would have been our widget configuration state stringified into the JSON format.
+4:51
+And so up here, we need to convert the user configuration back into JavaScript by using Nissan's parse method.
+4:58
+Okay.
+4:58
+So now the way that this is gonna work is the computer is first going to execute this bit of code here.
+5:03
+It's gonna look inside of local storage, see if there's anything in there called user configuration, and if there is something, it's going to parse it.
+5:11
+And so then what this whole value here is going to be is an array of widget configuration data.
+5:17
+And since that is a truthy value, well, our logical or operator is just going to stop there.
+5:22
+It's not even gonna bother reading, let alone doing anything with this bit of our code, and so this is going to end up being our initial widget configuration state value.
+5:30
+However, if the browser looks inside of local storage and there isn't anything called user configuration in there, well, then this whole value is going to be undefined.
+5:39
+And that is a falsie value.
+5:41
+And thanks to our logical or operator, the computer is then gonna go to this bit of our code, and this bit of code is defined.
+5:48
+It's been defined up here.
+5:49
+And so this is gonna be truthy, and it's going to end up being set as our initial widget configuration state value.
+5:55
+Okay.
+5:55
+So that should actually do it for the main challenge.
+5:58
+Fingers crossed.
+5:59
+This should actually work, but, of course, there's only one way to find out for sure, and that is to test this.
+6:04
+So let's do that next.
+6:06
+What happens when I click run?
+6:07
+Do we get any errors?
+6:08
+No, we do not.
+6:09
+That's great.
+6:10
+And we are getting our default configuration layout, which is exactly what we want and now let's try changing this up a bit I'm going to make another one of my beautiful layouts Something like that.
+6:21
+I call this a bouquet of widgets on a beautiful day at the beach.
+6:25
+And now let's try to save this work of art.
+6:28
+Click save.
+6:29
+We get the saved message.
+6:30
+Still no error messages, so I am feeling good about this, but now comes the real moment of truth.
+6:35
+What happens when I click the refresh button?
+6:37
+Drum roll, please.
+6:39
+Three, two, one, end.
+6:41
+Hey.
+6:41
+Hey.
+6:42
+There we go.
+6:42
+And let's just test this out a little bit more.
+6:45
+Let's bring back the weather.
+6:46
+Let's move it up here.
+6:47
+Let's move this out here.
+6:49
+This here and this here.
+6:51
+And, oh, man.
+6:52
+That is beautiful.
+6:53
+Let's save that and see if this works.
+6:55
+Click refresh and fantastic.
+6:57
+Alright.
+6:57
+So that actually brings us to the end of the main challenge.
+7:00
+And as for that bonus challenge, well, if you're not sure what this means, it might have sounded complicated.
+7:06
+But in reality, all you have to do to complete the bonus challenge is literally just write a parenthesis and an arrow.
+7:12
+And believe it or not, this and this is the difference between normal state initialization and lazy state initialization.
+7:20
+And what it comes down to is the difference between directly executing this line of code here versus enclosing it inside of an anonymous callback function, which then gets passed into useState, and then React underneath the hood is going to execute the function during the initialization of the app component.
+7:38
+And it doesn't actually have to be an anonymous function.
+7:40
+In fact, I think this is a little bit hard to read, although I could have made it a little bit better by probably formatting this differently like that.
+7:47
+But another thing that we could do here is actually take this and stick it inside of a named function, so a function that's not anonymous.
+7:55
+Let's call it get initial configuration, and then I could define that down here.
+8:00
+And it's just going to be the same exact line of code as before, but I'm just going to return that as the return value of this function when it gets invoked.
+8:10
+And for me, this is the easiest way of visualizing the difference between lazy state and normal state initialization because normal state initialization would be like this.
+8:20
+I would be directly invoking the function, and then our return value would become the initial widget configuration state.
+8:27
+Whereas, if we don't include the parenthesis, then what we're basically doing is we are just giving use state the code for the function that we want it to invoke on the initial rendering of the app.
+8:39
+And so the way that I think about this is that it takes a little bit of extra work to write those parentheses, whereas if I'm feeling a little bit lazy, I can just leave them off and then that is lazy state initialization.
+8:51
+Alright.
+8:51
+So that actually brings us to the end of this challenge.
+8:53
+I hope to see you again in another one soon.
+8:56
+In the meantime, happy coding, and goodbye for now.
