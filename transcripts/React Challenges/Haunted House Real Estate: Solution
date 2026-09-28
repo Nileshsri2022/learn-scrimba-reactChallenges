@@ -1,0 +1,171 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So at first glance, it might seem like there's a lot to do in this challenge.
+0:06
+However, the way that I see it, it's really just a matter of shuffling some stuff around, reorganizing it a little bit, and giving some things some different names.
+0:15
+For example, one of the main things that I'm wanting to do is take this entire return statement inside of my map method, all of this JSX, and replace it with a single component that I am going to call house card.
+0:30
+This house card in turn is going to be a functional component which I'm just going to define up here for the time being.
+0:37
+And then the return statement of this house card component is going to be all of that j s x that I just took from down here.
+0:44
+I still have it copied to my clipboard, so let me just paste it in right here and get rid rid of the extra return statement.
+0:51
+And so all I've really done is I've replaced all of that JSX with this, and then I've put it inside of this functional component that I am creating.
+1:00
+Now inside of this j s x, I have a whole bunch of different variables that I am making use of.
+1:07
+Most of them are coming from this house data, but there's also one called index and another one called array.
+1:13
+Now back when this was living inside of the map method, that was all coming from here.
+1:18
+However, at the moment, our component has no idea what those are, so we need to communicate them to the component.
+1:25
+And the way that we communicate things to a component is through props.
+1:29
+So I am going to enclose the JSX for this house card in some parentheses so that I can put it down on another line.
+1:37
+And now I'm going to open it up, and now I need to feed in some props.
+1:42
+Now if you are doing this challenge on kind of autopilot, your first instinct here might be to come up to the house card component, put in the word props inside of the parentheses, and proceed from there.
+1:54
+However, if you do that, you are creating a lot more work for yourself than you need to because the next thing you're gonna need to do is put the word props in front of house data here, here, here, and here.
+2:05
+That is way too much work for me.
+2:07
+I am a lazy person.
+2:09
+So what I wanna do instead is come up to my props, and I want to make sure that whatever I pass into them, I can destructure my props in such a way that house data can be referred to without prefacing props in front of it.
+2:23
+So the house card component is going to receive a prop called house data.
+2:29
+Structuring it here, and now I can just refer to it by its name throughout the rest of my component.
+2:34
+Now for this to work, I'm gonna have to actually pass in a prop called house data down here where I'm actually invoking the component.
+2:41
+So I know that I need a prop called house data, and now I just need to tell the component what does this prop equal.
+2:47
+Well, remember, we are inside of the map method right now.
+2:51
+We are mapping over the houses for sale array.
+2:54
+And for every single object in that array, we have given the name of house data to it.
+3:00
+And each one of those elements called house data is one of these objects in our house data array, and that is precisely what we want to be passing in to our component as our house data prop.
+3:13
+And so somewhat counterintuitively, what I'm gonna write here is that house data equals house data.
+3:20
+And those two words look the same, but they're actually referring to slightly different things.
+3:24
+House data is the name of the object that we are iterating on in the houses for sale array, whereas this house data is just the name for the prop that we've given it.
+3:34
+There is nothing special about this name.
+3:36
+I could call it blue cheese if I wanted to, and then as long as I called it blue cheese up here, and I changed all of these house datas here and here and everywhere else to be blue cheese, it would work.
+3:48
+But, again, that would be way too much work, and blue cheese wouldn't make any sense anyway.
+3:52
+So let's just put it back to the way it was.
+3:55
+Okay.
+3:55
+Now I'm gonna do the same exact thing with the other two properties that I need.
+4:00
+Because remember, in our house card component, we also need an index and we need an array in order to get these values that our component needs.
+4:11
+So up here where I am destructuring my props, I'm also going to destructure it into index and into array.
+4:18
+So our component is going to be expecting these two props to be passed into it.
+4:23
+And now we just need to do that down here.
+4:25
+And much like I did before, what I'm gonna do is say index equals index and array equals array.
+4:33
+And so now inside of our map method, whatever the current value of index is as the map method iterates through the houses for sale array.
+4:40
+That is going to become the value that gets passed in here, and same thing with array.
+4:46
+That's gonna get passed in here.
+4:48
+Now there is one last thing that I know that I need to do.
+4:50
+I wonder if you can spot it.
+4:52
+I'll give you a couple seconds.
+4:53
+One, two, and I guess that's actually three seconds.
+4:56
+And the answer is that I need a key for my house card element here.
+5:01
+Now that might seem a little bit counterintuitive because up here, well, we already have a key prop.
+5:07
+However, remember that before, this div was the element inside of the array that our map method was creating.
+5:15
+However, that is no longer the case.
+5:17
+Now it is the house card component that is the element inside of the array that is getting saved to this house cards variable, and it is the items in the array that React wants us to give a key to.
+5:30
+Doesn't really care about the sub elements of those elements as much.
+5:34
+So let's go back up here, and I'm going to take this key and just move it down to here.
+5:40
+And I think you could actually just leave the key inside of there and it wouldn't actually hurt anything.
+5:45
+But I don't think it's actually serving a purpose either so I figure why not just move it?
+5:50
+And, actually, I just realized there's one other thing that I forgot to do, moving this into a separate file.
+5:56
+So let's do that real quick.
+5:57
+In the Explorer, I have just created a new file called housecard.
+6:01
+Jsx, and I'm going to do a default export from this file.
+6:06
+And what I want to export is this entire function that I wrote.
+6:10
+So let's just move this around.
+6:12
+Like I said, a lot of this challenge is just about shuffling things.
+6:15
+So just paste that in right there, and now we just need to import it like so.
+6:20
+And now look how nice and tidy our component is looking.
+6:23
+I can drive that home even further by deleting this note.
+6:27
+I mean, look how short this thing is.
+6:29
+So much nicer to look at and interact with than what we had before.
+6:33
+Okay.
+6:33
+Now comes the real moment of truth.
+6:35
+Did I actually do this right?
+6:36
+And will it actually work when I click run?
+6:39
+Let us find out.
+6:40
+Drum roll, please.
+6:41
+Three, two, one, and hey.
+6:44
+Hey.
+6:44
+There we go.
+6:45
+This is looking spooktacular.
+6:47
+I would even go so far as to say that it is looking boo tif tiful.
+6:51
+Anyway, I hope you don't hate me for those horrible ghost puns, and I hope to see you in another challenge soon.
+6:56
+In the meantime, happy coding, and goodbye for now.
