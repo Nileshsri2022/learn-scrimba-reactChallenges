@@ -1,0 +1,161 @@
+Transcript
+0:00
+There.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So to get started, if we're gonna do anything with an input, we need to actually render that input with JSX.
+0:10
+So let's start with that.
+0:11
+Down here in the space I marked, I'm going to write input and that's a self closing tag, so I write it like so.
+0:18
+Now inside of the tag, I know I'm gonna need a whole bunch of things, so I'm gonna go ahead and open this up.
+0:24
+And now we can just start going through this list of things one by one.
+0:28
+So we need a class name of name input.
+0:33
+We need a type of text.
+0:36
+We need a max length of sixteen.
+0:40
+This is a number and a number is a bit of JavaScript, and we are inside of JSX right now, so that is why I am putting it inside of these curly brackets.
+0:48
+Next, we need a placeholder, which is gonna be this string of text right here.
+0:53
+Paste that in.
+0:54
+We need this input to be required, and I literally just have to write the word required for that, which is pretty nice.
+1:00
+And then finally, the trickiest one, I want my disabled state to be either true or false depending on what the submitted state is.
+1:11
+So remember, this state gets initialized as false.
+1:15
+But once the user submits the form, the state is going to be set to true.
+1:20
+And so we can just feed that value into our disabled attribute right here.
+1:25
+So disabled equals submitted, which is either gonna equal true or false depending on whether the form has been submitted.
+1:32
+Okay.
+1:33
+So that takes care of all of these attributes up here.
+1:36
+Let's just test this out to make sure it is working properly.
+1:39
+Alright.
+1:40
+That's looking good.
+1:41
+And now I'm just going to type the British, and at a certain point, it stops allowing me to type.
+1:46
+But we are reaching that sixteen character limit.
+1:49
+Alright.
+1:50
+Fantastic.
+1:50
+Okay.
+1:51
+So now that we've got the input on the page, it's time to make it actually start doing something.
+1:56
+Okay.
+1:57
+So we basically want to be listening for any change inside of the input element because remember, instruction number two says whenever the user's input changes, the state should be updated.
+2:08
+And if we wanna do that, well, we need to be listening for those changes in the first place.
+2:13
+So down here, I'm gonna write on change, and then the value of that is going to be my change handling function.
+2:20
+And I'm just gonna call it handle change, and then I'm going to define that function up here, handle change.
+2:27
+And then what do we actually want this function to do?
+2:30
+Well, I know I wanted to update the player name state.
+2:33
+So I need this set player name function that's already been declared.
+2:37
+I will put that right here.
+2:39
+And then inside of the parentheses, I need to write what I want the state to be updated to.
+2:44
+And what do I want that to be?
+2:46
+Well, I want it to be whatever the user has currently typed inside of the input element.
+2:52
+So the question becomes, how do we get access to that?
+2:54
+Well, remember, handle change is an event handling function, and any event handling function automatically has the event object or technically synthetic event object automatically passed into it as an argument.
+3:08
+And to gain access to it, we therefore just need to name it in our event handling function.
+3:14
+I'm gonna call it event, although you could also call it b or whatever you want.
+3:18
+And then inside of that event, we have access to the target of the event, which is the element that the event is taking place inside of, which is the input in this case.
+3:29
+And then inside of that target, we can also access the value of the target element, and that will be whatever the user types inside of the input.
+3:38
+So now if I come down here and I console log player name, we should see the player name state get updated as I type into the input.
+3:47
+Let's see if this works.
+3:48
+And now if I type in my name, sure enough, we see my name getting reflected in the console which means that our player name state is getting updated exactly as we want.
+3:59
+Okay.
+3:59
+So are we done?
+4:00
+Well, not quite because our input isn't yet controlled and I can prove that by coming down here and clicking the continue button.
+4:09
+And if I do that, well, in the console, you can see that the player name state is now Daniel the Magnificent, thanks to this function here.
+4:16
+However, back in our input, my name is still showing up as Daniel.
+4:21
+And that is because the input currently has no idea what is going on in our user input state.
+4:27
+It has sort of a life of its own right now, or to put it another way, it is its own source of truth, or in other words, it is in control of itself.
+4:37
+And we want the state to be in control of it and for the state to be the source of truth.
+4:43
+Or in other words, we want this input to be controlled.
+4:47
+And that's a lot of stuff to put into words, but in practice all we need to do is come down here and say that the value of the input should equal the value of player name.
+4:59
+And now if I click run, well, at the beginning, everything looks the same.
+5:02
+I type in my name and that shows up as our state.
+5:06
+However, now if I click continue, here comes the moment of truth.
+5:10
+Drum roll, please.
+5:11
+Three, two, one, and there we go.
+5:14
+A hero has risen.
+5:16
+The hero's name is Daniel the Magnificent, and our state is showing up as the value of our input because state is now in control of that input.
+5:27
+Now before I go, I should note that this is a bit of a contrived example because in the real world, if we were showing something like this, we would probably show it inside of a div instead of the original input element.
+5:40
+I just set it up this way so that the code would only work if the input were controlled.
+5:45
+What I'm trying to do here is really just just drive home what it means for an input to be controlled.
+5:51
+What it comes down to is the question of whether state is in control of the elements truth or if the input, the element, is in control of its own truth.
+6:01
+And it's just a little bit of code that makes the difference between one thing and the other, but as you can see, it makes a big difference in how the code actually operates.
+6:12
+Alright.
+6:12
+So I hope you are feeling a little bit more magnificent yourself now.
+6:16
+Congratulations on completing this challenge.
+6:18
+I hope to see you again soon in another one.
+6:20
+In the meantime, happy coding, and goodbye for now.
