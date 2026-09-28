@@ -1,0 +1,569 @@
+Transcript
+0:00
+Again, I hope that challenge went well for you.
+0:02
+And if you had trouble with it, that is totally understandable because this challenge involved some very tricky concepts in React.
+0:09
+There's a lot to get your head around with this one, and a lot of people have trouble with the issues that this challenge brings up.
+0:15
+So let's break this down and take it from the beginning.
+0:17
+I don't know about you, but when I look at this, the first thing that I think about is, okay, I need to think about the play button and what that play button is going to do.
+0:26
+Then my mind just sort of starts swirling around and I don't really know.
+0:29
+So what I always like to do with these challenges is to start with a simpler version of what I want my app to do and then work my way incrementally to the final more sophisticated version.
+0:41
+What is the most basic thing that I want this app to do that it is currently not doing?
+0:46
+Well, it's not actually this play button.
+0:47
+It's the whole mechanism of counting down time.
+0:51
+That is really the main thing that I want to happen.
+0:53
+I need to have that in place, and then I can worry about my play button because the play button's job is just to initiate the logic that I've already written out for the timer.
+1:04
+So let's start simple by just getting this timer to count down when the page loads.
+1:08
+Let's not worry about the play button at all.
+1:11
+Alright.
+1:11
+So back in our code, let's think about for a moment what would we do if we were just in vanilla JavaScript and we wanted to create a countdown timer.
+1:21
+Well, this would be a perfect job for set interval since that triggers things at a certain interval of time.
+1:28
+So I pass in my callback function.
+1:31
+That's gonna end up doing something.
+1:32
+And then the second argument, remember, is the amount of time that we want the interval to be expressed in milliseconds.
+1:40
+So one thousand milliseconds is one second and that would be our interval.
+1:44
+Okay.
+1:45
+Now what do we want this callback function to do?
+1:47
+Well, every second we wanted to take the current time left and subtract one from it.
+1:53
+So this is a bit of state, so I know I need my set time left function.
+1:57
+And what I'm gonna tell it to do is take the current time and return whatever that is as one.
+2:05
+Alright.
+2:05
+Let's test this out.
+2:06
+Remember, our play button isn't hooked up right now and this bit of code is on the top level of our app component.
+2:13
+So this is going to get read and invoked as soon as I press the run button.
+2:17
+So let's see what happens.
+2:18
+Three, two, one, and
+2:22
+Okay, well, something is happening, but it's not quite what we want.
+2:26
+And I'm actually going to turn this off before we get some sort of crash.
+2:31
+And now let's think about what was going on there.
+2:33
+But we have this bit of code that is read when the component initially gets rendered.
+2:37
+That is going to change the state with this logic that we have provided here.
+2:42
+But remember that any time when we change state inside of a React component, in this case, timeLeft, that is going to make this entire function get invoked again because React is going to try to re render the component which means it's gonna read this code again and execute it again.
+2:59
+So now we're going to have multiple set intervals and each one of them is going to be setting time left according to this logic, which is then going to trigger another state change and so forth and so on, creating this snowball effect.
+3:12
+And that's why we were getting those crazy leaps in numbers and getting all the way down into negative, I think it was like twenty seven by the time I stopped it.
+3:20
+Okay.
+3:20
+So we are on vaguely the right track here.
+3:23
+I mean, we are decreasing the time, but we're gonna have to do something different to make this work inside of React because of the way that react works.
+3:31
+Now before I go any further, I should note that there are multiple ways of solving this challenge.
+3:35
+Some of them involve setInterval, but you could have also done this with setTimeout and that would be okay too.
+3:41
+I think I could make an argument that setInterval is better suited for this particular task, but setTimeout can get the job done just fine as well.
+3:50
+So no worries if you used that, but I'm gonna solve the challenge with setInterval.
+3:55
+Anyway, whichever one you chose, both setInterval and setTimeout are something called web APIs.
+4:02
+They are basically something that lives inside of your browser and not inside of React itself.
+4:07
+So from React's standpoint, they are external systems.
+4:11
+Not only that, but they are external systems that produce side effects.
+4:15
+In this case, executing a bit of code every second.
+4:19
+So maybe you see where I'm going with this.
+4:20
+Anytime we are doing something that involves interacting with a system that is external to React and produces side effects, we need to use react useEffect.
+4:30
+So I'm just gonna do that.
+4:31
+And then I'm gonna enclose this whole setInterval inside of the parenthesis.
+4:36
+Okay.
+4:36
+So let's see what this does.
+4:37
+Click run and I get a weird error message.
+4:41
+And the reason for that is that use effect itself takes a callback function and I need to enclose this set interval inside of that callback function.
+4:51
+So if I did this with an anonymous arrow function, that would look like this.
+4:56
+And this is getting hard to read, so let's reformat it a bit.
+5:00
+Something like that.
+5:01
+I'm sure there are other ways of doing this.
+5:02
+And now let's click run.
+5:04
+Well, we get the same issue as before.
+5:07
+And if we think about this a bit, that makes sense because we have not included any dependency array.
+5:13
+And if we don't include any dependency array, then React is going to run this every time that state refreshes and the component gets rendered.
+5:22
+So we end up in the same exact problem as before and at this point we are at a very ridiculous amount of time.
+5:28
+So before my computer explodes, let's add an empty dependency array and see what that does.
+5:34
+Well, there we go.
+5:35
+We are ticking down seconds one by one.
+5:37
+Now, I fast forwarded a bit just to show you that right now we do have this problem where our time is going into negative numbers.
+5:43
+It's not stopping at zero but let's come back and worry about that later.
+5:47
+As for right now, I wanna come back and think about how could we set this up so that this interval only gets invoked if the user has pressed the start button.
+5:57
+Well, if we want this button to do anything, we're gonna need to add an on click event handler that is going to be a function.
+6:04
+I'm gonna call it startGame and I'm gonna write that function out up here.
+6:09
+Okay.
+6:09
+Now what do I want this function to do?
+6:11
+Well, remember I have this state up here called timer running and it's initialized as false.
+6:16
+And so what I want this button to do is set timer running to true when it's pressed.
+6:21
+So let's do that.
+6:23
+Okay.
+6:23
+So now the user clicks on the button that invokes this function and that sets timer running to true.
+6:29
+And then remember, if timer running is set to true and we are at an interval of time that is divisible by six, we should get a wave of ships.
+6:38
+Okay.
+6:39
+And now I can sort of hook this state up with this setInterval inside my useEffect here.
+6:44
+What I can say is this.
+6:46
+If timer running equals true or to shorten that, we can just write it like that.
+6:51
+So I'm gonna move this inside of the conditional and now this interval will only get set if timer running is true.
+6:58
+And by clicking on the button, I will set timer running from false to true over here.
+7:03
+So let's test this out.
+7:04
+See if it's working.
+7:05
+Okay.
+7:05
+Timer is not running.
+7:07
+So that's good.
+7:07
+And now I'm gonna click the play button and, It's got released.
+7:12
+But the timer didn't start ticking down.
+7:14
+So let's think about why that's happening.
+7:15
+So when I click the button, set timer running gets set to true.
+7:19
+And remember, whenever this state timer running is true and the time is divisible by six and sixty is divisible by six, a wave of ships gets released by the app.
+7:30
+So if I click run now, I don't even need to press the button to release a wave of ships because I've manually changed the state to true.
+7:38
+And now, not only are the ships getting released but the timer is counting down as well.
+7:43
+So what's going on here?
+7:44
+Well, this gets at some of the fundamentals of how useEffect works and how our dependency array works.
+7:51
+So if we don't include any dependency array like we did before, then this useEffect will get run every time the function gets rendered.
+7:58
+If we have an empty tenancy array like this, then the effect will only get run on the initial render when the component first gets mounted.
+8:07
+Now if this timer running state is initialized as false, and let's think this through.
+8:12
+So our code gets to this point on the initial render.
+8:15
+Timer running is false, and so it's gonna skip over this line of code here.
+8:19
+And then because we have an empty dependency array, this useEffect is never gonna get run again.
+8:25
+And so that's why our timer doesn't run.
+8:27
+Whereas, if we change this to true, well then on the initial render, this line of code gets run.
+8:33
+But this time, timer running is true, and so this interval does get run.
+8:38
+And that is why we see the difference.
+8:41
+So the question now becomes, how do we get this useEffect to listen for whether or not timer running has been changed?
+8:49
+Well, that's what this dependency array is all about.
+8:52
+It's for us to put the things that our effect is dependent upon.
+8:57
+And in this case, that is whether the value of timer running that state has changed.
+9:03
+Okay.
+9:03
+So now if we reinitialize this as false, when we click the button, that is gonna set timer to true.
+9:09
+Our useEffect is going to notice that the state changed, and so it should run this line of code again.
+9:14
+And this time, timer running will be true, and so the interval will get run.
+9:18
+Let's test this out.
+9:19
+Okay.
+9:20
+So the timer isn't counting down.
+9:21
+That's great.
+9:22
+I click run, and there we go.
+9:24
+Okay.
+9:24
+So this is great.
+9:25
+Our timer is already working pretty well.
+9:27
+The only problem is this.
+9:29
+I'm gonna press play again and then fast forward.
+9:32
+As you can see, we still have that problem where the time continues to count down after zero, which is good for raising my score but not so much for the actual gameplay.
+9:42
+Let's look at how to stop the timer next.
+9:44
+Okay.
+9:44
+There are a number of different ways you could do this.
+9:46
+I tried out a bunch myself.
+9:48
+I'm gonna show you the one that I settled on, but just keep in mind that it is not like the solution that you had to do.
+9:54
+It's just my solution.
+9:55
+So what I'm gonna do is this.
+9:56
+I'm just going to check.
+9:58
+IsTimeLeft zero?
+9:59
+If that is the case, then set timer running to false.
+10:03
+Okay.
+10:03
+So here's my reasoning here.
+10:05
+Every time this interval gets run, it's gonna end up changing the timeLeft state.
+10:09
+And every time that that state changes, this whole function is gonna get run again, which means this line of code is gonna get run again as well.
+10:18
+And so if set time left sets the time to zero, then that's gonna become our state for timeLeft.
+10:24
+And then all of our code's gonna get run, including this line here, which is going to set timer running to false.
+10:30
+K.
+10:31
+Then React is gonna come to this line of code.
+10:33
+Now because timer running has changed from true to false, this effect is gonna get run again.
+10:38
+But this time, now that timer running is false, well, these lines of code here aren't gonna get run and so it's not going to initiate another set interval.
+10:47
+The interval that we currently have running is still gonna be in place and so we need to clean that up.
+10:54
+And here is where, for me at least, this gets the trickiest.
+10:57
+So remember that if we want to clean up something inside of an effect, we need to include a return statement that tells React what we want it to do when this effect is over.
+11:08
+And in this case, what we want it to do is we want it to clear this interval.
+11:12
+So to clear an interval, we just need to write clear interval and then inside of the parenthesis, we need the name of the interval that we are clearing.
+11:20
+However, at the moment, we don't have any name given to this interval.
+11:24
+So let's try naming it.
+11:25
+I'm just gonna call it const.
+11:27
+Let's just say interval equals and then our interval.
+11:30
+And now I'm going to tell my clear interval function that the interval I wanted to clear is the one I just called interval.
+11:37
+Okay.
+11:37
+So let's test this out and just to make it so I don't have to sit through sixty seconds of the game every time we do this, I'm gonna change the starting time to six so we just get one wave of ships.
+11:48
+And I click run and we immediately get an error message telling us that interval is not defined.
+11:54
+And now the reason for that is that we have named interval inside of our conditional, but React is going to try to read this before it goes through these lines of code.
+12:04
+And so at the point where it initially reads interval here, well, interval is not defined.
+12:09
+Now, the way we can get around this is by declaring interval out outside of our conditional.
+12:14
+And then inside of the conditional, what we're gonna do is to redefine interval to be this line of code that we've written here.
+12:20
+So now when this gets read, interval will have been declared even though it doesn't have any value assigned to it.
+12:27
+And we shouldn't get that error message anymore.
+12:29
+Let's test this out.
+12:29
+Okay.
+12:30
+So far so good.
+12:31
+I press play.
+12:32
+And nothing happens with the timer.
+12:34
+So why is that?
+12:34
+Well, basically, I wrote this the wrong way down here.
+12:37
+What I need to do is make my return statement here an anonymous function that executes this bit of code when this function is invoked.
+12:46
+If I just write it like this, then the function is gonna be immediately run, and then it will clear out the interval before it's even had a chance to do essentially.
+12:55
+So now that I had this anonymous function, hopefully it will work.
+12:58
+Let's test this out.
+13:00
+And sure enough, there we go.
+13:02
+And, uh-oh, we got an error right at the very end there.
+13:06
+It looked like everything was fine until we reached zero.
+13:08
+If you're not sure why that's happening, I want you to pause right now and take a look at my code and think about why that just happened.
+13:15
+Why do we get this error message about an infinite loop when time left equals zero?
+13:20
+And what can we do to prevent that?
+13:22
+And I'll just give you a little bit of a hint.
+13:24
+There is a very, very small addition that I need to make to my code to solve this problem.
+13:29
+There is no major, like, structural problem with it, just a minor little thing.
+13:33
+I'll give you a moment to think about that.
+13:38
+Okay.
+13:39
+So imagine we are counting down three, two, one.
+13:42
+And at one second, setTimeout is going to set the time to zero.
+13:47
+That is going to change the time left state from one to zero.
+13:51
+React is gonna see that the state has changed, which means it's going to run this whole function again, which means it's going to run this bit of code.
+13:58
+Now when it runs this bit of code, timeLeft now equals zero.
+14:02
+So it is going to set timer running from true to false.
+14:06
+That is another state change which means that react is going to render the function again.
+14:12
+So it's gonna come back down to this line of code and well time left still equals zero, which means it's going to set timer running to false again.
+14:21
+React is going to register that as another state change and so it's gonna run the function yet again.
+14:27
+Time left will still equal zero and so forth and so on leading to an infinite loop.
+14:32
+And the way I can get around this is by simply adding one more condition to my conditional, which is whether or not time running is true.
+14:41
+Because if you think about it, the only time that I want to set timer running to false is not just if timeLeft equals zero, but also if timer running is currently true.
+14:51
+Then I want to change it to false.
+14:53
+But if it's already false, well, then these lines of code become superfluous.
+14:57
+I want React to skip over them, and so I want to check whether timer running is true or not.
+15:03
+If it's false, this whole line of code here will evaluate to false, and so this line of code will not get run again.
+15:10
+So that should take care of our infinite loop.
+15:13
+Let's test it.
+15:19
+And there we go.
+15:20
+We are frozen at zero exactly as we wanted.
+15:23
+Okay.
+15:24
+Now if I press this play button again, well, now we're right back to nothing happening.
+15:27
+So let's take a look now at how we can reset the game.
+15:30
+And this is gonna be much simpler than what we just did.
+15:33
+But what we basically need to do is we need to reset the timer to sixty and reset the score to zero.
+15:39
+And remember that I already have those values stored up here and we already have the state setter functions right here so all we need to do is put them together Like so.
+15:50
+And this will actually work, but I'm gonna add one little thing here, which is this.
+15:55
+And this isn't totally necessary, but necessary, but my reasoning here is this.
+15:59
+So, the first time that the player starts the game, the time left already equals sixty and the score is already at zero.
+16:06
+So we don't need to restart them.
+16:08
+This would be an unnecessary setting of state.
+16:11
+I only want to reset them if the game is over and I can use the time left being zero as a proxy for whether or not the game is done.
+16:20
+Okay.
+16:20
+So let's test this out.
+16:26
+So far so good.
+16:27
+Get to zero.
+16:28
+It stops And now comes the moment of truth.
+16:31
+I press play and there we go.
+16:35
+Fantastic.
+16:36
+Now, there's just a few last loose threads to tie up.
+16:39
+So first of all, there are a few more things we need to do with the button.
+16:42
+Right now, when I press play, well, the button can still be clicked.
+16:46
+And I want the button to go away.
+16:49
+And remember, I can do that by changing fadeIn to fadeOut in the class name list for the button.
+16:55
+If fade out is there, the button will disappear like so.
+16:58
+So what I wanna do here is make this change from fade in to fade out depending on whether or not the game has started.
+17:05
+So here's how I'm gonna do that.
+17:07
+So if timer is running, return fadeOut.
+17:10
+Otherwise, return fadein.
+17:12
+This is getting long, so I'm going to break it up into multiple lines.
+17:16
+So something like this.
+17:17
+Let's see if that works.
+17:19
+The button did fade in, and now, there we go, the button fades out.
+17:23
+And when timer reaches zero, it should come back, and there we go.
+17:26
+Fades in and fades out exactly like we want.
+17:28
+Now personally, this gives me a little bit of a headache to read, so I might store this inside of a variable and move it into a variable up here, like so.
+17:38
+And that works exactly the same way.
+17:40
+Either solution would be fine.
+17:41
+Okay, another thing I want to do with this button is I want it to be disabled whenever the timer is running.
+17:47
+So I can just write disabled equals timer running and then if timer is running, this will be true and then disabled will be true as well.
+17:55
+And then the last thing I want to do is when the button invokes this startGame function, I also want the music to start and for that clicking sound to get played.
+18:04
+So I'm gonna write play song and play click inside of my function.
+18:10
+Right.
+18:10
+And then finally, I'm gonna go back and reset this to sixty.
+18:14
+And at this point, the game should be complete.
+18:16
+Now, before I end this, I just want to mention that if this whole logic kind of melted your brain a bit, you are not alone.
+18:22
+It melted my brain a bit as I was writing it out.
+18:25
+And a whole lot of experienced developers have trouble getting their head around how setInterval works in conjunction with React and useEffect.
+18:34
+So much so, in fact, that one of the main developers behind React wrote an entire article about it, and I left a link to that article in the resources section of the bonus challenges.
+18:46
+So it's this article here.
+18:47
+And if you read it, you are going to learn how to build a custom hook that improves how setInterval works with React.
+18:54
+But not only that, this article is a really, really good read because it goes into some pretty deep concepts about React.
+19:00
+And the point that it gets at is that the reason why it's so difficult to make setInterval cooperate with React is that the two things are operating from a fundamentally different programming paradigm.
+19:11
+And as a result, trying to make setInterval work with React is sort of like trying to make a square peg go into a round hole.
+19:19
+It is possible, but it takes a lot of effort.
+19:23
+And the whole reason this guy created this custom hook was to help other people avoid that difficulty going forward.
+19:29
+And if you hate me at this point for not having showed you this at the very beginning, I am really sorry.
+19:34
+But I think it is worth doing this the manual way before you just import someone else's hook and let them do all of the thinking for you.
+19:41
+There is also an article by the same guy about using useReducer to improve how setInterval works.
+19:47
+And these are both some of the bonus challenge ideas I left over here, one of which was to optimize the timer.
+19:54
+Anyway, I would highly highly highly recommend checking out these articles.
+19:57
+They're really great, not just for understanding set interval, but just learning how to think and react better.
+20:03
+Anyway, what I'm going to do now is I'm gonna go back here, and I wish I could do one final test where you hear the music, but the audio doesn't really work right when it's internal audio from my computer.
+20:13
+So what I'm gonna do is I'm going to fast forward through a game, see what kind of score I can get, and then I'm going to hand it over to you to see if you can beat me so I'm gonna end by doing that
+20:29
+Oh man, I got so close to eight hundred.
+20:31
+That is really frustrating.
+20:33
+See if you can beat my top score.
+20:35
+I hope to see you again soon in another challenge.
+20:37
+In the meantime, happy coding and goodbye for now.
