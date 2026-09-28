@@ -1,0 +1,89 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to this beautiful night in this beautiful forest.
+0:04
+We are inside of an old school eight bit style video game, and the main character is camping out here for the night, and she needs to be able to keep warm and scare away any of the evil creatures that live inside this forest.
+0:19
+And maybe you can already see where we are going with this.
+0:23
+We have this torch here.
+0:24
+We have these logs over here.
+0:27
+And so we just need a way for the character to be able to put the two things together in order to generate a fire.
+0:34
+So here's how I want this to work.
+0:35
+When the user enters the container in which this torch is living, that is over here in our return statement of the app component.
+0:44
+It's a div with the class name of torch container, and the torch is right here.
+0:50
+So when the user's cursor enters that div and they hold their mouse button down, so not click, but hold it down.
+0:58
+And I want this state up here called torch equipped to be set from false to true.
+1:04
+So I'm gonna do that manually just to show you how this will work.
+1:07
+So when torch equipped is true, we are able to move it around.
+1:12
+So wherever I move my cursor, the torch goes which is pretty cool.
+1:17
+Okay.
+1:17
+Here's the next thing.
+1:18
+If I have my mouse button down and the torch is therefore equipped to my character And I move my torch and my cursor into the container where the wood is contained and that is down here in our code.
+1:33
+So we have a div with a class name of wood container, and there is our wood right there.
+1:39
+It's actually just an emoji.
+1:41
+If I move the torch and my cursor into that container, then I want this state up here, the one called wood kindling, to be set from false to true.
+1:53
+And if that happens, the effect we get is this.
+1:56
+The wood starts glowing as if it is about to catch on fire.
+2:01
+Alright.
+2:01
+Last but certainly not least, if I continue to hold down my mouse and therefore continue to have the torch equipped and I then pull the torch away from the wood and so my cursor and the torch exits that wood container div, then I want this state here, wood on fire, to be set to true.
+2:22
+And if that happens, the effect that we get is this.
+2:26
+Our wood actually catches on fire, and our character is safe and warm for the night.
+2:32
+However, let's go back to setting this to false and set this to false as well.
+2:38
+If at any point when I have the torch equipped and I let the mouse button go up, then I want this torch equipped state be set back to false and then the torch is going to return to its initial position.
+2:53
+So the user needs to actively maintain the torch equip state.
+2:57
+They need to keep pressing the mouse button down to continue holding the torch.
+3:03
+That is the idea here.
+3:04
+Okay.
+3:05
+So I've written this all out as instructions here.
+3:08
+If you follow these instructions bit by bit and possibly do a bit of Googling because you might not know how to do some of these things, like check if a user's mouse button is down or up, you should be able to complete this challenge just fine.
+3:22
+And there is nothing wrong with having to Google these things.
+3:25
+I had to Google them myself just to double check what I had to do.
+3:29
+However, if you get stuck, I have left some hints for you in the top left corner of the explorer.
+3:35
+Finally, if you are curious about how I am getting the torch to move wherever the user puts their cursor, I've kind of purposefully tucked some of that code away just so it doesn't distract from the challenge, but you are totally welcome to take a look at it.
+3:49
+It's in this utilities folder over here in this file I called run background effects.
+3:54
+And the way it's working is that it's basically listening for any movement of the user's mouse.
+3:59
+And then if it detects any movement, it runs this function here, which is basically just updating a state that contains information about where the cursor is on the screen, and then that information gets used to determine where the torch should be positioned using absolute positioning.
+4:15
+Anyway, I will see you again soon to go over the solution together.
+4:18
+In the meantime, happy coding, and good luck with this challenge.
