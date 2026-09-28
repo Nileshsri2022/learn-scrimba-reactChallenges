@@ -1,0 +1,101 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to this emoji personality test, an app that analyzes your personality based solely on the emojis that you like.
+0:10
+So the idea here is that the user is presented with three randomly selected emojis and then they have to select the one that they like the most.
+0:19
+So I would click on the pizza.
+0:21
+At the moment, nothing is currently happening when I do that because we still need to set some things up, but here is what should be happening.
+0:28
+What should be happening has to do with these states that I've declared at the top of this app component.
+0:34
+So the first state is called liked emojis.
+0:37
+This state is initialized as an empty array.
+0:41
+And when I click on an emoji that I like, that emoji should go inside of the array.
+0:47
+So that would look something like this underneath the hood.
+0:50
+Okay.
+0:51
+Now our next state is called passed emojis.
+0:54
+These are the emojis that the user passes that they do not select.
+0:58
+This is also initialized as an empty array.
+1:01
+And in our example here, this cloud emoji should be inserted inside of this array and so should this pause button.
+1:09
+Okay.
+1:09
+The third state is called currentemojis and those are the emojis that are currently being shown to the user.
+1:16
+This is also an array, but you can't see that if you just look at the way that it is initialized because it is initialized with this getRandomEmojis function, which is living down here.
+1:28
+You can see that what it's doing is it is returning a new array in which there are three random emojis.
+1:36
+And so what we end up with up here is, well, an array of three random emojis.
+1:41
+And at the moment, those are the three emojis that you are seeing here.
+1:45
+However, after I click one of these buttons and the pizza goes to the liked emojis array and the other two emojis go to the past emojis array, we want to set the current emojis to be a new array of three random emojis.
+2:01
+And we can just use the get random emojis function to do that once again.
+2:06
+Okay.
+2:06
+So let's imagine that all three of these states have been updated in the way that we've just gone through.
+2:12
+If that bit of code gets run, the result should look like this with the pizza being added to the liked emojis column, the other two emojis being added to the past emojis column, a new set of emojis appearing up here, and our counter increments from zero to one out of ten.
+2:30
+The idea being that the user has made one out of ten selections.
+2:35
+And now they need to make another selection.
+2:37
+So maybe I pick this robe.
+2:39
+That robe would then get added to the liked emojis array, all the power cord thing and this hair would go to the past emoji state array and then we would be looking something like this with new emojis appearing here and our counter going up to two and so forth and so on until we get to ten.
+2:59
+And at that point, the code that I've written down here is automatically going to detect that the number has reached ten and then these two states are going to get changed from false to true and then you are going to be able to get your results.
+3:14
+Now you don't have to do anything with these two states.
+3:18
+It is only these three states that you are dealing with and you only, and I want to emphasize this, only need to write code inside of this handle click function that I've written the outline of down here.
+3:31
+This handle click function is being invoked way down here in our return statement.
+3:37
+There's a whole bunch of JSX that you don't need to worry about at all.
+3:41
+You don't need to do anything with this.
+3:42
+You don't need to do anything with this.
+3:44
+In fact, you don't really even need to do anything with this either.
+3:48
+I'm just showing you that there are three buttons inside of this div.
+3:52
+Each one of these buttons is one of these emojis that you're seeing on the screen and each one of those buttons has an on click event handler that is invoking that handle click function.
+4:04
+The idea here is that by clicking on any of the three buttons, this function gets invoked.
+4:10
+And then by getting invoked, that function is going to carry out all of those tasks that we just went through with these three states up here.
+4:19
+Only instead of setting these states manually in the way that I just did, it's going to do it automatically and dynamically.
+4:26
+So let me reinitialize these as empty arrays, and now I can hand this task over to you.
+4:33
+I've left instructions for you down here.
+4:35
+They are just rec
+4:43
+some hints for you up in the top left corner of the Explorer.
+4:44
+You some hints for you up in the top left corner of the Explorer.
+4:48
+Anyway, I will see you again soon to go over the solution together.
+4:51
+In the meantime, happy coding, and goodbye for now.
