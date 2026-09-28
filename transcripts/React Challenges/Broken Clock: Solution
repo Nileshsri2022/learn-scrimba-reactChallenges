@@ -1,0 +1,271 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+So first things first.
+0:05
+I know that if I want to do anything periodically, like update a timer in React, that is going to require using a JavaScript method like setTimeout or setInterval, both of which are HTML DOM APIs or, in other words, are external systems and when we're interacting with an external system and especially when our interactions with that external system are gonna be doing something with our state, which is the case here since we are going to be updating this time state.
+0:32
+Well, it's the perfect time, no pun intended, to use useEffect.
+0:37
+So first things first, I am going to create the skeleton of my useEffect down here.
+0:43
+First, I need a function and I'm gonna make this an anonymous callback function using arrow notation.
+0:49
+So that's the first argument that I'm passing in.
+0:51
+And then the second one is going to be my dependency array.
+0:55
+Okay.
+0:55
+And then I'm going to open up the anonymous functions.
+0:58
+And now let's think about what we want to do here.
+1:01
+So we have two options here.
+1:02
+One would be setTimeout, and the other would be setInterval.
+1:06
+And you could actually complete this challenge with either of those methods, but I think that setInterval is best suited for it because setTimeout is really for when you just have a single timing event that you want to happen, sort of like a ticking bomb or an alarm clock.
+1:22
+You're gonna set it for, like, ten seconds in the future, and then it's going to execute some code.
+1:27
+Whereas setInterval is really best suited for situations where you want to repeatedly do something at a certain interval of time, hence the name setInterval.
+1:36
+So I'm gonna use setInterval inside of my useEffect, and then once again, I'm just going to create the skeleton of my code, which is going to be first a function that I want the setInterval to execute.
+1:49
+That's the first argument, and I'm just gonna use another anonymous arrow function like so.
+1:54
+And then our second argument is the interval of time that we want the code to be executed at.
+2:00
+And my first inclination here is that since we are basically counting the seconds, I could just set this as one thousand milliseconds or one second.
+2:09
+However, I'm thinking that in order to be more accurate, I'm actually gonna do a shorter time interval, let's say two hundred milliseconds, because it's possible that the clock might be opened in the middle of a second, and then we would want it to be updated sooner than one second.
+2:25
+If we wanted to be super, super precise, we could set this as low as one millisecond, but I think that's a bit overkill.
+2:31
+A hundred milliseconds will suffice.
+2:33
+Okay.
+2:33
+So now let's think about what do we actually want to do every two hundred milliseconds.
+2:38
+Well, we want to update the time.
+2:40
+So I'm gonna do that inside of our callback function inside of our set interval.
+2:45
+And here, I'm going to need yet another function, which is the set time function declared at the top here.
+2:51
+So every two hundred milliseconds, I want to set the time.
+2:55
+And what do I want to set the time to be?
+2:57
+Well, whatever gets returned when I invoke this function here.
+3:00
+So I'm gonna bring that down, stick it inside, and you could write it this way, and then the function would actually get executed, and the return value would be the new state value of time.
+3:10
+However, if I take these parentheses off, then what I'm doing is I'm just passing in the code that I want React to execute underneath the hood, and this is gonna result in something that's arguably slightly more efficient, at least in some circumstances.
+3:24
+I don't actually know if this is one of them.
+3:26
+But you know what?
+3:27
+This is just kinda ugly looking to me.
+3:29
+We have so many parentheses already, so I'm just gonna do it this way.
+3:31
+Alright.
+3:32
+So now we've updated our time.
+3:33
+We're doing that every two hundred milliseconds, and that should actually take care of our anonymous callback function that we are passing inside of the useEffect.
+3:41
+That is going to update our time the way that we want it to be updated.
+3:44
+Now let's just think about this dependency array here.
+3:48
+Now if you feel a little bit foggy about what you're supposed to do with a dependency array, your first instinct here might be that, okay, I need something to put inside of this.
+3:58
+Right?
+3:59
+And the only thing that I can really think of is the time state because, well, that seems relevant to what we're doing here.
+4:05
+We are updating the time state.
+4:07
+So let's just stick that in here.
+4:09
+Don't really know why we need it, but I know that I'm usually supposed to put something inside of a use effects dependency array.
+4:15
+So let's just give that a try.
+4:16
+Well, maybe you did this.
+4:18
+And if you did, what you probably discovered was if you try to run this code and click the clock, well, our clock is actually working.
+4:24
+There we go.
+4:25
+The seconds are ticking.
+4:26
+However, if I click the x, well, you can see that our counter has gone all the way up to nine thousand six hundred and forty five.
+4:33
+And if I click the clock again, it goes up by one.
+4:36
+And now if I click the x again, we're up to nineteen thousand five hundred and thirty, which is definitely above the number one.
+4:43
+So we must be doing something wrong here.
+4:46
+And what this counter is really telling us is how many timing events we have going on underneath the surface of this app.
+4:54
+And at the moment, that number is nineteen thousand five hundred and thirty, which is a whole lot of timing events.
+4:59
+And the reason we have so many timing events going on goes back to that time state that we put inside of the dependency array.
+5:07
+Remember, if we put something inside of the dependency array of a useEffect, then what React is going to do is it's going to execute this effect every time it detects a change in the time state.
+5:18
+And now think about what we're actually doing inside of the useEffect's callback function.
+5:23
+We are updating the time state.
+5:26
+And so we update the time state.
+5:28
+That's going to cause the time state to change.
+5:30
+That's going to cause React to execute this functional component again, which is going to rerender everything.
+5:36
+And in the process of doing that, all of the code inside of our component is going to be executed once again.
+5:43
+And part of that code is our useEffect.
+5:45
+And so our useEffect is going to check the time state.
+5:48
+It's gonna look and see if there's been any change in that state value.
+5:52
+And since we updated it, well, there is a change in the state's value.
+5:56
+So now it's going to create another setInterval, which is also going to update the time state every two hundred milliseconds.
+6:04
+And then we're gonna go through that whole process again.
+6:06
+And this useEffect's gonna get run again, and we're gonna create another interval and so forth and so on.
+6:11
+And they're just going to snowball out of control from there.
+6:15
+In fact, if I come back to here and I turn this on for a while let's give it a few seconds.
+6:19
+I'm gonna fast forward.
+6:21
+There.
+6:21
+Just twenty seconds have gone by, and now we are all the way up to a hundred and twenty five thousand two hundred and eighty seven So yeah, this becomes really problematic It's definitely not what we want to do.
+6:32
+So let's go back to here and think about this dependency array.
+6:36
+And instead of just guessing what we're supposed to do with it, let's actually think this through.
+6:40
+Remember, the dependency array is all about what does this useEffect depend on.
+6:45
+And another way of rephrasing that question, at least in this context, is when do we want this effect to be run?
+6:52
+Do we actually want it to be run every single time the time state changes?
+6:57
+Well, as we've just seen, the answer is definitely no.
+7:00
+So when do we actually want the useEffect to be run?
+7:03
+Well, we want it just to be run the moment the component mounts and gets rendered.
+7:07
+After that, the interval is already in place.
+7:10
+And then the interval can just do its thing, which is periodically execute a bit of code, which is this code here.
+7:17
+A single interval will take care of this, and And so we only want to create a single interval.
+7:22
+And so we only want this useEffect to be run once the moment that the component gets mounted, the moment that the underlying function, this guy here, gets executed.
+7:31
+Remember, that is where we actually want an empty dependency array.
+7:36
+It's not like there's anything bad about having an empty dependency array.
+7:40
+In fact, sometimes, like this time, it's exactly what we want.
+7:44
+Because when we have an empty dependency array, the useEffect only gets executed once, and that is when the component gets mounted, which is precisely what we want here.
+7:54
+So now if I click run and open the clock, okay, our clock is still running.
+7:59
+However, if I click the x, you can see that the counter is still going.
+8:03
+And that means that our interval is still running in the background, all of our
+8:13
+code is gonna get executed, and this useEffect is gonna get run.
+8:16
+All of our code is gonna get executed, and this useEffect is gonna get run again, which is gonna create a second interval.
+8:22
+And since we never deleted the first one, well, that's gonna create a second interval.
+8:27
+And so our counter goes up to two.
+8:29
+And if I keep going back and forth, it's gonna go up one each time I do that.
+8:33
+So once again, there is something that we need to fix here.
+8:36
+And what we need to fix is that we need to get rid of this interval when the component unmounts.
+8:41
+Or in other words, we need to clean it up.
+8:43
+And that brings us to the other thing that we need inside of this useEffect, which is a return statement where we tell React what we want it do when it comes to the cleanup phase of the useEffect.
+8:55
+And so the way that I'm gonna do that is I'm going to create an anonymous function here, and then what I want that anonymous function to do is to clear the interval.
+9:04
+Inside of the parentheses of the clearInterval method, what I need to do is give the name of the interval that I want to clear.
+9:12
+And currently, this interval doesn't have a name, so let's give it a name.
+9:16
+And I'm not feeling very creative now, so let's just call it interval.
+9:20
+So now I can refer to this interval by name, and I can stick that right inside of here.
+9:24
+And so now every time the clock component unmounts, Jact will execute the cleanup function of our useEffect, and that cleanup function is going to clear the interval, thereby deleting it.
+9:35
+And so it's no longer gonna have a kind of zombie life of its own after we close the clock.
+9:41
+And so our counter should go back down to zero when we close it.
+9:45
+But there's only one way to make sure and that is to test this, so let's do that next.
+9:49
+I open the clock.
+9:50
+Counter goes up to one.
+9:51
+Our clock is ticking.
+9:52
+Fantastic.
+9:53
+Now what happens when I close the clock?
+9:55
+Let's find out.
+9:56
+Drum roll, please.
+9:58
+Three, two, one, and.
+10:00
+Hey.
+10:00
+Hey.
+10:00
+We are back to zero.
+10:01
+And if I open the clock again, we go up to one, back to zero, back to one, back to zero.
+10:06
+Fantastic.
+10:07
+So that actually brings us to the end of the challenge.
+10:10
+If anybody got confused by either of those things, I hope that clears this up, and I also hope to see you in another challenge soon.
+10:17
+In the meantime, happy coding, and goodbye for now.
