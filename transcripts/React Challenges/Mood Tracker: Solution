@@ -1,0 +1,337 @@
+Transcript
+0:00
+Hello again.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's look at it together now.
+0:03
+Now, I don't know about you, but when I open this diary data file and I look at this huge array of data, I get pretty overwhelmed.
+0:11
+And I'm the person who wrote all of this, so I can imagine that you might have felt a bit overwhelmed by it too.
+0:16
+So no worries because I am going to break this down.
+0:19
+So forget for a moment that we have this huge array with all this stuff nested inside of it.
+0:24
+And instead, let's think about our array of data in simpler terms.
+0:28
+We basically just have a series of elements.
+0:31
+Each one contains data.
+0:32
+So I'm gonna call them beta one, beta two, beta three, etcetera.
+0:36
+And then the question becomes what do we want to do with each one of these pieces of data?
+0:40
+Well, for each of them, we want to create a new diary card with the information from the corresponding data item fed into it.
+0:50
+So this would be the diary card for data one and we'd have one for data two, data three, and so forth and so on.
+0:59
+Now, it doesn't matter how long this original array of data is.
+1:03
+And it doesn't matter how complicated each individual piece of data is.
+1:08
+This is the basic schematic for any situation in which we are trying to map something onto an array of data.
+1:15
+And that is exactly what we are doing here.
+1:18
+We are taking each piece of data and then we're basically mapping a diary card around it.
+1:23
+Or I guess you could also say we are mapping a diary card onto each piece of data, however you wanna think about it.
+1:29
+So this is a perfect place for us to use the map method.
+1:34
+Let's go through that step by step.
+1:35
+So first up, I need access to the array of data that I'm working with.
+1:39
+That is diary data, which has already been imported into our file.
+1:44
+So I just need to write out diary data.
+1:46
+And if I console log that, I can confirm that I already have that data at my fingertips.
+1:52
+And there we go.
+1:53
+In the console, we get that big, long, overwhelming array.
+1:56
+Okay.
+1:56
+So now we are ready to map over it.
+1:59
+So dot map and then remember inside of our map method, we pass in a callback function.
+2:04
+I'm going to write it out as an anonymous function.
+2:07
+And then inside of our callback function, whatever we name the first parameter is going to end up being the name of each item that we iterate through as we iterate through our array.
+2:18
+So back in diary data JS, the first item would be this April first data.
+2:23
+The second one would be April second and so forth and so on.
+2:27
+So since each one of those is a day, I am just going to call it day, although you could call this anything you want.
+2:34
+And then since we don't have any other arguments that we are passing inside of this callback function, we can take away these parentheses to simplify our syntax even further.
+2:43
+So now inside of the function itself, I'm going to open this up and write my return statement.
+2:50
+And now whatever I write here is going to be what the new array that we are creating with the map method produces for each day of the week as it iterates through the days of the array.
+3:02
+So what do I actually want to return for every day in the array?
+3:05
+Well, I want to return a diary card.
+3:07
+So I'm actually just going to copy and paste one of these into my map method and I can delete these ones that I hardcoded.
+3:16
+Put in some parentheses so I can do this on the next line down.
+3:19
+Paste that in and there I go.
+3:22
+Okay.
+3:22
+Now let's just pause here and I'm gonna take this whole array that I'm producing with the map method because, remember, that is what the map method returns.
+3:29
+It returns a new array that is mapped on to the original array that you're calling it from.
+3:34
+And I'm going to store it inside of a variable.
+3:37
+And I'm going to call that variable ire card elements.
+3:41
+So that whole array is saved inside of this variable now.
+3:44
+And now what I'm gonna do is I'm gonna come down here to where those hardcoded diary cards were before, and I'm going to insert that variable that I just created.
+3:52
+So a variable is a bit of JavaScript, so I need to write curly brackets and then the name of my variable.
+3:58
+Technically, these are actually components instead of elements, so I'm gonna rename this components there and here.
+4:06
+But to be honest, it doesn't really make that much of a difference.
+4:09
+Okay.
+4:09
+I'm gonna click run and let's take a look at where that gets us.
+4:12
+Okay.
+4:12
+So the console was yelling at us about something.
+4:14
+Let's not worry about that for now.
+4:16
+Let's just look at our reports And, okay, we have April first, April first, April first, April first.
+4:21
+Well, you get the idea.
+4:22
+We just have a bunch of April firsts.
+4:24
+However, and very importantly, we now have I actually forget how many.
+4:28
+Let's look at our array.
+4:29
+We go all the way down to April fourteenth.
+4:32
+So we have fourteen cards now.
+4:35
+One for each object in the array.
+4:38
+So going back to here, what we're doing is we are returning one of these cards for every single object every single day inside of our diary data array.
+4:47
+Now, of course, we don't just wanna return April first.
+4:50
+We want to return the data for whichever day the diary card corresponds to.
+4:55
+So let's do that next.
+4:56
+So first off, let's look at this date.
+4:58
+So instead of hard coding it, I want to replace it with a variable of some sort.
+5:03
+That is again some JavaScript and we are currently in JSX, so I need some brackets here.
+5:08
+And then remember with each iteration of the map method, as we iterate through the array, we are referring to the current item as day.
+5:17
+So if I want to access any data inside of it, I need to refer to it as day dot and then something.
+5:23
+Let's take a look at our array and, sure enough, that is just called date.
+5:28
+So I'm going to make this day dot date.
+5:31
+And let's just do a quick sanity check to make sure this is working.
+5:34
+Quick run.
+5:35
+Once again, we're getting yelled at.
+5:36
+But now we have April first, April second, April third, all the way down to April fourteenth.
+5:42
+So now we just need to go back and do the same thing for all of the other props that we are passing into our diary card component.
+5:49
+So I'm gonna do that real quick.
+5:51
+Alright.
+5:52
+So see how much simpler this is already looking.
+5:54
+Alright.
+5:54
+Let's test this out.
+5:55
+And okay.
+5:56
+April first, That looks good.
+5:58
+April second.
+5:58
+Okay.
+5:59
+We are getting different information.
+6:00
+Same thing with April third and Well, you get the idea.
+6:04
+Now, I don't know if you noticed but the console did yell at us again.
+6:07
+And what it keeps yelling at us is warning, encountered two children with the same key.
+6:12
+This is a temporary key.
+6:14
+And sure enough, we are giving the same exact key to every one of these components.
+6:18
+We don't wanna do that.
+6:19
+We wanna give it a unique key.
+6:22
+Now sometimes what people do is they will come in here and the callback function that we pass inside of the map method has a second parameter or argument that we can gain access to, and that is the current index number of the item in the array that we are creating and that we are iterating on in the original array.
+6:41
+I can just write the word index.
+6:43
+And now if I come down here and insert index as the key, well, index will be zero on the first iteration, one on the second iteration, and so forth and so on.
+6:54
+So all of the numbers will be unique and React will stop yelling at us.
+6:58
+Let's confirm that.
+6:59
+Sure enough, we didn't get an error message and everything looks good.
+7:02
+However, it is generally considered not the best practice to use an index as your key.
+7:07
+And there are a number of reasons for that.
+7:10
+I would encourage you to Google this.
+7:11
+But in the meantime, I am just going to show you a better way of doing it, which is this.
+7:16
+So the ideal thing to do is to make each key truly unique.
+7:20
+And if you look at the diary data j s file, you can see that there is an ID that is being generated by this function that I am importing way at the top of the file.
+7:31
+And what this does is it generates a truly unique ID.
+7:36
+So if I wanted to, I could just use this function here and import it into my file.
+7:40
+But I don't need to do that because that work has already been done for me over here.
+7:44
+So I just need to tap into the a dot id value.
+7:49
+And then just to show you what this looks like, I'm gonna come up here above my return statement and console log day dot id just to show what these are looking like.
+7:58
+Run.
+7:58
+And if you open up the console, you can see that we get a series of truly unique IDs.
+8:04
+There is no chance of any of these ever being duplicated, at least in the next couple trillion of years.
+8:10
+And to be honest, the universe would probably end before that ever happened.
+8:14
+Alright.
+8:14
+On that happy note, let's keep moving on.
+8:16
+So at this point, we have accomplished the first two tasks.
+8:19
+However, there is still this third one where I said make the code more concise.
+8:24
+And there are a number of different things you could have done and approaches you could have taken here.
+8:28
+I'm just gonna show you one of them and it is this.
+8:31
+So as I look at this, I see what looks to me like a pretty long series of props.
+8:37
+And not only is it long, but it is repetitive.
+8:40
+We keep saying day dot date.
+8:42
+Day dot something.
+8:43
+Day dot something.
+8:44
+And if you think about it, what we're basically doing here is we are taking all of the key value pairs in our diary data JS file, and then we are just repeating them one by one.
+8:54
+Date, rating, emotions, and so on.
+8:56
+So something that we can do back in app JSX is instead of writing all of these out, we can simply spread out the object of data, which, remember, we are getting the name of day two.
+9:07
+And if we do this, we will automatically create a series of props for all of the properties inside of the day object.
+9:16
+I'm gonna leave day dot ID as the key because that's kind of a different thing, but let's test this out.
+9:21
+Here comes the moment of truth.
+9:22
+I click run and go to reports and, well, there we go.
+9:25
+So we get the same results as before, only look how much more concise our code has become.
+9:31
+Now, again, there are some other ways that you could do this.
+9:33
+I would love to see them, so please do share.
+9:36
+And, also, I'm gonna leave you with one final bonus challenge in addition to all the bonus challenges that I left you over here.
+9:42
+And my little mini challenge for you is this.
+9:45
+I would argue that there is still something that I am doing that is slightly inefficient about the way I am spreading out day inside of this object.
+9:54
+There is something else that I think I should be doing to make this even more efficient.
+9:59
+And remember, efficient doesn't necessarily mean less code.
+10:02
+In fact, in this case, I would have to write a little bit more to make this more efficient.
+10:07
+And I don't think it would actually make any real difference from a performance standpoint, but it's still kind of a fun thing to think about.
+10:13
+So see if you can figure that out.
+10:15
+And then one last thing before I go, I would encourage you to read through these series of notes that I wrote.
+10:20
+There's a bit of a twist in the ending.
+10:22
+I don't wanna spoil anything, so check that out if you're interested.
+10:25
+And actually, one last thing.
+10:27
+Hi.
+10:27
+This is Daniel from the future, and I was reviewing this scrim before finalizing it for publication.
+10:33
+And as I was reviewing it, I realized that I was actually right about the name for this variable the first time.
+10:40
+It should actually be called diary card elements instead of components.
+10:45
+And I was kind of confused about the semantics of this, but the way you can think about it is that the component is this thing here.
+10:51
+In this case, it's a functional component rather than a class based component like React used to have.
+10:57
+And this component in turn generates through this return statement an element or in other words, an instance of that component.
+11:05
+And so going back to the app JSX file, each one of these guys here is an instance of the DiaryCard component or, in other words, a diary card element.
+11:15
+And so I should also change that down here.
+11:17
+Now this is all semantics, so it doesn't really matter that much.
+11:20
+But just to be technically correct, I wanted to make that little amendment.
+11:24
+Anyway, now the scrim is done for real.
+11:26
+I hope to see you again in another challenge soon.
+11:28
+In the meantime, happy coding, and goodbye for now.
