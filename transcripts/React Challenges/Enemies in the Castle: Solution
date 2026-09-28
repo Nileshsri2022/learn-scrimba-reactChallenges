@@ -1,0 +1,259 @@
+Transcript
+0:00
+Hey.
+0:00
+I hope that challenge went well for you.
+0:01
+Let's go over it together now.
+0:03
+So to get started, I'm gonna do what I often do with a challenge like this, and I'm going to start with a simplified version of the task at hand.
+0:11
+Instead of worrying about generating all three enemies at once and instead of trying to generate them in the most efficient and concise and eloquent way possible, I'm just going to create one of them, one enemy for starters.
+0:24
+And I'm going to create it in a sort of rough and tumble messy way.
+0:28
+And then once I have something that's actually working, then I can worry about scaling it up and refactoring my solution from there.
+0:35
+So down here in the space where my elements go, I want just one enemy element like so, and then I'm going to be passing in some props to it.
+0:45
+And if I wanted to, I could just use this table that I created as a guide for the props.
+0:50
+But to remind ourselves of what is actually going on here, let's take a look at the actual enemy component itself and see what the props are that it needs.
+1:01
+So our props are getting passed in, and our component is expecting a prop called position, which in turn has a top and a left property inside of it.
+1:10
+If we look over at our initial enemy data, you can see that we have a property called position, and it has an object nested inside of this overall object with that top and left property.
+1:21
+So that is the thing that we're talking about here.
+1:24
+Then back in our enemy, we are also expecting an orientation prop and a current image prop.
+1:30
+And again, back in initial enemy data, we can see that we have an orientation and a current image property.
+1:37
+So the names of the properties and the names of the props are exactly the same.
+1:42
+Okay.
+1:42
+So going back to our app JSX file and thinking about what we wanna pass in to our enemy.
+1:48
+Well, we know that we need a current image, which is gonna equal something.
+1:54
+We need position, which equals something else.
+1:56
+And we need an orientation, which equals yet another thing.
+2:00
+Now what do we want current image to equal?
+2:03
+Well, remember, we have the enemy's data state that is being declared up here.
+2:08
+That is what I am going to bring down to our element down here.
+2:12
+And so I want my current image to be one of the objects inside of my enemy's data array.
+2:18
+Since this is the first enemy, I'm gonna make it correspond to the first object in the array, the one at the zero index.
+2:26
+And then within that object, I want to target the current image property and that is gonna become my current image prop.
+2:34
+Alright?
+2:35
+And now same thing with position.
+2:37
+I'm just gonna paste that in, change this to position, and same thing with orientation.
+2:42
+And clean this up.
+2:43
+And okay.
+2:44
+So it becomes a little moment of truth since we are feeding in the props that our enemy component is expecting.
+2:50
+We should get an enemy rendered on the screen when I click run.
+2:54
+Drum roll, please.
+2:56
+Three, two, one, and Hey.
+2:58
+There we go.
+2:59
+There he is.
+3:00
+And he's currently frozen in time since the game is paused.
+3:03
+Let's unpause it and see what happens.
+3:06
+Another drum roll, please.
+3:07
+Three, two, one, and hey.
+3:09
+Hey.
+3:10
+There we go.
+3:10
+He is walking back and forth, and, oh my goodness, he looks very, very menacing.
+3:15
+I'm going to pause this because I am getting scared.
+3:18
+Okay.
+3:19
+Let's go back to our app JSX file and think about how we're gonna create the other two enemies.
+3:25
+Well, if we didn't care about efficiency or concision at all, what we could do is just copy and paste another enemy here and another one here.
+3:35
+And then we could just change the zero to one here to target the next object in the array and change this one to the number two.
+3:44
+And now if all goes well, we should have not just one, not just two, but three enemies in our castle.
+3:49
+Let's see if that happens.
+3:51
+Three two one and Hey.
+3:52
+Hey.
+3:52
+There we go.
+3:53
+And wow.
+3:54
+That guy in the middle looks really scary.
+3:56
+But let's see if they can actually move.
+3:58
+Three two one and Hey.
+4:00
+Hey.
+4:01
+Look at them go.
+4:02
+And, wow, I am getting really, really scared.
+4:04
+This is a very bad situation that our hero's about to get into.
+4:07
+Let's pause this again.
+4:09
+And now let's go back to our app JSX file and think about how we could refactor this.
+4:14
+So as I look at this, I am seeing a whole bunch of repetition, which is always a sign that we could be refactoring things.
+4:22
+And one of the first repetitions that I'm noticing is the repetition between our prop name and the variable that we are passing in as the value of that prop.
+4:32
+We have current image and current image, position position and orientation orientation.
+4:37
+And then not only are these names all the same, but they are all deriving from the same object.
+4:42
+In this case, that is enemies data zero, here, here, and here.
+4:47
+And anytime we have this situation where we have a one to one correspondence between our props and the actual property names of the object that we are passing into our element, there is a nifty little trick that we can employ which works like this.
+5:05
+So instead of writing out all of these props manually like I've done here, what I'm going to do is instead, I'm just going to spread out the enemies data object at the zero index.
+5:17
+And remember what this object looks like initially.
+5:19
+It looks like this.
+5:20
+And so what's gonna happen when I spread it out is that React is going to take each one of these key value pairs and turn it into a series of props.
+5:30
+And we're gonna end up with a current image prop, an orientation prop, and a position prop as a result of that automatically.
+5:38
+We're also gonna end up with an alt image and an ID prop that we're not actually going to use.
+5:43
+And there is something that we could do to avoid that, but I I think it's okay.
+5:47
+I mean, it's only two tiny little string values.
+5:49
+If you're really concerned about it, what you can do is just come here and then specify the things you don't want to include before you spread your object out.
+5:58
+That would take care of the first enemy.
+6:01
+You can clean up a little bit now.
+6:02
+Then we just need to do the same exact thing for the other two enemies.
+6:06
+And actually, I'm just gonna copy and paste and replace these two guys.
+6:10
+And now we just need to change the index numbers.
+6:12
+And if all goes well, it should be working exactly the same as before.
+6:16
+On your marks, get set, and go.
+6:19
+And there we go.
+6:19
+There are three enemies inside the castle, and they are still moving when I press play.
+6:25
+So fantastic.
+6:26
+Okay.
+6:26
+So that is one thing that I could do to make my code more efficient and concise.
+6:31
+And then if I wanted to make my code even more concise, what I could also do is this.
+6:36
+Instead of having three enemies like this, I'm gonna delete two of them.
+6:40
+And then what I'm gonna do is I'm just going to map over the enemy's data array.
+6:45
+And for every enemy in inside of that array, I am going to return one of these enemies like so.
+6:52
+And now since I'm doing this inside of the map method, instead of using bracket notation, I just need to replace that with this variable name that I've given to each one of the objects as the map method iterates through the enemy's data array.
+7:06
+So this becomes enemy.
+7:08
+Now I can just get rid of all this extra stuff just to show you how short and sweet our code has become.
+7:14
+And if we wanted to clean this up even more, we could store this map method code inside of a variable.
+7:20
+I'll just call it enemies, and then we could put that up here outside of our return statement.
+7:25
+And let's get rid of this extra space here.
+7:28
+And then one last thing is that I know from experience, anytime I have a bunch of JSX elements inside of an array, React wants me to give each one of them a key, so I'm gonna give them a key of enemy ID.
+7:43
+Remember that in our enemy data array, each object has an ID property.
+7:47
+So I'm just using that here.
+7:49
+And now that should do it.
+7:50
+This is going to work exactly the same as before, but look how neat and tidy it is.
+7:55
+Alright.
+7:55
+One last moment of truth here.
+7:57
+Does this still work?
+7:58
+Three, two, one, and.
+8:00
+Hey.
+8:00
+Hey.
+8:01
+There they are.
+8:01
+And if I click play, hey, hey, hey.
+8:04
+There they go.
+8:05
+We are off to the races.
+8:06
+Fantastic.
+8:07
+And just one last note, you didn't have to do the solution this way.
+8:11
+I'm just showing you various possibilities for refactoring.
+8:14
+I purposefully didn't specify anything about how to do the challenge.
+8:18
+The objective was simply to get the enemies inside of this container.
+8:23
+And if you did that, give yourself a big pat on the back.
+8:26
+You didn't have to use the map method.
+8:28
+You didn't have to use this spreading trick.
+8:31
+These are just things to show you.
+8:32
+Although, these are things that you are expected to know about in other challenges.
+8:36
+Anyway, I hope to see you in one of those challenges soon.
+8:39
+In the meantime, happy coding, and goodbye for now.
