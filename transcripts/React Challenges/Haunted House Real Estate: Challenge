@@ -1,0 +1,103 @@
+Transcript
+0:00
+Hey there.
+0:00
+Welcome to this challenge, and welcome to Haunted House Real Estate, a real estate company that specializes in selling exclusively haunted houses.
+0:08
+We've got six houses to sell from all over the United States, everywhere from Backwoods, Oregon to my hometown, Hodunk, Ohio.
+0:16
+And this is actually the house that I was born in.
+0:19
+I had a very strange childhood.
+0:21
+Anyway, I have been working on creating these cards that the houses live inside of, and on the surface at least, everything is looking fine.
+0:29
+In fact, I even have a little bit of responsivity already built into this, as you can see.
+0:33
+However, underneath the surface, things are a little bit askew much like these houses.
+0:39
+So let me take you on a quick tour of what we have here.
+0:42
+So we are inside the app component and the app file at the moment, and I've imported another file into this file called houses for sale, which lives in the data folder over here.
+0:54
+And this is where we have all of the data for the houses.
+0:58
+So there are six objects like this one here, and each object has all sorts of information ranging from the image URL to the price to the number of bedrooms, all the way down to the most important thing which is whether or not the house is haunted.
+1:14
+Right.
+1:14
+Now back in the app component, what I'm then doing with this houses for for sale array is down here, I am mapping over it generating a whole bunch of JSX.
+1:25
+And then what I'm doing with all of this JSX that I am creating with the map method is that I am storing it inside of this house cards variable, which then gets inserted way down here in the return statement.
+1:38
+Now let's go back to this really long list of JSX.
+1:41
+I don't know about you, but this is giving me a headache just looking at it.
+1:45
+I think it could be tidied up quite a bit and we can imagine that if this were for a real website or an app, we'd probably be wanting to reuse these cards quite a bit.
+1:56
+And right now our code isn't that reusable and it's not that easy to interact with it.
+2:01
+You can make it a lot better by packaging all of this JSX into a single functional component.
+2:07
+And then we could take all of this JSX and we could store it out of sight.
+2:11
+And that is the challenge in a nutshell.
+2:14
+So the current JSX in the return statement of the map method below, this return statement here, should be replaced by a single instance of a component called house card, which you are going to have to create yourself.
+2:27
+This component should return the same JSX as is currently being returned inside of the map method.
+2:34
+So in other words, all of this JSX here, all of this should be getting returned by the new house card component that you are creating.
+2:42
+Now if you take a look at this JSX, you're gonna see that we have all sorts of variables inserted here.
+2:48
+There's a variable here, a variable here, a variable here, and here, and here, and all sorts of variables all over the place.
+2:55
+They are all coming from the arguments being passed into our map method over here.
+3:00
+So remember, we are mapping over the houses for sale array and then I've given the name of house data for each one of the objects in that array.
+3:08
+I'm also accessing its index number and the overall array here.
+3:12
+And then down here, for example, we are getting the number of the listing, that is this bit over here from taking the index number and adding one to it since arrays are zero indexed.
+3:24
+I'm getting the number of cards from the length property of the array, and then I'm getting all of that data about the image and the price and the location and so forth and so on from house data, from each object inside of the houses for sale array.
+3:39
+All of these variables inside of this JSX are going to need to become props once this JSX gets moved into the component that you are creating.
+3:48
+And if you are thinking, oh my gosh, that sounds like a lot of work, well, pay very close attention to this last note here where I say that you should only pass up to a maximum of four props into the house card element.
+4:02
+You should not, I want to emphasize that, should not manually pass every piece of house data as a separate prop.
+4:09
+This shouldn't actually take you that much work to do.
+4:12
+If you find yourself doing a lot of typing or a lot of modifications of the existing JSX, it means that you are over complicating the task.
+4:22
+So if you find yourself doing that, stop and think to yourself, how can I do this in a lazier way?
+4:28
+Try to do this as lazily as possible or in other words with the least amount of typing and work that you have to do.
+4:35
+Okay.
+4:36
+Now as you are building your house card component, you can do that in this app JSX file if you want.
+4:42
+In fact, that's what I'm going to do.
+4:44
+But once you're done, you should move it into a separate file in the components folder, which I've already created for you over here, and then you should import it into this app JSX file just to keep everything nice and tidy.
+4:57
+And at the very end of this challenge, the site should look and behave exactly the same.
+5:02
+The challenge here is simply about improving the code underneath the hood.
+5:06
+And speaking of things under the hood, I just noticed that I have a little typo here so let me get rid of that.
+5:11
+And then also, I was just thinking that if you want a little bit of a bonus challenge, something that you could try doing is taking all of these list items and figuring out a way of generating them iteratively rather than manually, just the way I've done it here.
+5:26
+So let me just type that out as a challenge real quick.
+5:30
+And this is totally optional, just a little extra something if you need a little bit more of a challenge.
+5:35
+And if you get stuck, I have left some hints for you in the top of the Explorer, and I will see you again soon to go over the solution together.
+5:42
+In the meantime, happy coding, and good luck with this challenge.
