@@ -1,0 +1,211 @@
+Transcript
+0:00
+There.
+0:00
+I hope that challenge went well for you.
+0:01
+Let's go over it together now.
+0:03
+So I'm just gonna take these step by step.
+0:05
+I have basically four different events and state setting functions that I need to take care of, and I'm just going to bang them out one by one.
+0:15
+K.
+0:15
+So first up, the torch equipped state should be set to true whenever the user's mouse button is down and is anywhere inside the torch container div on line fifty seven.
+0:26
+So line fifty seven, that is right here.
+0:29
+I am going to add an event handler, and I want it to be on mouse down.
+0:35
+And that is going to equal some function.
+0:38
+And all I'm really doing here is I'm setting the torch equipped state to true.
+0:43
+So I need this function here.
+0:45
+And because this is such a short function, I think I'm just going to do it inside of the brackets here rather than defining it as a function up here on the top level of my component.
+0:57
+Now I can't just write the function right away like this.
+1:00
+I can't just write torch equipped is true.
+1:02
+If I do that, then that function is going to be invoked immediately.
+1:06
+That's gonna change the state.
+1:07
+That's gonna cause a rerender, and then this function's gonna get invoked again, leading to another state change, and then we get stuck in an infinite loop.
+1:16
+So instead of invoking it immediately, I'm going to tuck it inside of an anonymous function like so.
+1:23
+And now I'm just giving the code that I want to be invoked when the mouse is down, and that code happens to have this state setting function inside of the anonymous function that I've written out here.
+1:37
+Okay.
+1:38
+So now this should work.
+1:39
+Let's test it out.
+1:39
+Let's see what happens.
+1:41
+I put my mouse down, and sure enough, there we go.
+1:44
+It lifts up.
+1:45
+The only problem is I have taken my finger off of my mouse now, and yet the torch is still equipped.
+1:51
+So let's take care of that next.
+1:54
+The torch equipped state should be set to false whenever the user's mouse button is up and their cursor is anywhere inside of the wrapper div on line fifty four.
+2:03
+So that's up here.
+2:05
+And okay.
+2:05
+On mouse up, I want to do the same exact thing as before.
+2:11
+Only this time, I want to set torch equipped to be false.
+2:15
+Let's test if this works now.
+2:16
+I am going to click on the torch.
+2:18
+There we go.
+2:19
+It's lifted up.
+2:20
+And now I'm going to let go of it.
+2:22
+Three, two, one, and let go.
+2:24
+And there we go.
+2:25
+Alright.
+2:26
+Fantastic.
+2:26
+And there's actually an arguably more efficient way of doing these two functions here.
+2:32
+What I could do is this.
+2:34
+Instead of writing out an anonymous function, I could write out a single function called toggle torch.
+2:41
+And I'm going to put that here and here.
+2:43
+And now I'm going to define a function up here on the top level of my component, Toggle torch.
+2:51
+And then what I want this function to do is I want it to set the torch equipped state to be the opposite of whatever it currently is.
+3:01
+And so the way this is gonna work now is, remember, our state is initialized as false.
+3:06
+So when my mouse goes down inside of this div, that is going to flip the value from false to true.
+3:14
+And then if I let my mouse go up, that's going to invoke this function again.
+3:18
+Only this time, the value is now true.
+3:21
+And so the opposite of true would be false and the torch equipped state would be set to false.
+3:28
+And this would work exactly the same way.
+3:30
+I pick up my torch.
+3:31
+There we go.
+3:32
+And I let it go, and it works exactly as we want.
+3:36
+Okay.
+3:36
+Let's move on to the next two states now.
+3:39
+So the wood kindling state should be set to true when all of the following conditions are met.
+3:44
+So the torch equipped state should be true, and the user's cursor has entered the wood container div down here on line seventy two.
+3:53
+Down here, I'm going to need another event handler.
+3:57
+And this time, the event is about entering the wood container.
+4:01
+So I am going to add the event on mouse enter.
+4:06
+And this is going to be a function with a couple different parts.
+4:09
+I'm gonna handle it outside of my return statement on the top level of the component.
+4:13
+So I'm gonna call the function handle house enter and define that up here.
+4:20
+And now I want to check, is torch equipped?
+4:23
+So if torch is equipped, do the following.
+4:26
+And now I want to set wood kindling to be true.
+4:31
+Okay.
+4:31
+Now on to our final one.
+4:33
+If torch equipped is true and wood kindling is also true and the user's cursor leaves the wood container div and the wood on fire state should be set to true as well.
+4:44
+Coming back down here to our wood container div, I'm going to add another event handler on mouse leave and I notice I have a typo here.
+4:55
+There we go.
+4:55
+Handle mouse leave.
+4:57
+I will define right here.
+4:59
+Alright.
+5:00
+And for this one, I want to check is torch equipped and is wood kindling.
+5:06
+And if both of those things are true, then I want to set wood on fire be true as well.
+5:13
+And that should do it.
+5:14
+Okay.
+5:14
+Here comes the big moment of truth.
+5:16
+Will this thing actually work?
+5:18
+So first up, I am going to pick up the torch.
+5:21
+There we go.
+5:21
+I am able to move it around.
+5:23
+Now let's see what happens if I enter the wood container.
+5:27
+The three, two, one, and alright.
+5:31
+There we go.
+5:32
+We are kindling some wood.
+5:33
+And now for the final moment of truth, what happens if I leave the wood container with my torch still equipped?
+5:42
+Let's test this out.
+5:43
+Three, two, one, and hey.
+5:46
+Hey.
+5:46
+Hey.
+5:47
+There we go.
+5:48
+I am feeling nice and toasty now.
+5:50
+And I can also let go of the torch, and it goes right back down.
+5:54
+Alright.
+5:55
+Fantastic.
+5:55
+That brings us to the end of this challenge.
+5:58
+Well done on completing it.
+5:59
+I hope to see you again in another challenge soon.
+6:02
+In the meantime, happy coding, and goodbye for now.
