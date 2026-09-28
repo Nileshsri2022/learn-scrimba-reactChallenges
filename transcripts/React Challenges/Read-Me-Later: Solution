@@ -1,0 +1,387 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+So first things first, I know that everything in this challenge is revolving around that single on click event handler that we need to add to the articles container div.
+0:13
+So let's go ahead and start with that.
+0:15
+That is this div here.
+0:17
+And so I'm gonna say on click handle click.
+0:20
+Although, I could call this whatever I wanna call it, and I'm going to define it up here like so.
+0:26
+And I know that what I want this function to do is going to very crucially involve the button type and article ID data attributes that are inside of the event object that is going to automatically get passed inside of my event handling function.
+0:43
+So I'm gonna name that object as a parameter up here, and then I'm going to take that event object, drill down into the target of it, so the button in this case, the place where the event happens.
+0:55
+And then inside of that target, inside of the button, I want to get the dataset collection of all of the data inside of the target.
+1:03
+And within that dataset, I want to get the button type, and I also want to get the article ID.
+1:12
+And notice how I am using camel case here is because over in the article component, if you take a look at the data attributes themselves, you can see that they have names that consist of two words, button and type, for example, with a hyphen in between them.
+1:29
+And anytime you have a data attribute name like that, it automatically gets transformed into camel case.
+1:35
+And finally, I know that I'm going to be probably reusing these values here.
+1:40
+So I'm going to store them in some variables, button type and article ID.
+1:46
+And just to make sure this is working, I am going to console log button type and article ID and just give this a little test here.
+1:56
+Okay.
+1:56
+So I click on the heart button.
+1:58
+I get the words favorite and what I assume must be the article ID, archive, trash, and read more, which corresponds to the toggle expand button type name.
+2:08
+So it looks like we are in business.
+2:10
+However, one thing that I do want to make note of here is that if I click anywhere outside of the buttons, I end up getting undefined and undefined as the values of these two variables.
+2:21
+And that is because our onClick event handler is attached to this entire div, which means it's listening for any click inside of the entire container, including spaces outside of the buttons.
+2:34
+And so over here in my function, before I go any further and do any updates of my state or anything else, I want to make sure that the place that the user has clicked on is actually one of the buttons.
+2:47
+And I can use the button type variable as a proxy of that because if the button type is defined, well, that means the target of where the user clicked must have a button type attribute, and it's only the buttons that have that data attribute.
+3:03
+Whereas if they click anywhere else, well, other places in the container don't have that data attribute, and so button type will end up being undefined.
+3:12
+And so here, I can just check if button type is a truthy value, do some stuff, and if not, just skip this block of code.
+3:20
+So I'm gonna write the rest of my function inside of this conditional block.
+3:24
+And now I just need to figure out what that actually is.
+3:26
+So what do we want this function to do?
+3:28
+Well, that takes us up to here.
+3:30
+So if the button's button type data value is favorite, for example, then we should invoke the favorite function with the ID value of the article ID data attribute passed inside of it.
+3:41
+Whereas if the button type is archive, we want to invoke archive.
+3:45
+If it's trash, trash, and so on.
+3:47
+So just thinking about that and the language that I just used to describe it, I can see that what I'm basically doing is that if one thing is the case, then I want to do another.
+3:57
+And that to me sounds like a conditional statement, so I am going to write this out as a series of conditional statements.
+4:04
+And since this is some basic vanilla JavaScript, I am just going to fast forward through doing it like so.
+4:10
+And so what I'm doing here is first, I'm checking, okay, is the button type value truthy or not?
+4:16
+Is it defined?
+4:17
+If it is, then proceed with the next series of if else conditional statements where we're checking, okay, is the button type favorite?
+4:25
+In that case, invoke the favorite function.
+4:27
+If it's archive, invoke the archive function and so forth and so on until we get to the end where if the button type isn't favorite, archive, or trash, well, there's only one other logical possibility, which is that it must be toggle expand.
+4:40
+So here is my else block where I'm not even bothering to check any conditional.
+4:44
+Anyway, that would be one way of taking care of this, but it is a little bit hard to read because of how many if else statements we have.
+4:51
+So when we have a situation like this where there are more than three or four conditional statements to check, a lot of developers would prefer to use a switch statement here instead.
+5:01
+So I am going to switch over to using one of those, no pun intended, and that would look like this.
+5:08
+So in case you are unfamiliar with switch statements, what I'm basically saying here is look at the value of the button type variable.
+5:16
+And if it is the case that that value is the string favorite, then invoke the favorite function with the article ID value passed inside, and then break, meaning don't even bother reading the rest of this code.
+5:30
+You are done.
+5:30
+However, if it is not the case that the button type is favorite, then check if the case is that the button type is archive.
+5:37
+And in that case, invoke the archive function and so forth and so on.
+5:42
+And, actually, technically, down here, instead of checking what the case is, I could do what is the equivalent of an else statement in a series of if else statements where I just say in the default case, so in other words, if none of these other things happens to be the case, do the following, invoke the toggle expand function.
+6:02
+So I do think this is a bit more readable than what we had before, but I also think it is a little bit repetitive.
+6:08
+We keep having to say article ID over and over again.
+6:12
+And also, there is a repetitiveness to the underlying structure of what we're doing here because there is a one to one match between the name of the button type and the name of the function.
+6:24
+If the button type is favorite, we invoke the favorite function.
+6:27
+If it's archive, we invoke the archive function and so forth and so on.
+6:31
+So there is a way that we can take advantage of that correspondence and skip having to do any sort of conditional logic in the first place.
+6:39
+And I'm going to show that to you by deleting this switch statement, coming up here, and declaring a new variable that I am going to call event handlers.
+6:50
+And here, I'm gonna create an object in which I am going to place each one of my event handling functions.
+6:56
+So favorite archive trash, and toggle expand.
+7:00
+And if I console log that event handler's object and I click run and click anywhere inside of the container, you can see what is inside of it.
+7:09
+We have a series of key value pairs where the key is a name, like one of the names of our button type, favorite archive trash, for example.
+7:18
+And the value of that key is the favorite archive and trash functions themselves.
+7:24
+And so what I can do now is I can come down here to the place inside of my conditional, and I can just say, okay.
+7:31
+I want you to take that event handler's object.
+7:34
+I want you to look inside of it for a key corresponding to the button type value, which, remember, could be favorite.
+7:42
+It could be trash.
+7:43
+It could be whatever.
+7:44
+The value of that key is going to be a function.
+7:48
+In fact, I can prove that to you by console logging this real quick.
+7:51
+And now if I click on the favorite button, we get the favorite function.
+7:56
+So, essentially, this is a stand in for the code of that function.
+8:00
+And now all I need to do is this.
+8:02
+Let's get rid of that console log.
+8:03
+All I need to do to invoke a function is just put parentheses after it, and then we can pass an argument inside of those parentheses.
+8:10
+And in this case, we want article ID.
+8:14
+And now if I click click run, well, here comes a big moment of truth.
+8:16
+This read more button's not gonna work because we haven't fixed the problem with that yet.
+8:20
+But these other three buttons should work.
+8:21
+Will they work?
+8:22
+Big moment of truth here.
+8:24
+Three, two, one, end.
+8:26
+And nothing because I think I have a typo here and, yeah, I miss spelled the word article.
+8:32
+Okay.
+8:33
+Now big moment of truth.
+8:34
+Will this work?
+8:35
+Three two one and hey.
+8:36
+Hey.
+8:36
+There we go.
+8:37
+The heart gets filled.
+8:39
+The number up here goes to one.
+8:41
+Now it goes back to zero.
+8:42
+The heart becomes unfilled, and I can archive and trash articles as much as I want.
+8:48
+Okay.
+8:48
+Fantastic.
+8:49
+And we could actually shorten this even further by getting rid of this conditional.
+8:54
+I'm just gonna do a double ampersand style conditional, and this will work in exactly the same way as before.
+9:00
+I've just made it even more concise.
+9:03
+And, really, now since I'm not reusing the article ID variable anywhere, I could just take this whole bit of code and just paste it inside of the parentheses and then delete this line and make this whole function even shorter.
+9:17
+Although I think it's actually a bit more readable to have it like that, so I'm gonna actually leave it that way.
+9:23
+Okay.
+9:24
+So that takes care of our handleClick function.
+9:26
+Now we just need to take care of that toggleExpand function.
+9:31
+So for this part of the challenge, I know that the other three state setting functions favorite, archive, and trash those are all working.
+9:40
+And so that means they must be doing something right.
+9:43
+And it must be something that the toggle expand function isn't doing because, well, it's not working.
+9:49
+And so without really digging into the code or thinking about this super logically I'm just going to eyeball this thing and just try to visually identify any notable differences between these functions.
+10:01
+And one thing I notice right away is that at the very end of every one of these functions, I am updating the article queue with a new array in which I am spreading out the saved articles into that array.
+10:15
+I'm doing that with the favorite function, archive, and with trash, but I'm not doing it with toggle expand.
+10:22
+Here, I'm just taking that array and sticking it straight inside of the parentheses.
+10:27
+So, again, without even thinking about this super logically and thinking about the nuts and bolts of this, I'm just going to experiment here and see if I can fix the problem by just copying the other functions.
+10:38
+So I'm gonna spread out the saved articles into a new array, and let's see if this works.
+10:45
+So little moment of truth here.
+10:46
+I click on the read more button, and, hey, hey, it does expand.
+10:50
+And if I minimize it, hey, hey, we are working.
+10:53
+And let's just check another article.
+10:55
+Okay.
+10:55
+That one works.
+10:56
+This one works.
+10:57
+This one works.
+10:58
+Fantastic.
+10:59
+So if we wanted to, we could just stop there.
+11:01
+But now I want to know why is this working?
+11:04
+What was the problem before?
+11:06
+And to answer that question, I'm gonna kind of turn it on its head.
+11:09
+And I'm going to ask a different question, which is not why wasn't this working before, but why are these other functions working in the first place?
+11:19
+Why did they need to do this thing with the spread syntax?
+11:23
+To illustrate this, I'm gonna focus on the archive function for a moment because I think that's the simplest one of the three functions that were originally working.
+11:32
+And let's just take a look at what this is doing.
+11:34
+So I see that we have a variable called target article, and that is equaling whatever the return value of a function called get target article is.
+11:43
+I don't need to know exactly how that's working.
+11:45
+I can just assume that it is getting the target article that the user is clicking the archive button on.
+11:51
+I can see that it's using the article's ID to do that, so so that seems like a safe assumption to make.
+11:56
+And then I can see the next thing that we're doing is, well, we are removing from saved articles that target article.
+12:03
+And, again, because I used very self explanatory function names, we don't even need to look at the underlying code to understand what's going on here.
+12:11
+We can just sort of abstract from that and look at the function itself.
+12:15
+So at this point, let's just assume that the target article, the one that the user clicked the archive button on, has been removed from the saved articles array.
+12:25
+And then finally, I can see that the target article is also getting pushed to the archived articles array.
+12:31
+And now if I think about it, it seems kind of weird that I have to use this spread syntax here.
+12:36
+Because if we look at the very top of the component, we can see that the articles queue, which is the main state of this app, is being initialized as saved articles.
+12:48
+And then down here in our archive function, well, the saved articles array is getting changed.
+12:53
+And so it seems like we should just be able to update the articles queue with the new version of the saved articles array.
+13:01
+After all, the saved articles array that exists at this point in our code is different than the one that existed beforehand.
+13:08
+And so you might think we should just be able to set that as the articles queue state array.
+13:13
+However, if I try to run this code and I click on the archive button, well, nothing happens.
+13:19
+And to show you why nothing is happening, I'm going to do a little console log here where I'm going to console log the article queue state array.
+13:27
+And now remember, articles queue is getting initialized as the saved articles array.
+13:32
+The very first article in that array is the article about Tesla.
+13:36
+We can see that over in the saved articles file.
+13:40
+Here's that Tesla article.
+13:42
+However, if we run this code and I click on the archive button You can see what the article queue is at this point in our code And you can see that the very first item in the array is the article about the AI chatbot.
+13:57
+So in other words, this article here is no longer in the queue.
+14:02
+It's been deleted.
+14:03
+And so the first item in the array is now this article.
+14:07
+However, we're not seeing that reflected on the screen.
+14:10
+And even more puzzling is this.
+14:13
+Think about it.
+14:13
+The article queue has been updated before we've actually updated the article queue.
+14:19
+We're doing that down here, and yet when we console log it up here, we are already seeing that the article has been removed from it.
+14:27
+And if we think about this a bit more, that actually makes sense though because up here we removed the target article from the saved articles array and the saved articles array is actually the same array as the articles queue array.
+14:42
+Remember that arrays in JavaScript are referred to by reference.
+14:47
+So articles queue and saved articles are just two different names or addresses that we are giving to the same exact array.
+14:56
+And so when we remove something from the saved articles array, we are also removing it from the article queue array because those are the same array.
+15:05
+And so another way of putting this is that we are actually modifying state when we remove the target article from the saved articles array even if that's not what we are intentionally doing.
+15:17
+And if you go over to the hints and look at the hint for the bonus challenge, you can see that I left a link for you about updating arrays in state.
+15:26
+And this talks a lot about how, generally speaking, you should not mutate or, in other words, change state values directly.
+15:33
+You should only be doing that through a state setting, state updating function.
+15:38
+Now often this principle of not mutating state gets exaggerated a little bit.
+15:43
+Instead of saying that you shouldn't mutate state, people say that you can't mutate state and that's not actually true.
+15:50
+You can mutate state, and sometimes it does actually work.
+15:54
+In fact, it is working in this app now.
+15:57
+And if you dig into the React documentation, you'll find a passage that confirms this.
+16:01
+You don't need to take my word on it.
+16:02
+It says that while maintaining state can work, in some cases,
+16:07
+we don't recommend it.
+16:08
+And the code that we have here for this app provides kind of a case in point because the reason it wasn't working before was that, remember, the articles queue array and the saved articles array were the same exact array which we had already mutated previous to this function.
+16:25
+And so when we're telling React that we want to update the articles queue with the saved articles, we're essentially telling it that we want to update the state with the same exact state that it already has.
+16:37
+And anytime React gets an instruction like that, it ignores it because it always compares the two states to see if there's any difference between them.
+16:45
+And if there is no difference, it doesn't actually update the state and, therefore, it doesn't actually render the component again.
+16:52
+And so that's why even though that article was getting removed from the underlying array, that change wasn't getting rendered onto the screen.
+17:01
+Whereas if we spread this out into a new array, well, now even though this has the same content as the previous state, it's a different array.
+17:11
+And, therefore, React sees that as being a difference between the two states, and so it updates the state and it renders the component again.
+17:20
+And so my point here is that by doing this, we kind of circumvent the problem with mutating state, and the app does work.
+17:27
+So we are proving what the React documentation says, that mutating state can work in some cases.
+17:33
+This is one of those cases.
+17:35
+However, they don't recommend it and we can see why they don't recommend it because it does lead to some very strange outcomes.
+17:42
+And so if we were going to actually deploy this code in the wild, we would probably want to refactor it to avoid mutating state and follow the generally accepted best practices.
+17:53
+However, this scrim has already gone on long enough, so I'm going to end it there.
+17:57
+Do feel free to refactor the code if you want to, but also feel free to just give yourself a big pat on the back for completing this challenge and call it a day.
+18:05
+In any case, I hope to see you again in another challenge soon.
+18:08
+And I also hope that you will check out some of these articles that I wrote because they are kind of ridiculous and funny, or at least I hope they're funny.
+18:16
+Anyway, happy reading, happy coding, and goodbye for now.
