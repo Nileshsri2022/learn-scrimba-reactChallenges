@@ -1,0 +1,105 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to Weird Wikipedia articles, an app that shows users some of the strangest articles on Wikipedia.
+0:07
+We've got all sorts of weird articles in here, like vampire number, space poop challenge, what is it like to be a bat, pigeon photography, and one of my personal favorites, list of people who died on the toilet.
+0:19
+Now that sounds like a good read to me.
+0:20
+All of these are real links to real articles on Wikipedia.
+0:24
+And if you click on any of them, you'll be taken to the article.
+0:27
+But leave that as a little treat for yourself once you finish the challenge because, first, I've got a little problem that I need you to help me solve.
+0:35
+So as you can see, the app is actually working perfectly fine.
+0:39
+All of these links are getting rendered the way I want them to be rendered.
+0:43
+All of the links work and so does this button down here.
+0:46
+So what is the problem?
+0:48
+You might be wondering.
+0:48
+Well, the problem has to do with the code itself which is mainly happening down here.
+0:54
+As you can see, each one of these links that you're seeing up here is really just a link item that has a CSS class being applied to it and then has an anchor element inside of the list item.
+1:08
+So we have one list item here, a second one, a third one, and a fourth one.
+1:13
+You can see that we are getting the data from something called current articles at the zero, one, two, or three indexes.
+1:21
+So what is current articles?
+1:23
+You may be wondering.
+1:24
+Well, that is a state that is living up here.
+1:27
+And if we take that state and for each item inside of it, we console log the item, you can see that in the console, we end up getting four different objects of data and each one has three properties, a title like demon cat, which we're seeing at the top here, a link to the actual Wikipedia article, and a unique ID.
+1:50
+So this is one of our states, but we also have a second state called number of articles.
+1:56
+That is currently set to four resulting in four articles in our current articles array.
+2:02
+However, if I change this number to five, for example, and I click run, you can see in our console that we now have five different data objects, five different articles we could be showing.
+2:12
+However, if we look at the preview window, you can see that we still only have four articles.
+2:18
+And that makes sense because if we go down here, we have only created four list items.
+2:23
+So if we wanted a fifth one, we would have to actually create it like so.
+2:28
+Now if I click run well, there we go.
+2:30
+Now we have five list items.
+2:32
+However, let's say I change my mind and I decide I want to go back to four, so I change this number to four and I click run.
+2:39
+Well, now we get an error because our current articles array only has four items inside of it.
+2:44
+We can confirm that by just console logging length, and we get back the number four a whole bunch of times because React is trying to render this app component a number of times.
+2:54
+So there are four articles inside of the current articles array.
+2:58
+However, we now have five list items down here.
+3:00
+And so when we get to the fifth list item, we look for a fifth item at the fourth index of the zero indexed array.
+3:08
+React isn't finding anything there and so we end up with that error message.
+3:12
+So to avoid that, we'd have to manually delete this list item.
+3:15
+And now we're back in business.
+3:17
+So the point that I'm making here is that, yes, my code is working, but it's very brittle and inflexible.
+3:23
+And that's because I'm creating everything manually instead of doing it automatically, dynamically, iteratively, or whatever word ending in l y you want to use here.
+3:34
+So that's where you come in.
+3:35
+I want you to replace the list items and take a more iterative approach in generating them.
+3:42
+So there should automatically be one list item for every object in the current articles array and they should be automatically created no matter whether this number is set to one, twenty, fifty, or any number, at least as long as that number isn't higher than the number of items in the underlying data array which lives in this data folder and can be accessed over here.
+4:07
+There's nothing you actually need to do inside of here, but this is just to give you an idea of what things look like underneath the hood.
+4:13
+There are about seventy items in here if I remember correctly.
+4:16
+Anyway, you should be able to put any number between one and fifty inside of this parenthesis here, and the app should still work, and it should work accordingly.
+4:25
+There should be one to fifty articles rendered onto the page.
+4:30
+And again, that should all happen automatically through some sort of iterative approach.
+4:34
+I am being very purposefully vague here about what that approach should be because I want to leave it open ended and let you think about this for yourself.
+4:43
+However, if you get stuck, I have left some hints for you in the top left corner of the explorer.
+4:48
+Anyway, let me get rid of this console log and turn this over to you.
+4:52
+I wish you the best of luck with this challenge.
+4:54
+I will see you again soon to go over the solution together.
+4:57
+In the meantime, happy coding and goodbye for now.
