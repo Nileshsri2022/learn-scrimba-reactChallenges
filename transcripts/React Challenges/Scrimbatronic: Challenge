@@ -1,0 +1,117 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to the Scrmpitronic, a synthesizer keyboard that you can play right on your computer.
+0:06
+It has all sorts of bells and whistles, including six different instruments, an ability to loop notes, and also the abilities to speed up or slow down those notes, and increase or decrease their volumes.
+0:18
+There's also a little metronome.
+0:19
+And if you press this button here once, you will see the names of the notes that each one of the keyboard's keys plays, and if you press that button again, you will see the notes on your computer keyboard that are supposed to control these keys.
+0:33
+So for example, if you press the a key, that should press down this key right here.
+0:38
+Now if you do that, it's not actually going to do anything yet because that is part of the challenge here.
+0:43
+Another part of this challenge is that you can currently click on the Scripatronic keys, and they will go down, but they won't actually produce any sound.
+0:51
+So let's go take a look at the code itself, and there is a whole lot of stuff going on here.
+0:57
+For the purposes of this recording, I'm just going to focus on the things that are directly relevant to this challenge, and the thing that is arguably the most important is this synth keys state, which is an array of all of the different keys on the keyboard.
+1:11
+And you can see that each key is underneath the surface in object, which is the name of the note.
+1:16
+It has a display name, which is how it shows up on the keyboard.
+1:20
+For example, the c sharp shows up like this because that is the shorthand in music notation.
+1:25
+Then we have a property for the computer key that is supposed to control it.
+1:28
+We have the color, which could be white or black that controls what color the keys show up as.
+1:33
+And then we have these two properties down here, which are the most important ones.
+1:38
+The active property determines whether or not the key is currently playing.
+1:43
+And if I manually change one of these to true, and I run this code, well, there you go.
+1:50
+You get the sound of the c two key.
+1:52
+And by the way, it's named c two because it's the c note on the second octave of the piano.
+1:57
+So that would be one note.
+1:59
+And if we go down to, let's say, the e note, and we turn that to true as well, and we run that, we get both keys playing simultaneously, giving us the ability to start playing chords.
+2:11
+Okay.
+2:11
+So that is the active property, and then there's also this property called keyPressed.
+2:16
+And let me just show you this real quick.
+2:17
+So I'm gonna turn the keyPressed property here to true, and let's go back down to that e note and make that true as well.
+2:24
+So now if I run this code, you can see that not only do the notes get played, but also we get a visual effect showing us that the keys are being pressed, which is gonna be very useful for when the user is trying to control the keyboard with their computer keyboard.
+2:40
+Alright.
+2:40
+So now that I've shown you those things, the challenge instructions are hopefully gonna make a lot more sense.
+2:45
+Step number one is when a user plays a synth key with their mouse button or computer key, the active property of the synth key's corresponding object in the synth key state array should be set to true.
+2:57
+Then step number two is if the user is playing a synth key by pressing down one of their computer keys, the key pressed property of the synth key's object in the synth key state array should also be set to true.
+3:09
+And then when the user lifts up the computer key, that property should be set back to false.
+3:14
+So for example, if I press this note down, then it should stay down for as long as I'm holding down the key.
+3:21
+And then the moment I lift up on it, the key should go up on the screen as well, and that's all gonna be controlled by that key pressed property.
+3:28
+Alright.
+3:28
+Step three is remember that all other properties of the object and all other objects in the synth key state array should be preserved every time the state is updated.
+3:37
+So all I'm saying here is that if, for example, going back up to our c two, and let's reinitialize this as false.
+3:44
+And this is false.
+3:45
+And let's say the user plays this key.
+3:47
+Well, we want this active property to be turned to true, and maybe we want the key pressed to be turned to true as well depending on how they triggered the note.
+3:54
+But we want to also preserve all of the data inside of this object, and we want to preserve all of the other objects.
+4:00
+Okay.
+4:00
+Finally, and very importantly, you should only write code for three event handlers below to complete the challenge.
+4:07
+No other change anywhere else in the project, and I mean that very literally.
+4:11
+There is nothing else you need to do.
+4:13
+For example, I have told you that you need to change the active property of a note from false true to make it play.
+4:18
+I did not say that you did turn it back to false, and there's a reason for that, and that's because you don't need to do that.
+4:24
+And the reason for that has to do with this code here.
+4:27
+It's going to automatically change the active property back to false the moment turns true, and so the note is only gonna ring once.
+4:35
+Finally, you should also check the keys for bugs before finishing the challenge, and you should play some music on it to simulate how a user is likely to interact with it.
+4:43
+Finally, I just wanna note that if you have a non QWERTY keyboard, feel free to change the computer key properties to computer keys that make sense for your computer keyboard layout.
+4:52
+And then there's just a tip here about how you can familiarize yourself with the underlying DOM, which could help you solve this challenge.
+4:59
+I am not gonna go through the rest of this code, but if you are curious about how it's working, I think you can read through this code here and fairly easily understand how it's working if you just follow it step by step.
+5:11
+Keep in mind that there are a bunch of other states that have been declared up here, and these are all fairly self explanatory as well.
+5:18
+For example, the current instrument is the instrument that the user is playing.
+5:22
+It's initialized as piano.
+5:23
+Alright.
+5:23
+So if you get stuck, I have left some hints for you in the top left of the explorer, and I will see you again soon to go over the solution together.
+5:31
+In the meantime, happy coding and good luck with this challenge!
