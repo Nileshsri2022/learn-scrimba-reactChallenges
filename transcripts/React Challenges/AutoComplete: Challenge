@@ -1,0 +1,103 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to autocomplete, the automated to do list.
+0:04
+Now on the surface, this looks just like a normal do list app.
+0:08
+I've got my items to do here.
+0:10
+I can check them off.
+0:11
+I can uncheck them off, and I can add new items like Paul brother.
+0:16
+And you know what?
+0:16
+I'm feeling a little bit more ambitious, so I'm also going to go to Mars and become a billionaire.
+0:23
+Alright.
+0:24
+Now the real magic happens, which is that if I come down to this autocomplete button and I press it, behind the scenes, a very advanced artificial intelligence system has just completed all of my tasks for me.
+0:36
+And so in the last five seconds, I have bought my bananas, walked my dog, called my brother, been the first person to go to Mars, and become a billionaire.
+0:44
+Isn't it amazing what technology can do?
+0:47
+Okay.
+0:47
+This is a joke, and I'm making fun of some of the hype surrounding artificial intelligence right now.
+0:52
+But we could imagine a real feature in a real app where we allow a user to batch a bunch of items together and do something to them all at once, which is what this button is essentially doing.
+1:03
+Now as you just saw, a lot of the core functionality of the app is actually already in place.
+1:08
+But as you might have also noticed, there are some things lacking with the user experience.
+1:14
+So for example, when I add a new item, this little plus sign here continues to be dark, which is potentially sending a signal to our users that they should be able to, for example, type something inside of here and click it again and add it, and that's not actually what we want this button to do.
+1:30
+The whole point of this button is just to activate this space for the user to write in.
+1:35
+The way that we want them to enter items is by pressing the enter key.
+1:39
+So taking care of that is what task number one is all about.
+1:43
+When the text input with the class name of new item input is in focus, the opacity of the image with the class name of add item icon should be set to zero point two by adding the faded class to the images class name.
+1:58
+And when it's not in focus, this class should be removed.
+2:02
+So new item input is living right down here, and if we add the faded class to it, then that is going to make it look faded.
+2:10
+Alright.
+2:10
+So that's task number one.
+2:12
+Now let me show you task number two, which is that when I type something into the input field and press enter, the item does get added to my to do list, which is great, but the text that I put in the input field is still there.
+2:24
+And instead of still being there, we want to clear it out so that it is ready for the user to type something else.
+2:31
+So that is task number two.
+2:33
+Right?
+2:33
+And then here is task number three.
+2:35
+So when I press this autocomplete button, we get this nice little animation, and then everything gets crossed out, but the checkboxes are still empty.
+2:43
+They should be checked.
+2:44
+And so this is sending a message to the user that these items aren't completed, whereas the crossed outline is sending them the message that it has been completed.
+2:52
+These two things aren't in sync with each other, and we want them to be in sync with each other.
+2:57
+So that is what task number three is.
+2:59
+When the user clicks the autocomplete button, the checkboxes should all become checked at the same time that the to do list items get crossed out.
+3:07
+Alright.
+3:08
+Now four is just saying that to complete these tasks, you will need to make a few small changes to the code below these comments.
+3:15
+So the code down here, and you will also need to make a couple of small additions to this file.
+3:21
+You may make these additions wherever you think they should go.
+3:23
+If you find yourself changing or adding a lot of code, it is a sign that you are overcomplicating things.
+3:30
+So I really want to emphasize the words few and small here.
+3:34
+And the real challenge here is to read through some of this code and try to understand how it's currently working and how you need to make a few small changes and additions to make it work the way it's supposed to be working.
+3:46
+And to help you out with that, I've left this one final note here, which is saying that you should read through the code between line thirty two and these comments.
+3:54
+And aspects of this code are relevant to completing these tasks, but you don't need to and indeed shouldn't make any modifications to this code.
+4:02
+You just need to understand it.
+4:03
+So that is the code living up here.
+4:05
+It's the most relevant code, the most relevant to completing this challenge, and it lives between here and the instructions.
+4:12
+So that is the challenge in a nutshell.
+4:14
+If you get stuck or if you really don't know how to begin with this, I have left some hints for you in the top left corner of the Explore, and I will see you again soon to go over the solution together.
+4:23
+In the meantime, happy coding, and good luck with this challenge!
