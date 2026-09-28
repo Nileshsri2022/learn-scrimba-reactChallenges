@@ -1,0 +1,533 @@
+Transcript
+0:00
+Hello again.
+0:00
+I hope that challenge went well for you.
+0:01
+Let's look at it together now.
+0:03
+Okay.
+0:03
+So first things first.
+0:04
+If I'm going to do anything with React and render it to my HTML page, I need to give my HTML file a place for React to take root, so to speak.
+0:14
+So I'm gonna come over to the index.
+0:16
+Html t m l file then I'm gonna create an empty div.
+0:20
+It's just gonna be a nice little place for my React to live inside of and I'm going to give it an ID of root.
+0:28
+Right.
+0:28
+Now back to index j s.
+0:30
+I'm gonna comment out all of this old JavaScript and then down here I'm going to grab hold of that div that I just created.
+0:36
+So following the react documentation here, I'm gonna call it dom node and then the element.
+0:43
+Okay.
+0:43
+Now I can take this dom node and I can create a root inside of it.
+0:48
+And the way I do that is with the createRoot method, which comes from React DOM, which we've already imported into the file.
+0:56
+So down here, I'm going to write const root equals and then react dom create root.
+1:03
+And inside of the parenthesis I tell create root where I want it to actually create that root and that's going to be dom node.
+1:10
+And now inside of the root, we can access another method that comes with it called render and this is where we tell React what we actually want to render to the root.
+1:19
+And this can be anything we want.
+1:21
+For testing purposes, I'm just going to create an h one that says testing and let's see what happens.
+1:28
+And there we go.
+1:29
+We get the word testing.
+1:30
+Everything else cleared out because we commented out the JavaScript.
+1:33
+We still have the background because that is just being controlled by CSS.
+1:38
+Alright.
+1:38
+So we are in business here, but of course we don't want this.
+1:41
+We want to render our entire app inside of render.
+1:44
+And now we need to actually create this as a functional component.
+1:48
+Like so.
+1:49
+And I'm gonna go ahead and write my return statement.
+1:52
+And now we can start writing our JSX here.
+1:55
+So this app itself is some JSX.
+1:57
+It's referring to this function here, and now I can start putting some elements inside of here after the return statement.
+2:03
+For example, I could go back to doing this h one and that would show up just the same way as before.
+2:09
+But let's move over to what we actually want now and that is up here.
+2:12
+So first things first, we want this header section.
+2:15
+So I'm gonna uncomment this and right now I'm gonna take this whole thing and I'm just gonna copy and paste it down below.
+2:21
+Now I put this after my return statement and I need to take off these backticks because I don't want a string now.
+2:27
+I want JSX which doesn't get any quotes or backticks.
+2:31
+Let's clean up the formatting, and let's see where we're at.
+2:34
+So I click run and, uh, we get an error message.
+2:37
+It's saying invalid DOM property class.
+2:40
+Did you mean class name at header at app?
+2:42
+And the answer is why yes I did.
+2:44
+Thank you very much, mister computer.
+2:46
+So I'll change this to class name and now it stops yelling at us.
+2:49
+Fantastic.
+2:49
+Okay.
+2:50
+Let's move on to our next section.
+2:51
+So here we are creating an element with the tag name of main.
+2:56
+So I'm gonna write some JSX tags exactly as I would with HTML.
+3:01
+Okay.
+3:02
+And now we need some actual content to go inside of this section.
+3:05
+So let's take a look at this next.
+3:07
+Okay.
+3:07
+So to the main element, we are appending as a child some heading which is this element here.
+3:13
+It's an h one element.
+3:15
+I'm gonna create that with JSX.
+3:17
+It has a class name of logo container, so I will insert that here.
+3:22
+Changing class to class name.
+3:24
+This is JSX not HTML.
+3:26
+Okay.
+3:26
+And then the text content of this header, which the Cheeky Coding Company very creatively named, is simple food restaurant.
+3:33
+So I'm going to copy and paste that and put it inside of my h one and that takes care of this.
+3:40
+I'm gonna go ahead and delete this.
+3:42
+Let's move on to the next bit of our section.
+3:44
+So we have this here.
+3:46
+This time we are creating a paragraph element.
+3:49
+So I'm just gonna write out the tags for that.
+3:51
+Add the class name and then add the text content that is being inserted into the element.
+3:58
+And then this whole paragraph has been appended as a child to the main element, which means it's gonna go below whatever the previous children were, which in this case was the h one.
+4:08
+So it's already exactly where we want it to be.
+4:11
+So that takes care of our paragraph and now let's do our image container.
+4:15
+So here we have a whole big block of HTML written out as a string.
+4:20
+I'm gonna copy that and then it's being inserted before the end of the main element which means right here like so.
+4:28
+And then I have a bunch of classes I need to change to class name.
+4:32
+There we go.
+4:33
+And that takes care of not only our image container but the entire main section.
+4:37
+Okay.
+4:37
+So now let's take this whole thing and move it to where it needs to go.
+4:41
+We are appending the main element as a child to the entire body of the document And that essentially means it lives on the same level as our header.
+4:51
+I'm gonna put it right here below the header like so.
+4:54
+And now let's test this out and uh-oh.
+4:57
+We get an unknown error.
+4:59
+Why is that?
+4:59
+Well, for one thing I should probably clean up all this stuff I did before.
+5:03
+I forgot to do that.
+5:03
+But but that is not going to take care of the issue.
+5:06
+But if we take a close look at my code here, you can see we have a squiggly red line here and it says j s x expressions must have one parent element.
+5:16
+And that is a big problem that we have right now.
+5:18
+We essentially have two children at the moment.
+5:21
+We have the main section and we have the header section and they need to be enclosed inside of a single parent element.
+5:29
+So I'm just gonna create another empty div for all of this to live inside of.
+5:34
+Starting there, going all the way down, and ending right here.
+5:38
+Okay.
+5:38
+Now let's see if it keeps yelling at us.
+5:40
+And there we go.
+5:41
+We have most of our web page done.
+5:43
+All we need now is the footer section which brings us over to here.
+5:48
+And once again we have some HTML that's already been conveniently created for us.
+5:52
+We can convert this into React JSX very simply by just leaving off the quotations or back ticks, I guess they were.
+6:00
+And then, well, we logically know that the footer should go at the bottom, but we can also see that what the Cheeky Coding company did was they added this footer to the body's inner HTML using the plus equals concatenator.
+6:13
+So they were taking everything they had before and then adding this at the very end of it.
+6:16
+So all we need to do now is paste this here below our main section And let's test this out.
+6:22
+And look at that.
+6:23
+There we go.
+6:23
+Okay.
+6:24
+So we are almost good to go at this point.
+6:26
+Just a couple little things to do.
+6:27
+So first of all, I noticed that I left these quotations on our title.
+6:31
+Maybe that's been driving you crazy, in which case I apologize.
+6:34
+Let's take those off.
+6:35
+There we we go.
+6:36
+But there is one bigger thing that we need to do, and that is this final task here about the code should be modular and well organized.
+6:44
+So move this up first of all.
+6:46
+And now let's think about what we can do here.
+6:48
+Well, at the moment, we have all of our elements just dumped into here as one big mass.
+6:53
+And to make things modular, we need to break them up into pieces.
+6:57
+And the most obvious way of doing that is just using the three part division we already have.
+7:02
+A header, a main section, and a footer.
+7:04
+So what I'm gonna do next is I'm gonna create three new files for these components here, and I'm gonna put this code inside of them.
+7:12
+Okay.
+7:12
+So for example, with this header, instead of having all of this code right here, I can create a custom header component.
+7:19
+And because it's a component, I'm gonna start it with a capital first letter and I'm going to call it, well, header.
+7:26
+And now I'm going to create a function to actually produce this functional component.
+7:31
+So I'm gonna do that for right now in the top level of our app function.
+7:35
+Inside of here I am going to put my return statement and then I'm going to paste in that code that we had for the header before.
+7:43
+Okay.
+7:43
+So now this should stand for all of this and our page should look just like before if all went well.
+7:50
+Let's test this out and there we go.
+7:52
+Okay.
+7:52
+So now I'm gonna go ahead and I'm gonna do the same thing for the main section section and for the footer section real quick.
+7:59
+Okay.
+7:59
+So I've gone ahead and taken all of our old code and put it inside of these custom components that I've created.
+8:05
+If you wanna take a closer look at that, you can pause now.
+8:08
+But I'm gonna move on and give this a test.
+8:11
+Let's see if it works.
+8:12
+And alright.
+8:13
+There we go.
+8:13
+We are in business.
+8:15
+Now this is better already but we can take this a step forward because our index js file is getting a bit long now and there are a whole bunch of different things going on with it with our different components.
+8:26
+So what I'm gonna do next is I'm gonna create separate files for each one of these components and then I'm gonna put them all inside of a components folder.
+8:34
+And the way I'm gonna do that is by coming up to the top right corner of the explorer pane.
+8:40
+And then you're not gonna be able to see this in the screen recording.
+8:43
+But when I hover here, three little dots appear.
+8:46
+And if I click on them, I get a number of options.
+8:48
+One of them is new folder.
+8:50
+And if I click on that, I get a little dialog box that asks me to give the folder a name.
+8:56
+I'm gonna call it components.
+8:58
+And you can't see this on your screen, but you can pause and see this for yourself if you haven't already.
+9:03
+I click okay.
+9:04
+Now you can see in the explorer that I have this folder called components.
+9:08
+And now I'm going to click on that, and I get another dialog box asking me to give my file a name.
+9:13
+I'm gonna call this one header dot j s x.
+9:17
+And there we go.
+9:17
+We have created the file that is now living inside of here.
+9:20
+Now the reason I'm giving it the extension of j s x is that this has become a bit of a convention now in the React development community, where anytime you have a file that contains JSX, you use the extension JSX.
+9:34
+And anytime you have a file that just has vanilla JavaScript, you call it JS.
+9:39
+Now, you don't necessarily have to do that.
+9:41
+It's not required.
+9:42
+It's just a convention.
+9:43
+But it is a little bit useful insofar as it really clearly distinguishes the vanilla JavaScript files from the React files, and it can also help when you get to the compiling stage.
+9:54
+But that is a topic for another day.
+9:55
+Anyway, with that in mind, I'm also going to rename my index.
+9:59
+Js file as index.
+10:01
+Jsx since that contains some JSX as well.
+10:04
+And while I'm doing that, I should come back to my index.
+10:07
+Html html file and make sure to update the file path to index dot JSX.
+10:13
+Okay.
+10:14
+Now I'm gonna go back to the components folder and create files for my other two custom components.
+10:20
+Alright.
+10:20
+So there we go.
+10:21
+Now we have three.
+10:22
+Notice how I've used capital letters with all of them to make it really clear that these are components.
+10:27
+So what I'm gonna do now is I'm gonna take each one of these functions and I'm going to put it into its right folder.
+10:33
+So I'll start with the header.
+10:35
+I'm gonna copy, delete it here, and then paste it into my header file over here.
+10:41
+And then the one extra little thing I need to do is export this.
+10:45
+Okay.
+10:45
+Now I'm gonna go ahead and do the other two components, fast forwarding a bit.
+10:49
+Okay.
+10:49
+So you can pause and take a look at this if you want, but, basically, I've just done the same thing for the footer and the same thing for the main section.
+10:57
+And now back in my index JSX file, well, look how much smaller this is already getting, especially if I go ahead and get rid of these comments here.
+11:05
+I mean, look how small that is.
+11:07
+However, I do need to add a few things that are very important here because so far I have exported my custom components from their files, but I have not imported them.
+11:16
+Okay.
+11:16
+So let's do the header first.
+11:18
+So I'm gonna write import header, and notice the capital letter, from.
+11:22
+And then here, since my header is living inside of the components folder, I'm gonna write dot slash components slash header.
+11:30
+And, again, notice the capital letter.
+11:32
+This is case sensitive, so that is very important.
+11:34
+Alright.
+11:35
+I'm going to go ahead and do the same thing for the other two components.
+11:39
+And there we go.
+11:40
+So now all three components are imported and they are ready to be used down here.
+11:44
+And let's just give this a test to see if it's still working.
+11:47
+And and okay.
+11:49
+Fantastic.
+11:49
+There we go.
+11:50
+We are still in business.
+11:51
+Alright.
+11:51
+So this is already much, much better.
+11:53
+But there is yet another thing we can do, which is that we can create a separate file for our app component as well.
+12:00
+So I am gonna go ahead and do that next.
+12:02
+First, doing the thing in the explorer that you can't see.
+12:06
+There we go.
+12:06
+So, now we have an app JSX file.
+12:08
+Notice how I'm doing that on the main level of all of the files.
+12:12
+I'm not putting it inside of a folder.
+12:14
+And, I'm going to take this and paste it inside of there and do the exporting.
+12:19
+Okay.
+12:20
+Now, back in index.
+12:21
+Jsx, I need to do a couple things here.
+12:23
+First, I need to import app.
+12:25
+And this time, because it's on the same file level as our index.
+12:29
+Jsx file, I just write dot slash app and that will do it.
+12:33
+And then now that I have moved my app component into its own file, I don't want to be importing these three components here.
+12:39
+I wanna be doing that in my app file.
+12:42
+So I'm going to paste this over here.
+12:44
+Okay.
+12:45
+Now fingers crossed, this should still work.
+12:47
+Let's see.
+12:47
+And there we go.
+12:48
+We are still in business.
+12:50
+Okay.
+12:50
+So that brings us pretty much to the end.
+12:52
+There are just a couple of loose ends I want to tie up here.
+12:56
+Okay.
+12:56
+So first of all, a pretty common thing to do with a return statement for a functional component, like the one we're looking at right now, is to write some parentheses right after the return keyword.
+13:07
+So, just like that.
+13:08
+And what this allows me to do is take my JSX and I can start it now on the next line down like this.
+13:16
+And this basically just makes it look a little bit cleaner.
+13:18
+And you might be wondering what is the point of the parentheses?
+13:21
+Well, the parentheses is what allows us to start this JSX on the next line.
+13:25
+If we take that out and I try to run this, you can see that we get no result.
+13:29
+However, if I put the parenthesis back, now we're back in business.
+13:32
+Okay.
+13:32
+So I'm going to quickly go through my other components and do that.
+13:36
+And, as I'm going through this, I'm also noticing that, like, this return statement is tabbed over one tab too far.
+13:43
+So there are some things I can be doing to clean up my code here.
+13:47
+Okay.
+13:47
+That looks much better to me.
+13:48
+Let's make sure we're still in business.
+13:50
+And yes, we are.
+13:51
+Awesome.
+13:51
+Okay.
+13:52
+The last thing that I want to show you here is back in our index JSX file, which is this bit here.
+14:00
+And I just wanted to show you that there is a much more concise way of doing this where instead of declaring a variable and then storing this value inside of it, we just directly put this value inside of our create root like so.
+14:14
+Now we can get rid of this.
+14:15
+And then similarly down here, instead of declaring root as a variable and then reusing it here and invoking render here, we can just directly render off of this bit here, chaining them together.
+14:28
+And now we don't need this variable declaration, and we don't need this root anymore, and this will work exactly the same way as before.
+14:36
+The logic is exactly the same.
+14:37
+We've just compressed it into a single line and click run.
+14:41
+We are still in business.
+14:43
+And then there's one other thing we can do to make this even more concise.
+14:46
+Up here, when we are importing React DOM, we can do some destructuring to directly grab hold of create root.
+14:53
+And by doing that, we no longer have to write react dom.
+14:57
+We can get rid of that and just leave it like this.
+15:00
+And this will now run-in exactly the same way as before.
+15:03
+So So that brings us to the end of this challenge.
+15:05
+I don't know about you, but I've been seeing these pictures a lot and I am feeling pretty hungry now, so I'm gonna go eat.
+15:10
+But, I would love to see what you came up with for your version of this challenge.
+15:15
+So, please do share it with the community.
+15:16
+In any case, I hope to see you again soon in another challenge.
+15:19
+In the meantime, happy coding, and goodbye for now.
