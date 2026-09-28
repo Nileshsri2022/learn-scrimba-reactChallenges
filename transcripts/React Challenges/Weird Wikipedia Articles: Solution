@@ -1,0 +1,157 @@
+Transcript
+0:00
+Hey there.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well.
+0:02
+Let's go over it together now.
+0:03
+So before we dive into coding, let's start by zooming out and thinking about the bigger picture of what we need to do here.
+0:10
+Here.
+0:10
+We are essentially taking an array called current articles, which at the moment contains four objects.
+0:17
+Let's call them article one, two, three, and four.
+0:21
+And then I'm running out of room already, so let's break this up into separate lines.
+0:25
+And then what I want to be doing is that for each one of these items in the current articles array I want to create a list item with that object's data passed inside of it.
+0:37
+So something like that.
+0:39
+Same thing for article two, three, and four.
+0:42
+And since this is a list of things and anytime in coding we have a list of something, well, we can represent that list with an array.
+0:51
+So I'm gonna turn this into an array and now we can see what this is really about.
+0:56
+So we are taking this array here and we are creating a new array where each item in the new array corresponds to an item in the original array.
+1:07
+And what we're basically doing is we're taking the data from that original array and we are mapping something around it.
+1:14
+In this case, a list item for each object of data.
+1:18
+All of which is another way of saying that this is a perfect job for the map method.
+1:24
+So let's come down here and map this out.
+1:27
+I'm gonna get rid of all of these list items here.
+1:29
+I'm gonna keep one of them as a sort of template for what I want to do, and I'm going to do it right up here for the time being.
+1:37
+So what I want to be doing is taking the current articles array, mapping over it.
+1:42
+And then the way I want to map over it is I want to take each one of the articles in the current articles array.
+1:49
+So I'm just gonna call it article singular.
+1:51
+I wanna take it and I want to return something and this is going to involve multiple lines of code.
+1:58
+So I'm just going to put some parentheses here and that allows me to start my return statement on the next line of the editor.
+2:07
+Okay.
+2:07
+Now what do I actually want to be returning for each item in the current articles array?
+2:12
+Well, I want to return a list item that's going to look very much like this.
+2:17
+So let me just move that up here into my return statement and clean up the formatting And now all I need to do is replace articles zero with article, which, again, is the name I've given to each item as I iterate through the current articles array, and I need to do that here as well.
+2:36
+Okay.
+2:37
+So now for each article in the current articles array, I am going to be returning a list item with that article's link and title fed into it as data.
+2:48
+And the end result of that is going to be whatever we see when I click run.
+2:53
+Drumroll please.
+2:54
+Three, two, one, and Hey.
+2:57
+Hey.
+2:57
+There we go.
+2:58
+Except that React is yelling at us about not having a key.
+3:03
+Each child in a list should have a unique key prop.
+3:06
+So we need to add a key to our list item right here.
+3:11
+And inside of our current articles array, for each object, each article, we have a property called ID.
+3:19
+We can see that if we console log earned articles.
+3:23
+As you can see, the article two plus two equals five, for example, has an ID of n g six w.
+3:29
+Well, you can read the rest of that on your own, and so we can take care of the key that way.
+3:34
+Okay.
+3:35
+Now this is looking a bit messy having all this code for our map method inside of our return statement.
+3:41
+So let's clean this up by storing this all inside of a variable.
+3:45
+I'm going to call it articles, which I will declare up here on the top level of my app component, const articles equals and then all of that code I had before, which I think I can reformat.
+3:59
+Something like that.
+4:00
+Okay.
+4:00
+And now to really clean this up, let me get rid of that and get rid of all this extra space I had for the challenge.
+4:06
+Okay.
+4:07
+Another moment of truth here.
+4:08
+Let's see if this works.
+4:09
+Three two one and hey.
+4:11
+Hey.
+4:11
+There we go.
+4:12
+We are still in business and now comes the real moment of truth.
+4:16
+Since we are now automatically generating a list item for every article in our current articles array.
+4:23
+If I change the number of articles from four to let's say one, I should have only one article end up getting rendered onto the page.
+4:33
+Let's see if that happens.
+4:34
+Drum roll, please.
+4:35
+Three, two, one, and hey.
+4:37
+Hey.
+4:37
+There we go.
+4:38
+We have buffalo, buffalo, buffalo, buffalo.
+4:40
+I have absolutely no idea what that article is about, but I am very intrigued now.
+4:44
+Now let's go back and change our number of articles from one to, let's say, ten.
+4:49
+Three, two, one.
+4:50
+And hey.
+4:51
+There we go.
+4:52
+We now get ten links.
+4:54
+So our code has now become much much more flexible and dynamic than it was before.
+4:59
+We can change the number of articles by literally just typing a single number, and that changes what our app renders dramatically.
+5:07
+So congratulations on completing this challenge.
+5:10
+Maybe take a break now and check out one of these very interesting articles like extraterrestrial real estate or infinite monkey theorem.
+5:18
+In any case, I hope to see you again soon in another challenge.
+5:21
+In the meantime, happy coding, and goodbye for now.
