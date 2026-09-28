@@ -1,0 +1,67 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to front end magazine presents the top one hundred colors.
+0:05
+We're gonna be showing people one hundred of the most popular colors in front end development.
+0:10
+Let me show you what we have so far.
+0:12
+So over in this data folder in the color data JS file, I have already created an array of one hundred hex codes corresponding to the one hundred colors.
+0:22
+We've got all sorts of classics in here like f f six f six one and the number one color.
+0:28
+I love it.
+0:28
+You love it.
+0:29
+We all love it.
+0:30
+Three four five six eight b.
+0:32
+What a classic.
+0:33
+Alright.
+0:33
+Now over in the app JSX file, I have already imported this array of data into the file, so it's ready to be used.
+0:40
+And I have also created this functional color card component.
+0:45
+And what I've done here is for testing purposes, I have hard coded some data into the card.
+0:50
+So first off, I'm hard coding the first hex code from the array into this inline style attribute as the background color for this div element here.
+0:59
+And then inside of this paragraph element, I've also hard coded the hex code here so that the user can actually see it.
+1:05
+And I've hard coded the number one here because this is the first color in the array.
+1:10
+Okay.
+1:10
+So now if I come down to the return statement for this app component and I insert a color card here, like so, and I click run, you can see that we get a nice little card showing the first color in the array.
+1:24
+But we don't just want one color.
+1:26
+We want all one hundred of them.
+1:27
+And for that, we're gonna have to do two things.
+1:30
+So first of all, we are going to somehow have to generate one hundred of these color card elements, one card for each color in the colors data array.
+1:40
+And then second, instead of hard coding the data into our color card component here, here, and here, we should be passing in that data as props.
+1:50
+And that way, we're gonna be able to create one hundred different color cards instead of one hundred of the same color cards, which is definitely not what we want.
+1:58
+And I have a note here that says color data, color card, and nano ID have already been imported into this file.
+2:05
+Originally, I had color card in this components folder here, but then I decided it might be easier to work with it if I just put it inside of this app JSX file, but feel free to move it back if you want to.
+2:17
+In the meantime, I'm gonna delete this bit of my note here and then just draw your attention again to the fact that you do have access to the nano ID function, which has been imported up here.
+2:27
+You can use that to generate unique ID numbers should you need to do that.
+2:31
+I don't want to say too much more about that because it would be giving away the solution and I am purposely being a bit vague here about how to do this because I want to leave it open ended and give you a chance to figure out how to do this on your own.
+2:44
+But if you get stuck, I have left some hints for you in the top left of the explorer.
+2:49
+And in case you need a recap of the instructions well They are all here for you, so good luck with this challenge happy coding and goodbye for now
