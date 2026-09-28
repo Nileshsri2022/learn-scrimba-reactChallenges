@@ -1,0 +1,99 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to this calculator featuring a totally original design that has absolutely nothing to do with the Apple calculator.
+0:08
+I I have no idea why people keep asking me about that.
+0:10
+I don't see any resemblance whatsoever.
+0:12
+Anyway, I think this calculator is looking great, but there's just one little problem with it, which is that if I click on any of these keys, nothing actually happens.
+0:21
+I can't actually enter any numbers, which is a little bit of a problem for a calculator, and that is where you come in.
+0:28
+The number buttons aren't working, and your job is essentially to fix that.
+0:32
+And the way that you're going to do that is by updating a state called current calculation.
+0:38
+And that state lives at the very top of this file.
+0:41
+It's this state here, and it's being initialized as initial state, which lives right up here.
+0:47
+And this is an object with four different properties, and the first one is an array called current number.
+0:52
+Now imagine that the user types a number in like one hundred twenty three.
+0:57
+Well, what should be happening underneath the surface is that this array should get a one added to it and then a two, and then a three represented as individual digits inside of strings, which are then going to get smooshed together when this code gets run, like so.
+1:13
+If the user then clicks one of these operation buttons, like the plus sign, sign, for example, well, then this operation property should be changed from undefined to plus, and then the number inside of current number is going to be sent to another array called previous number.
+1:30
+And what that's gonna do is it's going to allow the user to type in a new number that they want to add to this while saving this so that eventually we can do the calculation.
+1:40
+So let's imagine the user then types four hundred fifty six as their next number, and if I click run on that to simulate this happening, well, we can see that the current number is four hundred and fifty six, but underneath the surface, one hundred and twenty three has been saved.
+1:55
+And so when I press the equal button, well, we actually get the calculation.
+1:59
+As you can see, this app is actually working to some degree, and that is because all of the buttons have been set up except for the number buttons.
+2:07
+So the operation buttons are set up.
+2:09
+The decimal point is set up.
+2:11
+These guys up at the top are set up.
+2:13
+It's just the numbers that need to be taken care of.
+2:16
+So anyways, let me reinitialize this the way it was before, and now let's go look at the actual instructions for the challenge.
+2:23
+So you are going to be completing three tasks on the lines below, and I've marked them all out for you.
+2:29
+And each one of these tasks essentially involves updating the state in a certain way based on which of the six conditions listed on line twenty above is true.
+2:40
+So those conditions are all living up here, and they're basically just checking for the various possibilities that we have with the state up here.
+2:48
+For example, current number could be empty, but previous number could be filled, or both of them could be empty.
+2:54
+And then there are other possibilities too.
+2:55
+And if you do the math, no pun intended, and then think through some of the logic of how this app works, well, we end up with six different possible conditions that the state could have.
+3:05
+And so down here, what we're doing is we are checking for which one of the conditions is true.
+3:10
+We're doing that here, for example.
+3:12
+We're also doing that here and here.
+3:14
+And depending on which condition is true, we want to do different things which are spelled out here.
+3:19
+So for example, if any of the first four conditions are true, then what we want to do is this.
+3:24
+We want the number from click value to be added to the end of the current number array of the current calculation state, preserving any values that are already saved in the array.
+3:36
+And then all of the other properties of the current calculation state should be preserved.
+3:40
+And so you might be wondering what is number from click.
+3:43
+Well, it is the number that the user just clicked.
+3:46
+And to show you this real quick, I'm just going to console log num from click.
+3:51
+And now if I run this app and I click on one of the numbers, you can see that we end up getting the number logged to the console.
+3:58
+So this challenge is all about taking this value and doing something with it.
+4:02
+And I am not gonna go through the rest of these tasks because I think by the end of me just reading through this, you will have already forgotten the first task, and so it would be kind of pointless.
+4:12
+So I'm just going to let you read through these on your own.
+4:15
+But I just want to stress here that in order to make the calculator work, you only, and I really wanna stress, only need to complete the three tasks below.
+4:24
+And for each of these tasks, you only need to update the current calculation state in the way that I specify in the instructions.
+4:32
+Finally, and going a little bit out of order here, when you are done with the challenge, you should test the calculator by using it in a variety of ways that a real user might use it so just mash these buttons do some calculations and see if it's actually working.
+4:45
+If you get stuck, I have left some hints for you in the top left corner of the Explorer.
+4:50
+And if you're also wanting to understand a bit more about the rhyme and reason behind what you are doing with this challenge, I have left some explanations of the rationales behind them in this folder here.
+5:03
+Anyway, I will see you again soon to go over the solution together.
+5:06
+In the meantime, happy coding, and good luck with this challenge.
