@@ -1,0 +1,229 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So I'm just gonna take these one by one starting with the h1 element, which should only be rendered before the game has started, and then it should disappear afterward.
+0:12
+Okay.
+0:13
+So hopefully, you either analyzed the code and or used this show states function that I wrote for you to familiarize yourself with all of these up here.
+0:22
+And actually, just looking at this and looking at the states and their names, I can see that there's a state called game started.
+0:28
+And I am pretty sure that the game started state probably has something to do with whether or not the game is started.
+0:36
+And if I really wanted to, I could confirm that by console logging it and then seeing what happens as I interact with the app.
+0:43
+So it's initialized as false.
+0:45
+And when I click on the start button, it gets set to true.
+0:48
+So I've confirmed that game started is about exactly what it says it's about.
+0:53
+And I also see that it's a value that changes from false to true when the game starts, and I can use that information to my advantage by coming down here.
+1:03
+And now what I can do is just go back into JavaScript for a moment inside of my JSX, And there are a couple ways that I could do this.
+1:11
+So the first way would be with a ternary, which would look like this.
+1:14
+So first, I would ask, is the game started state false?
+1:18
+In other words, has the game not started yet?
+1:21
+If that is the case, then return this.
+1:23
+And if it isn't the case, then we'll just return nothing.
+1:27
+And I could do that with these quotes or just say undefined.
+1:30
+And so now we are only going to see this h one element if the game hasn't started yet.
+1:36
+So let's just test this out to make sure it's working.
+1:39
+And okay.
+1:40
+So far so good.
+1:41
+We are rendering the title.
+1:43
+And now it should disappear when I click the start button.
+1:46
+Let's see if that happens.
+1:47
+Three, two, one, and hey, there we go.
+1:49
+Okay.
+1:50
+So this does work, but we could clean it up a bit.
+1:52
+First of all, instead of writing this whole thing out, we could just make use of the logical not operator and go like that.
+1:59
+And we also don't actually even need to do a ternary here because if this condition isn't true, or in other words, if game started isn't false which is a bit of a double negative but hopefully you understand what I'm saying if this thing isn't the case and there actually isn't anything that we want to do.
+2:16
+And so we can actually just ignore any code that comes after this part here where we check what the state is.
+2:22
+And when we have a situation like that, it is the perfect place to make use of the and or double ampersand operator, and then we can delete this bit of our ternary here.
+2:32
+And now we've simplified our code even further.
+2:34
+This will actually work exactly the same way as before, which I can confirm by clicking the start button, And sure enough, it disappears.
+2:41
+So that takes care of task number one.
+2:43
+Now let's do task number two.
+2:45
+So the div with the class name of problem container should only be rendered if the game has started.
+2:51
+Before that, it should not be rendered.
+2:53
+Okay.
+2:53
+So this has to do with whether the game has started.
+2:56
+So it's the same exact state as before, and it has to do with the problem container.
+3:01
+So let's go find that and see it right here.
+3:04
+And so now I'm going to do basically the same thing as I did before.
+3:08
+I'm going to go back into JavaScript for a moment, and then I'm going to check what is the game started state value.
+3:15
+And if it is true, then this is what I want it to do.
+3:17
+Whereas if this is false, then I want it to just ignore this bit of code here.
+3:21
+So this is exactly the same thing as we were doing up here, only now it's in reverse because before we were checking if the state was false, and now we're checking if it is true.
+3:30
+Okay.
+3:30
+So now if all goes well, when I click run, we should only get the title, and the problem should not appear.
+3:36
+Now if I click the start button, well, the title should disappear, and the problem should become visible.
+3:41
+So a little moment of truth here, and hey, hey, there we go.
+3:45
+Fantastic.
+3:45
+Alright.
+3:46
+That takes care of task number two.
+3:47
+Now let's look at number three.
+3:49
+So the button stored in the variable gameplay buttons should only be rendered if the game has started.
+3:55
+Otherwise, they should not be rendered.
+3:57
+And the button stored in the variable start button should appear instead.
+4:01
+Okay.
+4:01
+So once again, everything is hinging here on whether the game has started.
+4:05
+So once again, it's that game started state that we're dealing with, and then it's this game buttons variable and the start button that we have to work with here.
+4:14
+So let's go take a look for them down here and okay I can see here are the game play buttons and the start button okay so right now both of them are just being inserted directly inside of this div here, and so they're both ending up on the screen at the same time.
+4:31
+What we want to happen is that we want the start button to appear only if the game hasn't started yet, and then we want the gameplay buttons to appear only if the game has already started.
+4:41
+So here is where a ternary would actually be very useful.
+4:45
+So I'm gonna check is game started.
+4:48
+If that is the case, then it's the game buttons that I want to insert inside of the div.
+4:54
+And if that is not the case, or in other words, if game started is false, then it's the start button that I want to insert inside of the button container.
+5:03
+So let's delete these two guys, and now we just have this.
+5:07
+So let's test this out.
+5:08
+When I click Run, sure enough, we just get the start button here, and now this makes a whole lot more sense from a user experience standpoint.
+5:16
+And when I click the start button, we get those two other buttons, and that also makes a lot of sense.
+5:21
+Definitely a lot more sense than trying to divide zero by seven, which I am pretty sure is just zero.
+5:27
+Let's find out.
+5:28
+And, yes, that is correct.
+5:30
+And what is zero plus two?
+5:32
+Well, I am very good at math, so I know that the answer is twenty.
+5:36
+Let's just confirm and, oh, no, I got it wrong, and that message is still lingering on the screen.
+5:42
+We want it to go away.
+5:44
+So let's take care of that, which is our final task up here.
+5:48
+Okay.
+5:48
+Now hopefully, you listened to me or read this note here when I said that to complete the challenge, you only have to do some stuff down below, and you didn't go off and try to do something crazy with CSS or with useEffect or something like that because most of the work has already been done for you, and that is thanks to this state up here called recent status change.
+6:10
+So I'm going to console log this one just to show you how it's working, and that makes sense because that is how the state is initialized over here.
+6:18
+When I click start, it's still false.
+6:20
+However, when I tell the app that nine times seven equals ninety seven and I click the check answer button, now this date changes to true and then right back to false.
+6:29
+Oh, yeah.
+6:30
+Okay.
+6:30
+It's sixty three.
+6:31
+Let's try that.
+6:32
+I check the answer.
+6:34
+And once again, it goes to true and then right back to false.
+6:37
+So if you dug underneath the hood of this code a little bit, you might have seen that there is already a useEffect that is taking care of this for us, and actually two useEffects.
+6:47
+And now that I'm looking at this, I realized that I meant to refactor this, and I forgot to do it.
+6:52
+So if you want a little bonus challenge, feel free to do that on your own once you're done with this challenge.
+6:57
+But, anyway, in the meantime, what I'm gonna do is I'm going to take that recent status change, and I'm going to use it down here for one final little bit of conditional logic.
+7:07
+Okay.
+7:07
+We have this answer status here, and it's actually already inside of a JavaScript space right here thanks to those curly brackets.
+7:14
+So all I really need to do is paste my recent status change state into here and then use our old friend, the double ampersands.
+7:22
+And now answer status will only appear if this is true, and then when it's false, it will disappear.
+7:28
+And so now let me get rid of that console log, and let's run this again.
+7:32
+I put in my answer, five times six.
+7:35
+Well, obviously, that is fifty six.
+7:37
+And if I check the answer okay.
+7:39
+I get the message, and it disappears.
+7:42
+If it's not fifty six oh, I know.
+7:44
+It's thirty.
+7:45
+Okay.
+7:45
+There we go.
+7:46
+Alright.
+7:46
+So that brings us to the end of this challenge.
+7:49
+I hope you had fun doing it.
+7:50
+I hope to see you again in another challenge soon.
+7:52
+In the meantime, happy coding and goodbye for now.
