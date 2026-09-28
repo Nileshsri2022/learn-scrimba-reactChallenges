@@ -1,0 +1,121 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to this virtual amusement park game.
+0:04
+I don't know if you've seen something like this before, but at an actual real life amusement park, there are often games that claim to test how strong you are.
+0:13
+And usually, they are testing your arm strength or sometimes your hand.
+0:18
+But this game here is testing how strong your finger is.
+0:23
+So the idea is this.
+0:24
+The user is going to bring their cursor over to this big button that says hold down, and they are going to do exactly that.
+0:32
+They are going to hold down the button by holding down their mouse button.
+0:36
+Now if they keep their cursor inside of the button and they keep holding the button down, then this timer down here is going to start counting the seconds.
+0:45
+And this thermometer up here is going to have its mercury start to go up and up and up.
+0:51
+And the objective is to get it all the way to the top and at that point you have won the game.
+0:57
+Something that only somebody with a truly strong finger is going to be able to do.
+1:02
+Okay.
+1:03
+So that is how it should be working.
+1:05
+However, at the moment it doesn't work and that is because something terrible has happened.
+1:10
+A horrible, horrible hacker has come into our code and deleted some things.
+1:15
+And he's even decided to taunt us by leaving this console log message.
+1:20
+And if I run this code, it will see that message in the console.
+1:23
+It says, Your app has been hacked.
+1:26
+I deleted two of your states and four of your event handlers.
+1:29
+Try to see if you can catch them.
+1:31
+And apparently, our hacker has a bit of a sense of humor because if you look at the code, you can see that he has put it inside of a try block, this block here, and a catch block.
+1:44
+And in case you're not familiar with this, the way it works is like this.
+1:47
+So first, the computer is going to try to execute the try block.
+1:52
+And in this case, everything inside of the try block is just one big useEffect.
+1:57
+And what this useEffect is basically doing is it is controlling the timer through this set interval and this set time count function, which is updating the time count state, which fortunately our hacker did not delete.
+2:11
+It is still up here and it is perfectly okay.
+2:15
+So, again, the computer is going to try to execute this try block.
+2:19
+However, if it's not able to execute the try block because it encounters an error, then it's going to catch that error, and it is going to execute the code inside of the catch block.
+2:32
+And in this case, that is the console log message that we saw before.
+2:36
+Now by virtue of the fact that we are seeing the console log message in the console, we know for a fact that the computer is trying to execute this block of code but failing, which means there must be an error happening inside of the try block.
+2:52
+And that error must be happening inside of our useEffect because that is the only code inside of the try block.
+2:59
+And so something having to do with the fact that the hacker deleted those two states and the four event handlers must be causing the error.
+3:08
+And so your job is basically this.
+3:10
+You need to figure out what those two missing states are and what the four missing event handlers are, and you need to add them back into the code.
+3:20
+If you do that, the game should be back up and running, and you should test it to make sure that it is working.
+3:26
+Now I have left some fairly detailed instructions for you here about what exactly needs to happen.
+3:32
+I'm going to let you just read those on your own.
+3:35
+However, I do want to stress this third instruction here, which is that everything that you need to do for this challenge can and should be accomplished simply through changes in the missing state values, which are going to be triggered by the missing event handlers.
+3:50
+So if you add these states and event handlers back in and you change the states the way they should be changed, the app is going to work.
+3:59
+You should not, and I really want to emphasize this, should not delete, add, or modify any code besides the missing states and the event handlers.
+4:08
+The try block and the useEffect below will work perfectly fine as they are already written if you do this correctly.
+4:16
+So no changes here and also nothing needs to be changed here.
+4:20
+And in fact, just to make this as crystal clear as possible, I'm going to leave a little comment here.
+4:25
+So you are going to be adding the missing states in this space here.
+4:29
+You are not going to be editing this.
+4:30
+You're not going to be editing this.
+4:32
+And then you're going to be adding your event handlers down here in the return statement of this component.
+4:39
+So you're gonna be adding the event handlers below, and you're not gonna be changing any of the code here.
+4:44
+Now if you're not sure how to do this part of the challenge, I would really recommend giving yourself some time on this and googling things.
+4:50
+That's actually exactly what I had to do in order to figure out how to put this challenge together.
+4:55
+So no shame in that, and a really good skill to exercise.
+4:58
+But if you get stuck, I have left some hints for you in the top left of the explorer.
+5:03
+And not only that, but I have also left a little bonus challenge for you here, which is to see if you can handle all four of the events with only two or even just one function.
+5:14
+And I would highly recommend not trying to do this bonus challenge right from the start.
+5:18
+Instead, just write your code the way you would normally write it, then see if you can refactor your code to accomplish the bonus challenge.
+5:25
+I think it's gonna be a lot easier to do it that way if you're interested in doing the bonus challenge in the first place, which you don't have to do.
+5:31
+It's totally optional.
+5:33
+Anyway, I will see you again soon to go over the solution together.
+5:36
+In the meantime, happy coding, and good luck with this challenge.
