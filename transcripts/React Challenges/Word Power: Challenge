@@ -1,0 +1,51 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to Word Power, an app that helps you build your vocabulary.
+0:05
+I've got seven words already saved to the app, and these are all just words I like.
+0:09
+Some of them are normal and useful like audacity, while others are, well, not so useful like alluvium, which is a specific type of soil or debris.
+0:19
+Anyway, as you can see, we've got all sorts of information about each one of the words.
+0:23
+And these buttons at the bottom and top are fully operational already.
+0:27
+You can go back and forth with them like so.
+0:29
+And actually, the entire app is working perfectly fine at the moment.
+0:33
+However, I think there are some changes that we should make underneath the hood.
+0:37
+And what I have in mind is down here.
+0:39
+So as you can see, there is a whole laundry list of props being fed into these three elements here.
+0:46
+And my challenge to you is this.
+0:48
+I want you to try to take each one of these sets of props, like this one here, and reduce it to just a single prop that still preserves all of the data that is being passed into the element.
+0:59
+So one prop here, one prop here, and one prop here.
+1:03
+So that is task number one.
+1:04
+And then task number two is that in order to accommodate these changes you make to the props, you're gonna have to make some very, very small modifications modifications to the underlying components for these elements.
+1:13
+So the navigation buttons and word component which live in this components folder up here.
+1:22
+Finally, I want you to try to accomplish these tasks with a minimal amount of work.
+1:26
+There really isn't much you need to do to complete this challenge.
+1:29
+And if you find yourself doing a lot of tedious repetitious work, it's a sign that you are doing one of the tasks in an inefficient way.
+1:37
+And then I just want to note that the final results won't necessarily be the best way of passing the props.
+1:43
+And there are some aspects of this challenge that are a bit contrived, but this is just meant as an exercise in reducing the number of props you pass.
+1:51
+So take it in that spirit.
+1:53
+And if you get stuck, I've left some hints for you in the top left corner of the Explorer.
+1:58
+I will see you again soon to go over the solution together.
+2:01
+In the meantime, happy coding, and good luck with this challenge.
