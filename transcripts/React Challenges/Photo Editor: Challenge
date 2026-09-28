@@ -1,0 +1,39 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome to this challenge and welcome to this photo editor which allows you to edit the brightness, contrast, and the saturation of a photo.
+0:07
+Or at least it is supposed to do that.
+0:09
+But it's not set up yet, and that is what this challenge is about.
+0:12
+So what you're looking at here is basically a form with three different inputs, each one of which is a range type of input.
+0:20
+And so the first thing that you're gonna wanna do here is that whenever the user moves one of the range input sliders, its corresponding value in the filter state object should be updated to be the value of the input.
+0:32
+So that filter state is right up here.
+0:34
+And so, for example, if the user changes the contrast input, then this value here should be updated while preserving the brightness and the saturation.
+0:43
+And then step two is that with each update of the filter state object, the brightness, contrast, and saturation CSS variables
+0:58
+properties.
+0:59
+So for example, if the brightness goes up to two, then over in the style dot CSS file, this variable here should be changed from one to two.
+1:08
+And that is actually going to change the brightness of the image thanks to this bit of css here.
+1:14
+Same thing with the contrast and saturation, allowing the user to come up with all sorts of crazy things like this.
+1:19
+Let me reset these and go back to the app file where there are just two last things to go over.
+1:25
+First, the initial values of the range inputs should be the initial values of their corresponding properties in the filter state object.
+1:32
+In other words, they should all be these values here, and that is going to make the sliders go right in the middle when the page is initialized.
+1:40
+And finally, I'm going to encourage you to try to make your code as dry as possible.
+1:44
+If you get stuck, I have left some hints for you in the explorer up here, and I will see you again soon to go over the solution together.
+1:51
+In the meantime, happy coding, and good luck with this challenge.
