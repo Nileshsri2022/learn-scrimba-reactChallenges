@@ -1,0 +1,75 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to this beautiful, shiny, new iPhone.
+0:04
+Good news.
+0:04
+The phone is all yours.
+0:06
+You can thank me later.
+0:07
+But bad news.
+0:08
+It only comes with one app, which is a clock.
+0:11
+And even worse, the clock is broken.
+0:13
+So as you can see, this clock counts time down to the seconds, and the seconds are currently frozen, which is an indication that the clock is frozen in time as well.
+0:23
+Not exactly what you want a clock to be.
+0:25
+We want the clock to continuously update so that we can see the seconds of our lives ticking away.
+0:31
+And, okay, that's actually kind of depressing, so let's go look at the challenge.
+0:34
+The clock should periodically update its data for the state called time, which lives right up here, so that it accurately reflects the seconds as they transpire.
+0:44
+And you should use the get time function to obtain updated values for the state.
+0:50
+So that function is up here.
+0:52
+All it does is return a new date, and this is actually how the time state is getting initialized.
+0:57
+Right.
+0:58
+So that's step one.
+0:58
+And then step two is this.
+1:00
+Imagine you have your clock up and running.
+1:02
+The seconds are ticking away.
+1:04
+In that case, I want you to test your code by doing this.
+1:07
+I want you to click on this x, which is gonna exit you out of the clock, and then click on the clock again, and then click on the x again, and click on the clock again, and just go back and forth, back and forth like so.
+1:19
+And if you have done everything correct, then the counter should never go above the number one.
+1:25
+It should start off as zero when you're on this screen, And then when you click on the clock, it should go up to one.
+1:30
+And then if you exit the clock, it should go back to zero.
+1:33
+If the counter goes higher than one as you go back and forth, it is a sign you have forgotten to do something and that you need to fix your code in order to optimize it.
+1:44
+And I'm being purposefully vague here because I don't want to give too much away.
+1:48
+However, if you get stuck, I have left some hints for you in the top left corner of the Explorer.
+1:53
+And then finally, I just want to note that you don't need to change or add any code above or below lines below these lines here.
+2:01
+You are literally just updating the state periodically.
+2:04
+And if you do that, then the other code inside of this project is going to automatically parse and display the data in the time state to show the user what we want to show them.
+2:14
+There's nothing you have to do to make that happen except for updating the time state.
+2:19
+Alright.
+2:19
+So happy coding.
+2:20
+I will see you again soon to go over the solution together.
+2:23
+In the meantime, happy coding, and good luck with this challenge.
