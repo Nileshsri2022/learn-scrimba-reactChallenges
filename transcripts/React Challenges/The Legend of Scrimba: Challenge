@@ -1,0 +1,21 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to the Legend of Scrimba.
+0:03
+This is a hot new action RPG video game that all the critics are raving about.
+0:08
+Anyway, the hero of this video game is this character here, which you, the player, control.
+0:13
+And we are currently working on a screen at the beginning of the video game that is going to allow the user to create a name for their character.
+0:21
+We already have this button that is ready to go.
+0:23
+The only thing missing is an actual actual input field for the user to type out their name, and that is where you come in.
+0:30
+And so your task is to set up an input element in the space I've marked right here.
+0:35
+And the input should have a number of characteristics, which I've written out here.
+0:40
+And I know this list looks long, but keep in mind that a lot of these things can be taken care of with just a word or two.
