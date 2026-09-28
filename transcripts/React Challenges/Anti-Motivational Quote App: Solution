@@ -1,0 +1,189 @@
+Transcript
+0:00
+Hey.
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:04
+So I'm just gonna take these one by one starting with our wrapper styles inside of the current data's image object, which should be applied to the div with the class name of wrapper, so this guy down here.
+0:16
+And the first thing that I'm gonna do is I just want to remind myself of what actually is inside of this property here.
+0:23
+So I am going to console.
+0:25
+Log my current data state as an object.
+0:28
+Inside of that object, I'm going to access the image property, which is actually also an object.
+0:34
+And then inside of that object, I'm going to access the wrapper styles.
+0:39
+And let's see what this looks like.
+0:41
+So it's a single object with a couple of key value pairs.
+0:46
+One of them is the URL for the image.
+0:48
+The other one has to do with the background's position, which is undefined for this particular image.
+0:53
+Let's look at another one, and another, and another, and another.
+0:56
+And we can see that most of the background positions are undefined, but one of them does have a value of thirty percent.
+1:03
+Now as I am looking at this data, I can see that it's actually in exactly the format that React expects when we are using inline styles.
+1:13
+With something like background image, for example, let me put that here.
+1:17
+In CSS, the way that you would write that is like this.
+1:20
+But with an inline style, that gets converted into camel case like so.
+1:25
+And then also in CSS, we would write the value out something like this and then our URL.
+1:31
+However, with an inline style, React expects the value to be inside of quotations.
+1:37
+With that knowledge in mind, what I am going to do is I'm gonna come down to my wrapper and then I'm going to insert some inline styles.
+1:44
+And the inline style is going to be this object here.
+1:48
+So exactly what we were seeing in the console before, that is going to be directly inserted into this element here as an inline style.
+1:56
+And remember, this whole thing here is an object, which is exactly what we're supposed to put inside of here when we are dealing with an inline style.
+2:03
+And that object already has key value pairs that are in the format that React expects, so this will work out perfectly fine.
+2:12
+And if I get rid of this console log, close the console, and click Run, well, we should get our background image.
+2:18
+And sure enough, we do.
+2:19
+Alright.
+2:20
+Now we just need to do the other two steps.
+2:22
+So we want to apply the container styles in the image object of current data to the div with the class name of quote container.
+2:30
+I am going to do that in exactly the same way as I did before.
+2:34
+Before.
+2:34
+In fact, I'm just going to copy and paste this, and we just need to change this to container styles.
+2:39
+And it's actually been so long since I came up with this challenge that I don't really remember what's inside of there.
+2:44
+Let's just check real quick.
+2:46
+And we can see that the container styles have information about the text's color, the width of the container, the padding, and the text shadow.
+2:54
+And once again, all of that information is inside of an object in exactly the format that React expects for an inline style, and so those changes are being applied to our app.
+3:06
+This one looks terrible.
+3:07
+That is because of how big the font is.
+3:09
+Uh, this next one looks terrible as well.
+3:11
+Okay.
+3:11
+So that brings us to the third and final task.
+3:14
+And so for this one, remember that we have two choices.
+3:17
+We have image dot quote font size and text dot quote font size, and we want to apply whichever one of those has the smallest font size to the paragraph with the class name of quote.
+3:29
+And then there's this get smallest font size function that we can use to decide which one of these two is the smallest.
+3:36
+So first, I'm gonna go find that paragraph with the class name of quote and okay.
+3:41
+It's right here.
+3:42
+So I'm gonna set up my style.
+3:44
+And then I'm guessing this is going to be a bit of a long line of code.
+3:48
+And so just for readability purposes, I'm gonna define this style with a variable that I am going to call font size.
+3:55
+Although there's nothing special about this name, you could put anything you want here, and then I'm gonna define that up here on the top level of my component.
+4:04
+So font size is going to equal something.
+4:07
+Let's get rid of this console.
+4:08
+Log and now let's figure out what something is.
+4:11
+So I know that I can use that function get smallest font size.
+4:16
+And if I read the instructions that are up here, then I know the way it works is that I can invoke the function and pass in two different font size objects, like these two here, and then the function will return the smallest font size.
+4:30
+I'm actually just going to copy and paste this down below right here, and now we just need to replace these arguments here.
+4:38
+So font size one, that is going to be the image dot quote font size that lives inside of the current beta.
+4:46
+That is going to be my first argument.
+4:47
+And then my second argument is gonna be almost the same thing except this time instead of the image property, I'm gonna be looking inside of the text property.
+4:57
+And as you can see, this has gotten a bit long so I think I'm going to replace these with variables.
+5:03
+And I think I'll actually go back to just how we had it before with font size one being the first one.
+5:09
+I'll define that up here.
+5:11
+And then same thing with this one.
+5:13
+Like so.
+5:13
+Okay.
+5:14
+So now font size is going to equal whatever the return value of invoking this function is.
+5:20
+And then font size is going to end up being what gets inserted here as the inline style of this paragraph element.
+5:27
+And if all goes well, that is going to take care of that issue with the font size.
+5:32
+So let's find out if that happens.
+5:33
+Drum roll, please.
+5:34
+Three, two, one, and Hey, hey.
+5:37
+That looks pretty good.
+5:38
+That looks alright.
+5:39
+That looks good.
+5:40
+That looks decent.
+5:42
+That looks good.
+5:42
+And hey hey, there we go.
+5:44
+So it looks like we have completed the challenge.
+5:46
+So I hope that didn't give you too many difficulties.
+5:48
+One thing that I'm guessing might have tripped some people up is the fact that inside each one of the objects that we were getting the data from, like wrapper styles and container styles, there were a number of properties that were undefined.
+6:01
+And you might have thought, I need to make sure I'm only passing in data styles that are actually defined, and so I need to somehow filter out the defined ones from the undefined ones, and you don't actually have to do that.
+6:13
+And I can prove that to you by coming into, let's say, this inline style here and just inserting undefined.
+6:20
+And if I do that and I click run, well, our font size information has now disappeared, but it's not actually breaking our code.
+6:28
+And not only that, but I could also do something like this.
+6:31
+I could actually create an object manually, and I could say something like font size is undefined.
+6:37
+And if I run that, the browser is able to handle it just fine.
+6:41
+So we don't actually have to worry about any of the properties being undefined.
+6:45
+We don't even have to worry about the entire object being undefined.
+6:49
+We can just pass whatever is available into the inline style, and let the browser do the rest of the work for us.
+6:55
+Anyway, I hope to see you again in another challenge soon.
+6:58
+In the meantime, happy coding, and goodbye for now.
