@@ -1,0 +1,97 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to Debatable, a new social media platform devoted entirely to debating the big issues of the day, because apparently the Internet didn't already have enough places for that sort of thing.
+0:12
+I'm still at an early stage of development.
+0:14
+A lot of this is just a facade.
+0:16
+For example, these buttons don't do anything.
+0:19
+Neither does this search bar.
+0:20
+But I do have a prototype for a typical post on this platform.
+0:24
+So as you can see, the headline is a big debate question.
+0:28
+In this case, ChatGPT.
+0:29
+Is it good or bad?
+0:31
+Below that, you have a bunch of questions that are meant to spark some conversation and give some food for thought.
+0:37
+And if you click on any of these questions, you will actually open a link to an interesting article about the subject.
+0:44
+So you may want to check those out at some point, some interesting stuff in there.
+0:47
+But the main thing I wanna show you is down here where I've done a mock up of a comment section.
+0:52
+So you can see three people have already weighed in with their opinions and down here is a chance for you to give your two cents.
+0:59
+Now I haven't had time to set up an actual login system yet.
+1:02
+So for the moment, the user can just manually enter their username here and then they can write their opinion.
+1:08
+As you can see, I have some very deep thoughts on the issue.
+1:11
+And then finally, the user has a choice to post anonymously.
+1:15
+I can't see anything that could go wrong with adding this feature to a social media site.
+1:18
+And now if I click send uh-oh.
+1:20
+What happened?
+1:21
+Well, my comment is still here, but it didn't actually post to the comment thread.
+1:25
+Well, let me try that again.
+1:27
+Oh, no.
+1:27
+It happened again.
+1:28
+Okay.
+1:28
+Something is really not working here and that is where you come in.
+1:32
+Okay.
+1:32
+So here's your challenge.
+1:33
+As you can see, the form currently doesn't work and your task is to make it a controlled form that adds a comment to the post when the user clicks send.
+1:43
+Now, there are a bunch of requirements that you can read through on your own down here.
+1:47
+And the thing I really want to draw your attention to is this last point, which is that your code can live entirely inside of this file, which is the debate post dot JSX file.
+1:57
+If you scroll down, you can see that the skeleton of the form has already been created for you.
+2:03
+And your job is basically just to bring it to life.
+2:05
+And again, you can do that entirely inside of this file, although you are welcome to move things around if you'd like.
+2:12
+So for example, if you'd like to create a custom component for this whole form and move this code into there, you are welcome to do that.
+2:19
+And the thing I want to stress with you with this is just that you don't really need to worry about what's going on inside of post content or post comments or any of the other files.
+2:28
+I mean, you are more than welcome to take a look and see what is happening inside of them, but you are also welcome to just ignore them and just take it for granted that they already work.
+2:38
+You definitely do not need to make any changes inside of them.
+2:42
+Alright.
+2:42
+So I will leave it at that.
+2:43
+You can read through the rest.
+2:45
+If you are looking for some bonus challenges, check those out over here in the explorer.
+2:49
+And if you get stuck, I have left a number of hints for you over here.
+2:53
+So give us your best shot.
+2:54
+I will see you again soon to go over the solution together.
+2:57
+And in the meantime, happy coding and goodbye for now.
