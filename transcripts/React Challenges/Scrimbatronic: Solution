@@ -1,0 +1,511 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So this is one of those challenges where it might really help to think about what we are gonna be doing and plan it out a little bit before we just dive straight into coding.
+0:10
+So in this space here inside of the comments, I am going to write out a little outline of how I think we should approach this challenge.
+0:19
+But first off, we are going to need to listen for events.
+0:22
+And there's three types of events that we need to listen for, and those are mouseDown, keyDown, and keyUp.
+0:29
+And then, here's the next thing we want to do.
+0:31
+So I'm calling this interpreting the events, and what we basically wanna do here is answer three questions.
+0:37
+First, what kind of event was it?
+0:39
+Was it a mouse down, key down, or key up?
+0:41
+Because in each event, we want to do a slightly different thing.
+0:45
+In some cases, the opposite thing.
+0:47
+Also want to know, does the event correspond to one of the SynthKey state objects?
+0:52
+So, for example, if I type the letter a on my keyboard, well, that corresponds to this object up here since it has a computer key property of a.
+1:02
+Whereas, if I type something like the letter z, that doesn't correspond to any of these objects.
+1:07
+And so, in that case, we wouldn't actually be wanting to do anything about that key press.
+1:11
+So coming back down to here, again, we want to know, does the event correspond to one of the state objects, and if so, which one?
+1:17
+And so, for example, if I type in a, I want to know that corresponds to the c two Synth Key object.
+1:23
+Whereas, if I type s, then we want to know that corresponds to the d SynthKey object.
+1:28
+And then once we have interpreted the event, the next thing that we want to do is update the synth key state array.
+1:35
+And to be more specific, we want to update the target object.
+1:40
+The target object being the SynthKey state object that corresponds to the event, the one that answers this question down here.
+1:47
+Make a note of that.
+1:49
+And then there's one of three different ways that we could update the target object.
+1:53
+And it's gonna depend on which event we are dealing with.
+1:56
+With.
+1:56
+If, for example, it's a mouse down or key down, then we want to make the target object's active property be true.
+2:05
+Whereas if it's a keyUp event, then we want to set the target object's keyPressed property to be false.
+2:13
+And then in addition to that, if it's a keyDown event that we are dealing with, in addition to setting the active property of the target object to true, we also want to set that keyPressed property to true as well.
+2:25
+In fact, that's what this thing down here is then retargeting and setting back to false.
+2:30
+So let me write that out real quick.
+2:32
+Alright.
+2:32
+And that is actually our pseudo code in a nutshell.
+2:36
+And now we just need to actually write this code out.
+2:38
+So first things first, we want to listen for the events.
+2:42
+So I'm gonna do that inside of the main container here.
+2:45
+And we want a mouse down event, a key down event, and a key up event.
+2:51
+And for each of these, I'm actually gonna give it the same exact event handler because I think we can take care of all of these with the same function.
+3:00
+So I'm gonna call this handle, I don't know, interaction.
+3:03
+I'm gonna define that up here.
+3:05
+Function handleInteraction.
+3:07
+And so that takes care of task number one on our plan of attack.
+3:12
+Okay.
+3:12
+Okay.
+3:13
+Now let's think about how we are going to interpret the events.
+3:16
+If we're going to interpret the events, we need to have access to the events in the first place.
+3:20
+And since this is an event handler that we are dealing with, there is going to be an event object that automatically gets passed into the function as an argument and we just need to name it as a parameter.
+3:31
+We can then take that event and we can find out what its type is by simply writing event dot type.
+3:37
+Let's just console log this real quick and make sure this is working.
+3:40
+And, oh, I made a bit of a typo here, so I should write on in front of each one of these guys here.
+3:46
+Oh, and then I have another typo there.
+3:48
+Okay.
+3:48
+Now let's try this.
+3:49
+So I'm gonna press my mouse down on this key, and sure enough, we get mouse down in the console.
+3:54
+Notice how it is in all lowercase.
+3:56
+That is gonna be important.
+3:58
+And now, what I'm gonna do is I'm just gonna type a key on my keyboard, and I'm pressing down.
+4:03
+And, oh, there's another important thing to keep in mind.
+4:06
+Right now, I'm just holding my computer key down, and you can see that the event is firing over and over again.
+4:11
+And if I lift up, well then we get the keyUp event and it stops.
+4:15
+But the fact that we get that repeated event is going to be something important to keep in mind with the key down event.
+4:21
+And you might be wondering how can we know whether or not the event is repeating itself.
+4:26
+Well, there's another event property called event repeat.
+4:29
+And now if I hold down my key well, you can see that initially the value is false, meaning it is not a repeat event the first time that I'm pressing down or letting up on the key.
+4:40
+But then if I hold down the key, well, then that value turns to true, telling us that the event is a repeat event.
+4:46
+So just as a reminder to ourselves, I'm gonna leave both of these values up here.
+4:51
+So we have event dot repeat and we have event dot type.
+4:56
+So so far, we know how we can answer the question of what kind of event is it.
+4:59
+Now we just need to know, does the event correspond to one of the SynthKey state objects?
+5:05
+And if so, which one?
+5:07
+And we're gonna call that the target object.
+5:09
+So what I'm gonna do down here is I'm going to set up a variable called target object.
+5:15
+And then the way I'm gonna do this is I'm gonna take our entire SynthKeys state array and I'm going to invoke the find method.
+5:23
+And then what I wanna do is I want to iterate through each one of the keys.
+5:27
+I'm gonna call it key singular inside of this anonymous callback function.
+5:31
+And now let's think about how we can figure out which, if any, object corresponds to the event that just happened.
+5:39
+Well, it depends on what the event is.
+5:42
+So if the event is mouse down, then we want to look at the event target datasets note attribute.
+5:50
+Because remember, if the mouse is going down inside of one of the keys, well, inside of that key, we can look at this over in the keys component.
+5:58
+Each key has a data attribute called note, which contains information about the key's name.
+6:04
+And so going back over here, we want to know if that note equals the key's name, the name of the key that we are currently iterating on inside of the synth keys state array.
+6:16
+However, if we are dealing with a key down or key up event, well, in that case, we want to know which key the user pressed.
+6:24
+For example, is it the a key on their keyboard or the z key or the x key?
+6:28
+What key is it?
+6:29
+And we can find out that information by just going into the key property of the event object itself, and we want to know if that equals the key's name.
+6:38
+So we're gonna need a little bit of conditional logic to work this out.
+6:41
+So I'm going to write some brackets here.
+6:44
+I guess we could do this with a ternary, but I think it's gonna be a bit more readable if we just use an if else statement.
+6:49
+So I'm gonna check if the event type equals mouse down.
+6:54
+Oh, and, actually, remember, the event type value is formatted in all lowercase letters.
+6:59
+Fact, I'm just gonna fix that here and here.
+7:02
+Alright.
+7:02
+So if the event dot type equals mouse down, and we are going to want to check this up here where we're gonna check is the event target datasets note equal to the key's name and actually, oh, yeah.
+7:15
+Looking at the objects again.
+7:17
+So the name that I had in mind was the key name.
+7:20
+So I actually have to write out key name here and here, Key dot key name.
+7:25
+And then actually down here, what I want to check is the key's computer key name.
+7:31
+Because remember, the event dot key is going to be whatever key the user pressed down or up on their keyboard.
+7:36
+And we want to check if that corresponds to any of the computer key properties, these guys in the object.
+7:43
+Okay.
+7:43
+So if event type equals mouse down, then what we want to check is this.
+7:49
+Does the datasets note does that equal the key's key name?
+7:53
+If this is true, well, then we want to return that value.
+7:56
+And remember the way the find method works, it iterates through each entry in the array that it's invoked from, in this case, SynthKeys, which is an array of objects.
+8:06
+And then it's going to invoke our callback function for every one of the objects in the array.
+8:11
+And if the function returns a true value, then that object is going to be the thing that gets returned by the find method.
+8:18
+And so in this context, it's gonna become our target object.
+8:22
+Okay.
+8:22
+So this is what we want to do if the event type is mouse down.
+8:26
+And then if the event type is key down or key up, then this is what we want to do.
+8:32
+And since we're doing the same thing for both types of events and since those two events are the only other possibility here, if the event type is not mouse down, but we don't even need to check for the event type.
+8:43
+We can just go straight into an else statement.
+8:46
+And now we want to return, does the event key, the key that the user pressed down on their keyboard, does that key match any of the computer keys inside any of the keys inside of the SynthKeys state array?
+8:59
+And if it does, that object is going to become our target object.
+9:03
+Okay.
+9:03
+Now, let's just make sure this is working by console logging our target object and getting this thing a whirl.
+9:08
+So what happens when I click on this key?
+9:12
+We should get back the c two object.
+9:14
+Let's see if that happens.
+9:15
+Three, two, one, end.
+9:17
+Hey.
+9:17
+There we go.
+9:18
+And it looks like we are in business with the mouse down.
+9:21
+Oh, and you might have seen I just accidentally clicked outside of the keys, and sure enough, we get back an undefined value since the space outside of the keys doesn't have a dataset with a note attribute inside of it.
+9:33
+And so our find method isn't gonna find anything.
+9:36
+Okay.
+9:36
+So we know that the mouse down event is working.
+9:39
+Now let's just check the computer keyboard.
+9:40
+So let's turn this to the notes.
+9:43
+We're getting back that undefined value because my mouse was going down on this button.
+9:47
+And now I'm just gonna go across the keyboard and press a s d f, etcetera.
+9:52
+Drum roll, please.
+9:53
+Three, two, one, and a s.
+9:56
+Fantastic.
+9:56
+D, and well, you get the idea.
+9:58
+All of these seem to be working.
+10:00
+And, yep, I just went past k and typed l on my keyboard, which is not one of the computer keys that we want to listen for.
+10:06
+And sure enough, we got an undefined value back.
+10:09
+So we are well on our way to completing the challenge now.
+10:12
+In fact, we are done with this whole task here.
+10:15
+And now we just need to update the SynthKeys state array.
+10:19
+So let's think about how we are going to do that.
+10:21
+What we definitely are gonna need the setSynthKeys state updating function.
+10:26
+However, we are only going to want to invoke this function if two things are true.
+10:31
+The first is that we want to make sure that the target object is actually defined or is a truthy value.
+10:38
+In other words, we want to make sure that our find method actually found something and that there is an actual target object that the user wants to interact with.
+10:46
+On the other hand, if their mouse went down somewhere outside of the keys or if they typed one of the keys that we're not listening for, like q, well, in that case, we don't want to actually update the SynthKeys state array.
+10:58
+So I'm gonna wrap this inside of a conditional, and I'm just going to check is target object a truthy value.
+11:06
+If it is, then we want to invoke this.
+11:08
+If it isn't, well, then we don't wanna do anything at all.
+11:11
+And then there's one other thing that we want to check for here, and it's whether or not the event dot repeat property is true.
+11:18
+And we want to make sure that that value is actually false, which we can check for with the logical not operator.
+11:25
+We only want to invoke this function if this repeat property is false.
+11:29
+That way, if I'm holding down one of the computer keys on my keyboard, we are not gonna repeatedly play a note, and I won't be able to play the note again unless I lift up on the keyboard and then press back down.
+11:41
+Okay.
+11:42
+So if these two things are the case, then we want to update the Synth Keys state array.
+11:47
+And the way we can do that is like this.
+11:49
+So first, I'm going to take the previous version of the state, and I'm going to pass that into my anonymous callback function or rather set it up as a parameter.
+11:58
+And then inside of the function, what I'm going to do is this.
+12:02
+I'm gonna take that entire previous state array and I'm going to start mapping over it.
+12:07
+And then for each key inside of the array, what I want to do is well, first, I want to check, does that key equal the target object?
+12:15
+And if they do equal each other, then I want to update that key.
+12:19
+And I'm just writing this here as a placeholder.
+12:21
+We'll come back to it in just a second.
+12:23
+However, if the key does not equal the target object, or in other words, if as we are mapping over the previous SynthKey state array and we are iterating through each key one by one, if that key is not the target object, well, then we don't wanna change anything about it.
+12:38
+And so we just want to return that key exactly the way it is.
+12:42
+We want to duplicate it, essentially.
+12:44
+Okay.
+12:44
+So that's the basic logic of what we are doing.
+12:46
+And now the question becomes, how exactly do we update the key if the key is the target object?
+12:52
+And actually, I just realized maybe this would be a little bit more clear if I wrote instead of target object, which is pretty generic, I called this target key.
+13:00
+So if the key equals the target key, then we want to update that key.
+13:04
+And we're gonna want to update it in one of these three ways here.
+13:08
+And this looks like a perfect situation for some conditional logic.
+13:12
+And I can tell this is gonna be a little bit complex, and it's going to involve at least a couple lines of code.
+13:17
+So I think that what I'm gonna do here is I'm actually going to write this as a function.
+13:21
+And I'm going to invoke that function right here, passing in the key, the one that we are currently mapping over.
+13:27
+And then I'm going to define that function up here.
+13:31
+So function update key with key set up as a parameter.
+13:35
+And now let's think about how we want to update the key.
+13:38
+And I think it's gonna help if we take one of these objects.
+13:41
+Let's just do this one here.
+13:43
+And we bring it down here just so we have something to look at here.
+13:46
+So let's imagine this is the key that we are wanting to update.
+13:50
+And let's think about what do we actually want to do with this object as we update it.
+13:54
+Well, we have a bunch of properties here that we're not actually wanting to change.
+13:58
+Key name, display name, computer key, and color.
+14:02
+We want to preserve all of these values.
+14:04
+And so to preserve them, what I'm gonna do is I'm first going to spread out the key, the one that got passed in, into a new object.
+14:11
+And so the editor will stop yelling at us.
+14:13
+Let's just define this as a variable.
+14:16
+I'm gonna call it updated key.
+14:18
+And now what we want to do is overwrite the active and or the key pressed property in a certain way depending on what our event type is.
+14:28
+So the way I'm gonna do this is I'm going to write active.
+14:32
+And then if the event type is mouse down or key down, then I want to set the active property to true.
+14:38
+Whereas if it's key up, well, in that case, I don't want to set it to true.
+14:42
+And it's gonna already be false, and I just want to allow it to continue being false.
+14:46
+So what I'm gonna do down here is I'm going to go into a ternary, and I'm going to check is the event type.
+14:53
+And, actually, I'm gonna set this to revolve around key up so that I just have to do a single check here.
+14:58
+So is it key up?
+15:00
+If it is key up, well, then I want this active property to be false.
+15:04
+Whereas, if it's not keyUp, well then, it has to be either mouse down or key down.
+15:08
+And in that case, we want to set the active property to be true.
+15:12
+So in that case, this is true.
+15:14
+And that takes care of our active property.
+15:16
+Now, we just need to think about our keyPressed property.
+15:20
+And this is already spilling out, so let's actually reformat this a little bit.
+15:24
+Okay.
+15:24
+And for this one, coming back up here, if the event type is keyUp, then we want to change this keyPressed property to false.
+15:32
+If it's keyDown, we want to change it to true.
+15:35
+And if it's mouseDown, well, we don't wanna do anything at all with it.
+15:38
+We just want to preserve it.
+15:40
+So here is how I'm going to write this out.
+15:42
+So I'm first gonna check is event type key down.
+15:46
+If it does, then I want to set this keyPressed property to true.
+15:50
+On the other hand, if the event type is keyUp, well then we want to change the property to false.
+15:57
+And if it is none of those things, well then, it must be a mouseDown event.
+16:02
+And in that case, we just want to preserve it to be whatever it was before.
+16:06
+So So I'm gonna look at the key's key pressed property and I'm going to allow that to continue being the key pressed property of this new object that I am creating.
+16:16
+And now this has spilled out a bit too, so let's do a bit of reformatting.
+16:20
+Now I know some people hate nested ternaries.
+16:23
+And if you really wanted to, you could define this as a variable and then do a normal if else statement outside of this object.
+16:29
+But I find it pretty convenient to be able to do this.
+16:31
+And I don't think one level of nesting a ternary is that difficult to read.
+16:36
+So I'm just gonna leave it be like this.
+16:38
+And now the only thing left to do is inside of this update key function, which I'm gonna separate out a little bit here.
+16:46
+What I want to do is return that updated key so that it becomes the value down here.
+16:52
+And now let's clean this up a little bit.
+16:54
+And let's actually get rid of this too while we're at it.
+16:57
+And okay.
+16:57
+So now inside of our state updating function, when we map over the previous version of the state, if the current key, as we're iterating through that array, equals the target key, then we should update that key using this logic up here.
+17:12
+Otherwise, we are just going to preserve that key, and then this whole map method is going to produce a new version of the synth keys array.
+17:20
+And in order to set that as the state value, all we need to do now is return it as the return value of this whole callback function that we've passed inside of the state updating function.
+17:31
+And if all goes well, this should actually work, but there's only one way to find out.
+17:35
+Big moment of truth here.
+17:36
+What happens when I hold my mouse down on this key?
+17:39
+Drum roll, please.
+17:40
+Three, two, one.
+17:41
+And.
+17:44
+Hey.
+17:44
+Hey.
+17:44
+There we go.
+17:45
+And now, let's see what happens if I hold down the a, d, and g keys on my computer keyboard.
+17:52
+Another drum roll, please.
+17:54
+Three, two, one, and.
+17:58
+Hey.
+17:58
+Hey.
+17:58
+There we go.
+17:59
+And now we can just have some fun with this keyboard.
+18:01
+I'm going to try to play a little song.
+18:45
+And I think I'll end it there.
+18:46
+You can actually do all sorts of things with this keyboard.
+18:49
+Anyway, I hope you had some fun with it, and I hope to see you again in another challenge soon.
+18:52
+In the meantime, happy coding, and goodbye for now.
