@@ -1,0 +1,41 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to Frontend Birthday Cards, Incorporated, a company that exclusively makes digital birthday cards for frontend developers.
+0:08
+We have an example of one of their cards right here.
+0:10
+And when you click on the card, it actually opens, and then you can click on the cover again and go back and forth, forth, which is a nice little effect.
+0:18
+But the company would like us to make the card opening mechanism a little bit more sophisticated.
+0:24
+What they'd like us to do is to simulate a finger swiping event with the user's mouse.
+0:30
+So what they have in mind here is this.
+0:32
+Imagine I have my cursor inside of the cover of the card.
+0:35
+Now that is a div down here with a class name of cover.
+0:39
+And what they want to happen is that if I put my mouse button down inside of the cover, and then while holding my finger down, I move my cursor fifty pixels to the left, then they want the card to open, which I pretended I just did by clicking.
+0:55
+And then if they go back over to the cover and they press their mouse button down again, then the cover should go back down.
+1:01
+And whether or not the card cover is open or closed comes down to a single class called open.
+1:08
+If open is included in the class name, then the card opens.
+1:12
+Otherwise, it is closed.
+1:13
+So the instructions are up here.
+1:15
+They're just reiterating everything we just went through together.
+1:18
+And I do want to note that in order to complete this challenge, you are going to have to replace or modify the card open state, so that is here, the on click event handler, so this guy here, and the way the open class is currently being applied on line thirty six, this bit specifically.
+1:35
+Right now, these three things are just set up to respond to the click event, and that is what we are changing.
+1:42
+So those things are gonna have to change as well.
+1:44
+Anyway, if you get stuck or you're not sure how to begin this challenge, I have left some hints for you, and I will see you again soon to go over the solution together.
+1:52
+In the meantime, happy coding, and good luck with this challenge.
