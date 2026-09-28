@@ -1,0 +1,145 @@
+Transcript
+0:00
+There.
+0:00
+Welcome to this challenge, and welcome to my latest money making scheme.
+0:03
+Uh, I mean, app for improving the lives of my users.
+0:06
+Yeah.
+0:06
+That's what I meant.
+0:07
+Anyway, I'm at a very early stage of development with this app.
+0:10
+Most of these buttons don't do anything.
+0:12
+The only one that works is this reports button, which if you click on it, it will take you down to this section here.
+0:18
+So this is basically a mood and activity tracking app.
+0:22
+And the basic idea here is that every day, the user files a report.
+0:26
+So here's the one for April first.
+0:28
+They give the day an overall rating.
+0:30
+This represents their life satisfaction or how well they thought the day went.
+0:35
+Then they list the main emotions they felt and the main activities they did.
+0:39
+And then finally, at the bottom, there is a note section, which is basically like a little diary entry.
+0:44
+So that's one report.
+0:45
+And then there is another report down here for April second.
+0:48
+And as you can see, it has the same exact format just with some different content.
+0:53
+Alright.
+0:53
+Now let's look at the code itself.
+0:54
+So over here, we are in the app component, and there are a few things going on in the return statement.
+0:59
+So we have a menu component that is just this section here.
+1:02
+You don't have to worry about that at all.
+1:04
+Then inside of the main section, there is a subheader element that you also don't need to worry about at all.
+1:10
+That is just this April reports header up here.
+1:13
+The only thing that you need to worry about are these diary card components.
+1:17
+So this is the one for April first, goes from there to here, and then we have another diary card component for April second.
+1:24
+And as you can see, there is a whole lot of data that is being hard coded into each diary card component, and you can take a closer look at this on your own.
+1:32
+The thing that I want to show you is that I need your help because all of this data is based on an array of data that we have over in this diary data JS file.
+1:41
+So if you look at this, you can see we have an object for April first, another one for April second.
+1:47
+But then if you keep scrolling down the file, you'll see that we have one for April third, fourth, and all the way down to April fourteenth.
+1:55
+So there is a whole lot of data that I am leaving off the table right now.
+1:59
+And what I want you to do is go through each one of these objects and copy and paste the information into a new diary card that you create.
+2:08
+And I am just joking.
+2:09
+Of course, I don't want you to do that.
+2:11
+That would be extremely tedious and a total waste of your time.
+2:14
+There are much more efficient ways of doing this sort of thing, and that is where your challenge comes in.
+2:19
+So right now, there are two diary card components hard coded with data, and your task is to use the power of iteration to automatically create diary card components for all fourteen days of data in diary data dot j s, which I have already imported for you up here.
+2:36
+And I am being purposely vague when I say use the power of iteration.
+2:40
+There is one particular way of doing this that I think is most suitable for the task, but I'm sure you could come up with others, and I want to leave it to you to think about and make some choices on your own.
+2:51
+And however you end up doing it, at the end of the day, both of the hardcoded diary card components should be deleted and replaced with a total of fourteen automatically created components.
+3:00
+And the first two cards should look identical to the original hard coded cards, the ones that you're seeing right here.
+3:06
+So if you're getting a result that looks identical, that is a sign that you did something right, and the other twelve cards should look similar to the first two as well.
+3:15
+And then finally, I've left a note here saying to make your code concise.
+3:18
+Now, normally, that goes without saying because it's it's something you should do with any code you write, but I thought it was especially relevant to point out here because the way that I have set up this diary card is very verbose.
+3:30
+It could be made much more concise.
+3:32
+And I am going to be purposefully vague here once again because I want you to think this through on your own.
+3:38
+However, if you get stuck, I have left a a bunch of hints for you up here in the top left of the explorer.
+3:43
+And if you need more of a challenge, I have left you a bunch of ideas for bonus challenges over here.
+3:49
+One of them is to go to this menu and make some of these buttons actually operational.
+3:53
+It would be great, for example, if we could actually add a new entry to the diary cards and then have it show up in reports.
+4:00
+Although that would be adding a whole another layer of complexity to this app.
+4:04
+Totally not something you have to do, just an idea.
+4:06
+And speaking of this menu, when you click on this reports button, what it's actually doing is just scrolling down to the April reports section.
+4:14
+So this isn't very realistic in terms of how an app would actually work.
+4:18
+I just did this to simplify things.
+4:20
+However, as I was working through this challenge on my own, I realized that the first time that you press this button, the effect is kind of cool.
+4:27
+But then if you have to keep doing it over and over again to test things out, it quickly becomes very annoying.
+4:32
+So I did something to help you out with that, which is over in this app JSX file.
+4:37
+And if you go to the menu component and you change this skip property from false to true, then any time you click the run button, it will automatically scroll down to April reports for you.
+4:49
+And then when you're done with the project, you can just turn this back to false and it will work the original way.
+4:54
+Oh, and before I go, I realized after I recorded this scrim that when I said components here and here, what I really should have said is elements.
+5:04
+And I should have done that in the hints as well.
+5:06
+So I'm gonna go take care of that real quick.
+5:08
+Okay.
+5:08
+That takes care of that.
+5:09
+And, oh, there's another pesky little components that that should be elements.
+5:13
+And this is kind of just semantics, but there is a bit of an important distinction to be made between components and elements.
+5:20
+An element is one of these guys or one of these guys, whereas a component is basically the code that generates these guys.
+5:27
+Anyway, I'll talk about that a little bit more in the solution scrim.
+5:31
+So I will see you over there.
+5:32
+In the meantime, happy coding, and good luck with this challenge.
