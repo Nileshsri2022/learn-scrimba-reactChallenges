@@ -1,0 +1,51 @@
+Transcript
+0:00
+Welcome to this challenge, and welcome to Sonnet Central.
+0:02
+Entering all of Shakespeare's sonnets in one place.
+0:05
+Thou enter thy search term hither, like summer.
+0:08
+And when the user clicks the search button, the text that they wrote in the input field becomes the value of the search input state up here.
+0:15
+And this bit of the code is already set up for you.
+0:18
+So in the background, what's already happening is after I pressed the search button, the value of this state became summer.
+0:26
+Using this value is where the challenge comes in.
+0:28
+But the first thing you're going to be doing is you're going to be looking inside of the sonnets data array that has already been imported up at the top and lives over here.
+0:38
+And this is an array of all one hundred and fifty four of Shakespeare's sonnets.
+0:42
+Each sonnet is an object inside of the array.
+0:45
+Going back to the app file, for each sonnet in the sonnet's data array that contains the search input value in one of its lines, you are going to create a div with a class name of sonnet in the sonnets container div down here.
+0:59
+If we had only one search result, we would end up with a single div.
+1:04
+And then inside of that div, you are going to insert the sonnets number property as the text content of an h3 element and insert each line of the sonnet as the text content of a paragraph element.
+1:15
+So if I did that manually, it would end up like this.
+1:19
+So this would be the first four lines of a sonnet.
+1:21
+I'm not gonna write out the rest of them.
+1:23
+There is a much more efficient way of doing it.
+1:25
+This is just to give you an idea of what the JSX structure is going to be like for each sonnet.
+1:31
+And then finally, you should test your code by searching for common words from Shakespeare's sonnets as well as words that don't appear in any of them.
+1:39
+Alright, so let me put this back to the way it was.
+1:41
+And now I can hand this over to you.
+1:43
+If you get stuck, I have left some hints for you in the Explorer.
+1:47
+And if you want some bonus challenges, I have left a couple down here.
+1:51
+Anyway, I will see you again soon to go over the solution together.
+1:54
+In the meantime, happy coding, and good luck with this challenge.
