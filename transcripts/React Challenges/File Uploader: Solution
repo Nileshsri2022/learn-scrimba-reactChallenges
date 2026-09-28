@@ -1,0 +1,147 @@
+Transcript
+0:00
+Welcome back.
+0:00
+I hope that challenge went well for you.
+0:02
+Let's go over it together now.
+0:03
+So first things first, I am gonna take care of the first task here, which is all about modifying our input element.
+0:11
+So we want it to be a required input, and we want it to allow the user to choose multiple files.
+0:17
+And these first two things are very easy to take care of because all we have to do is write the word required and the word multiple, and then React is going to take care of the rest for us.
+0:27
+So that is very convenient.
+0:29
+Now let's go on to this other one.
+0:30
+So we want to allow the user to only choose PDF, JPEG, or PNG files.
+0:36
+And the way that we take care of that is we add a property called accept, and then we just write out a list of the file extensions that we want to accept.
+0:46
+And then last but not least, we want to update the files to upload state whenever we detect a change in the input.
+0:53
+And then the way that we're going to update the state is spelled out in the next step, but let's just take care of the skeleton of our event handler first here.
+1:01
+So down in our input, we are gonna have an on change event handler, and I'm going to give it a name of handle change, which I will define on the top level.
+1:11
+And I know we are going to need information from the event, so I'm gonna set that up as a parameter here.
+1:17
+And to keep it consistent with what I did up up here, I'm just going to call it e.
+1:20
+So now the event object is ready and waiting for us.
+1:24
+Let's go on to our next task, which is that when the user chooses files to upload, we are going to update that files to upload state to be an array of objects where each object is going to have three properties, file name, file type, and file size, with the corresponding information as their values.
+1:42
+So if we are going to do anything with that information, we need to grab hold of it in the first place, and so let's focus on that first.
+1:49
+So inside of our event object and inside of the target of the event, we have a property called files.
+1:57
+Let's just console log this just to make sure it's working.
+2:00
+I'm gonna run this code and then you're not gonna be able to see this, but when I click choose files, my browser gives me the option to upload some files.
+2:08
+Just going to select a JPEG image I have lying around and we can see that we get this strange looking thing in our console called file list.
+2:17
+Now if you did some googling or if you looked at some of the hints that I left you, you may have learned that a file list is a specific type of object.
+2:26
+And if we want to, we can take that object and we can spread it out into an array like this.
+2:33
+And now if I run this code, you can see that in the console, now we have access to a file object that is inside of an array.
+2:41
+So I am going to choose some files, and this time, I'm actually going to choose three different JPEGs and try to upload all of them at once.
+2:49
+And there you see in the console that we get back an array of three file objects.
+2:55
+And the reason why I am putting them inside of an array is that I am anticipating something that I'm gonna do next, which is this.
+3:02
+So I know that for each one of these files that the user is trying to upload, we want to create an array with one object per file.
+3:11
+And that sort of one to one correspondence sounds like the perfect situation for using the map method.
+3:17
+However, in order to use the map method, we need to put our information inside of an array since the map method is an array method.
+3:24
+And a file list, remember, is not an array.
+3:26
+It is a weird specific type of object.
+3:29
+And so all I'm doing here is I am taking that weird specific object and I'm turning it into a boring old array with which I can use the map method.
+3:39
+So let's take off our console log, and now I'm going to start mapping over that array that I am creating by spreading out the files list inside of an empty array.
+3:50
+For each file inside of that array, I want to create an object that has the three properties listed up here.
+3:57
+So file name, which is going to equal something.
+4:01
+We have file type is going to equal something else.
+4:04
+And we have file size, which is going to equal yet another thing.
+4:10
+Okay.
+4:10
+So now let's think about how are we going to actually replace our generic something here.
+4:15
+Once again, if you did some googling or if you looked at my hints, you would have eventually found out that inside of each file object, we have a property called name.
+4:24
+We also have one called type and another one called size.
+4:28
+And so we can get the values that way.
+4:31
+Now I'm gonna store this entire new array that I'm creating with the map method inside of a variable.
+4:36
+Let's call it, I don't know, file data.
+4:39
+And then just to make sure this is actually working, let's console log that file beta array.
+4:45
+And actually, I guess it should be files plural.
+4:48
+So let's add an s onto the end of that and give this a whirl.
+4:52
+So I'm gonna choose some files.
+4:53
+I'll choose the same three files as before.
+4:56
+Again, you can't actually see this on your screen, but I do have three files highlighted right now.
+5:00
+And now I'm going to add them.
+5:02
+And hey, hey, there we go.
+5:03
+So you can see the names of the files, the file types, and the file sizes as expressed in bytes.
+5:10
+Okay.
+5:11
+So that almost brings us to the end of this challenge, except that when I press the upload button, well, nothing actually happens because there is nothing inside of our files to upload state because we haven't added anything to that yet.
+5:23
+But we can take care of that very simply by replacing this console log here with our set files to upload function.
+5:30
+And so what we're now saying is make the files to upload state equal the array that is stored in the files data variable up here, which remember is getting created by mapping over the array that in turn gets created when we spread out our files list object.
+5:47
+Alright.
+5:47
+Let's test this one last time.
+5:49
+Once again, I am going to upload some files.
+5:52
+Let's try selecting six this time.
+5:54
+So I'm gonna add all of those and sure enough, I see that six files are getting added.
+5:59
+And when I click the upload button, well, this function here should go through each one of the objects inside of the files to upload state, and it should console log each one of those files on a separate line in our console.
+6:12
+So big moment of truth here.
+6:14
+Will this actually work?
+6:15
+Drum roll, please.
+6:16
+Three, two, one, end.
+6:17
+Hey, hey, there we go.
+6:19
+So that brings us to the end of this challenge.
+6:21
+I hope to see you again in another one soon.
+6:23
+In the meantime, happy coding, and goodbye for now.
